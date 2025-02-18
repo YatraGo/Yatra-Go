@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Yatra Go - Destinations</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="" name="keywords">
+        <meta content="" name="description">
+
+        <!-- Favicon -->
+        <link rel="icon" type="image/png" href="img/Yatra Go.png">
+
+        <!-- Google Web Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600&family=Roboto&display=swap" rel="stylesheet"> 
+
+        <!-- Icon Font Stylesheet -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+        <!-- Libraries Stylesheet -->
+        <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+        <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+
+        <!-- Customized Bootstrap Stylesheet -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Template Stylesheet -->
+        <link href="css/style.css" rel="stylesheet">
+    </head>
+
+    <body>
+        <!-- Spinner Start -->
+        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <!-- Spinner End -->
+
+        <!-- Navbar Start -->
+        <div class="container-fluid position-relative p-0">
+            <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
+                <a href="" class="navbar-brand p-0">
+                    <h1 class="m-0">Yatra Go</h1>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="fa fa-bars"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <div class="navbar-nav ms-auto py-0">
+                        <a href="index.html" class="nav-item nav-link">Home</a>
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Packages</a>
+                            <div class="dropdown-menu m-0">
+                                <a href="Uttarakhand.html" class="dropdown-item">Uttarakhand</a>
+                                <a href="Himachal_Pradesh.html" class="dropdown-item">Himachal Pradesh</a>
+                                <a href="Kashmir.html" class="dropdown-item">Kashmir</a>
+                                <a href="international.html" class="dropdown-item">International</a>
+                            </div>
+                        </div>
+                        <a href="destinations.html" class="nav-item nav-link">Destinations</a>
+                        <a href="activity.html" class="nav-item nav-link">Activity</a>
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Our Services</a>
+                            <div class="dropdown-menu m-0">
+                                <a href="blogs.html" class="dropdown-item">Blogs</a>
+                                <a href="hotel.html" class="dropdown-item">Hotel</a>
+                                <a href="car-rental.html" class="dropdown-item">Car/Coach Rental</a>
+                                <a href="railway-booking.html" class="dropdown-item">Railway Booking</a>
+                                <a href="air-ticket.html" class="dropdown-item">Air Ticket</a>
+                                <a href="bike-rental.html" class="dropdown-item">Bike Rental</a>
+                            </div>
+                        </div>
+                        <a href="about.html" class="nav-item nav-link">About Us</a>
+                        <a href="contact.html" class="nav-item nav-link">Contact Us</a>
+                        <a href="contact.html" class="nav-item nav-link">Query Now</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <!-- Navbar End -->
+
+        <!-- Header Start -->
+        <div class="container-fluid" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(img/Destinations\ Banner.svg) center center no-repeat; background-size: cover; height: 400px; display: flex; align-items: center;">
+        </div>
+        <!-- Header End -->
+
+        <!-- Destination Start -->
+        <div class="container">
+            <h1>Explore Destinations with Yatra Go</h1>
+            <div class="tab-class text-center">
+                <ul class="nav nav-pills d-inline-flex justify-content-center mb-5">
+                    <li class="nav-item">
+                        <a class="tab-link d-flex mx-3 py-2 border border-primary bg-light rounded-pill active" data-tab="all">
+                            <span class="text-dark" style="width: 150px;">All</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="tab-link d-flex py-2 mx-3 border border-primary bg-light rounded-pill" data-tab="uttarakhand">
+                            <span class="text-dark" style="width: 150px;">Uttarakhand</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="tab-link d-flex mx-3 py-2 border border-primary bg-light rounded-pill" data-tab="himachal">
+                            <span class="text-dark" style="width: 150px;">Himachal</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="tab-link d-flex mx-3 py-2 border border-primary bg-light rounded-pill" data-tab="kashmir">
+                            <span class="text-dark" style="width: 150px;">Kashmir</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="tab-link d-flex mx-3 py-2 border border-primary bg-light rounded-pill" data-tab="thailand">
+                            <span class="text-dark" style="width: 150px;">Thailand</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        
+            <div class="destinations">
+                <!-- Haridwar - Uttarakhand -->
+                <div class="destination-box uttarakhand" data-tab="uttarakhand">
+                    <img src="img/Haridwar arti.jpg" alt="Haridwar">
+                    <h4 class="mb-2 my-3">Haridwar</h4>
+                    <p>Haridwar is a holy city known for the Ganga Aarti, temples, and spirituality.</p>
+                    <a href="Haridwar.html" class="view-more">View More</a>
+                </div>
+                <!-- Rishikesh - Uttarakhand -->
+                <div class="destination-box uttarakhand" data-tab="uttarakhand">
+                    <img src="img/Rishikesharti.jpg" alt="Rishikesh">
+                    <h4 class="mb-2 my-3">Rishikesh</h4>
+                    <p>Rishikesh: Yoga, Ganges, adventure, peace, temples, nature, spirituality, serenity.</p>
+                    <a href="rishikesh.html" class="view-more">View More</a>
+                </div>
+                <!-- Mussoorie - Uttarakhand -->
+                <div class="destination-box uttarakhand" data-tab="uttarakhand">
+                    <img src="img/mussoorie-mall-road.jpg" alt="Mussoorie">
+                    <h4 class="mb-2 my-3">Mussoorie</h4>
+                    <p>Queen of Hills, famous for its waterfalls and Mall Road.</p>
+                    <a href="Mussoorie.html" class="view-more">View More</a>
+                </div>
+                <!-- Dehradun - Uttarakhand -->
+                <div class="destination-box uttarakhand" data-tab="uttarakhand">
+                    <img src="img/Dehradun.jpg" alt="Dehradun">
+                    <h4 class="mb-2 my-3">Dehradun</h4>
+                    <p>Gateway to Uttarakhand, known for its landscapes and institutions.</p>
+                    <a href="Dehradun.html" class="view-more">View More</a>
+                </div>
+                <!-- Kedarnath - Uttarakhand -->
+                <div class="destination-box uttarakhand" data-tab="uttarakhand">
+                    <img src="img/Kedarnath.jpg" alt="Kedarnath">
+                    <h4 class="mb-2 my-3">Kedarnath</h4>
+                    <p>Sacred pilgrimage site and part of the Char Dham Yatra.</p>
+                    <a href="Kedarnath.html" class="view-more">View More</a>
+                </div>
+                <!-- Badrinath - Uttarakhand -->
+                <div class="destination-box uttarakhand" data-tab="uttarakhand">
+                    <img src="img/Badrinath 1.webp" alt="Badrinath">
+                    <h4 class="mb-2 my-3">Badrinath</h4>
+                    <p>A revered Hindu temple dedicated to Lord Vishnu.</p>
+                    <a href="Badrinath.html" class="view-more">View More</a>
+                </div>
+                <!-- Valley of Flowers - Uttarakhand -->
+                <div class="destination-box uttarakhand" data-tab="uttarakhand">
+                    <img src="img/valley of flowers.jpg" alt="Valley of Flowers">
+                    <h4 class="mb-2 my-3">Valley of Flowers</h4>
+                    <p>UNESCO-listed site with rare flora and scenic beauty.</p>
+                    <a href="Valley of Flowers.html" class="view-more">View More</a>
+                </div>
+                <!-- Chopta - Uttarakhand -->
+                <div class="destination-box uttarakhand" data-tab="uttarakhand">
+                    <img src="img/CHopta.jpg" alt="Chopta">
+                    <h4 class="mb-2 my-3">Chopta</h4>
+                    <p>Mini Switzerland of India, great for trekking and camping.</p>
+                    <a href="Chopta.html" class="view-more">View More</a>
+                </div>
+                <!-- Auli - Uttarakhand -->
+                <div class="destination-box uttarakhand" data-tab="uttarakhand">
+                    <img src="img/auli-view.jpg" alt="Auli">
+                    <h4 class="mb-2 my-3">Auli</h4>
+                    <p>Stunning ski destination with breathtaking Himalayan views.</p>
+                    <a href="Auli.html" class="view-more">View More</a>
+                </div>
+                <!-- Manali - Himachal -->
+                <div class="destination-box himachal" data-tab="himachal">
+                    <img src="img/Himachal.webp" alt="Manali">
+                    <h4 class="mb-2 my-3">Manali</h4>
+                    <p>Discover the beauty of snow-capped mountains.</p>
+                    <a href="manali.html" class="view-more">View More</a>
+                </div>
+                <!-- Shimla - Himachal -->
+                <div class="destination-box himachal" data-tab="himachal">
+                    <img src="img/Shimla.webp" alt="Shimla">
+                    <h4 class="mb-2 my-3">Shimla</h4>
+                    <p>The capital city, known for colonial architecture and Mall Road.</p>
+                    <a href="Shimla.html" class="view-more">View More</a>
+                </div>
+                <!-- Kullu - Himachal -->
+                <div class="destination-box himachal" data-tab="himachal">
+                    <img src="img/Kullu.jpg" alt="Kullu">
+                    <h4 class="mb-2 my-3">Kullu</h4>
+                    <p>Famous for scenic valleys, river rafting, and temples.</p>
+                    <a href="Kullu.html" class="view-more">View More</a>
+                </div>
+                <!-- Dharamshala - Himachal -->
+                <div class="destination-box himachal" data-tab="himachal">
+                    <img src="img/Dharamshala.jpg" alt="Dharamshala">
+                    <h4 class="mb-2 my-3">Dharamshala</h4>
+                    <p>Home to the Dalai Lama and rich Tibetan culture.</p>
+                    <a href="Dharamshala.html" class="view-more">View More</a>
+                </div>
+                <!-- McLeod Ganj - Himachal -->
+                <div class="destination-box himachal" data-tab="himachal">
+                    <img src="img/McLeod Ganj.jpg" alt="McLeod Ganj">
+                    <h4 class="mb-2 my-3">McLeod Ganj</h4>
+                    <p>A spiritual hub with monasteries and trekking trails.</p>
+                    <a href="McLeod Ganj.html" class="view-more">View More</a>
+                </div>
+                <!-- Kasol - Himachal -->
+                <div class="destination-box himachal" data-tab="himachal">
+                    <img src="img/kasolkheerganga.webp" alt="Kasol">
+                    <h4 class="mb-2 my-3">Kasol</h4>
+                    <p>A backpacker’s paradise with stunning landscapes and cafes.</p>
+                    <a href="Kasol.html" class="view-more">View More</a>
+                </div>
+                <!-- Spiti Valley - Himachal -->
+                <div class="destination-box himachal" data-tab="himachal">
+                    <img src="img/Spiti Valley.jpg" alt="Spiti Valley">
+                    <h4 class="mb-2 my-3">Spiti Valley</h4>
+                    <p>A high-altitude desert with breathtaking views.</p>
+                    <a href="Spiti Valley.html" class="view-more">View More</a>
+                </div>
+                <!-- Dalhousie - Himachal -->
+                <div class="destination-box himachal" data-tab="himachal">
+                    <img src="img/Dalhousie.jpg" alt="Dalhousie">
+                    <h4 class="mb-2 my-3">Dalhousie</h4>
+                    <p>A beautiful hill station with colonial-era charm.</p>
+                    <a href="Dalhousie.html" class="view-more">View More</a>
+                </div>
+                <!-- Kufri - Himachal -->
+                <div class="destination-box himachal" data-tab="himachal">
+                    <img src="img/Kufri.jpg" alt="Kufri">
+                    <h4 class="mb-2 my-3">Kufri</h4>
+                    <p>Known for snow activities and adventure sports.</p>
+                    <a href="Kufri.html" class="view-more">View More</a>
+                </div>
+                <!-- Srinagar - Kashmir -->
+                <div class="destination-box kashmir" data-tab="kashmir">
+                    <img src="img/kashmir.avif" alt="Srinagar">
+                    <h4 class="mb-2 my-3">Srinagar</h4>
+                    <p>Known for Dal Lake, Shikara rides, and Mughal gardens.</p>
+                    <a href="Srinagar.html" class="view-more">View More</a>
+                </div>
+                <!-- Gulmarg - Kashmir -->
+                <div class="destination-box kashmir" data-tab="kashmir">
+                    <img src="img/Gulmarg.jpg" alt="Gulmarg">
+                    <h4 class="mb-2 my-3">Gulmarg</h4>
+                    <p>Experience the paradise of Kashmir.</p>
+                    <a href="gulmarg.html" class="view-more">View More</a>
+                </div>
+                <!-- Pahalgam - Kashmir -->
+                <div class="destination-box kashmir" data-tab="kashmir">
+                    <img src="img/pahalgam.webp" alt="Pahalgam">
+                    <h4 class="mb-2 my-3">Pahalgam</h4>
+                    <p>Famous for lush valleys and the starting point of the Amarnath Yatra.</p>
+                    <a href="Pahalgam.html" class="view-more">View More</a>
+                </div>
+                <!-- Sonamarg - Kashmir -->
+                <div class="destination-box kashmir" data-tab="kashmir">
+                    <img src="img/Sonamarg.jpg" alt="Sonamarg">
+                    <h4 class="mb-2 my-3">Sonamarg</h4>
+                    <p>Known as the 'Meadow of Gold' with breathtaking glaciers.</p>
+                    <a href="Sonamarg.html" class="view-more">View More</a>
+                </div>
+                <!-- Phuket - Thailand -->
+                <div class="destination-box thailand" data-tab="thailand">
+                    <img src="img/Phuket.jpg" alt="Phuket">
+                    <h4 class="mb-2 my-3">Phuket</h4>
+                    <p>Relax on the stunning beaches of Thailand.</p>
+                    <a href="phuket.html" class="view-more">View More</a>
+                </div>
+                <!-- Bangkok - Thailand -->
+                <div class="destination-box thailand" data-tab="thailand">
+                    <img src="img/Bangkok.jpg" alt="Bangkok">
+                    <h4 class="mb-2 my-3">Bangkok</h4>
+                    <p>The vibrant capital known for temples, street food, and nightlife.</p>
+                    <a href="Bangkok.html" class="view-more">View More</a>
+                </div>
+                <!-- Pattaya - Thailand -->
+                <div class="destination-box thailand" data-tab="thailand">
+                    <img src="img/Bangkok.jpg" alt="Pattaya">
+                    <h4 class="mb-2 my-3">Pattaya</h4>
+                    <p>Popular for beaches, nightlife, and water activities.</p>
+                    <a href="Pattaya.html" class="view-more">View More</a>
+                </div>
+                <!-- Nainital - Uttarakhand -->
+                <div class="destination-box uttarakhand" data-tab="uttarakhand">
+                    <img src="img/Nainital4.jpg" alt="Nainital">
+                    <h4 class="mb-2 my-3">Nainital</h4>
+                    <p>Enjoy the serene lakes and hills.</p>
+                    <a href="nainital.html" class="view-more">View More</a>
+                </div>
+            </div>
+        </div>
+          <!-- Destination End -->
+        
+          <!-- Modal for Enlarged Photo -->
+          <div id="modal" class="modal">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <img id="modal-content" class="modal-content" src="" alt="Modal Image">
+            <h2 id="modal-title"></h2>
+            <p id="modal-description"></p>
+          </div>
+
+
+        <!-- Footer Start -->
+<div class="container-fluid footer py-5">
+    <div class="container py-5">
+        <div class="row g-5">
+            <div class="col-md-6 col-lg-6 col-xl-3">
+                <div class="footer-item d-flex flex-column">
+                    <h4 class="mb-4 text-white">Get In Touch</h4>
+                    <a href="tel:+918979931256"><i class="fas fa-phone me-2"></i> +91 8979931256</a>
+                    <a href="tel:+918979220256"><i class="fas fa-phone me-2"></i> +91 8979220256</a>
+                    <a href="mailto:info@yatrago.com"><i class="fas fa-envelope me-2"></i> info@yatrago.com</a>
+                    <a href="mailto:sales.yatrago@gmail.com"><i class="fas fa-envelope me-2"></i> sales.yatrago@gmail.com</a>
+                    <a href=""><i class="fas fa-home me-2"></i> 94, Yoravar Enclave, Phase-1, Ganesh Vihar, Sitapur, Jwalapur, Haridwar, Uttarakhand 249407</a>
+                    <div class="d-flex align-items-center">
+                        <i class="fas fa-share fa-2x text-white me-2"></i>
+                        <a class="btn-square btn btn-primary rounded-circle mx-1" href=""><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn-square btn btn-primary rounded-circle mx-1" href=""><i class="fab fa-twitter"></i></a>
+                        <a class="btn-square btn btn-primary rounded-circle mx-1" href=""><i class="fab fa-instagram"></i></a>
+                        <a class="btn-square btn btn-primary rounded-circle mx-1" href=""><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-6 col-xl-3">
+                <div class="footer-item d-flex flex-column">
+                    <h4 class="mb-4 text-white">Company</h4>
+                    <a href=""><i class="fas fa-angle-right me-2"></i> About</a>
+                    <a href=""><i class="fas fa-angle-right me-2"></i> Careers</a>
+                    <a href=""><i class="fas fa-angle-right me-2"></i> Blog</a>
+                    <a href=""><i class="fas fa-angle-right me-2"></i> Press</a>
+                    <a href=""><i class="fas fa-angle-right me-2"></i> Gift Cards</a>
+                    <a href=""><i class="fas fa-angle-right me-2"></i> Magazine</a>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-6 col-xl-3">
+                <div class="footer-item d-flex flex-column">
+                    <h4 class="mb-4 text-white">Support</h4>
+                    <a href=""><i class="fas fa-angle-right me-2"></i> Contact</a>
+                    <a href=""><i class="fas fa-angle-right me-2"></i> Legal Notice</a>
+                    <a href=""><i class="fas fa-angle-right me-2"></i> Privacy Policy</a>
+                    <a href=""><i class="fas fa-angle-right me-2"></i> Terms and Conditions</a>
+                    <a href=""><i class="fas fa-angle-right me-2"></i> Sitemap</a>
+                    <a href=""><i class="fas fa-angle-right me-2"></i> Cookie policy</a>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-6 col-xl-3">
+                <div class="footer-item">
+                    <div class="row gy-3 gx-2 mb-4">
+                        <div class="col-xl-6">
+                            <form>
+                                <div class="form-floating">
+                                    <select class="form-select bg-dark border" id="select1">
+                                        <option value="1">Indian</option>
+                                        <option value="1">Arabic</option>
+                                        <option value="2">German</option>
+                                        <option value="3">Greek</option>
+                                        <option value="3">New York</option>
+                                    </select>
+                                    <label for="select1">Country</label>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-xl-6">
+                            <form>
+                                <div class="form-floating">
+                                    <select class="form-select bg-dark border" id="select1">
+                                        <option value="1">INR</option>
+                                        <option value="2">EUR</option>
+                                        <option value="3">USD</option>
+                                        <option value="3">GBP</option>
+                                    </select>
+                                    <label for="select1">Currency</label>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <h4 class="text-white mb-3">Payments</h4>
+                    <div class="footer-bank-card">
+                        <a href="#" class="text-white me-2"><i class="fab fa-cc-amex fa-2x"></i></a>
+                        <a href="#" class="text-white me-2"><i class="fab fa-cc-visa fa-2x"></i></a>
+                        <a href="#" class="text-white me-2"><i class="fas fa-credit-card fa-2x"></i></a>
+                        <a href="#" class="text-white me-2"><i class="fab fa-cc-mastercard fa-2x"></i></a>
+                        <a href="#" class="text-white me-2"><i class="fab fa-cc-paypal fa-2x"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-cc-discover fa-2x"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Footer End -->
+
+        
+        <!-- Copyright Start -->
+        <div class="container-fluid copyright text-body py-4">
+            <div class="container">
+                <div class="row g-4 align-items-center">
+                    <div class="col-md-6 text-center text-md-end mb-md-0">
+                        <i class="fas fa-copyright me-2"></i><a class="text-white" href="#">Yatra Go</a>, All right reserved.
+                    </div>
+                    <div class="col-md-6 text-center text-md-start">
+                        <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
+                        <!--/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
+                        <!--/*** you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". ***/-->
+                        Designed By  YATRA GO 
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Copyright End -->
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-primary btn-primary-outline-0 btn-md-square back-to-top"><i class="fa fa-arrow-up"></i></a>   
+
+        
+        <!-- JavaScript Libraries -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="lib/easing/easing.min.js"></script>
+        <script src="lib/waypoints/waypoints.min.js"></script>
+        <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+        <script src="lib/lightbox/js/lightbox.min.js"></script>
+        
+
+        <!-- Template Javascript -->
+        <script src="js/main.js"></script>
+        <script src="script.js"></script>
+    </body>
+
+</html>

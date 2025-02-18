@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Yatra Go - Uttarakhand package</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="img/Yatra Go.png">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600&family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- JavaScript Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+
+    <!-- Spinner Start -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <!-- Spinner End -->
+
+    <!-- Navbar & Hero Start -->
+    <div class="container-fluid position-relative p-0">
+        <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
+            <a href="" class="navbar-brand p-0">
+                <h1 class="m-0"></i>Yatra Go</h1>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="fa fa-bars"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav ms-auto py-0">
+                    <a href="index.html" class="nav-item nav-link">Home</a>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Package</a>
+                        <div class="dropdown-menu m-0">
+                            <a href="Uttarakhand.html" class="dropdown-item">Uttarakhand</a>
+                            <a href="Himachal_Pradesh.html" class="dropdown-item">Himachal Pradesh</a>
+                            <a href="Kashmir.html" class="dropdown-item">Kashmir</a>
+                            <a href="international.html" class="dropdown-item">International</a>
+                        </div>
+                    </div>
+                    <a href="destinations.html" class="nav-item nav-link">Destinations</a>
+                    <a href="activity.html" class="nav-item nav-link">Activity</a>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Our Services</a>
+                        <div class="dropdown-menu m-0">
+                            <a href="blogs.html" class="dropdown-item">Blogs</a>
+                            <a href="hotel.html" class="dropdown-item">Hotel</a>
+                            <a href="car-rental.html" class="dropdown-item">Car/Coach Rental</a>
+                            <a href="railway-booking.html" class="dropdown-item">Railway Booking</a>
+                            <a href="air-ticket.html" class="dropdown-item">Air Ticket</a>
+                            <a href="bike-rental.html" class="dropdown-item">Bike Rental</a>
+                        </div>
+                    </div>
+                    <a href="about.html" class="nav-item nav-link">About Us</a>
+                    <a href="contact.html" class="nav-item nav-link">Contact Us</a>
+                    <a href="contact.html" class="nav-item nav-link">Query Now</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <!-- Navbar & Hero End -->
+
+    <!-- Header Start -->
+    <div class="container-fluid" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(img/R8.jpg) center center no-repeat; background-size: cover; height: 400px; display: flex; align-items: center;">
+        <div class="breadcrumbs justify-content-center mb-6">
+            <a href="index.html">Home</a> &gt;  
+            <a href="Activity.html">Activity</a> &gt;  
+            <span>Rafting</span>
+        </div>
+    </div>
+    <!-- Header End -->
+
+
+  <!-- Rafting Options Section -->
+  <div class="container-fluid py-4">
+    <div class="container">
+        <div class="text-center mb-4">
+            <h4 class="display-4 text-primary position-relative pb-3" style="font-family: 'Playfair Display', serif;">
+                River Rafting in Rishikesh
+                <div class="position-absolute start-50 bottom-0 translate-middle-x" style="width: 90px;">
+                    <div style="width: 100%; height: 3px; background: linear-gradient(90deg, transparent, #FEA116, transparent);"></div>
+                    <div class="mt-1" style="width: 100%; height: 2px; background: linear-gradient(90deg, transparent, #FEA116, transparent);"></div>
+                </div>
+            </h4>
+            <p class="fs-6 text-muted">Experience the thrill of white-water rafting in the holy Ganges. Choose from a variety of rafting distances and difficulty levels.</p>
+        </div>
+    </div>
+  </div>  
+  <section class="rafting-options">
+    <!-- 12km Rafting -->
+    <div class="rafting-option">
+      <img src="img/R6.jpg" alt="12km Rafting">
+      <div class="rafting-details">
+        <h2>12km Rafting</h2>
+        <p><strong>Duration:</strong> 2-3 hours</p>
+        <p><strong>Difficulty:</strong> Easy to Moderate</p>
+        <p><strong>Highlights:</strong> Shivpuri to Lakshman Jhula, small rapids, scenic views.</p>
+        <div class="price-container">
+          <span class="price">₹700/-</span>
+          <span class="per-person"><strong>per person</strong></span>
+        </div>
+        <button class="book-now" onclick="openBookingForm('12km Rafting')">Book Now</button>
+      </div>
+    </div>
+
+    <!-- 16km Rafting -->
+    <div class="rafting-option">
+      <img src="img/R5.jpg" alt="16km Rafting">
+      <div class="rafting-details">
+        <h2>16km Rafting</h2>
+        <p><strong>Duration:</strong> 3-4 hours</p>
+        <p><strong>Difficulty:</strong> Moderate</p>
+        <p><strong>Highlights:</strong> Marine Drive to Lakshman Jhula, thrilling rapids, lush greenery.</p>
+        <div class="price-container">
+          <span class="price">₹1000/-</span>
+          <span class="per-person"><strong>per person</strong></span>
+        </div>
+        <button class="book-now" onclick="openBookingForm('16km Rafting')">Book Now</button>
+      </div>
+    </div>
+
+    <!-- 26km Rafting -->
+    <div class="rafting-option">
+      <img src="img/R4.jpg" alt="26km Rafting">
+      <div class="rafting-details">
+        <h2>26km Rafting</h2>
+        <p><strong>Duration:</strong> 4-5 hours</p>
+        <p><strong>Difficulty:</strong> Moderate to Challenging</p>
+        <p><strong>Highlights:</strong> Kaudiyala to Lakshman Jhula, long stretches, intense rapids.</p>
+        <div class="price-container">
+          <span class="price">₹1500/-</span>
+          <span class="per-person"><strong>per person</strong></span>
+        </div>
+        <button class="book-now" onclick="openBookingForm('26km Rafting')">Book Now</button>
+      </div>
+    </div>
+
+    <!-- 32km Rafting -->
+    <div class="rafting-option">
+      <img src="img/R3.jpg" alt="32km Rafting">
+      <div class="rafting-details">
+        <h2>32km Rafting</h2>
+        <p><strong>Duration:</strong> 5-6 hours</p>
+        <p><strong>Difficulty:</strong> Challenging</p>
+        <p><strong>Highlights:</strong> Brahmpuri to Rishikesh, longest stretch, extreme rapids.</p>
+        <div class="price-container">
+          <span class="price">₹2500/-</span>
+          <span class="per-person"><strong>per person</strong></span>
+        </div>
+        <button class="book-now" onclick="openBookingForm('32km Rafting')">Book Now</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Booking Form Modal -->
+  <div id="bookingModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeBookingForm()">&times;</span>
+      <h2 id="modal-title">Book Your Rafting Adventure</h2>
+      <form id="bookingForm" action="https://formsubmit.co/sales.yatrago@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="Rafting New Booking Request!">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+    
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" name="name" required>
+    
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+    
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone" required>
+    
+        <label for="date">Preferred Date:</label>
+        <input type="date" id="date" name="date" required>
+    
+        <label for="distance">Rafting Distance:</label>
+        <input type="text" id="distance" name="distance" readonly>
+    
+        <button type="submit" class="submit-button">Confirm Booking</button>
+    </form>
+    
+    </div>
+  </div>
+
+
+  <!-- Footer Start -->
+<div class="container-fluid footer py-5">
+    <div class="container py-5">
+        <div class="row g-5">
+            <div class="col-md-6 col-lg-6 col-xl-3">
+                <div class="footer-item d-flex flex-column">
+                    <h4 class="mb-4 text-white">Get In Touch</h4>
+                    <a href="tel:+918979931256"><i class="fas fa-phone me-2"></i> +91 8979931256</a>
+                    <a href="tel:+918979220256"><i class="fas fa-phone me-2"></i> +91 8979220256</a>
+                    <a href="mailto:info@yatrago.com"><i class="fas fa-envelope me-2"></i> info@yatrago.com</a>
+                    <a href="mailto:sales.yatrago@gmail.com"><i class="fas fa-envelope me-2"></i> sales.yatrago@gmail.com</a>
+                    <a href=""><i class="fas fa-home me-2"></i> 94, Yoravar Enclave, Phase-1, Ganesh Vihar, Sitapur, Jwalapur, Haridwar, Uttarakhand 249407</a>
+                    <div class="d-flex align-items-center">
+                        <i class="fas fa-share fa-2x text-white me-2"></i>
+                        <a class="btn-square btn btn-primary rounded-circle mx-1" href=""><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn-square btn btn-primary rounded-circle mx-1" href=""><i class="fab fa-twitter"></i></a>
+                        <a class="btn-square btn btn-primary rounded-circle mx-1" href=""><i class="fab fa-instagram"></i></a>
+                        <a class="btn-square btn btn-primary rounded-circle mx-1" href=""><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-6 col-xl-3">
+                <div class="footer-item d-flex flex-column">
+                    <h4 class="mb-4 text-white">Company</h4>
+                    <a href="about.html"><i class="fas fa-angle-right me-2"></i> About</a>
+                    <a href=""><i class="fas fa-angle-right me-2"></i> Careers</a>
+                    <a href=""><i class="fas fa-angle-right me-2"></i> Blog</a>
+                    <a href=""><i class="fas fa-angle-right me-2"></i> Press</a>
+                    <a href=""><i class="fas fa-angle-right me-2"></i> Gift Cards</a>
+                    <a href=""><i class="fas fa-angle-right me-2"></i> Magazine</a>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-6 col-xl-3">
+                <div class="footer-item d-flex flex-column">
+                    <h4 class="mb-4 text-white">Support</h4>
+                    <a href="contact.html"><i class="fas fa-angle-right me-2"></i> Contact</a>
+                    <a href=""><i class="fas fa-angle-right me-2"></i> Legal Notice</a>
+                    <a href=""><i class="fas fa-angle-right me-2"></i> Privacy Policy</a>
+                    <a href=""><i class="fas fa-angle-right me-2"></i> Terms and Conditions</a>
+                    <a href=""><i class="fas fa-angle-right me-2"></i> Sitemap</a>
+                    <a href=""><i class="fas fa-angle-right me-2"></i> Cookie policy</a>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-6 col-xl-3">
+                <div class="footer-item">
+                    <div class="row gy-3 gx-2 mb-4">
+                        <div class="col-xl-6">
+                            <form>
+                                <div class="form-floating">
+                                    <select class="form-control bg-dark border" id="select1">
+                                        <option value="1">Indian</option>
+                                        <option value="1">Arabic</option>
+                                        <option value="2">German</option>
+                                        <option value="3">Greek</option>
+                                        <option value="3">New York</option>
+                                    </select>
+                                    <label for="select1">Country</label>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-xl-6">
+                            <form>
+                                <div class="form-floating">
+                                    <select class="form-control bg-dark border" id="select1">
+                                        <option value="1">INR</option>
+                                        <option value="2">EUR</option>
+                                        <option value="3">USD</option>
+                                        <option value="3">GBP</option>
+                                    </select>
+                                    <label for="select1">Currency</label>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <h4 class="text-white mb-3">Payments</h4>
+                    <div class="footer-bank-card">
+                        <a href="#" class="text-white me-2"><i class="fab fa-cc-amex fa-2x"></i></a>
+                        <a href="#" class="text-white me-2"><i class="fab fa-cc-visa fa-2x"></i></a>
+                        <a href="#" class="text-white me-2"><i class="fas fa-credit-card fa-2x"></i></a>
+                        <a href="#" class="text-white me-2"><i class="fab fa-cc-mastercard fa-2x"></i></a>
+                        <a href="#" class="text-white me-2"><i class="fab fa-cc-paypal fa-2x"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-cc-discover fa-2x"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Footer End -->
+
+        
+        <!-- Copyright Start -->
+        <div class="container-fluid copyright text-body py-4">
+            <div class="container">
+                <div class="row g-4 align-items-center">
+                    <div class="col-md-6 text-center text-md-end mb-md-0">
+                        <i class="fas fa-copyright me-2"></i><a class="text-white" href="#">Yatra Go</a>, All right reserved.
+                    </div>
+                    <div class="col-md-6 text-center text-md-start">
+                        <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
+                        <!--/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
+                        <!--/*** you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". ***/-->
+                        Designed By  YATRA GO 
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Copyright End -->
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-primary btn-primary-outline-0 btn-md-square back-to-top"><i class="fa fa-arrow-up"></i></a>
+
+        <!-- JavaScript Libraries -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="lib/wow/wow.min.js"></script>
+        <script src="lib/easing/easing.min.js"></script>
+        <script src="lib/waypoints/waypoints.min.js"></script>
+        <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+        <script src="lib/lightbox/js/lightbox.min.js"></script>
+
+        <!-- Template Javascript -->
+        <script src="js/main.js"></script>
+        <script src="js/package-modal.js"></script>
+        <script src="script.js"></script>
+    </body>
+</html>
+
+
+
+<style>
+    /*** Rafting start ***/
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Header Section */
+.rafting-header {
+    text-align: center;
+    padding: 40px 20px;
+    background: linear-gradient(135deg, #3498db, #2c3e50);
+    color: #fff;
+}
+
+.rafting-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.rafting-header p {
+    font-size: 1.1rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Rafting Options Section */
+.rafting-options {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    gap: 40px;
+}
+
+.rafting-option {
+    display: flex;
+    align-items: stretch; /* Changed from center to stretch */
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.rafting-option:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.rafting-option img {
+    width: 40%;
+    object-fit: cover;
+    aspect-ratio: 4/3; /* Added for consistent image ratio */
+}
+
+.rafting-details {
+    padding: 20px;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+}
+
+.rafting-details h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+
+.rafting-details p {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.price-container {
+    margin: 15px 0;
+}
+
+.price {
+    font-size: 1.5rem;
+    color: #e74c3c;
+    font-weight: bold;
+}
+
+.per-person {
+    font-size: 0.9rem;
+    color: #666;
+    margin-left: 5px;
+}
+
+.book-now {
+    background-color: #0671b8;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+    margin-top: auto; /* Pushes button to bottom */
+}
+
+.book-now:hover {
+    background-color: #29b929;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal.show {
+    display: flex !important; /* Added !important to override any conflicts */
+    opacity: 1;
+}
+
+.modal-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    transform: scale(0.7);
+    transition: transform 0.3s ease;
+}
+
+.modal.show .modal-content {
+    transform: scale(1);
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #f8f9fa;
+    transition: background-color 0.3s ease;
+}
+
+.close:hover {
+    background-color: #e9ecef;
+}
+
+#bookingForm {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#bookingForm label {
+    margin: 0;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+#bookingForm input {
+    padding: 12px;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    margin: 0;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#bookingForm input:focus {
+    outline: none;
+    border-color: #0671b8;
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+}
+
+.submit-button {
+    background-color: #0671b8;
+    color: #fff;
+    border: none;
+    padding: 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+.submit-button:hover {
+    background-color: #29b929;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .rafting-option {
+        flex-direction: column;
+    }
+    
+    .rafting-option img {
+        width: 100%;
+        height: 200px;
+    }
+    
+    .rafting-details {
+        width: 100%;
+    }
+    
+    .rafting-header h1 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .modal-content {
+        width: 95%;
+        margin: 10px;
+        padding: 15px;
+    }
+    
+    .rafting-header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .rafting-details h2 {
+        font-size: 1.5rem;
+    }
+}
+/*** Rafting End ***/
+</style>

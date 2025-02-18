@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Yatra Go - Your Trusted Travel Partner</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="" name="keywords">
+        <meta content="" name="description">
+
+        <!-- Favicon -->
+        <link rel="icon" type="image/png" href="img/Yatra Go.png">
+
+        <!-- Google Web Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600&family=Roboto&display=swap" rel="stylesheet"> 
+
+        <!-- Icon Font Stylesheet -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+        <!-- Libraries Stylesheet -->
+        <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+        <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+
+        <!-- Customized Bootstrap Stylesheet -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Template Stylesheet -->
+        <link href="css/style.css" rel="stylesheet">
+    </head>
+
+    <body>
+        <!-- Spinner Start -->
+        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <!-- Spinner End -->
+
+        <!-- Navbar Start -->
+        <div class="container-fluid position-relative p-0">
+            <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
+                <a href="" class="navbar-brand p-0">
+                    <h1 class="m-0">Yatra Go</h1>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="fa fa-bars"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <div class="navbar-nav ms-auto py-0">
+                        <a href="index.html" class="nav-item nav-link">Home</a>
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Packages</a>
+                            <div class="dropdown-menu m-0">
+                                <a href="Uttarakhand.html" class="dropdown-item">Uttarakhand</a>
+                                <a href="Himachal_Pradesh.html" class="dropdown-item">Himachal Pradesh</a>
+                                <a href="Kashmir.html" class="dropdown-item">Kashmir</a>
+                                <a href="international.html" class="dropdown-item">International</a>
+                            </div>
+                        </div>
+                        <a href="destinations.html" class="nav-item nav-link">Destinations</a>
+                        <a href="activity.html" class="nav-item nav-link">Activity</a>
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Our Services</a>
+                            <div class="dropdown-menu m-0">
+                                <a href="blogs.html" class="dropdown-item">Blogs</a>
+                                <a href="hotel.html" class="dropdown-item">Hotel</a>
+                                <a href="car-rental.html" class="dropdown-item">Car/Coach Rental</a>
+                                <a href="railway-booking.html" class="dropdown-item">Railway Booking</a>
+                                <a href="air-ticket.html" class="dropdown-item">Air Ticket</a>
+                                <a href="bike-rental.html" class="dropdown-item">Bike Rental</a>
+                            </div>
+                        </div>
+                        <a href="about.html" class="nav-item nav-link">About Us</a>
+                        <a href="contact.html" class="nav-item nav-link">Contact Us</a>
+                        <a href="contact.html" class="nav-item nav-link">Query Now</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <!-- Navbar End -->
+
+        <!-- Header Start -->
+        <div class="container-fluid" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(img/kashmir-banner.jpg) center center no-repeat; background-size: cover; height: 400px; display: flex; align-items: center;">
+            <div class="container text-center">
+                <h1 class="text-white mb-3">Explore Kashmir</h1>
+                <h3 class="text-white">Discover the Beauty of Kashmir</h3>
+            </div>
+        </div>
+        <!-- Header End -->
+
+<!-- Packages Start -->
+<div class="container-fluid py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h1 class="display-4 text-primary position-relative pb-3" style="font-family: 'Playfair Display', serif;">
+                Kashmir Tour Packages
+                <div class="position-absolute start-50 bottom-0 translate-middle-x" style="width: 90px;">
+                    <div style="width: 100%; height: 3px; background: linear-gradient(90deg, transparent, #FEA116, transparent);"></div>
+                    <div class="mt-1" style="width: 100%; height: 2px; background: linear-gradient(90deg, transparent, #FEA116, transparent);"></div>
+                </div>
+            </h1>
+            <p class="fs-6 text-muted">Discover Paradise on Earth with Our Handcrafted Experiences</p>
+        </div>
+        <div class="row g-4">
+            <!-- Package 1 - Srinagar & Gulmarg Tour -->
+            <div class="col-lg-4 col-md-6">
+                <div class="package-item">
+                    <div class="overflow-hidden position-relative">
+                        <img class="img-fluid" src="img/kashmir.avif" alt="Srinagar & Gulmarg Package">
+                        <div class="info-btn" data-bs-toggle="modal" data-bs-target="#srinagarGulmargModal">
+                            <i class="fas fa-info-circle"></i>
+                        </div>
+                    </div>
+                    <div class="d-flex border-bottom">
+                        <small class="flex-fill text-center border-end py-2"><i class="fa fa-clock text-primary me-2"></i>6 Days</small>
+                        <small class="flex-fill text-center border-end py-2"><i class="fa fa-map-marker-alt text-primary me-2"></i>2 Locations</small>
+                        <small class="flex-fill text-center py-2"><i class="fa fa-user text-primary me-2"></i>2-10 Person</small>
+                    </div>
+                    <div class="text-center p-4">
+                        <h3 class="mb-0">₹29,999</h3>
+                        <h4 class="mb-4">Srinagar & Gulmarg Tour</h4>
+                        <p>Experience the beauty of Dal Lake, Mughal Gardens, Gondola ride, and skiing in this scenic adventure.</p>
+                        <div class="d-flex justify-content-between mt-2">
+                            <button class="btn btn-outline-primary read-more-btn" data-package="package1">Read More</button>
+                            <a class="btn btn-primary" href="https://wa.me/918979931256?text=Hi,%20I%20am%20interested%20in%20the%20Srinagar%20&%20Gulmarg%20Tour%20package.%20Please%20provide%20more%20details." target="_blank">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Package 2 - Pahalgam & Sonamarg Tour -->
+            <div class="col-lg-4 col-md-6">
+                <div class="package-item">
+                    <div class="overflow-hidden position-relative">
+                        <img class="img-fluid" src="img/pahalgam.webp" alt="Pahalgam & Sonamarg Package">
+                        <div class="info-btn" data-bs-toggle="modal" data-bs-target="#pahalgamModal">
+                            <i class="fas fa-info-circle"></i>
+                        </div>
+                    </div>
+                    <div class="d-flex border-bottom">
+                        <small class="flex-fill text-center border-end py-2"><i class="fa fa-clock text-primary me-2"></i>5 Days</small>
+                        <small class="flex-fill text-center border-end py-2"><i class="fa fa-map-marker-alt text-primary me-2"></i>2 Locations</small>
+                        <small class="flex-fill text-center py-2"><i class="fa fa-user text-primary me-2"></i>2-8 Person</small>
+                    </div>
+                    <div class="text-center p-4">
+                        <h3 class="mb-0">₹25,999</h3>
+                        <h4 class="mb-4">Pahalgam & Sonamarg Tour</h4>
+                        <p>Explore Betaab Valley, Chandanwari, Thajiwas Glacier, and stunning Himalayan meadows.</p>
+                        <div class="d-flex justify-content-between mt-2">
+                            <button class="btn btn-outline-primary read-more-btn" data-package="package2">Read More</button>
+                            <a class="btn btn-primary" href="https://wa.me/918979931256?text=Hi,%20I%20am%20interested%20in%20the%20Pahalgam%20&%20Sonamarg%20Tour%20package.%20Please%20provide%20more%20details." target="_blank">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Package 3 - Complete Kashmir Adventure -->
+            <div class="col-lg-4 col-md-6">
+                <div class="package-item">
+                    <div class="overflow-hidden position-relative">
+                        <img class="img-fluid" src="img/Gulmarg.jpg" alt="Complete Kashmir Package">
+                        <div class="info-btn" data-bs-toggle="modal" data-bs-target="#kashmirModal">
+                            <i class="fas fa-info-circle"></i>
+                        </div>
+                    </div>
+                    <div class="d-flex border-bottom">
+                        <small class="flex-fill text-center border-end py-2"><i class="fa fa-clock text-primary me-2"></i>7 Days</small>
+                        <small class="flex-fill text-center border-end py-2"><i class="fa fa-map-marker-alt text-primary me-2"></i>4 Locations</small>
+                        <small class="flex-fill text-center py-2"><i class="fa fa-user text-primary me-2"></i>2-8 Person</small>
+                    </div>
+                    <div class="text-center p-4">
+                        <h3 class="mb-0">₹34,999</h3>
+                        <h4 class="mb-4">Complete Kashmir Adventure</h4>
+                        <p>Experience Srinagar, Gulmarg, Pahalgam, and Sonamarg in one comprehensive tour.</p>
+                        <div class="d-flex justify-content-between mt-2">
+                            <button class="btn btn-outline-primary read-more-btn" data-package="package3">Read More</button>
+                            <a class="btn btn-primary" href="https://wa.me/918979931256?text=Hi,%20I%20am%20interested%20in%20the%20Complete%20Kashmir%20Adventure%20package.%20Please%20provide%20more%20details." target="_blank">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Package 4 - Gurez Valley Explorer -->
+            <div class="col-lg-4 col-md-6">
+                <div class="package-item">
+                    <div class="overflow-hidden position-relative">
+                        <img class="img-fluid" src="img/Gurez-valley.jpg" alt="Gurez Valley Package">
+                        <div class="info-btn" data-bs-toggle="modal" data-bs-target="#gurezModal">
+                            <i class="fas fa-info-circle"></i>
+                        </div>
+                    </div>
+                    <div class="d-flex border-bottom">
+                        <small class="flex-fill text-center border-end py-2"><i class="fa fa-clock text-primary me-2"></i>4 Days</small>
+                        <small class="flex-fill text-center border-end py-2"><i class="fa fa-map-marker-alt text-primary me-2"></i>2 Locations</small>
+                        <small class="flex-fill text-center py-2"><i class="fa fa-user text-primary me-2"></i>2-6 Person</small>
+                    </div>
+                    <div class="text-center p-4">
+                        <h3 class="mb-0">₹18,999</h3>
+                        <h4 class="mb-4">Gurez Valley Explorer</h4>
+                        <p>Discover the untouched beauty of Gurez Valley, Habba Khatoon Peak, and Kishanganga River.</p>
+                        <div class="d-flex justify-content-between mt-2">
+                            <button class="btn btn-outline-primary read-more-btn" data-package="package4">Read More</button>
+                            <a class="btn btn-primary" href="https://wa.me/918979931256?text=Hi,%20I%20am%20interested%20in%20the%20Gurez%20Valley%20Explorer%20package.%20Please%20provide%20more%20details." target="_blank">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Package 5 - Romantic Kashmir Honeymoon -->
+            <div class="col-lg-4 col-md-6">
+                <div class="package-item">
+                    <div class="overflow-hidden position-relative">
+                        <img class="img-fluid" src="img/Romantic kashmir.avif" alt="Kashmir Honeymoon Package">
+                        <div class="info-btn" data-bs-toggle="modal" data-bs-target="#honeymoonModal">
+                            <i class="fas fa-info-circle"></i>
+                        </div>
+                    </div>
+                    <div class="d-flex border-bottom">
+                        <small class="flex-fill text-center border-end py-2"><i class="fa fa-clock text-primary me-2"></i>7 Days</small>
+                        <small class="flex-fill text-center border-end py-2"><i class="fa fa-map-marker-alt text-primary me-2"></i>3 Locations</small>
+                        <small class="flex-fill text-center py-2"><i class="fa fa-user text-primary me-2"></i>2 Person</small>
+                    </div>
+                    <div class="text-center p-4">
+                        <h3 class="mb-0">₹32,999</h3>
+                        <h4 class="mb-4">Romantic Kashmir Honeymoon</h4>
+                        <p>Experience romantic shikara rides, luxury houseboat stays, and private tours in paradise.</p>
+                        <div class="d-flex justify-content-between mt-2">
+                            <button class="btn btn-outline-primary read-more-btn" data-package="package5">Read More</button>
+                            <a class="btn btn-primary" href="https://wa.me/918979931256?text=Hi,%20I%20am%20interested%20in%20the%20Romantic%20Kashmir%20Honeymoon%20package.%20Please%20provide%20more%20details." target="_blank">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Packages End -->
+
+
+
+
+
+        <!-- Footer Start -->
+        <div class="container-fluid footer py-5">
+            <div class="container py-5">
+                <div class="row g-5">
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item d-flex flex-column">
+                            <h4 class="mb-4 text-white">Get In Touch</h4>
+                            <a href="tel:+918979931256"><i class="fas fa-phone me-2"></i> +91 8979931256</a>
+                            <a href="tel:+918979220256"><i class="fas fa-phone me-2"></i> +91 8979220256</a>
+                            <a href="mailto:info@yatrago.com"><i class="fas fa-envelope me-2"></i> info@yatrago.com</a>
+                            <a href="mailto:sales.yatrago@gmail.com"><i class="fas fa-envelope me-2"></i> sales.yatrago@gmail.com</a>
+                            <a href=""><i class="fas fa-home me-2"></i> 94, Yoravar Enclave, Phase-1, Ganesh Vihar, Sitapur, Jwalapur, Haridwar, Uttarakhand 249407</a>
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-share fa-2x text-white me-2"></i>
+                                <a class="btn-square btn btn-primary rounded-circle mx-1" href=""><i class="fab fa-facebook-f"></i></a>
+                                <a class="btn-square btn btn-primary rounded-circle mx-1" href=""><i class="fab fa-twitter"></i></a>
+                                <a class="btn-square btn btn-primary rounded-circle mx-1" href=""><i class="fab fa-instagram"></i></a>
+                                <a class="btn-square btn btn-primary rounded-circle mx-1" href=""><i class="fab fa-linkedin-in"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item d-flex flex-column">
+                            <h4 class="mb-4 text-white">Company</h4>
+                            <a href="about.html"><i class="fas fa-angle-right me-2"></i> About</a>
+                            <a href=""><i class="fas fa-angle-right me-2"></i> Careers</a>
+                            <a href=""><i class="fas fa-angle-right me-2"></i> Blog</a>
+                            <a href=""><i class="fas fa-angle-right me-2"></i> Press</a>
+                            <a href=""><i class="fas fa-angle-right me-2"></i> Gift Cards</a>
+                            <a href=""><i class="fas fa-angle-right me-2"></i> Magazine</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item d-flex flex-column">
+                            <h4 class="mb-4 text-white">Support</h4>
+                            <a href="contact.html"><i class="fas fa-angle-right me-2"></i> Contact</a>
+                            <a href=""><i class="fas fa-angle-right me-2"></i> Legal Notice</a>
+                            <a href=""><i class="fas fa-angle-right me-2"></i> Privacy Policy</a>
+                            <a href=""><i class="fas fa-angle-right me-2"></i> Terms and Conditions</a>
+                            <a href=""><i class="fas fa-angle-right me-2"></i> Sitemap</a>
+                            <a href=""><i class="fas fa-angle-right me-2"></i> Cookie policy</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item">
+                            <div class="row gy-3 gx-2 mb-4">
+                                <div class="col-xl-6">
+                                    <form>
+                                        <div class="form-floating">
+                                            <select class="form-control bg-dark border" id="select1">
+                                                <option value="1">Indian</option>
+                                                <option value="1">Arabic</option>
+                                                <option value="2">German</option>
+                                                <option value="3">Greek</option>
+                                                <option value="3">New York</option>
+                                            </select>
+                                            <label for="select1">Country</label>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="col-xl-6">
+                                    <form>
+                                        <div class="form-floating">
+                                            <select class="form-control bg-dark border" id="select1">
+                                                <option value="1">INR</option>
+                                                <option value="2">EUR</option>
+                                                <option value="3">USD</option>
+                                                <option value="3">GBP</option>
+                                            </select>
+                                            <label for="select1">Currency</label>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <h4 class="text-white mb-3">Payments</h4>
+                            <div class="footer-bank-card">
+                                <a href="#" class="text-white me-2"><i class="fab fa-cc-amex fa-2x"></i></a>
+                                <a href="#" class="text-white me-2"><i class="fab fa-cc-visa fa-2x"></i></a>
+                                <a href="#" class="text-white me-2"><i class="fas fa-credit-card fa-2x"></i></a>
+                                <a href="#" class="text-white me-2"><i class="fab fa-cc-mastercard fa-2x"></i></a>
+                                <a href="#" class="text-white me-2"><i class="fab fa-cc-paypal fa-2x"></i></a>
+                                <a href="#" class="text-white"><i class="fab fa-cc-discover fa-2x"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer End -->
+
+                
+                <!-- Copyright Start -->
+                <div class="container-fluid copyright text-body py-4">
+                    <div class="container">
+                        <div class="row g-4 align-items-center">
+                            <div class="col-md-6 text-center text-md-end mb-md-0">
+                                <i class="fas fa-copyright me-2"></i><a class="text-white" href="#">Yatra Go</a>, All right reserved.
+                            </div>
+                            <div class="col-md-6 text-center text-md-start">
+                                <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
+                                <!--/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
+                                <!--/*** you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". ***/-->
+                                Designed By  YATRA GO 
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Copyright End -->
+
+                <!-- Back to Top -->
+                <a href="#" class="btn btn-primary btn-primary-outline-0 btn-md-square back-to-top"><i class="fa fa-arrow-up"></i></a>
+
+                <!-- JavaScript Libraries -->
+                <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+                <script src="lib/wow/wow.min.js"></script>
+                <script src="lib/easing/easing.min.js"></script>
+                <script src="lib/waypoints/waypoints.min.js"></script>
+                <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+                <script src="lib/lightbox/js/lightbox.min.js"></script>
+
+                <!-- Template Javascript -->
+                <script src="js/main.js"></script>
+                <script src="js/package-modal.js"></script>
+            </body>
+        </html>
