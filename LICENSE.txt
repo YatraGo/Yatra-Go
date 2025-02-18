@@ -1,38 +1,51 @@
  
 
- => FREE HTML TEMPLATE LICENSE BY HTML Codex
+ => YATRA GO WEBSITE LICENSE
 
- All free HTML templates by HTML Codex are licensed under a Creative Commons Attribution 4.0 International License which means you are not allowed to remove the author’s credit link/attribution link/backlink.
+ 1. Introduction
+Welcome to Yatra Go! This License Agreement ("Agreement") governs your use of the Yatra Go website ("Website") and any related services, content, or applications provided by Yatra Go ("we," "us," or "our"). By accessing or using the Website, you agree to be bound by the terms and conditions outlined in this Agreement. If you do not agree to these terms, please do not use the Website.
 
- When you download or use our free HTML templates, it will attribute the following conditions.
+2. License Grant
+Subject to your compliance with this Agreement, Yatra Go grants you a limited, non-exclusive, non-transferable, and revocable license to access and use the Website for personal, non-commercial purposes. This license does not permit any resale, redistribution, or commercial use of the Website or its content.
 
+3. Restrictions
+You agree not to:
 
- => YOU ARE ALLOWED
+Copy, modify, or create derivative works of the Website or its content.
 
-      1. You are allowed to use for your personal and commercial purposes.
+Use the Website for any illegal or unauthorized purpose.
 
-      2. You are allowed to modify/customize however you like.
+Attempt to reverse engineer, decompile, or disassemble any part of the Website.
 
-      3. You are allowed to convert/port for use for any CMS.
+Use any automated systems, such as bots or scrapers, to access or interact with the Website without our prior written consent.
 
-      4. You are allowed to share/distribute under the HTML Codex brand name.
+Violate any applicable laws or regulations while using the Website.
 
-      5. You are allowed to put a screenshot or a link on your blog posts or any other websites.
+4. Intellectual Property
+All content, trademarks, logos, and other intellectual property on the Website are owned by or licensed to Yatra Go. You may not use, reproduce, or distribute any content from the Website without our express written permission.
 
+5. User-Generated Content
+If you submit any content to the Website (e.g., reviews, comments, or photos), you grant Yatra Go a worldwide, royalty-free, perpetual, and irrevocable license to use, modify, and display such content for any purpose. You represent and warrant that you own or have the necessary rights to submit such content.
 
- => YOU ARE NOT ALLOWED
+6. Termination
+We reserve the right to terminate or suspend your access to the Website at any time, without notice, for any reason, including but not limited to a violation of this Agreement.
 
-      1. You are not allowed to remove the author’s credit link/attribution link/backlink without purchasing Credit Removal License ( https://htmlcodex.com/credit-removal ).
+7. Disclaimer of Warranties
+The Website is provided "as is" and "as available," without any warranties of any kind, either express or implied. Yatra Go does not guarantee the accuracy, completeness, or reliability of any content on the Website.
 
-      2. You are not allowed to sell, resale, rent, lease, license, or sub-license.
+8. Limitation of Liability
+To the fullest extent permitted by law, Yatra Go shall not be liable for any indirect, incidental, special, or consequential damages arising out of or in connection with your use of the Website.
 
-      3. You are not allowed to upload on your template websites or template collection websites or any other third party websites without our permission.
+9. Governing Law
+This Agreement shall be governed by and construed in accordance with the laws of [Insert Jurisdiction]. Any disputes arising under this Agreement shall be resolved exclusively in the courts of [Insert Jurisdiction].
 
+10. Changes to This Agreement
+We reserve the right to modify or update this Agreement at any time. Your continued use of the Website after any changes constitutes your acceptance of the revised Agreement.
 
- => If the template contains premium stock photos which are only for demo purposes and not distributed with the template. You need to purchase them separately from the corresponding stock photo website. You are responsible for adhering to the original license of them if necessary.
+11. Contact Information
+If you have any questions about this Agreement, please contact us at:
+Email: [Insert Email Address]
+Address: [Insert Physical Address]
 
-
- => This license can be terminated if you breach any of these conditions.
-
-
- => PURCHASE CREDIT REMOVAL LICENSE ( https://htmlcodex.com/credit-removal )
+Acknowledgment
+By using the Yatra Go Website, you acknowledge that you have read, understood, and agree to be bound by this License Agreement.
