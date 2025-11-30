@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Yatra Go - Your Trusted Travel Partner</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="img/Yatra Go.png">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600&family=Roboto&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Bootstrap CSS (Assuming it's already included for the navbar) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Flatpickr CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+    <!-- Flatpickr JS -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+</head>
+
+    <body>
+
+        <!-- Spinner Start -->
+        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <!-- Spinner End -->
+
+<!-- Navbar & Hero Start -->
+<div class="container-fluid position-relative p-0">
+    <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
+        <a href="" class="navbar-brand p-0 d-flex align-items-center">
+            <img src="img/Yatra Go Logo.png" alt="Yatra Go Logo" class="logo me-12" style="width: 130px; height: 150px;">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="fa fa-bars"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto py-0">
+                <a href="index.html" class="nav-item nav-link">Home</a>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Packages</a>
+                    <div class="dropdown-menu m-0">
+                        <a href="Uttarakhand.html" class="dropdown-item">Uttarakhand</a>
+                        <a href="Himachal_Pradesh.html" class="dropdown-item">Himachal Pradesh</a>
+                        <a href="Kashmir.html" class="dropdown-item">Kashmir</a>
+                        <a href="international.html" class="dropdown-item">International</a>
+                    </div>
+                </div>
+                <a href="destinations.html" class="nav-item nav-link">Destinations</a>
+                <a href="activity.html" class="nav-item nav-link">Activity</a>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Our Services</a>
+                    <div class="dropdown-menu m-0">
+                        <a href="blogs.html" class="dropdown-item">Blogs</a>
+                        <a href="hotel.html" class="dropdown-item">Hotel</a>
+                        <a href="car-rental.html" class="dropdown-item">Car/Coach Rental</a>
+                        <a href="railway-booking.html" class="dropdown-item">Railway Booking</a>
+                        <a href="air-ticket.html" class="dropdown-item">Air Ticket</a>
+                        <a href="bike-rental.html" class="dropdown-item">Bike Rental</a>
+                    </div>
+                </div>
+                <a href="about.html" class="nav-item nav-link">About Us</a>
+                <a href="contact.html" class="nav-item nav-link">Contact Us</a>
+                <button class="btn btn-primary ms-3 query-now-btn" id="queryNowBtn">Query Now</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Popup Form -->
+    <div class="popup-overlay" id="popupOverlay">
+        <div class="popup-form">
+            <button class="close-btn" id="closePopupBtn">×</button>
+            <h2 class="text-center mb-4">Travel Booking Enquiry</h2>
+            <form id="travelBookingForm">
+                <input type="hidden" name="access_key" value="a8b1a31d-8cae-4a14-994a-4e5b051c1956">
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="fullName">Full Name *</label>
+                            <input type="text" class="form-control" id="fullName" name="fullName" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="contactNumber">Contact Number *</label>
+                            <input type="tel" class="form-control" id="contactNumber" name="contactNumber" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="numTravelers">Number of Travelers *</label>
+                            <select class="form-control stylish-select" id="numTravelers" name="numTravelers" required>
+                                <option value="" disabled selected>Select Number</option>
+                                <option value="1">1 Traveler</option>
+                                <option value="2">2 Travelers</option>
+                                <option value="3">3 Travelers</option>
+                                <option value="4">4 Travelers</option>
+                                <option value="5">5 Travelers</option>
+                                <option value="6">6 Travelers</option>
+                                <option value="7">7 Travelers</option>
+                                <option value="8">8 Travelers</option>
+                                <option value="9">9 Travelers</option>
+                                <option value="10">10+ Travelers</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="destination">Preferred Destination *</label>
+                            <input type="text" class="form-control" id="destination" name="destination" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="tripDuration">Trip Duration (Days) *</label>
+                            <select class="form-control stylish-select" id="tripDuration" name="tripDuration" required>
+                                <option value="" disabled selected>Select Duration</option>
+                                <option value="1">1 Day</option>
+                                <option value="2">2 Days</option>
+                                <option value="3">3 Days</option>
+                                <option value="4">4 Days</option>
+                                <option value="5">5 Days</option>
+                                <option value="6">6 Days</option>
+                                <option value="7">7 Days</option>
+                                <option value="8">8 Days</option>
+                                <option value="9">9 Days</option>
+                                <option value="10">10 Days</option>
+                                <option value="11">11+ Days</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="travelDate">Date of Travel *</label>
+                            <input type="text" class="form-control" id="travelDate" name="travelDate" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="packageType">Package Type *</label>
+                            <select class="form-control" id="packageType" name="packageType" required>
+                                <option value="" disabled selected>Select Package</option>
+                                <option value="adventure">Adventure Package</option>
+                                <option value="family">Family Package</option>
+                                <option value="honeymoon">Honeymoon Package</option>
+                                <option value="temples">Temples Package</option>
+                                <option value="custom">Custom Package</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="accommodation">Accommodation Preference *</label>
+                            <select class="form-control" id="accommodation" name="accommodation" required>
+                                <option value="" disabled selected>Select Preference</option>
+                                <option value="hotel">Hotel</option>
+                                <option value="resort">Resort</option>
+                                <option value="homestay">Homestay</option>
+                                <option value="no-preference">No Preference</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="travelMode">Mode of Travel *</label>
+                            <select class="form-control" id="travelMode" name="travelMode" required>
+                                <option value="" disabled selected>Select Mode</option>
+                                <option value="car">Car</option>
+                                <option value="bus">Bus</option>
+                                <option value="train">Train</option>
+                                <option value="flight">Flight</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label for="budget">Estimated Budget (Optional)</label>
+                            <div class="budget-slider-container">
+                                <input type="range" class="budget-slider" id="budget" name="budget" min="0" max="500000" step="100" value="0">
+                                <div class="budget-display">
+                                    Budget: <span id="budgetValue">₹0</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label for="specialRequirements">Special Requirements</label>
+                            <textarea class="form-control" id="specialRequirements" name="specialRequirements" rows="4" placeholder="Any additional requests or notes"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-12 text-center">
+                        <button type="submit" class="btn btn-primary">Submit Enquiry</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Query Now Button */
+    .query-now-btn {
+    border-radius: 15px; /* Adjusted for smaller size */
+    padding: 12px 20px; /* Reduced padding to decrease height and width */
+    font-size: 15px; /* Smaller font size to fit reduced dimensions */
+    line-height: 1.5; /* Ensures text alignment within smaller height */
+    width: 125px; /* Explicit width for precise control */
+    height: 55px; /* Explicit height for precise control */
+    display: inline-flex; /* Ensures content is centered */
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    align-self: center; /* Centers button vertically in flex context */
+    margin-top: 0; /* Reset any top margin */
+    line-height: 1; /* Adjust line-height for vertical centering */
+}
+
+.query-now-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Popup Overlay */
+.popup-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.popup-overlay.active {
+    display: block;
+    opacity: 1;
+}
+
+/* Popup Form */
+.popup-form {
+    position: relative;
+    background: #fff url('https://www.transparenttextures.com/patterns/natural-paper.png'); /* Subtle travel-themed texture */
+    max-width: 700px;
+    margin: 20px auto;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transform: scale(0.7);
+    transition: transform 0.3s ease;
+    overflow-y: auto;
+    max-height: 90vh;
+}
+
+.popup-overlay.active .popup-form {
+    transform: scale(1);
+}
+
+/* Close Button */
+.close-btn {
+    position: absolute;
+    top: 18px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+    color: #ff4d4d;
+}
+
+/* Form Styling */
+.popup-form h2 {
+    color: #2c3e50;
+    font-weight: 700;
+    font-family: 'Poppins', sans-serif;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    font-weight: 500;
+    color: #34495e;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.form-control {
+    border: 1px solid #dcdcdc;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    background: #f9f9f9;
+}
+
+.form-control:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 8px rgba(52, 152, 219, 0.3);
+    background: #fff;
+    transform: translateY(-2px);
+}
+
+.form-control::placeholder {
+    color: #bdc3c7;
+}
+
+/* Submit Button */
+.popup-form .btn-primary {
+    background: linear-gradient(45deg, #2079b4, #2980b9);
+    border: none;
+    padding: 12px 30px;
+    border-radius: 25px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.popup-form .btn-primary:hover {
+    background: linear-gradient(45deg, #2980b9, #2980b9);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .popup-form {
+        margin: 10px;
+        padding: 20px;
+    }
+
+    .query-now-btn {
+        margin-left: 10px;
+        padding: 5px 12px;
+        font-size: 12px;
+        width: 90px; /* Slightly smaller width on mobile */
+        height: 28px; /* Slightly smaller height on mobile */
+    }
+}
+
+/* Flatpickr Date Picker Customization */
+.flatpickr-input {
+    cursor: pointer;
+}
+
+.flatpickr-calendar {
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.flatpickr-day.selected {
+    background: #3498db;
+    border-color: #3498db;
+}
+
+.flatpickr-day:hover {
+    background: #ecf0f1;
+    border-color: #3498db;
+}
+
+/* Basic styling for the slider and display */
+.form-group {
+        margin: 20px;
+        font-family: Arial, sans-serif;
+    }
+    .budget-slider-container {
+        max-width: 500px;
+    }
+    .budget-slider {
+        width: 100%;
+        margin: 10px 0;
+    }
+    .budget-display {
+        font-size: 16px;
+        font-weight: bold;
+    }
+</style>
+
+<script>
+    // Popup Toggle
+    document.getElementById('queryNowBtn').addEventListener('click', function() {
+        document.getElementById('popupOverlay').classList.add('active');
+    });
+
+    document.getElementById('closePopupBtn').addEventListener('click', function() {
+        document.getElementById('popupOverlay').classList.remove('active');
+    });
+
+    // Close popup when clicking outside the form
+    document.getElementById('popupOverlay').addEventListener('click', function(e) {
+        if (e.target === this) {
+            this.classList.remove('active');
+        }
+    });
+
+    // Initialize Flatpickr Date Picker
+    flatpickr('#travelDate', {
+        dateFormat: 'd-m-Y',
+        minDate: 'today',
+        enableTime: false,
+        altInput: true,
+        altFormat: 'F j, Y',
+        animate: true,
+    });
+
+    // Get the slider and the budget value display elements
+    const slider = document.getElementById('budget');
+    const budgetValueDisplay = document.getElementById('budgetValue');
+
+    // Function to format the budget value with Indian Rupee symbol and commas
+    function formatBudget(value) {
+        return '₹' + Number(value).toLocaleString('en-IN');
+    }
+
+    // Update the display when the slider value changes
+    slider.addEventListener('input', function() {
+        budgetValueDisplay.textContent = formatBudget(slider.value);
+    });
+
+    // Initialize the display with the default slider value
+    budgetValueDisplay.textContent = formatBudget(slider.value);
+
+    // Form Submission with Web3Forms
+    document.getElementById('travelBookingForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        // Create a FormData object to collect form data
+        const form = this;
+        const formData = new FormData(form);
+
+        // Add the Web3Forms access key to the form data
+        formData.append('access_key', 'a8b1a31d-8cae-4a14-994a-4e5b051c1956'); // Replace with your Web3Forms access key
+
+        // Send the form data to Web3Forms API
+        fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert('Thank you for your enquiry! We will get back to you soon.');
+                document.getElementById('popupOverlay').classList.remove('active');
+                form.reset();
+                // Reset budget display
+                budgetValueDisplay.textContent = formatBudget(slider.value);
+            } else {
+                alert('Something went wrong. Please try again.');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('An error occurred. Please try again later.');
+        });
+    });
+</script>
+<!-- Navbar & Hero End -->
+
+    <!-- Tailwind CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+
+
+
+
+
+
+
+
+
+
+
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        .animate-fadeIn {
+            animation: fadeIn 1s ease-out forwards;
+        }
+        .animate-slideIn {
+            animation: slideIn 0.8s ease-out forwards;
+        }
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 50;
+        }
+        .popup.show {
+            display: block;
+        }
+        .gallery-img, .package-card, .itinerary-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .gallery-img:hover, .package-card:hover, .itinerary-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        .package-card {
+            cursor: pointer;
+        }
+        .book-now-btn {
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .book-now-btn:hover {
+            transform: scale(1.05);
+            background-color: #1e40af;
+        }
+        .bg-gradient {
+            background: linear-gradient(135deg, #38bdf8, #1e3a8a);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans">
+    <!-- Hero Section -->
+    <section class="relative h-screen bg-cover bg-center" style="background-image: url('img/Nainital3.jpg');">
+        <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+            <div class="text-center text-white animate-fadeIn">
+                <h1 class="text-5xl md:text-7xl font-bold mb-4">Nainital Lake Tour</h1>
+                <p class="text-lg md:text-2xl mb-6">Embark on a journey to the serene Nainital Lake</p>
+                <button id="bookNowBtn" class="bg-blue-600 book-now-btn text-white font-semibold py-3 px-6 rounded-lg transition duration-300">Book Your Tour Now</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Nainital Lake -->
+    <section class="py-16 px-4 md:px-16 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-8 animate-fadeIn">About Nainital Lake</h2>
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div class="animate-fadeIn" style="animation-delay: 0.2s;">
+                    <p class="text-lg text-gray-700 mb-4">Nainital Lake, fondly called Naini Lake, is a pristine freshwater lake nestled in the heart of Nainital, Uttarakhand. Surrounded by seven lush hills, this crescent-shaped lake is the crown jewel of the Kumaon region, drawing travelers with its breathtaking beauty.</p>
+                    <p class="text-lg text-gray-700 mb-4">Steeped in mythology, the lake is considered one of the 64 Shakti Peeths, where the eyes (Naina) of Goddess Sati are believed to have fallen. Its tranquil waters, framed by verdant hills and colonial-era architecture, create a perfect blend of nature and culture.</p>
+                    <p class="text-lg text-gray-700">Whether you're boating, strolling along the lake, or simply soaking in the views, Nainital Lake promises an unforgettable experience for every visitor.</p>
+                </div>
+                <img src="img/Nainital4.jpg" alt="Nainital Lake View" class="rounded-lg shadow-lg gallery-img animate-fadeIn" style="animation-delay: 0.4s;">
+            </div>
+        </div>
+    </section>
+
+    <!-- Tour Packages Section -->
+    <section class="py-16 px-4 md:px-16 bg-gray-100">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-8 animate-fadeIn">Tour Packages</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="package-card bg-white p-6 rounded-lg shadow-lg animate-slideIn" data-package="basic" style="animation-delay: 0.2s;">
+                    <img src="IMG/Nainital1.jpg" alt="Basic Package" class="w-full h-48 object-cover rounded-lg mb-4 gallery-img">
+                    <h3 class="text-2xl font-semibold mb-2">Basic Lake Explorer</h3>
+                    <p class="text-gray-600 mb-4">1 Day | ₹2,500 per person</p>
+                    <ul class="text-gray-600 list-disc list-inside mb-4">
+                        <li>Boating on Nainital Lake</li>
+                        <li>Guided lakeside walk</li>
+                        <li>Visit to Naina Devi Temple</li>
+                    </ul>
+                    <button class="book-now-btn bg-blue-600 text-white py-2 px-4 rounded-lg w-full">Book Now</button>
+                </div>
+                <div class="package-card bg-white p-6 rounded-lg shadow-lg animate-slideIn" data-package="deluxe" style="animation-delay: 0.4s;">
+                    <img src="img/Nainital5.jpg" alt="Deluxe Package" class="w-full h-48 object-cover rounded-lg mb-4 gallery-img">
+                    <h3 class="text-2xl font-semibold mb-2">Deluxe Nature Retreat</h3>
+                    <p class="text-gray-600 mb-4">2 Days | ₹5,000 per person</p>
+                    <ul class="text-gray-600 list-disc list-inside mb-4">
+                        <li>Boating and kayaking</li>
+                        <li>Trekking to Tiffin Top</li>
+                        <li>Evening campfire</li>
+                        <li>1-night stay in a lakeside resort</li>
+                    </ul>
+                    <button class="book-now-btn bg-blue-600 text-white py-2 px-4 rounded-lg w-full">Book Now</button>
+                </div>
+                <div class="package-card bg-white p-6 rounded-lg shadow-lg animate-slideIn" data-package="premium" style="animation-delay: 0.6s;">
+                    <img src="img/Nainital-Snowfall-City-View2.jpg" alt="Premium Package" class="w-full h-48 object-cover rounded-lg mb-4 gallery-img">
+                    <h3 class="text-2xl font-semibold mb-2">Premium Adventure</h3>
+                    <p class="text-gray-600 mb-4">3 Days | ₹8,000 per person</p>
+                    <ul class="text-gray-600 list-disc list-inside mb-4">
+                        <li>Boating, kayaking, and yacht ride</li>
+                        <li>Guided tour to Snow View Point</li>
+                        <li>Photography workshop</li>
+                        <li>2-night stay in a luxury hotel</li>
+                    </ul>
+                    <button class="book-now-btn bg-blue-600 text-white py-2 px-4 rounded-lg w-full">Book Now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Itinerary Section -->
+    <section class="py-16 px-4 md:px-16 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-8 animate-fadeIn">Sample Itinerary</h2>
+            <div class="space-y-8">
+                <div class="itinerary-card bg-gray-50 p-6 rounded-lg shadow-lg animate-slideIn" style="animation-delay: 0.2s;">
+                    <h3 class="text-2xl font-semibold mb-2">Day 1: Arrival & Lake Exploration</h3>
+                    <ul class="text-gray-600 list-disc list-inside">
+                        <li>Morning: Arrive in Nainital, check-in at hotel</li>
+                        <li>Afternoon: Boating on Nainital Lake</li>
+                        <li>Evening: Visit Naina Devi Temple and enjoy a lakeside walk</li>
+                    </ul>
+                </div>
+                <div class="itinerary-card bg-gray-50 p-6 rounded-lg shadow-lg animate-slideIn" style="animation-delay: 0.4s;">
+                    <h3 class="text-2xl font-semibold mb-2">Day 2: Adventure & Nature</h3>
+                    <ul class="text-gray-600 list-disc list-inside">
+                        <li>Morning: Trek to Tiffin Top for panoramic views</li>
+                        <li>Afternoon: Explore Eco Cave Gardens</li>
+                        <li>Evening: Campfire and stargazing by the lake</li>
+                    </ul>
+                </div>
+                <div class="itinerary-card bg-gray-50 p-6 rounded-lg shadow-lg animate-slideIn" style="animation-delay: 0.6s;">
+                    <h3 class="text-2xl font-semibold mb-2">Day 3: Culture & Departure</h3>
+                    <ul class="text-gray-600 list-disc list-inside">
+                        <li>Morning: Cable car ride to Snow View Point</li>
+                        <li>Afternoon: Visit local markets for souvenirs</li>
+                        <li>Evening: Departure from Nainital</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Activities Section -->
+    <section class="py-16 px-4 md:px-16 bg-gray-100">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-8 animate-fadeIn">Activities to Enjoy</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-lg animate-slideIn" style="animation-delay: 0.2s;">
+                    <img src="img/Nainital1.jpg" alt="Boating" class="w-full h-48 object-cover rounded-lg mb-4 gallery-img">
+                    <h3 class="text-2xl font-semibold mb-2">Boating & Kayaking</h3>
+                    <p class="text-gray-600">Glide across the emerald waters of Nainital Lake with options for paddle boats, rowboats, kayaks, or luxurious yachts.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg animate-slideIn" style="animation-delay: 0.4s;">
+                    <img src="img/Nainital2.jpg" alt="Lakeside Walk" class="w-full h-48 object-cover rounded-lg mb-4 gallery-img">
+                    <h3 class="text-2xl font-semibold mb-2">Lakeside Strolls</h3>
+                    <p class="text-gray-600">Walk along the vibrant Mall Road, soaking in the scenic beauty of the lake and surrounding hills.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg animate-slideIn" style="animation-delay: 0.6s;">
+                    <img src="https://images.unsplash.com/photo-1513415756790-2ac1db1297d0?q=80&w=2070&auto=format&fit=crop" alt="Photography" class="w-full h-48 object-cover rounded-lg mb-4 gallery-img">
+                    <h3 class="text-2xl font-semibold mb-2">Photography Tours</h3>
+                    <p class="text-gray-600">Capture the vibrant landscapes and cultural essence of Nainital with guided photography sessions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="py-16 px-4 md:px-16 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-8 animate-fadeIn">Photo Gallery</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+                <img src="img/Nainital4.jpg" alt="Lake View" class="w-full h-64 object-cover rounded-lg gallery-img animate-fadeIn" style="animation-delay: 0.2s;">
+                <img src="img/Nainitalsenset.jpg" alt="Sunset" class="w-full h-64 object-cover rounded-lg gallery-img animate-fadeIn" style="animation-delay: 0.4s;">
+                <img src="img/Nainitalboating.avif" alt="Boating" class="w-full h-64 object-cover rounded-lg gallery-img animate-fadeIn" style="animation-delay: 0.6s;">
+                <img src="img/Nainital3.jpg" alt="Hills" class="w-full h-64 object-cover rounded-lg gallery-img animate-fadeIn" style="animation-delay: 0.8s;">
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-16 px-4 md:px-16 bg-gradient text-white">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-8 animate-fadeIn">What Our Guests Say</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white text-gray-800 p-6 rounded-lg shadow-lg animate-slideIn" style="animation-delay: 0.2s;">
+                    <p class="text-lg mb-4">"An unforgettable experience! The boating on Nainital Lake was serene, and the guided tours were so well-organized."</p>
+                    <p class="font-semibold">– Priya Sharma</p>
+                </div>
+                <div class="bg-white text-gray-800 p-6 rounded-lg shadow-lg animate-slideIn" style="animation-delay: 0.4s;">
+                    <p class="text-lg mb-4">"The Deluxe Nature Retreat package was worth every penny. The trek to Tiffin Top and the campfire were highlights!"</p>
+                    <p class="font-semibold">– Rohan Verma</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-16 px-4 md:px-16 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-8 animate-fadeIn">Frequently Asked Questions</h2>
+            <div class="space-y-4">
+                <div class="bg-gray-50 p-6 rounded-lg animate-slideIn" style="animation-delay: 0.2s;">
+                    <h3 class="text-xl font-semibold mb-2">What is the best time to visit Nainital Lake?</h3>
+                    <p class="text-gray-600">The best time to visit is between March to June and September to November for pleasant weather and clear views.</p>
+                </div>
+                <div class="bg-gray-50 p-6 rounded-lg animate-slideIn" style="animation-delay: 0.4s;">
+                    <h3 class="text-xl font-semibold mb-2">Are the tour packages customizable?</h3>
+                    <p class="text-gray-600">Yes, we offer customizable packages to suit your preferences. Contact us for more details.</p>
+                </div>
+                <div class="bg-gray-50 p-6 rounded-lg animate-slideIn" style="animation-delay: 0.6s;">
+                    <h3 class="text-xl font-semibold mb-2">Is accommodation included in the packages?</h3>
+                    <p class="text-gray-600">Accommodation is included in the Deluxe and Premium packages, with options for lakeside resorts or luxury hotels.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Popup -->
+    <div id="bookingPopup" class="popup bg-white p-8 rounded-lg shadow-2xl max-w-md w-full">
+        <h2 class="text-2xl font-bold mb-4">Book Your Nainital Lake Tour</h2>
+        <form action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="a8b1a31d-8cae-4a14-994a-4e5b051c1956">
+            <div class="mb-4">
+                <label for="name" class="block text-gray-700">Full Name</label>
+                <input type="text" id="name" name="name" class="w-full p-2 border rounded-lg" required>
+            </div>
+            <div class="mb-4">
+                <label for="email" class="block text-gray-700">Email</label>
+                <input type="email" id="email" name="email" class="w-full p-2 border rounded-lg" required>
+            </div>
+            <div class="mb-4">
+                <label for="package" class="block text-gray-700">Select Package</label>
+                <select id="package" name="package" class="w-full p-2 border rounded-lg" required>
+                    <option value="Basic Lake Explorer (Nainital)">Basic Lake Explorer</option>
+                    <option value="Deluxe Nature Retreat (Nainital)">Deluxe Nature Retreat</option>
+                    <option value="Premium Adventure (Nainital)">Premium Adventure</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <label for="date" class="block text-gray-700">Preferred Date</label>
+                <input type="date" id="date" name="date" class="w-full p-2 border rounded-lg" required>
+            </div>
+            <div class="mb-4">
+                <label for="guests" class="block text-gray-700">Number of Guests</label>
+                <select id="number" name="guests" class="w-full p-2 border rounded-lg" required>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6+">6+</option>
+                </select>
+            </div>
+            <div class="flex justify-end">
+                <button type="button" id="closePopup" class="bg-gray-500 hover:bg-gray-600 text-white py-2 px-4 rounded-lg mr-2">Cancel</button>
+                <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg">Submit</button>
+            </div>
+        </form>
+    </div>
+    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 hidden z-40"></div>
+
+    <!-- JavaScript for Popup and Animations -->
+    <script>
+        const bookNowBtn = document.getElementById('bookNowBtn');
+        const bookingPopup = document.getElementById('bookingPopup');
+        const closePopup = document.getElementById('closePopup');
+        const overlay = document.getElementById('overlay');
+        const packageCards = document.querySelectorAll('.package-card');
+        const packageButtons = document.querySelectorAll('.book-now-btn');
+
+        function togglePopup(packageValue = null) {
+            bookingPopup.classList.toggle('show');
+            overlay.classList.toggle('hidden');
+            if (packageValue) {
+                const packageSelect = document.getElementById('package');
+                packageSelect.value = packageValue;
+            }
+        }
+
+        bookNowBtn.addEventListener('click', () => togglePopup());
+        closePopup.addEventListener('click', togglePopup);
+        overlay.addEventListener('click', togglePopup);
+
+        packageCards.forEach(card => {
+            card.addEventListener('click', (e) => {
+                // Prevent triggering popup if clicking the button inside the card
+                if (!e.target.classList.contains('book-now-btn')) {
+                    const packageValue = card.getAttribute('data-package');
+                    togglePopup(packageValue);
+                }
+            });
+        });
+
+        packageButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.stopPropagation(); // Prevent card click event
+                const packageCard = button.closest('.package-card');
+                const packageValue = packageCard.getAttribute('data-package');
+                togglePopup(packageValue);
+            });
+        });
+
+        // Web3Forms Submission Handling
+        const form = bookingPopup.querySelector('form');
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(form);
+            try {
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: formData
+                });
+                const result = await response.json();
+                if (result.success) {
+                    alert('Booking request submitted successfully!');
+                    togglePopup();
+                    form.reset();
+                } else {
+                    alert('Submission failed. Please try again.');
+                }
+            } catch (error) {
+                alert('An error occurred. Please try again later.');
+            }
+        });
+
+        // Scroll Animation Trigger
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.animate-fadeIn, .animate-slideIn');
+            elements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top <= window.innerHeight * 0.8) {
+                    el.style.animationPlayState = 'running';
+                }
+            });
+        };
+        window.addEventListener('scroll', animateOnScroll);
+        animateOnScroll();
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+<!-- Footer Start -->
+<div class="container-fluid footer py-5">
+    <div class="container py-5">
+        <div class="row g-5">
+            <div class="col-md-6 col-lg-6 col-xl-3">
+                <div class="footer-item d-flex flex-column">
+                    <h4 class="mb-4 text-white">Get In Touch</h4>
+                    <a href="tel:+918979931256"><i class="fas fa-phone me-2"></i> +91 8979931256</a>
+                    <a href="tel:+918979220256"><i class="fas fa-phone me-2"></i> +91 8979220256</a>
+                    <a href="mailto:info@yatrago.com"><i class="fas fa-envelope me-2"></i> info@yatrago.com</a>
+                    <a href="mailto:sales.yatrago@gmail.com"><i class="fas fa-envelope me-2"></i> sales.yatrago@gmail.com</a>
+                    <a href=""><i class="fas fa-home me-2"></i> 94, Yoravar Enclave, Phase-1, Ganesh Vihar, Sitapur, Jwalapur, Haridwar, Uttarakhand 249407</a>
+                    <div class="d-flex align-items-center">
+                        <i class="fas fa-share fa-2x text-white me-2"></i>
+                        <a class="btn-square btn btn-primary rounded-circle mx-1" href=""><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn-square btn btn-primary rounded-circle mx-1" href=""><i class="fab fa-twitter"></i></a>
+                        <a class="btn-square btn btn-primary rounded-circle mx-1" href=""><i class="fab fa-instagram"></i></a>
+                        <a class="btn-square btn btn-primary rounded-circle mx-1" href=""><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-6 col-xl-3">
+                <div class="footer-item d-flex flex-column">
+                    <h4 class="mb-4 text-white">Company</h4>
+                    <a href="about.html"><i class="fas fa-angle-right me-2"></i> About Us</a>
+                    <a href=""><i class="fas fa-angle-right me-2"></i> Careers</a>
+                    <a href=""><i class="fas fa-angle-right me-2"></i> Blog</a>
+                    <a href=""><i class="fas fa-angle-right me-2"></i> Press</a>
+                    <a href=""><i class="fas fa-angle-right me-2"></i> Gift Cards</a>
+                    <a href=""><i class="fas fa-angle-right me-2"></i> Magazine</a>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-6 col-xl-3">
+                <div class="footer-item d-flex flex-column">
+                    <h4 class="mb-4 text-white">Support</h4>
+                    <a href="contact.html"><i class="fas fa-angle-right me-2"></i> Contact Us</a>
+                    <a href=""><i class="fas fa-angle-right me-2"></i> Legal Notice</a>
+                    <a href=""><i class="fas fa-angle-right me-2"></i> Privacy Policy</a>
+                    <a href=""><i class="fas fa-angle-right me-2"></i> Terms and Conditions</a>
+                    <a href=""><i class="fas fa-angle-right me-2"></i> Sitemap</a>
+                    <a href=""><i class="fas fa-angle-right me-2"></i> Cookie policy</a>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-6 col-xl-3">
+                <div class="footer-item">
+                    <div class="row gy-3 gx-2 mb-4">
+                        <div class="col-xl-6">
+                            <form>
+                                <div class="form-floating">
+                                    <select class="form-select bg-dark border" id="select1">
+                                        <option value="1">Indian</option>
+                                        <option value="1">Arabic</option>
+                                        <option value="2">German</option>
+                                        <option value="3">Greek</option>
+                                        <option value="3">New York</option>
+                                    </select>
+                                    <label for="select1">Country</label>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-xl-6">
+                            <form>
+                                <div class="form-floating">
+                                    <select class="form-select bg-dark border" id="select1">
+                                        <option value="1">INR</option>
+                                        <option value="2">EUR</option>
+                                        <option value="3">USD</option>
+                                        <option value="3">GBP</option>
+                                    </select>
+                                    <label for="select1">Currency</label>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <h4 class="text-white mb-3">Payments</h4>
+                    <div class="footer-bank-card">
+                        <a href="#" class="text-white me-2"><i class="fab fa-cc-amex fa-2x"></i></a>
+                        <a href="#" class="text-white me-2"><i class="fab fa-cc-visa fa-2x"></i></a>
+                        <a href="#" class="text-white me-2"><i class="fas fa-credit-card fa-2x"></i></a>
+                        <a href="#" class="text-white me-2"><i class="fab fa-cc-mastercard fa-2x"></i></a>
+                        <a href="#" class="text-white me-2"><i class="fab fa-cc-paypal fa-2x"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-cc-discover fa-2x"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Footer End -->
+
+        
+        <!-- Copyright Start -->
+        <div class="container-fluid copyright text-body py-4">
+            <div class="container">
+                <div class="row g-4 align-items-center">
+                    <div class="col-md-6 text-center text-md-end mb-md-0">
+                        <i class="fas fa-copyright me-2"></i><a class="text-white" href="#">Yatra Go</a>, All right reserved.
+                    </div>
+                    <div class="col-md-6 text-center text-md-start">
+                        <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
+                        <!--/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
+                        <!--/*** you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". ***/-->
+                        Designed By  YATRA GO 
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Copyright End -->
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-primary btn-primary-outline-0 btn-md-square back-to-top"><i class="fa fa-arrow-up"></i></a>   
+
+        
+        <!-- JavaScript Libraries -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="lib/easing/easing.min.js"></script>
+        <script src="lib/waypoints/waypoints.min.js"></script>
+        <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+        <script src="lib/lightbox/js/lightbox.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+        <!-- Template Javascript -->
+        <script src="js/main.js"></script>
+    </body>
+
+</html>

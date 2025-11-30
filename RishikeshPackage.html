@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Yatra Go - Your Trusted Travel Partner</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="img/Yatra Go.png">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600&family=Roboto&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Bootstrap CSS (Assuming it's already included for the navbar) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Flatpickr CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+    <!-- Flatpickr JS -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+</head>
+
+    <body>
+
+        <!-- Spinner Start -->
+        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <!-- Spinner End -->
+
+<!-- Navbar Start -->
+<div class="container-fluid position-relative p-0">
+    <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
+        <a href="" class="navbar-brand p-0 d-flex align-items-center">
+            <img src="img/Yatra Go Logo.png" alt="Yatra Go Logo" class="logo me-12" style="width: 130px; height: 150px;">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="fa fa-bars"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto py-0">
+                <a href="index.html" class="nav-item nav-link">Home</a>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Packages</a>
+                    <div class="dropdown-menu m-0">
+                        <a href="Uttarakhand.html" class="dropdown-item">Uttarakhand</a>
+                        <a href="Himachal_Pradesh.html" class="dropdown-item">Himachal Pradesh</a>
+                        <a href="Kashmir.html" class="dropdown-item">Kashmir</a>
+                        <a href="international.html" class="dropdown-item">International</a>
+                    </div>
+                </div>
+                <a href="destinations.html" class="nav-item nav-link">Destinations</a>
+                <a href="activity.html" class="nav-item nav-link">Activity</a>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Our Services</a>
+                    <div class="dropdown-menu m-0">
+                        <a href="blogs.html" class="dropdown-item">Blogs</a>
+                        <a href="hotel.html" class="dropdown-item">Hotel</a>
+                        <a href="car-rental.html" class="dropdown-item">Car/Coach Rental</a>
+                        <a href="railway-booking.html" class="dropdown-item">Railway Booking</a>
+                        <a href="air-ticket.html" class="dropdown-item">Air Ticket</a>
+                        <a href="bike-rental.html" class="dropdown-item">Bike Rental</a>
+                    </div>
+                </div>
+                <a href="about.html" class="nav-item nav-link">About Us</a>
+                <a href="contact.html" class="nav-item nav-link">Contact Us</a>
+                <button class="btn btn-primary ms-3 query-now-btn" id="queryNowBtn">Query Now</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Popup Form -->
+    <div class="popup-overlay" id="popupOverlay">
+        <div class="popup-form">
+            <button class="close-btn" id="closePopupBtn">×</button>
+            <h2 class="text-center mb-4">Travel Booking Enquiry</h2>
+            <form id="travelBookingForm">
+                <input type="hidden" name="access_key" value="a8b1a31d-8cae-4a14-994a-4e5b051c1956">
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="fullName">Full Name *</label>
+                            <input type="text" class="form-control" id="fullName" name="fullName" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="contactNumber">Contact Number *</label>
+                            <input type="tel" class="form-control" id="contactNumber" name="contactNumber" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="numTravelers">Number of Travelers *</label>
+                            <select class="form-control stylish-select" id="numTravelers" name="numTravelers" required>
+                                <option value="" disabled selected>Select Number</option>
+                                <option value="1">1 Traveler</option>
+                                <option value="2">2 Travelers</option>
+                                <option value="3">3 Travelers</option>
+                                <option value="4">4 Travelers</option>
+                                <option value="5">5 Travelers</option>
+                                <option value="6">6 Travelers</option>
+                                <option value="7">7 Travelers</option>
+                                <option value="8">8 Travelers</option>
+                                <option value="9">9 Travelers</option>
+                                <option value="10">10+ Travelers</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="destination">Preferred Destination *</label>
+                            <input type="text" class="form-control" id="destination" name="destination" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="tripDuration">Trip Duration (Days) *</label>
+                            <select class="form-control stylish-select" id="tripDuration" name="tripDuration" required>
+                                <option value="" disabled selected>Select Duration</option>
+                                <option value="1">1 Day</option>
+                                <option value="2">2 Days</option>
+                                <option value="3">3 Days</option>
+                                <option value="4">4 Days</option>
+                                <option value="5">5 Days</option>
+                                <option value="6">6 Days</option>
+                                <option value="7">7 Days</option>
+                                <option value="8">8 Days</option>
+                                <option value="9">9 Days</option>
+                                <option value="10">10 Days</option>
+                                <option value="11">11+ Days</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="travelDate">Date of Travel *</label>
+                            <input type="text" class="form-control" id="travelDate" name="travelDate" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="packageType">Package Type *</label>
+                            <select class="form-control" id="packageType" name="packageType" required>
+                                <option value="" disabled selected>Select Package</option>
+                                <option value="adventure">Adventure Package</option>
+                                <option value="family">Family Package</option>
+                                <option value="honeymoon">Honeymoon Package</option>
+                                <option value="temples">Temples Package</option>
+                                <option value="custom">Custom Package</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="accommodation">Accommodation Preference *</label>
+                            <select class="form-control" id="accommodation" name="accommodation" required>
+                                <option value="" disabled selected>Select Preference</option>
+                                <option value="hotel">Hotel</option>
+                                <option value="resort">Resort</option>
+                                <option value="homestay">Homestay</option>
+                                <option value="no-preference">No Preference</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="travelMode">Mode of Travel *</label>
+                            <select class="form-control" id="travelMode" name="travelMode" required>
+                                <option value="" disabled selected>Select Mode</option>
+                                <option value="car">Car</option>
+                                <option value="bus">Bus</option>
+                                <option value="train">Train</option>
+                                <option value="flight">Flight</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label for="budget">Estimated Budget (Optional)</label>
+                            <div class="budget-slider-container">
+                                <input type="range" class="budget-slider" id="budget" name="budget" min="0" max="500000" step="100" value="0">
+                                <div class="budget-display">
+                                    Budget: <span id="budgetValue">₹0</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label for="specialRequirements">Special Requirements</label>
+                            <textarea class="form-control" id="specialRequirements" name="specialRequirements" rows="4" placeholder="Any additional requests or notes"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-12 text-center">
+                        <button type="submit" class="btn btn-primary">Submit Enquiry</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Query Now Button */
+    .query-now-btn {
+    border-radius: 15px; /* Adjusted for smaller size */
+    padding: 12px 20px; /* Reduced padding to decrease height and width */
+    font-size: 15px; /* Smaller font size to fit reduced dimensions */
+    line-height: 1.5; /* Ensures text alignment within smaller height */
+    width: 125px; /* Explicit width for precise control */
+    height: 55px; /* Explicit height for precise control */
+    display: inline-flex; /* Ensures content is centered */
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    align-self: center; /* Centers button vertically in flex context */
+    margin-top: 0; /* Reset any top margin */
+    line-height: 1; /* Adjust line-height for vertical centering */
+}
+
+.query-now-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Popup Overlay */
+.popup-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.popup-overlay.active {
+    display: block;
+    opacity: 1;
+}
+
+/* Popup Form */
+.popup-form {
+    position: relative;
+    background: #fff url('https://www.transparenttextures.com/patterns/natural-paper.png'); /* Subtle travel-themed texture */
+    max-width: 700px;
+    margin: 20px auto;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transform: scale(0.7);
+    transition: transform 0.3s ease;
+    overflow-y: auto;
+    max-height: 90vh;
+}
+
+.popup-overlay.active .popup-form {
+    transform: scale(1);
+}
+
+/* Close Button */
+.close-btn {
+    position: absolute;
+    top: 18px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+    color: #ff4d4d;
+}
+
+/* Form Styling */
+.popup-form h2 {
+    color: #2c3e50;
+    font-weight: 700;
+    font-family: 'Poppins', sans-serif;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    font-weight: 500;
+    color: #34495e;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.form-control {
+    border: 1px solid #dcdcdc;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    background: #f9f9f9;
+}
+
+.form-control:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 8px rgba(52, 152, 219, 0.3);
+    background: #fff;
+    transform: translateY(-2px);
+}
+
+.form-control::placeholder {
+    color: #bdc3c7;
+}
+
+/* Submit Button */
+.popup-form .btn-primary {
+    background: linear-gradient(45deg, #2079b4, #2980b9);
+    border: none;
+    padding: 12px 30px;
+    border-radius: 25px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.popup-form .btn-primary:hover {
+    background: linear-gradient(45deg, #2980b9, #2980b9);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .popup-form {
+        margin: 10px;
+        padding: 20px;
+    }
+
+    .query-now-btn {
+        margin-left: 10px;
+        padding: 5px 12px;
+        font-size: 12px;
+        width: 90px; /* Slightly smaller width on mobile */
+        height: 28px; /* Slightly smaller height on mobile */
+    }
+}
+
+/* Flatpickr Date Picker Customization */
+.flatpickr-input {
+    cursor: pointer;
+}
+
+.flatpickr-calendar {
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.flatpickr-day.selected {
+    background: #3498db;
+    border-color: #3498db;
+}
+
+.flatpickr-day:hover {
+    background: #ecf0f1;
+    border-color: #3498db;
+}
+
+/* Basic styling for the slider and display */
+.form-group {
+        margin: 20px;
+        font-family: Arial, sans-serif;
+    }
+    .budget-slider-container {
+        max-width: 500px;
+    }
+    .budget-slider {
+        width: 100%;
+        margin: 10px 0;
+    }
+    .budget-display {
+        font-size: 16px;
+        font-weight: bold;
+    }
+</style>
+
+<script>
+    // Popup Toggle
+    document.getElementById('queryNowBtn').addEventListener('click', function() {
+        document.getElementById('popupOverlay').classList.add('active');
+    });
+
+    document.getElementById('closePopupBtn').addEventListener('click', function() {
+        document.getElementById('popupOverlay').classList.remove('active');
+    });
+
+    // Close popup when clicking outside the form
+    document.getElementById('popupOverlay').addEventListener('click', function(e) {
+        if (e.target === this) {
+            this.classList.remove('active');
+        }
+    });
+
+    // Initialize Flatpickr Date Picker
+    flatpickr('#travelDate', {
+        dateFormat: 'd-m-Y',
+        minDate: 'today',
+        enableTime: false,
+        altInput: true,
+        altFormat: 'F j, Y',
+        animate: true,
+    });
+
+    // Get the slider and the budget value display elements
+    const slider = document.getElementById('budget');
+    const budgetValueDisplay = document.getElementById('budgetValue');
+
+    // Function to format the budget value with Indian Rupee symbol and commas
+    function formatBudget(value) {
+        return '₹' + Number(value).toLocaleString('en-IN');
+    }
+
+    // Update the display when the slider value changes
+    slider.addEventListener('input', function() {
+        budgetValueDisplay.textContent = formatBudget(slider.value);
+    });
+
+    // Initialize the display with the default slider value
+    budgetValueDisplay.textContent = formatBudget(slider.value);
+
+    // Form Submission with Web3Forms
+    document.getElementById('travelBookingForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        // Create a FormData object to collect form data
+        const form = this;
+        const formData = new FormData(form);
+
+        // Add the Web3Forms access key to the form data
+        formData.append('access_key', 'a8b1a31d-8cae-4a14-994a-4e5b051c1956'); // Replace with your Web3Forms access key
+
+        // Send the form data to Web3Forms API
+        fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert('Thank you for your enquiry! We will get back to you soon.');
+                document.getElementById('popupOverlay').classList.remove('active');
+                form.reset();
+                // Reset budget display
+                budgetValueDisplay.textContent = formatBudget(slider.value);
+            } else {
+                alert('Something went wrong. Please try again.');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('An error occurred. Please try again later.');
+        });
+    });
+</script>
+<!-- Navbar & Hero End -->
+
+
+
+
+
+
+<!-- Header Start -->
+<div class="container-fluid relative bg-cover bg-center min-h-[500px] flex items-center justify-center" style="background-image: url('img/Rishikesh_overview.avif')">
+    <div class="absolute inset-0 bg-black opacity-50"></div>
+    <div class="container text-center py-6 relative z-10" style="max-width: 900px; height: 97px;">
+    </div>
+</div>
+<!-- Header End -->
+
+
+<style>
+    body {
+        font-family: 'Poppins', sans-serif;
+        background: #f8f9fa;
+        color: #333;
+    }
+    .tour-hero {
+        background: url('img/Rishikesh_overview.avif') no-repeat center center/cover;
+        padding: 100px 0;
+        color: #fff;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+    }
+    .tour-hero h1 {
+        font-size: 3rem;
+        font-weight: 600;
+        color: #dd8119;
+    }
+    .section-padding {
+        padding: 80px 0;
+    }
+    .section-title {
+        font-size: 2.25rem;
+        font-weight: 600;
+        margin-bottom: 40px;
+        color: #1c2526;
+        text-align: center;
+    }
+    .package-card {
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        padding: 25px;
+        transition: transform 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+    .package-card:hover {
+        transform: translateY(-8px);
+    }
+    .package-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-bottom: 15px;
+    }
+    .package-card h4 {
+        font-size: 1.6rem;
+        color: #00aaff;
+    }
+    .package-card .btn-book {
+        background: #00aaff;
+        color: #fff;
+        border: none;
+        padding: 12px 25px;
+        border-radius: 6px;
+        transition: background 0.3s ease;
+    }
+    .package-card .btn-book:hover {
+        background: #0088cc;
+    }
+    .itinerary-day {
+        background: #fff;
+        border-left: 5px solid #00aaff;
+        padding: 25px;
+        margin-bottom: 20px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+    }
+    .itinerary-day img {
+        width: 150px;
+        height: 100px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-right: 20px;
+    }
+    .gallery-img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        border-radius: 10px;
+        transition: transform 0.3s ease;
+    }
+    .gallery-img:hover {
+        transform: scale(1.05);
+    }
+    .testimonial-card {
+        background: #fff;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+    }
+    .faq-item {
+        background: #fff;
+        border-radius: 8px;
+        margin-bottom: 15px;
+        padding: 20px;
+    }
+    .faq-item h5 {
+        font-size: 1.2rem;
+        color: #00aaff;
+    }
+    .more-packages .card {
+        border: none;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+    }
+    .more-packages .card:hover {
+        transform: translateY(-5px);
+    }
+    .more-packages .card-img-top {
+        height: 220px;
+        object-fit: cover;
+    }
+    .more-packages .btn-book {
+        background: #00aaff;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 6px;
+    }
+    .more-packages .btn-book:hover {
+        background: #0088cc;
+    }
+    /* Booking Modal Styles */
+    .booking-modal .modal-content {
+        border-radius: 25px;
+        border: none;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+    .booking-modal .modal-header {
+        background: #00aaff;
+        color: #fff;
+        border-radius: 12px 12px 0 0;
+    }
+    .booking-modal .modal-body {
+        padding: 30px;
+    }
+    .booking-modal .form-control {
+        border-radius: 6px;
+        border: 1px solid #ced4da;
+        margin-bottom: 15px;
+    }
+    .booking-modal .btn-submit {
+        background: #00aaff;
+        color: #fff;
+        border: none;
+        padding: 12px 25px;
+        border-radius: 6px;
+        transition: background 0.3s ease;
+    }
+    .booking-modal .btn-submit:hover {
+        background: #0088cc;
+    }
+    /* Slide-in Animation */
+    .booking-modal .modal-dialog {
+        animation: slideIn 0.5s ease-out;
+    }
+    @keyframes slideIn {
+        from {
+            transform: translateY(-50px);
+            opacity: 0;
+        }
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+        .tour-hero h1 {
+            font-size: 2.2rem;
+        }
+        .section-title {
+            font-size: 1.8rem;
+        }
+        .package-card img {
+            height: 150px;
+        }
+        .itinerary-day img {
+            width: 100px;
+            height: 80px;
+        }
+        .gallery-img {
+            height: 200px;
+        }
+        .more-packages .card-img-top {
+            height: 180px;
+        }
+        .booking-modal .modal-body {
+            padding: 20px;
+        }
+    }
+    @media (max-width: 576px) {
+        .itinerary-day {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .itinerary-day img {
+            width: 100%;
+            margin-bottom: 15px;
+        }
+    }
+</style>
+</head>
+<body>
+<!-- Hero Section -->
+<div class="tour-hero text-center">
+    <div class="container">
+        <h1>Rishikesh Adventure & Pilgrim Tour</h1>
+        <p class="lead">Discover the spiritual heart and thrilling adventures of Rishikesh</p>
+    </div>
+</div>
+
+<!-- Tour Overview Section -->
+<section class="section-padding">
+    <div class="container">
+        <h2 class="section-title">Tour Overview</h2>
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <p>Immerse yourself in the divine aura and exhilarating experiences of Rishikesh, the Yoga Capital of the World. This 5-day tour blends sacred pilgrimages to iconic sites like Triveni Ghat and Laxman Jhula with heart-pounding adventures such as white-water rafting and bungee jumping. Whether you seek spiritual awakening or an adrenaline rush, this journey offers a perfect balance of serenity and excitement.</p>
+            </div>
+            <div class="col-md-6">
+                <ul class="list-unstyled">
+                    <li><strong>Duration:</strong> 5 Days / 4 Nights</li>
+                    <li><strong>Inclusions:</strong> Accommodation, Meals, Guided Tours, Adventure Activities, Yoga Sessions</li>
+                    <li><strong>Highlights:</strong> Ganga Aarti, Rafting, Bungee Jumping, Yoga by the Ganges, Temple Visits</li>
+                    <li><strong>Starting Price:</strong> ₹15,000 per person</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- What to Expect Section -->
+<section class="section-padding bg-light">
+    <div class="container">
+        <h2 class="section-title">What to Expect</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="text-center">
+                    <img src="img/Rishikesharti.jpg" alt="Ganga Aarti" class="img-fluid rounded mb-3" style="height: 150px; object-fit: cover;">
+                    <h5>Spiritual Bliss</h5>
+                    <p>Participate in the enchanting Ganga Aarti and visit ancient temples to connect with Rishikesh’s spiritual heritage.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="text-center">
+                    <img src="img/rafting.jpg" alt="Rafting" class="img-fluid rounded mb-3" style="height: 150px; object-fit: cover;">
+                    <h5>Thrilling Adventures</h5>
+                    <p>Conquer the rapids of the Ganges with rafting or take a leap with bungee jumping for an unforgettable thrill.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="text-center">
+                    <img src="img/yoga.jpg" alt="Yoga" class="img-fluid rounded mb-3" style="height: 150px; object-fit: cover;">
+                    <h5>Cultural Immersion</h5>
+                    <p>Join yoga and meditation sessions by the Ganges to rejuvenate your mind, body, and soul.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Packages Section -->
+<section class="section-padding">
+    <div class="container">
+        <h2 class="section-title">Choose Your Package</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="package-card">
+                    <img src="img/Rishikesharti.jpg" alt="Basic Package">
+                    <h4>Basic Package</h4>
+                    <p>₹15,000 per person</p>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-check me-2"></i>3-star accommodation</li>
+                        <li><i class="fas fa-check me-2"></i>Daily breakfast</li>
+                        <li><i class="fas fa-check me-2"></i>Guided city tour</li>
+                        <li><i class="fas fa-check me-2"></i>Ganga Aarti experience</li>
+                    </ul>
+                    <button type="button" class="btn btn-book mt-3" data-bs-toggle="modal" data-bs-target="#basicBookingModal">Book Now</button>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="package-card">
+                    <img src="img/Yoga.jpg" alt="Deluxe Package">
+                    <h4>Deluxe Package</h4>
+                    <p>₹25,000 per person</p>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-check me-2"></i>4-star accommodation</li>
+                        <li><i class="fas fa-check me-2"></i>Daily breakfast & dinner</li>
+                        <li><i class="fas fa-check me-2"></i>White-water rafting</li>
+                        <li><i class="fas fa-check me-2"></i>Yoga & meditation sessions</li>
+                    </ul>
+                    <button type="button" class="btn btn-book mt-3" data-bs-toggle="modal" data-bs-target="#deluxeBookingModal">Book Now</button>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="package-card">
+                    <img src="img/R3.jpg" alt="Premium Package">
+                    <h4>Premium Package</h4>
+                    <p>₹35,000 per person</p>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-check me-2"></i>5-star accommodation</li>
+                        <li><i class="fas fa-check me-2"></i>All meals included</li>
+                        <li><i class="fas fa-check me-2"></i>Rafting & bungee jumping</li>
+                        <li><i class="fas fa-check me-2"></i>Private guided tours</li>
+                    </ul>
+                    <button type="button" class="btn btn-book mt-3" data-bs-toggle="modal" data-bs-target="#premiumBookingModal">Book Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    /* Custom CSS to increase modal width */
+    .booking-modal .modal-dialog {
+        max-width: 800px; /* Adjust this value to increase/decrease width */
+        width: 100%;
+    }
+</style>
+</head>
+<body>
+<!-- Basic Package Booking Modal -->
+<div class="modal fade booking-modal" id="basicBookingModal" tabindex="-1" aria-labelledby="basicBookingModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="basicBookingModalLabel">Book Basic Package</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="https://api.web3forms.com/submit" method="POST">
+                    <input type="hidden" name="access_key" value="a8b1a31d-8cae-4a14-994a-4e5b051c1956">
+                    <input type="hidden" name="package" value="Basic Package">
+                    <input type="hidden" name="price" value="15000">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Full Name</label>
+                        <input type="text" class="form-control" id="name" name="name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email Address</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="phone" class="form-label">Phone Number</label>
+                        <input type="tel" class="form-control" id="phone" name="phone" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="travel_date" class="form-label">Preferred Travel Date</label>
+                        <input type="date" class="form-control" id="travel_date" name="travel_date" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="travelers" class="form-label">Number of Travelers</label>
+                        <input type="number" class="form-control" id="travelers" name="travelers" min="1" required>
+                    </div>
+                    <button type="submit" class="btn btn-submit w-100">Submit Booking</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Deluxe Package Booking Modal -->
+<div class="modal fade booking-modal" id="deluxeBookingModal" tabindex="-1" aria-labelledby="deluxeBookingModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deluxeBookingModalLabel">Book Deluxe Package</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="https://api.web3forms.com/submit" method="POST">
+                    <input type="hidden" name="access_key" value="a8b1a31d-8cae-4a14-994a-4e5b051c1956">
+                    <input type="hidden" name="package" value="Deluxe Package">
+                    <input type="hidden" name="price" value="25000">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Full Name</label>
+                        <input type="text" class="form-control" id="name" name="name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email Address</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="phone" class="form-label">Phone Number</label>
+                        <input type="tel" class="form-control" id="phone" name="phone" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="travel_date" class="form-label">Preferred Travel Date</label>
+                        <input type="date" class="form-control" id="travel_date" name="travel_date" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="travelers" class="form-label">Number of Travelers</label>
+                        <input type="number" class="form-control" id="travelers" name="travelers" min="1" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="adventure" class="form-label">Preferred Adventure Activity</label>
+                        <select class="form-control" id="adventure" name="adventure" required>
+                            <option value="Rafting">White-Water Rafting</option>
+                            <option value="Yoga">Yoga & Meditation</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-submit w-100">Submit Booking</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Premium Package Booking Modal -->
+<div class="modal fade booking-modal" id="premiumBookingModal" tabindex="-1" aria-labelledby="premiumBookingModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="premiumBookingModalLabel">Book Premium Package</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="https://api.web3forms.com/submit" method="POST">
+                    <input type="hidden" name="access_key" value="a8b1a31d-8cae-4a14-994a-4e5b051c1956">
+                    <input type="hidden" name="package" value="Premium Package">
+                    <input type="hidden" name="price" value="35000">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Full Name</label>
+                        <input type="text" class="form-control" id="name" name="name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email Address</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="phone" class="form-label">Phone Number</label>
+                        <input type="tel" class="form-control" id="phone" name="phone" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="travel_date" class="form-label">Preferred Travel Date</label>
+                        <input type="date" class="form-control" id="travel_date" name="travel_date" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="travelers" class="form-label">Number of Travelers</label>
+                        <input type="number" class="form-control" id="travelers" name="travelers" min="1" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="adventure" class="form-label">Preferred Adventure Activity</label>
+                        <select class="form-control" id="adventure" name="adventure" required>
+                            <option value="Rafting">White-Water Rafting</option>
+                            <option value="Bungee">Bungee Jumping</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="special_request" class="form-label">Special Requests</label>
+                        <textarea class="form-control" id="special_request" name="special_request" rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-submit w-100">Submit Booking</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Itinerary Section -->
+<section class="section-padding bg-light">
+    <div class="container">
+        <h2 class="section-title">Itinerary</h2>
+        <div class="row">
+            <div class="col-12">
+                <div class="itinerary-day">
+                    <img src="img/Trivenighat.jpg" alt="Triveni Ghat">
+                    <div>
+                        <h5>Day 1: Arrival in Rishikesh</h5>
+                        <p>Arrive in Rishikesh, check into your hotel, and witness the soul-stirring Ganga Aarti at Triveni Ghat in the evening.</p>
+                    </div>
+                </div>
+                <div class="itinerary-day">
+                    <img src="img/Rishikesh_overview.avif" alt="Laxman Jhula">
+                    <div>
+                        <h5>Day 2: Spiritual Exploration</h5>
+                        <p>Explore Laxman Jhula, Ram Jhula, and Bharat Mandir. Join a morning yoga session by the Ganges for a rejuvenating start.</p>
+                    </div>
+                </div>
+                <div class="itinerary-day">
+                    <img src="img/R5.jpg" alt="Rafting">
+                    <div>
+                        <h5>Day 3: Adventure Day</h5>
+                        <p>Experience the thrill of white-water rafting on the Ganges (Grade III/IV rapids). Optional bungee jumping for adrenaline junkies.</p>
+                    </div>
+                </div>
+                <div class="itinerary-day">
+                    <img src="img/Yoga.jpg" alt="Neer Garh Waterfall">
+                    <div>
+                        <h5>Day 4: Nature & Meditation</h5>
+                        <p>Trek to the serene Neer Garh Waterfall and participate in a guided meditation session at a peaceful ashram.</p>
+                    </div>
+                </div>
+                <div class="itinerary-day">
+                    <img src="img/RamJhula.webp" alt="Rishikesh Market">
+                    <div>
+                        <h5>Day 5: Departure</h5>
+                        <p>Enjoy a free morning for shopping at local markets or relaxing by the river. Depart with cherished memories.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Photo Gallery Section -->
+<section class="section-padding">
+    <div class="container">
+        <h2 class="section-title">Photo Gallery</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <img src="img/Haridwaraartipic.jpg" alt="Ganga Aarti" class="gallery-img">
+            </div>
+            <div class="col-md-4">
+                <img src="img/R8.jpg" alt="Rafting" class="gallery-img">
+            </div>
+            <div class="col-md-4">
+                <img src="img/Yoga.jpg" alt="Yoga by Ganges" class="gallery-img">
+            </div>
+            <div class="col-md-4">
+                <img src="img/Ram-Jhula-in-Rishikesh.jpg" alt="Laxman Jhula" class="gallery-img">
+            </div>
+            <div class="col-md-4">
+                <img src="img/Bunjee Jumping.jpg" alt="Bungee Jumping" class="gallery-img">
+            </div>
+            <div class="col-md-4">
+                <img src="img/NeerWaterfall.jpg" alt="Neer Garh Waterfall" class="gallery-img">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Travel Tips Section -->
+<section class="section-padding bg-light">
+    <div class="container">
+        <h2 class="section-title">Travel Tips</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <ul class="list-unstyled">
+                    <li><i class="fas fa-chevron-right me-2"></i><strong>Best Time to Visit:</strong> March to May and September to November for pleasant weather.</li>
+                    <li><i class="fas fa-chevron-right me-2"></i><strong>What to Pack:</strong> Comfortable clothing, sturdy shoes for trekking, swimwear for rafting, and a light jacket for evenings.</li>
+                    <li><i class="fas fa-chevron-right me-2"></i><strong>Health Precautions:</strong> Carry sunscreen, mosquito repellent, and stay hydrated during outdoor activities.</li>
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <ul class="list-unstyled">
+                    <li><i class="fas fa-chevron-right me-2"></i><strong>Local Etiquette:</strong> Dress modestly at religious sites and remove shoes before entering temples.</li>
+                    <li><i class="fas fa-chevron-right me-2"></i><strong>Currency:</strong> Carry cash for local markets, as some vendors may not accept cards.</li>
+                    <li><i class="fas fa-chevron-right me-2"></i><strong>Connectivity:</strong> Wi-Fi is available in hotels, but mobile signals may be weak in remote areas.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQs Section -->
+<section class="section-padding bg-light">
+    <div class="container">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <div class="row">
+            <div class="col-12">
+                <div class="faq-item">
+                    <h5>Is rafting safe for beginners?</h5>
+                    <p>Yes, our rafting sessions are guided by certified professionals, and safety gear is provided. Beginners are given proper instructions.</p>
+                </div>
+                <div class="faq-item">
+                    <h5>What is included in the package?</h5>
+                    <p>Packages include accommodation, specified meals, guided tours, adventure activities, and yoga sessions. Check package details for specifics.</p>
+                </div>
+                <div class="faq-item">
+                    <h5>Can I customize the itinerary?</h5>
+                    <p>Yes, contact our team to discuss customization options based on your preferences.</p>
+                </div>
+                <div class="faq-item">
+                    <h5>What is the cancellation policy?</h5>
+                    <p>Cancellations made 30 days prior receive a full refund. Refer to our booking terms for details.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- More Packages Section -->
+<section class="section-padding more-packages">
+    <div class="container">
+        <h2 class="section-title">Explore More Packages</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="img/manali-solang.png" class="card-img-top" alt="Manali Adventure">
+                    <div class="card-body">
+                        <h5 class="card-title">Manali Adventure Tour</h5>
+                        <p class="card-text">5 Days / 4 Nights | ₹18,000</p>
+                        <a href="Himachal_Pradesh.html" class="btn btn-book">Book Now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="img/Romantic kashmir.avif" class="card-img-top" alt="Kashmir Paradise">
+                    <div class="card-body">
+                        <h5 class="card-title">Kashmir Paradise Tour</h5>
+                        <p class="card-text">7 Days / 6 Nights | ₹28,000</p>
+                        <a href="kashmir.html" class="btn btn-book">Book Now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="img/Kedarnath.jpg" class="card-img-top" alt="Goa Beach Escape">
+                    <div class="card-body">
+                        <h5 class="card-title">Chardham Yatra</h5>
+                        <p class="card-text">9 Days / 8 Nights | ₹35,000</p>
+                        <a href="Uttarakhand.html" class="btn btn-book">Book Now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="img/Ladakh.jpg" class="card-img-top" alt="Leh Ladakh Expedition">
+                    <div class="card-body">
+                        <h5 class="card-title">Leh Ladakh Expedition</h5>
+                        <p class="card-text">8 Days / 7 Nights | ₹32,000</p>
+                        <a href="Himachal_Pradesh.html" class="btn btn-book">Book Now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="img/Dalhousie.jpg" class="card-img-top" alt="Kerala Backwaters">
+                    <div class="card-body">
+                        <h5 class="card-title">Dalhousie Himachal Tour</h5>
+                        <p class="card-text">6 Days / 5 Nights | ₹22,000</p>
+                        <a href="Himachal_Pradesh.html" class="btn btn-book">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Footer Start -->
+<div class="container-fluid footer py-5">
+    <div class="container py-5">
+        <div class="row g-5">
+            <div class="col-md-6 col-lg-6 col-xl-3">
+                <div class="footer-item d-flex flex-column">
+                    <h4 class="mb-4 text-white">Get In Touch</h4>
+                    <a href="tel:+918979931256"><i class="fas fa-phone me-2"></i> +91 8979931256</a>
+                    <a href="tel:+918979220256"><i class="fas fa-phone me-2"></i> +91 8979220256</a>
+                    <a href="mailto:info@yatrago.com"><i class="fas fa-envelope me-2"></i> info@yatrago.com</a>
+                    <a href="mailto:sales.yatrago@gmail.com"><i class="fas fa-envelope me-2"></i> sales.yatrago@gmail.com</a>
+                    <a href=""><i class="fas fa-home me-2"></i> 94, Yoravar Enclave, Phase-1, Ganesh Vihar, Sitapur, Jwalapur, Haridwar, Uttarakhand 249407</a>
+                    <div class="d-flex align-items-center">
+                        <i class="fas fa-share fa-2x text-white me-2"></i>
+                        <a class="btn-square btn btn-primary rounded-circle mx-1" href=""><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn-square btn btn-primary rounded-circle mx-1" href=""><i class="fab fa-twitter"></i></a>
+                        <a class="btn-square btn btn-primary rounded-circle mx-1" href=""><i class="fab fa-instagram"></i></a>
+                        <a class="btn-square btn btn-primary rounded-circle mx-1" href=""><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-6 col-xl-3">
+                <div class="footer-item d-flex flex-column">
+                    <h4 class="mb-4 text-white">Company</h4>
+                    <a href="about.html"><i class="fas fa-angle-right me-2"></i> About Us</a>
+                    <a href=""><i class="fas fa-angle-right me-2"></i> Careers</a>
+                    <a href=""><i class="fas fa-angle-right me-2"></i> Blog</a>
+                    <a href=""><i class="fas fa-angle-right me-2"></i> Press</a>
+                    <a href=""><i class="fas fa-angle-right me-2"></i> Gift Cards</a>
+                    <a href=""><i class="fas fa-angle-right me-2"></i> Magazine</a>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-6 col-xl-3">
+                <div class="footer-item d-flex flex-column">
+                    <h4 class="mb-4 text-white">Support</h4>
+                    <a href="contact.html"><i class="fas fa-angle-right me-2"></i> Contact Us</a>
+                    <a href=""><i class="fas fa-angle-right me-2"></i> Legal Notice</a>
+                    <a href=""><i class="fas fa-angle-right me-2"></i> Privacy Policy</a>
+                    <a href=""><i class="fas fa-angle-right me-2"></i> Terms and Conditions</a>
+                    <a href=""><i class="fas fa-angle-right me-2"></i> Sitemap</a>
+                    <a href=""><i class="fas fa-angle-right me-2"></i> Cookie policy</a>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-6 col-xl-3">
+                <div class="footer-item">
+                    <div class="row gy-3 gx-2 mb-4">
+                        <div class="col-xl-6">
+                            <form>
+                                <div class="form-floating">
+                                    <select class="form-select bg-dark border" id="select1">
+                                        <option value="1">Indian</option>
+                                        <option value="1">Arabic</option>
+                                        <option value="2">German</option>
+                                        <option value="3">Greek</option>
+                                        <option value="3">New York</option>
+                                    </select>
+                                    <label for="select1">Country</label>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-xl-6">
+                            <form>
+                                <div class="form-floating">
+                                    <select class="form-select bg-dark border" id="select1">
+                                        <option value="1">INR</option>
+                                        <option value="2">EUR</option>
+                                        <option value="3">USD</option>
+                                        <option value="3">GBP</option>
+                                    </select>
+                                    <label for="select1">Currency</label>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <h4 class="text-white mb-3">Payments</h4>
+                    <div class="footer-bank-card">
+                        <a href="#" class="text-white me-2"><i class="fab fa-cc-amex fa-2x"></i></a>
+                        <a href="#" class="text-white me-2"><i class="fab fa-cc-visa fa-2x"></i></a>
+                        <a href="#" class="text-white me-2"><i class="fas fa-credit-card fa-2x"></i></a>
+                        <a href="#" class="text-white me-2"><i class="fab fa-cc-mastercard fa-2x"></i></a>
+                        <a href="#" class="text-white me-2"><i class="fab fa-cc-paypal fa-2x"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-cc-discover fa-2x"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Footer End -->
+
+        
+        <!-- Copyright Start -->
+        <div class="container-fluid copyright text-body py-4">
+            <div class="container">
+                <div class="row g-4 align-items-center">
+                    <div class="col-md-6 text-center text-md-end mb-md-0">
+                        <i class="fas fa-copyright me-2"></i><a class="text-white" href="#">Yatra Go</a>, All right reserved.
+                    </div>
+                    <div class="col-md-6 text-center text-md-start">
+                        <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
+                        <!--/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
+                        <!--/*** you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". ***/-->
+                        Designed By  YATRA GO 
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Copyright End -->
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-primary btn-primary-outline-0 btn-md-square back-to-top"><i class="fa fa-arrow-up"></i></a>   
+
+        
+        <!-- JavaScript Libraries -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="lib/easing/easing.min.js"></script>
+        <script src="lib/waypoints/waypoints.min.js"></script>
+        <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+        <script src="lib/lightbox/js/lightbox.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+        <!-- Template Javascript -->
+        <script src="js/main.js"></script>
+    </body>
+
+</html>

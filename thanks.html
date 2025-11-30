@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You for Booking</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body onload="fadeInMessage()">
+
+    <div class="thank-you-container">
+        <h1>🎉 Thank You for Choosing Yatra Go! 🎉</h1>
+        <p>Your adventure is officially booked! We’ve received your details and will be in touch soon to finalize your plans.</p>
+        <p>📩 Keep an eye on your inbox for a confirmation email with all the details.</p>
+        <p>🌟 Get ready for an unforgettable journey with <b>Yatra Go</b> – where every trip is a story waiting to be told!</p>
+        <button onclick="goHome()">🔙 Back to Home</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+<style>
+    /* Centered Thank You Page */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to right, #ff7e5f, #feb47b);
+    color: white;
+    text-align: center;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Thank You Message Box */
+.thank-you-container {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 30px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    width: 50%;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+/* Heading */
+.thank-you-container h1 {
+    font-size: 2.5em;
+    background: linear-gradient(to right, #ff416c, #ff4b2b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Paragraphs */
+.thank-you-container p {
+    font-size: 1.2em;
+    margin: 10px 0;
+}
+
+/* Stylish Button */
+button {
+    background: linear-gradient(to right, #ff512f, #dd2476);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 1.2em;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 20px;
+}
+
+button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 10px rgba(255, 81, 47, 0.3);
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .thank-you-container {
+        width: 80%;
+    }
+}
+</style>
+
+
+
+<script>
+// Smooth Fade-in Effect
+function fadeInMessage() {
+    document.querySelector(".thank-you-container").style.opacity = "1";
+}
+
+// Redirect to Home
+function goHome() {
+    window.location.href = "index.html"; // Change to your homepage URL
+}
+
+</script>

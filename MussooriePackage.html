@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Yatra Go - Your Trusted Travel Partner</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="img/Yatra Go.png">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600&family=Roboto&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Bootstrap CSS (Assuming it's already included for the navbar) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Flatpickr CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+    <!-- Flatpickr JS -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+</head>
+
+    <body>
+
+        <!-- Spinner Start -->
+        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <!-- Spinner End -->
+
+<!-- Navbar & Hero Start -->
+<div class="container-fluid position-relative p-0">
+    <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
+        <a href="" class="navbar-brand p-0 d-flex align-items-center">
+            <img src="img/Yatra Go Logo.png" alt="Yatra Go Logo" class="logo me-12" style="width: 130px; height: 150px;">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="fa fa-bars"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto py-0">
+                <a href="index.html" class="nav-item nav-link">Home</a>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Packages</a>
+                    <div class="dropdown-menu m-0">
+                        <a href="Uttarakhand.html" class="dropdown-item">Uttarakhand</a>
+                        <a href="Himachal_Pradesh.html" class="dropdown-item">Himachal Pradesh</a>
+                        <a href="Kashmir.html" class="dropdown-item">Kashmir</a>
+                        <a href="international.html" class="dropdown-item">International</a>
+                    </div>
+                </div>
+                <a href="destinations.html" class="nav-item nav-link">Destinations</a>
+                <a href="activity.html" class="nav-item nav-link">Activity</a>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Our Services</a>
+                    <div class="dropdown-menu m-0">
+                        <a href="blogs.html" class="dropdown-item">Blogs</a>
+                        <a href="hotel.html" class="dropdown-item">Hotel</a>
+                        <a href="car-rental.html" class="dropdown-item">Car/Coach Rental</a>
+                        <a href="railway-booking.html" class="dropdown-item">Railway Booking</a>
+                        <a href="air-ticket.html" class="dropdown-item">Air Ticket</a>
+                        <a href="bike-rental.html" class="dropdown-item">Bike Rental</a>
+                    </div>
+                </div>
+                <a href="about.html" class="nav-item nav-link">About Us</a>
+                <a href="contact.html" class="nav-item nav-link">Contact Us</a>
+                <button class="btn btn-primary ms-3 query-now-btn" id="queryNowBtn">Query Now</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Popup Form -->
+    <div class="popup-overlay" id="popupOverlay">
+        <div class="popup-form">
+            <button class="close-btn" id="closePopupBtn">×</button>
+            <h2 class="text-center mb-4">Travel Booking Enquiry</h2>
+            <form id="travelBookingForm">
+                <input type="hidden" name="access_key" value="a8b1a31d-8cae-4a14-994a-4e5b051c1956">
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="fullName">Full Name *</label>
+                            <input type="text" class="form-control" id="fullName" name="fullName" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="contactNumber">Contact Number *</label>
+                            <input type="tel" class="form-control" id="contactNumber" name="contactNumber" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="numTravelers">Number of Travelers *</label>
+                            <select class="form-control stylish-select" id="numTravelers" name="numTravelers" required>
+                                <option value="" disabled selected>Select Number</option>
+                                <option value="1">1 Traveler</option>
+                                <option value="2">2 Travelers</option>
+                                <option value="3">3 Travelers</option>
+                                <option value="4">4 Travelers</option>
+                                <option value="5">5 Travelers</option>
+                                <option value="6">6 Travelers</option>
+                                <option value="7">7 Travelers</option>
+                                <option value="8">8 Travelers</option>
+                                <option value="9">9 Travelers</option>
+                                <option value="10">10+ Travelers</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="destination">Preferred Destination *</label>
+                            <input type="text" class="form-control" id="destination" name="destination" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="tripDuration">Trip Duration (Days) *</label>
+                            <select class="form-control stylish-select" id="tripDuration" name="tripDuration" required>
+                                <option value="" disabled selected>Select Duration</option>
+                                <option value="1">1 Day</option>
+                                <option value="2">2 Days</option>
+                                <option value="3">3 Days</option>
+                                <option value="4">4 Days</option>
+                                <option value="5">5 Days</option>
+                                <option value="6">6 Days</option>
+                                <option value="7">7 Days</option>
+                                <option value="8">8 Days</option>
+                                <option value="9">9 Days</option>
+                                <option value="10">10 Days</option>
+                                <option value="11">11+ Days</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="travelDate">Date of Travel *</label>
+                            <input type="text" class="form-control" id="travelDate" name="travelDate" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="packageType">Package Type *</label>
+                            <select class="form-control" id="packageType" name="packageType" required>
+                                <option value="" disabled selected>Select Package</option>
+                                <option value="adventure">Adventure Package</option>
+                                <option value="family">Family Package</option>
+                                <option value="honeymoon">Honeymoon Package</option>
+                                <option value="temples">Temples Package</option>
+                                <option value="custom">Custom Package</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="accommodation">Accommodation Preference *</label>
+                            <select class="form-control" id="accommodation" name="accommodation" required>
+                                <option value="" disabled selected>Select Preference</option>
+                                <option value="hotel">Hotel</option>
+                                <option value="resort">Resort</option>
+                                <option value="homestay">Homestay</option>
+                                <option value="no-preference">No Preference</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="travelMode">Mode of Travel *</label>
+                            <select class="form-control" id="travelMode" name="travelMode" required>
+                                <option value="" disabled selected>Select Mode</option>
+                                <option value="car">Car</option>
+                                <option value="bus">Bus</option>
+                                <option value="train">Train</option>
+                                <option value="flight">Flight</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label for="budget">Estimated Budget (Optional)</label>
+                            <div class="budget-slider-container">
+                                <input type="range" class="budget-slider" id="budget" name="budget" min="0" max="500000" step="100" value="0">
+                                <div class="budget-display">
+                                    Budget: <span id="budgetValue">₹0</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label for="specialRequirements">Special Requirements</label>
+                            <textarea class="form-control" id="specialRequirements" name="specialRequirements" rows="4" placeholder="Any additional requests or notes"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-12 text-center">
+                        <button type="submit" class="btn btn-primary">Submit Enquiry</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Query Now Button */
+    .query-now-btn {
+    border-radius: 15px; /* Adjusted for smaller size */
+    padding: 12px 20px; /* Reduced padding to decrease height and width */
+    font-size: 15px; /* Smaller font size to fit reduced dimensions */
+    line-height: 1.5; /* Ensures text alignment within smaller height */
+    width: 125px; /* Explicit width for precise control */
+    height: 55px; /* Explicit height for precise control */
+    display: inline-flex; /* Ensures content is centered */
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    align-self: center; /* Centers button vertically in flex context */
+    margin-top: 0; /* Reset any top margin */
+    line-height: 1; /* Adjust line-height for vertical centering */
+}
+
+.query-now-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Popup Overlay */
+.popup-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.popup-overlay.active {
+    display: block;
+    opacity: 1;
+}
+
+/* Popup Form */
+.popup-form {
+    position: relative;
+    background: #fff url('https://www.transparenttextures.com/patterns/natural-paper.png'); /* Subtle travel-themed texture */
+    max-width: 700px;
+    margin: 20px auto;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transform: scale(0.7);
+    transition: transform 0.3s ease;
+    overflow-y: auto;
+    max-height: 90vh;
+}
+
+.popup-overlay.active .popup-form {
+    transform: scale(1);
+}
+
+/* Close Button */
+.close-btn {
+    position: absolute;
+    top: 18px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+    color: #ff4d4d;
+}
+
+/* Form Styling */
+.popup-form h2 {
+    color: #2c3e50;
+    font-weight: 700;
+    font-family: 'Poppins', sans-serif;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    font-weight: 500;
+    color: #34495e;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.form-control {
+    border: 1px solid #dcdcdc;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    background: #f9f9f9;
+}
+
+.form-control:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 8px rgba(52, 152, 219, 0.3);
+    background: #fff;
+    transform: translateY(-2px);
+}
+
+.form-control::placeholder {
+    color: #bdc3c7;
+}
+
+/* Submit Button */
+.popup-form .btn-primary {
+    background: linear-gradient(45deg, #2079b4, #2980b9);
+    border: none;
+    padding: 12px 30px;
+    border-radius: 25px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.popup-form .btn-primary:hover {
+    background: linear-gradient(45deg, #2980b9, #2980b9);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .popup-form {
+        margin: 10px;
+        padding: 20px;
+    }
+
+    .query-now-btn {
+        margin-left: 10px;
+        padding: 5px 12px;
+        font-size: 12px;
+        width: 90px; /* Slightly smaller width on mobile */
+        height: 28px; /* Slightly smaller height on mobile */
+    }
+}
+
+/* Flatpickr Date Picker Customization */
+.flatpickr-input {
+    cursor: pointer;
+}
+
+.flatpickr-calendar {
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.flatpickr-day.selected {
+    background: #3498db;
+    border-color: #3498db;
+}
+
+.flatpickr-day:hover {
+    background: #ecf0f1;
+    border-color: #3498db;
+}
+
+/* Basic styling for the slider and display */
+.form-group {
+        margin: 20px;
+        font-family: Arial, sans-serif;
+    }
+    .budget-slider-container {
+        max-width: 500px;
+    }
+    .budget-slider {
+        width: 100%;
+        margin: 10px 0;
+    }
+    .budget-display {
+        font-size: 16px;
+        font-weight: bold;
+    }
+</style>
+
+<script>
+    // Popup Toggle
+    document.getElementById('queryNowBtn').addEventListener('click', function() {
+        document.getElementById('popupOverlay').classList.add('active');
+    });
+
+    document.getElementById('closePopupBtn').addEventListener('click', function() {
+        document.getElementById('popupOverlay').classList.remove('active');
+    });
+
+    // Close popup when clicking outside the form
+    document.getElementById('popupOverlay').addEventListener('click', function(e) {
+        if (e.target === this) {
+            this.classList.remove('active');
+        }
+    });
+
+    // Initialize Flatpickr Date Picker
+    flatpickr('#travelDate', {
+        dateFormat: 'd-m-Y',
+        minDate: 'today',
+        enableTime: false,
+        altInput: true,
+        altFormat: 'F j, Y',
+        animate: true,
+    });
+
+    // Get the slider and the budget value display elements
+    const slider = document.getElementById('budget');
+    const budgetValueDisplay = document.getElementById('budgetValue');
+
+    // Function to format the budget value with Indian Rupee symbol and commas
+    function formatBudget(value) {
+        return '₹' + Number(value).toLocaleString('en-IN');
+    }
+
+    // Update the display when the slider value changes
+    slider.addEventListener('input', function() {
+        budgetValueDisplay.textContent = formatBudget(slider.value);
+    });
+
+    // Initialize the display with the default slider value
+    budgetValueDisplay.textContent = formatBudget(slider.value);
+
+    // Form Submission with Web3Forms
+    document.getElementById('travelBookingForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        // Create a FormData object to collect form data
+        const form = this;
+        const formData = new FormData(form);
+
+        // Add the Web3Forms access key to the form data
+        formData.append('access_key', 'a8b1a31d-8cae-4a14-994a-4e5b051c1956'); // Replace with your Web3Forms access key
+
+        // Send the form data to Web3Forms API
+        fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert('Thank you for your enquiry! We will get back to you soon.');
+                document.getElementById('popupOverlay').classList.remove('active');
+                form.reset();
+                // Reset budget display
+                budgetValueDisplay.textContent = formatBudget(slider.value);
+            } else {
+                alert('Something went wrong. Please try again.');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('An error occurred. Please try again later.');
+        });
+    });
+</script>
+<!-- Navbar & Hero End -->
+
+    <!-- Tailwind CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        /* Package Card Styles */
+        .package-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        .package-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        /* Mussoorie Popup Overlay and Content */
+        .mussoorie-popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        .popup-content {
+            background: linear-gradient(135deg, #ffffff, #f3f4f6);
+            padding: 2rem;
+            border-radius: 15px;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            position: relative;
+            animation: slideIn 0.3s ease;
+        }
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .popup-content h2 {
+            font-size: 1.75rem;
+            color: #1e3a8a;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        .popup-content input, .popup-content select, .popup-content textarea {
+            width: 100%;
+            padding: 0.75rem;
+            margin-bottom: 1rem;
+            border: 1px solid #d1d5db;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .popup-content input:hover, .popup-content select:hover, .popup-content textarea:hover {
+            border-color: #1e3a8a;
+            box-shadow: 0 0 5px rgba(30, 58, 138, 0.3);
+        }
+        .popup-content .date-picker-container {
+            position: relative;
+            cursor: pointer;
+        }
+        .popup-content .date-picker-container input {
+            cursor: pointer;
+        }
+        .popup-content button {
+            width: 100%;
+            padding: 0.75rem;
+            background: #1e3a8a;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+        .popup-content button:hover {
+            background: #1e40af;
+            transform: scale(1.05);
+        }
+        .close-popup {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #1e3a8a;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        .close-popup:hover {
+            color: #1e40af;
+            transform: rotate(90deg);
+        }
+        /* Highlight Section */
+        .highlight-section {
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+            color: white;
+            padding: 3rem 1.5rem;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+        }
+        .highlight-section .flex {
+            transition: transform 0.3s ease;
+        }
+        .highlight-section .flex:hover {
+            transform: scale(1.05);
+        }
+        /* Gallery Images */
+        .gallery-img {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        .gallery-img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        /* Content Section */
+        .content-section {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 2rem;
+        }
+        .content-section img {
+            flex: 1;
+            max-width: 400px;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+        .content-section img:hover {
+            transform: scale(1.03);
+        }
+        .content-section .text-content {
+            flex: 2;
+        }
+        /* Image Popup */
+        .image-popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+        .image-popup img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+        .image-popup img:hover {
+            transform: scale(1.02);
+        }
+        .close-image-popup {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 2rem;
+            color: white;
+            cursor: pointer;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        .close-image-popup:hover {
+            color: #3b82f6;
+            transform: rotate(90deg);
+        }
+        /* FAQ Section */
+        .faq-item {
+            margin-bottom: 1rem;
+        }
+        .faq-item summary {
+            font-weight: 600;
+            cursor: pointer;
+            padding: 1rem;
+            background: #f3f4f6;
+            border-radius: 5px;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+        .faq-item summary:hover {
+            background: #e5e7eb;
+            transform: translateX(5px);
+        }
+        .faq-item p {
+            padding: 1rem;
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 5px;
+            margin-top: 0.5rem;
+            transition: box-shadow 0.3s ease;
+        }
+        .faq-item p:hover {
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        @media (max-width: 768px) {
+            .content-section {
+                flex-direction: column;
+            }
+            .content-section img {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- Hero Section -->
+    <section class="relative bg-cover bg-center h-96" style="background-image: url('img/Mussoorie.jpg')">
+        <div class="absolute inset-0 bg-black opacity-50"></div>
+        <div class="relative z-10 flex flex-col items-center justify-center h-full text-center text-white">
+            <ol class="breadcrumb justify-content-center mb-6">
+                <li class="breadcrumb-item">
+                    <a href="index.html" class="breadcrumb-link">Home</a>
+                </li>
+                <li class="breadcrumb-item active text-white breadcrumb-link">
+                    <a href="Uttarakhand.html" class="breadcrumb-link">Uttarakhand package</a>
+                </li>
+            </ol> 
+        </div>
+    </section>
+
+    <!-- Introduction Section -->
+    <section class="py-16 px-4 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">Welcome to Mussoorie - The Queen of Hills</h2>
+            <div class="content-section">
+                <img src="img/Mussoorie Evening.jpg" alt="Mussoorie Scenery">
+                <div class="text-content">
+                    <p class="text-lg text-gray-600 leading-relaxed mb-4">
+                        Nestled in the foothills of the Garhwal Himalayas, Mussoorie, fondly known as the Queen of Hills, is a captivating hill station that blends colonial charm with natural splendor. Famous for its lush greenery, cascading waterfalls, and panoramic Himalayan views, Mussoorie is the perfect escape for travelers seeking tranquility or adventure. At Yatra Go, our meticulously crafted Mussoorie tour packages ensure you experience the best of this enchanting destination, from the bustling Mall Road to the serene Kempty Falls.
+                    </p>
+                    <p class="text-lg text-gray-600 leading-relaxed">
+                        Whether you're planning a romantic honeymoon, a family vacation, or a solo adventure, our packages cater to all preferences and budgets. Explore historic landmarks, indulge in local cuisine, or embark on thrilling treks – Mussoorie has it all. Let Yatra Go make your journey seamless with expert guides, comfortable stays, and unforgettable memories.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Mussoorie Section -->
+    <section class="py-16 px-4 bg-gray-100">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">Why Visit Mussoorie?</h2>
+            <div class="content-section">
+                <div class="text-content">
+                    <p class="text-lg text-gray-600 leading-relaxed mb-4">
+                        Mussoorie is a treasure trove of experiences, offering something for everyone. Stroll along the vibrant Mall Road, soak in the serenity of Lal Tibba’s viewpoints, or feel the thrill of a cable car ride to Gun Hill. The hill station’s cool climate, colonial architecture, and proximity to adventure spots like Dhanaulti and Nag Tibba make it a year-round destination.
+                    </p>
+                    <p class="text-lg text-gray-600 leading-relaxed">
+                        From couples seeking a romantic retreat to families looking for fun-filled activities, Mussoorie’s diverse attractions cater to all. Enjoy shopping for local handicrafts, savoring Garhwali delicacies, or simply basking in the misty Himalayan ambiance. With Yatra Go, you’ll uncover hidden gems and iconic landmarks with ease and comfort.
+                    </p>
+                </div>
+                <img src="img/mussoorie-mall-road.jpg" alt="Mall Road">
+            </div>
+        </div>
+    </section>
+
+    <!-- Highlight Section -->
+    <section class="highlight-section">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl font-bold mb-4">Why Choose Yatra Go for Mussoorie?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="flex flex-col items-center">
+                    <svg class="h-12 w-12 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7m-9 2v6m4-6v6m-2-2h.01M21 12l-2-2m0 0l-7-7-7 7"></path></svg>
+                    <h3 class="text-xl font-semibold mb-2">Customized Itineraries</h3>
+                    <p>Tailored packages to suit your preferences, from luxury to budget-friendly options.</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <svg class="h-12 w-12 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 6c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"></path></svg>
+                    <h3 class="text-xl font-semibold mb-2">Expert Guides</h3>
+                    <p>Local experts to enhance your experience with insights and stories.</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <svg class="h-12 w-12 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h18v18H3V3z"></path></svg>
+                    <h3 class="text-xl font-semibold mb-2">Seamless Booking</h3>
+                    <p>Easy and secure booking with Web3Forms integration.</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <svg class="h-12 w-12 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                    <h3 class="text-xl font-semibold mb-2">24/7 Support</h3>
+                    <p>Dedicated assistance before, during, and after your trip.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tour Packages Section -->
+    <section class="py-16 px-4 bg-gray-100">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Our Mussoorie Tour Packages</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Package 1 -->
+                <div class="package-card bg-white rounded-lg shadow-lg p-6" onclick="openMussooriePopup('weekend-escape')">
+                    <img src="img/Kempty-falls-mussoorie.jpg" alt="Kempty Falls" class="w-full h-48 object-cover rounded-lg mb-4">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Weekend Escape</h3>
+                    <p class="text-gray-600 mb-4">2 Nights / 3 Days</p>
+                    <ul class="text-gray-600 mb-4 list-disc list-inside">
+                        <li>Visit Kempty Falls & Mall Road</li>
+                        <li>Cable car ride to Gun Hill</li>
+                        <li>Stay in a 3-star hotel</li>
+                        <li>Daily breakfast included</li>
+                        <li>Guided city tour</li>
+                    </ul>
+                    <p class="text-lg font-bold text-gray-800">Starting at ₹10,500 per person</p>
+                </div>
+                <!-- Package 2 -->
+                <div class="package-card bg-white rounded-lg shadow-lg p-6" onclick="openMussooriePopup('himalayan-bliss')">
+                    <img src="img/mussoorie-camel-back.webp" alt="Lal Tibba" class="w-full h-48 object-cover rounded-lg mb-4">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Himalayan Bliss</h3>
+                    <p class="text-gray-600 mb-4">3 Nights / 4 Days</p>
+                    <ul class="text-gray-600 mb-4 list-disc list-inside">
+                        <li>Explore Lal Tibba & Camel's Back Road</li>
+                        <li>Day trip to Dhanaulti</li>
+                        <li>4-star hotel accommodation</li>
+                        <li>Breakfast & dinner included</li>
+                        <li>Private cab for sightseeing</li>
+                    </ul>
+                    <p class="text-lg font-bold text-gray-800">Starting at ₹15,900 per person</p>
+                </div>
+                <!-- Package 3 -->
+                <div class="package-card bg-white rounded-lg shadow-lg p-6" onclick="openMussooriePopup('adventure-seeker')">
+                    <img src="img/Mussoorie1.jpg" alt="Nag Tibba Trek" class="w-full h-48 object-cover rounded-lg mb-4">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Adventure Seeker</h3>
+                    <p class="text-gray-600 mb-4">4 Nights / 5 Days</p>
+                    <ul class="text-gray-600 mb-4 list-disc list-inside">
+                        <li>Nag Tibba trek experience</li>
+                        <li>Visit Benog Wildlife Sanctuary</li>
+                        <li>Luxury resort stay</li>
+                        <li>All meals included</li>
+                        <li>Adventure gear provided</li>
+                    </ul>
+                    <p class="text-lg font-bold text-gray-800">Starting at ₹22,900 per person</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Activities in Mussoorie Section -->
+    <section class="py-16 px-4 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">Top Activities in Mussoorie</h2>
+            <div class="content-section">
+                <img src="img/Mussoorie_Activities.webp" alt="Adventure Activities">
+                <div class="text-content">
+                    <p class="text-lg text-gray-600 leading-relaxed mb-4">
+                        Mussoorie is a playground for adventure enthusiasts and leisure travelers alike. Embark on a thrilling trek to Nag Tibba, enjoy a scenic cable car ride to Gun Hill, or take a leisurely walk along Camel's Back Road. For families, the Company Garden offers a serene picnic spot with vibrant flowerbeds and a small amusement park.
+                    </p>
+                    <p class="text-lg text-gray-600 leading-relaxed">
+                        Don’t miss the chance to visit the Mussoorie Heritage Centre to dive into the town’s colonial history or explore the vibrant Tibetan Market for unique souvenirs. Foodies can savor local delicacies like momos, Maggi, and Garhwali thalis at iconic eateries along Mall Road. With Yatra Go, every activity is planned to maximize your enjoyment.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Best Time to Visit Section -->
+    <section class="py-16 px-4 bg-gray-100">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">Best Time to Visit Mussoorie</h2>
+            <div class="content-section">
+                <div class="text-content">
+                    <p class="text-lg text-gray-600 leading-relaxed mb-4">
+                        Mussoorie is a year-round destination, but each season offers a unique experience. <strong>Summer (March to June)</strong> is ideal for sightseeing and outdoor activities, with pleasant temperatures between 15°C and 25°C. <strong>Monsoon (July to September)</strong> brings lush greenery and misty landscapes, perfect for nature lovers, though heavy rainfall may limit outdoor plans.
+                    </p>
+                    <p class="text-lg text-gray-600 leading-relaxed">
+                        <strong>Winter (October to February)</strong> transforms Mussoorie into a snowy wonderland, with temperatures dropping to 0°C, making it perfect for cozy getaways and witnessing snowfall. No matter the season, Yatra Go’s packages are designed to offer the best experience tailored to the weather and your preferences.
+                    </p>
+                </div>
+                <img src="img/Mussoorie-snowview.jpg" alt="Winter in Mussoorie">
+            </div>
+        </div>
+    </section>
+
+    <!-- Mussoorie Highlights Section -->
+    <section class="py-16 px-4 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Mussoorie Highlights</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+                <img src="img/Kempty-falls-mussoorie.jpg" alt="Kempty Falls" class="w-full h-64 object-cover rounded-lg gallery-img" onclick="openImagePopup(this.src)">
+                <img src="img/mussoorie-camel-back.webp" alt="Lal Tibba" class="w-full h-64 object-cover rounded-lg gallery-img" onclick="openImagePopup(this.src)">
+                <img src="img/mussoorie-mall-road.jpg" alt="Mall Road" class="w-full h-64 object-cover rounded-lg gallery-img" onclick="openImagePopup(this.src)">
+                <img src="img/Mussoorie1.jpg" alt="Himalayan View" class="w-full h-64 object-cover rounded-lg gallery-img" onclick="openImagePopup(this.src)">
+                <img src="img/Mussoorie_Activities.webp" alt="Gun Hill" class="w-full h-64 object-cover rounded-lg gallery-img" onclick="openImagePopup(this.src)">
+                <img src="img/Company garden Mussoorie.webp" alt="Company Garden" class="w-full h-64 object-cover rounded-lg gallery-img" onclick="open |ImagePopup(this.src)">
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-16 px-4 bg-gray-100">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Frequently Asked Questions About Mussoorie</h2>
+            <div class="space-y-4">
+                <details class="faq-item">
+                    <summary>What is the best way to reach Mussoorie?</summary>
+                    <p>Mussoorie is well-connected by road from Dehradun (34 km), which has the nearest airport (Jolly Grant) and railway station. You can hire a taxi or take a bus from Dehradun to Mussoorie, with scenic drives taking about 1-2 hours. Yatra Go’s packages include hassle-free transfers for a comfortable journey.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>Is Mussoorie safe for solo female travelers?</summary>
+                    <p>Yes, Mussoorie is generally safe for solo female travelers, with a welcoming local community and tourist-friendly infrastructure. Stick to well-lit areas like Mall Road at night and opt for guided tours for remote spots. Yatra Go ensures safety with trusted guides and secure accommodations.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>Can I visit Mussoorie during the monsoon season?</summary>
+                    <p>While the monsoon (July to September) brings lush greenery, heavy rainfall can lead to landslides and road closures. If you enjoy misty landscapes and fewer crowds, it’s a great time, but plan indoor activities and stay updated on weather conditions. Yatra Go offers flexible itineraries to adapt to weather changes.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>What unique souvenirs can I buy in Mussoorie?</summary>
+                    <p>Mussoorie’s markets, especially the Tibetan Market and Mall Road, offer unique souvenirs like handwoven shawls, wooden carvings, brassware, and local jams. Don’t miss the handmade candles and aromatic teas from local shops. Yatra Go’s guided tours include stops at the best shopping spots.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>Are there any offbeat experiences in Mussoorie?</summary>
+                    <p>Beyond popular attractions, try visiting the George Everest House for stunning views and history, or explore the quiet trails of Landour for a peaceful retreat. Yatra Go can customize your itinerary to include these hidden gems for a unique experience.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>What should I pack for a winter trip to Mussoorie?</summary>
+                    <p>For winter (October to February), pack warm clothing like jackets, sweaters, scarves, and gloves, as temperatures can drop below 0°C. Comfortable walking shoes are essential for snowy trails. Yatra Go provides packing tips tailored to your travel dates.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mussoorie Booking Popups -->
+    <!-- Weekend Escape Popup -->
+    <div id="weekend-escape-mussoorie-popup" class="mussoorie-popup-overlay">
+        <div class="popup-content">
+            <span class="close-popup" onclick="closeMussooriePopup('weekend-escape')">×</span>
+            <h2>Book Weekend Escape to Mussoorie</h2>
+            <form action="https://api.web3forms.com/submit" method="POST">
+                <input type="hidden" name="access_key" value="a8b1a31d-8cae-4a14-994a-4e5b051c1956">
+                <input type="hidden" name="page_name" value="Mussoorie">
+                <input type="hidden" name="package_name" value="Weekend Escape">
+                <input type="text" name="name" placeholder="Full Name" required>
+                <input type="email" name="email" placeholder="Email Address" required>
+                <input type="tel" name="phone" placeholder="Phone Number" required>
+                <div class="date-picker-container">
+                    <input type="date" name="travel_date" placeholder="Preferred Travel Date" required>
+                </div>
+                <select name="num_travelers" required>
+                    <option value="" disabled selected>Number of Travelers</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5+">5 or more</option>
+                </select>
+                <textarea name="message" rows="4" placeholder="Any special requests? (e.g., vegetarian meals)" class="mb-4"></textarea>
+                <button type="submit">Submit Booking</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Himalayan Bliss Popup -->
+    <div id="himalayan-bliss-mussoorie-popup" class="mussoorie-popup-overlay">
+        <div class="popup-content">
+            <span class="close-popup" onclick="closeMussooriePopup('himalayan-bliss')">×</span>
+            <h2>Book Himalayan Bliss to Mussoorie</h2>
+            <form action="https://api.web3forms.com/submit" method="POST">
+                <input type="hidden" name="access_key" value="a8b1a31d-8cae-4a14-994a-4e5b051c1956">
+                <input type="hidden" name="page_name" value="Mussoorie">
+                <input type="hidden" name="package_name" value="Himalayan Bliss">
+                <input type="text" name="name" placeholder="Full Name" required>
+                <input type="email" name="email" placeholder="Email Address" required>
+                <input type="tel" name="phone" placeholder="Phone Number" required>
+                <div class="date-picker-container">
+                    <input type="date" name="travel_date" placeholder="Preferred Travel Date" required>
+                </div>
+                <select name="num_travelers" required>
+                    <option value="" disabled selected>Number of Travelers</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5+">5 or more</option>
+                </select>
+                <textarea name="message" rows="4" placeholder="Any special requests? (e.g., room with a view)" class="mb-4"></textarea>
+                <button type="submit">Submit Booking</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Adventure Seeker Popup -->
+    <div id="adventure-seeker-mussoorie-popup" class="mussoorie-popup-overlay">
+        <div class="popup-content">
+            <span class="close-popup" onclick="closeMussooriePopup('adventure-seeker')">×</span>
+            <h2>Book Adventure Seeker to Mussoorie</h2>
+            <form action="https://api.web3forms.com/submit" method="POST">
+                <input type="hidden" name="access_key" value="a8b1a31d-8cae-4a14-994a-4e5b051c1956">
+                <input type="hidden" name="page_name" value="Mussoorie">
+                <input type="hidden" name="package_name" value="Adventure Seeker">
+                <input type="text" name="name" placeholder="Full Name" required>
+                <input type="email" name="email" placeholder="Email Address" required>
+                <input type="tel" name="phone" placeholder="Phone Number" required>
+                <div class="date-picker-container">
+                    <input type="date" name="travel_date" placeholder="Preferred Travel Date" required>
+                </div>
+                <select name="num_travelers" required>
+                    <option value="" disabled selected>Number of Travelers</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5+">5 or more</option>
+                </select>
+                <textarea name="message" rows="4" placeholder="Any special requests? (e.g., trekking gear preferences)" class="mb-4"></textarea>
+                <button type="submit">Submit Booking</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Image Popup -->
+    <div id="imagePopup" class="image-popup">
+        <span class="close-image-popup" onclick="closeImagePopup()">×</span>
+        <img id="popupImage" src="" alt="Enlarged Image">
+    </div>
+
+    <script>
+        function openMussooriePopup(popupId) {
+            document.getElementById(`${popupId}-mussoorie-popup`).style.display = 'flex';
+        }
+
+        function closeMussooriePopup(popupId) {
+            document.getElementById(`${popupId}-mussoorie-popup`).style.display = 'none';
+        }
+
+        function openImagePopup(src) {
+            document.getElementById('imagePopup').style.display = 'flex';
+            document.getElementById('popupImage').src = src;
+        }
+
+        function closeImagePopup() {
+            document.getElementById('imagePopup').style.display = 'none';
+        }
+
+        // Close popups when clicking outside
+        document.querySelectorAll('.mussoorie-popup-overlay').forEach(popup => {
+            popup.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.style.display = 'none';
+                }
+            });
+        });
+
+        document.getElementById('imagePopup').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeImagePopup();
+            }
+        });
+
+        // Make entire date input clickable for date picker
+        document.querySelectorAll('.date-picker-container').forEach(container => {
+            const dateInput = container.querySelector('input[type="date"]');
+            container.addEventListener('click', () => {
+                dateInput.showPicker();
+            });
+        });
+    </script>
+
+
+
+
+
+
+<!-- Footer Start -->
+<div class="container-fluid footer py-5">
+    <div class="container py-5">
+        <div class="row g-5">
+            <div class="col-md-6 col-lg-6 col-xl-3">
+                <div class="footer-item d-flex flex-column">
+                    <h4 class="mb-4 text-white">Get In Touch</h4>
+                    <a href="tel:+918979931256"><i class="fas fa-phone me-2"></i> +91 8979931256</a>
+                    <a href="tel:+918979220256"><i class="fas fa-phone me-2"></i> +91 8979220256</a>
+                    <a href="mailto:info@yatrago.com"><i class="fas fa-envelope me-2"></i> info@yatrago.com</a>
+                    <a href="mailto:sales.yatrago@gmail.com"><i class="fas fa-envelope me-2"></i> sales.yatrago@gmail.com</a>
+                    <a href=""><i class="fas fa-home me-2"></i> 94, Yoravar Enclave, Phase-1, Ganesh Vihar, Sitapur, Jwalapur, Haridwar, Uttarakhand 249407</a>
+                    <div class="d-flex align-items-center">
+                        <i class="fas fa-share fa-2x text-white me-2"></i>
+                        <a class="btn-square btn btn-primary rounded-circle mx-1" href=""><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn-square btn btn-primary rounded-circle mx-1" href=""><i class="fab fa-twitter"></i></a>
+                        <a class="btn-square btn btn-primary rounded-circle mx-1" href=""><i class="fab fa-instagram"></i></a>
+                        <a class="btn-square btn btn-primary rounded-circle mx-1" href=""><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-6 col-xl-3">
+                <div class="footer-item d-flex flex-column">
+                    <h4 class="mb-4 text-white">Company</h4>
+                    <a href="about.html"><i class="fas fa-angle-right me-2"></i> About Us</a>
+                    <a href=""><i class="fas fa-angle-right me-2"></i> Careers</a>
+                    <a href=""><i class="fas fa-angle-right me-2"></i> Blog</a>
+                    <a href=""><i class="fas fa-angle-right me-2"></i> Press</a>
+                    <a href=""><i class="fas fa-angle-right me-2"></i> Gift Cards</a>
+                    <a href=""><i class="fas fa-angle-right me-2"></i> Magazine</a>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-6 col-xl-3">
+                <div class="footer-item d-flex flex-column">
+                    <h4 class="mb-4 text-white">Support</h4>
+                    <a href="contact.html"><i class="fas fa-angle-right me-2"></i> Contact Us</a>
+                    <a href=""><i class="fas fa-angle-right me-2"></i> Legal Notice</a>
+                    <a href=""><i class="fas fa-angle-right me-2"></i> Privacy Policy</a>
+                    <a href=""><i class="fas fa-angle-right me-2"></i> Terms and Conditions</a>
+                    <a href=""><i class="fas fa-angle-right me-2"></i> Sitemap</a>
+                    <a href=""><i class="fas fa-angle-right me-2"></i> Cookie policy</a>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-6 col-xl-3">
+                <div class="footer-item">
+                    <div class="row gy-3 gx-2 mb-4">
+                        <div class="col-xl-6">
+                            <form>
+                                <div class="form-floating">
+                                    <select class="form-select bg-dark border" id="select1">
+                                        <option value="1">Indian</option>
+                                        <option value="1">Arabic</option>
+                                        <option value="2">German</option>
+                                        <option value="3">Greek</option>
+                                        <option value="3">New York</option>
+                                    </select>
+                                    <label for="select1">Country</label>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-xl-6">
+                            <form>
+                                <div class="form-floating">
+                                    <select class="form-select bg-dark border" id="select1">
+                                        <option value="1">INR</option>
+                                        <option value="2">EUR</option>
+                                        <option value="3">USD</option>
+                                        <option value="3">GBP</option>
+                                    </select>
+                                    <label for="select1">Currency</label>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <h4 class="text-white mb-3">Payments</h4>
+                    <div class="footer-bank-card">
+                        <a href="#" class="text-white me-2"><i class="fab fa-cc-amex fa-2x"></i></a>
+                        <a href="#" class="text-white me-2"><i class="fab fa-cc-visa fa-2x"></i></a>
+                        <a href="#" class="text-white me-2"><i class="fas fa-credit-card fa-2x"></i></a>
+                        <a href="#" class="text-white me-2"><i class="fab fa-cc-mastercard fa-2x"></i></a>
+                        <a href="#" class="text-white me-2"><i class="fab fa-cc-paypal fa-2x"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-cc-discover fa-2x"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Footer End -->
+
+        
+        <!-- Copyright Start -->
+        <div class="container-fluid copyright text-body py-4">
+            <div class="container">
+                <div class="row g-4 align-items-center">
+                    <div class="col-md-6 text-center text-md-end mb-md-0">
+                        <i class="fas fa-copyright me-2"></i><a class="text-white" href="#">Yatra Go</a>, All right reserved.
+                    </div>
+                    <div class="col-md-6 text-center text-md-start">
+                        <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
+                        <!--/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
+                        <!--/*** you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". ***/-->
+                        Designed By  YATRA GO 
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Copyright End -->
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-primary btn-primary-outline-0 btn-md-square back-to-top"><i class="fa fa-arrow-up"></i></a>   
+
+        
+        <!-- JavaScript Libraries -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="lib/easing/easing.min.js"></script>
+        <script src="lib/waypoints/waypoints.min.js"></script>
+        <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+        <script src="lib/lightbox/js/lightbox.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+        <!-- Template Javascript -->
+        <script src="js/main.js"></script>
+    </body>
+
+</html>

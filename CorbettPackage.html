@@ -1,0 +1,1780 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Yatra Go - Your Trusted Travel Partner</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="img/Yatra Go.png">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600&family=Roboto&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Bootstrap CSS (Assuming it's already included for the navbar) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Flatpickr CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+    <!-- Flatpickr JS -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+</head>
+
+    <body>
+
+        <!-- Spinner Start -->
+        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <!-- Spinner End -->
+
+<!-- Navbar & Hero Start -->
+<div class="container-fluid position-relative p-0">
+    <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
+        <a href="" class="navbar-brand p-0 d-flex align-items-center">
+            <img src="img/Yatra Go Logo.png" alt="Yatra Go Logo" class="logo me-12" style="width: 130px; height: 150px;">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="fa fa-bars"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto py-0">
+                <a href="index.html" class="nav-item nav-link">Home</a>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Packages</a>
+                    <div class="dropdown-menu m-0">
+                        <a href="Uttarakhand.html" class="dropdown-item">Uttarakhand</a>
+                        <a href="Himachal_Pradesh.html" class="dropdown-item">Himachal Pradesh</a>
+                        <a href="Kashmir.html" class="dropdown-item">Kashmir</a>
+                        <a href="international.html" class="dropdown-item">International</a>
+                    </div>
+                </div>
+                <a href="destinations.html" class="nav-item nav-link">Destinations</a>
+                <a href="activity.html" class="nav-item nav-link">Activity</a>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Our Services</a>
+                    <div class="dropdown-menu m-0">
+                        <a href="blogs.html" class="dropdown-item">Blogs</a>
+                        <a href="hotel.html" class="dropdown-item">Hotel</a>
+                        <a href="car-rental.html" class="dropdown-item">Car/Coach Rental</a>
+                        <a href="railway-booking.html" class="dropdown-item">Railway Booking</a>
+                        <a href="air-ticket.html" class="dropdown-item">Air Ticket</a>
+                        <a href="bike-rental.html" class="dropdown-item">Bike Rental</a>
+                    </div>
+                </div>
+                <a href="about.html" class="nav-item nav-link">About Us</a>
+                <a href="contact.html" class="nav-item nav-link">Contact Us</a>
+                <button class="btn btn-primary ms-3 query-now-btn" id="queryNowBtn">Query Now</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Popup Form -->
+    <div class="popup-overlay" id="popupOverlay">
+        <div class="popup-form">
+            <button class="close-btn" id="closePopupBtn">×</button>
+            <h2 class="text-center mb-4">Travel Booking Enquiry</h2>
+            <form id="travelBookingForm">
+                <input type="hidden" name="access_key" value="a8b1a31d-8cae-4a14-994a-4e5b051c1956">
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="fullName">Full Name *</label>
+                            <input type="text" class="form-control" id="fullName" name="fullName" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="contactNumber">Contact Number *</label>
+                            <input type="tel" class="form-control" id="contactNumber" name="contactNumber" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="numTravelers">Number of Travelers *</label>
+                            <select class="form-control stylish-select" id="numTravelers" name="numTravelers" required>
+                                <option value="" disabled selected>Select Number</option>
+                                <option value="1">1 Traveler</option>
+                                <option value="2">2 Travelers</option>
+                                <option value="3">3 Travelers</option>
+                                <option value="4">4 Travelers</option>
+                                <option value="5">5 Travelers</option>
+                                <option value="6">6 Travelers</option>
+                                <option value="7">7 Travelers</option>
+                                <option value="8">8 Travelers</option>
+                                <option value="9">9 Travelers</option>
+                                <option value="10">10+ Travelers</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="destination">Preferred Destination *</label>
+                            <input type="text" class="form-control" id="destination" name="destination" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="tripDuration">Trip Duration (Days) *</label>
+                            <select class="form-control stylish-select" id="tripDuration" name="tripDuration" required>
+                                <option value="" disabled selected>Select Duration</option>
+                                <option value="1">1 Day</option>
+                                <option value="2">2 Days</option>
+                                <option value="3">3 Days</option>
+                                <option value="4">4 Days</option>
+                                <option value="5">5 Days</option>
+                                <option value="6">6 Days</option>
+                                <option value="7">7 Days</option>
+                                <option value="8">8 Days</option>
+                                <option value="9">9 Days</option>
+                                <option value="10">10 Days</option>
+                                <option value="11">11+ Days</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="travelDate">Date of Travel *</label>
+                            <input type="text" class="form-control" id="travelDate" name="travelDate" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="packageType">Package Type *</label>
+                            <select class="form-control" id="packageType" name="packageType" required>
+                                <option value="" disabled selected>Select Package</option>
+                                <option value="adventure">Adventure Package</option>
+                                <option value="family">Family Package</option>
+                                <option value="honeymoon">Honeymoon Package</option>
+                                <option value="temples">Temples Package</option>
+                                <option value="custom">Custom Package</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="accommodation">Accommodation Preference *</label>
+                            <select class="form-control" id="accommodation" name="accommodation" required>
+                                <option value="" disabled selected>Select Preference</option>
+                                <option value="hotel">Hotel</option>
+                                <option value="resort">Resort</option>
+                                <option value="homestay">Homestay</option>
+                                <option value="no-preference">No Preference</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="travelMode">Mode of Travel *</label>
+                            <select class="form-control" id="travelMode" name="travelMode" required>
+                                <option value="" disabled selected>Select Mode</option>
+                                <option value="car">Car</option>
+                                <option value="bus">Bus</option>
+                                <option value="train">Train</option>
+                                <option value="flight">Flight</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label for="budget">Estimated Budget (Optional)</label>
+                            <div class="budget-slider-container">
+                                <input type="range" class="budget-slider" id="budget" name="budget" min="0" max="500000" step="100" value="0">
+                                <div class="budget-display">
+                                    Budget: <span id="budgetValue">₹0</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label for="specialRequirements">Special Requirements</label>
+                            <textarea class="form-control" id="specialRequirements" name="specialRequirements" rows="4" placeholder="Any additional requests or notes"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-12 text-center">
+                        <button type="submit" class="btn btn-primary">Submit Enquiry</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Query Now Button */
+    .query-now-btn {
+    border-radius: 15px; /* Adjusted for smaller size */
+    padding: 12px 20px; /* Reduced padding to decrease height and width */
+    font-size: 15px; /* Smaller font size to fit reduced dimensions */
+    line-height: 1.5; /* Ensures text alignment within smaller height */
+    width: 125px; /* Explicit width for precise control */
+    height: 55px; /* Explicit height for precise control */
+    display: inline-flex; /* Ensures content is centered */
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    align-self: center; /* Centers button vertically in flex context */
+    margin-top: 0; /* Reset any top margin */
+    line-height: 1; /* Adjust line-height for vertical centering */
+}
+
+.query-now-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Popup Overlay */
+.popup-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.popup-overlay.active {
+    display: block;
+    opacity: 1;
+}
+
+/* Popup Form */
+.popup-form {
+    position: relative;
+    background: #fff url('https://www.transparenttextures.com/patterns/natural-paper.png'); /* Subtle travel-themed texture */
+    max-width: 700px;
+    margin: 20px auto;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transform: scale(0.7);
+    transition: transform 0.3s ease;
+    overflow-y: auto;
+    max-height: 90vh;
+}
+
+.popup-overlay.active .popup-form {
+    transform: scale(1);
+}
+
+/* Close Button */
+.close-btn {
+    position: absolute;
+    top: 18px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+    color: #ff4d4d;
+}
+
+/* Form Styling */
+.popup-form h2 {
+    color: #2c3e50;
+    font-weight: 700;
+    font-family: 'Poppins', sans-serif;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    font-weight: 500;
+    color: #34495e;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.form-control {
+    border: 1px solid #dcdcdc;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    background: #f9f9f9;
+}
+
+.form-control:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 8px rgba(52, 152, 219, 0.3);
+    background: #fff;
+    transform: translateY(-2px);
+}
+
+.form-control::placeholder {
+    color: #bdc3c7;
+}
+
+/* Submit Button */
+.popup-form .btn-primary {
+    background: linear-gradient(45deg, #2079b4, #2980b9);
+    border: none;
+    padding: 12px 30px;
+    border-radius: 25px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.popup-form .btn-primary:hover {
+    background: linear-gradient(45deg, #2980b9, #2980b9);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .popup-form {
+        margin: 10px;
+        padding: 20px;
+    }
+
+    .query-now-btn {
+        margin-left: 10px;
+        padding: 5px 12px;
+        font-size: 12px;
+        width: 90px; /* Slightly smaller width on mobile */
+        height: 28px; /* Slightly smaller height on mobile */
+    }
+}
+
+/* Flatpickr Date Picker Customization */
+.flatpickr-input {
+    cursor: pointer;
+}
+
+.flatpickr-calendar {
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.flatpickr-day.selected {
+    background: #3498db;
+    border-color: #3498db;
+}
+
+.flatpickr-day:hover {
+    background: #ecf0f1;
+    border-color: #3498db;
+}
+
+/* Basic styling for the slider and display */
+.form-group {
+        margin: 20px;
+        font-family: Arial, sans-serif;
+    }
+    .budget-slider-container {
+        max-width: 500px;
+    }
+    .budget-slider {
+        width: 100%;
+        margin: 10px 0;
+    }
+    .budget-display {
+        font-size: 16px;
+        font-weight: bold;
+    }
+</style>
+
+<script>
+    // Popup Toggle
+    document.getElementById('queryNowBtn').addEventListener('click', function() {
+        document.getElementById('popupOverlay').classList.add('active');
+    });
+
+    document.getElementById('closePopupBtn').addEventListener('click', function() {
+        document.getElementById('popupOverlay').classList.remove('active');
+    });
+
+    // Close popup when clicking outside the form
+    document.getElementById('popupOverlay').addEventListener('click', function(e) {
+        if (e.target === this) {
+            this.classList.remove('active');
+        }
+    });
+
+    // Initialize Flatpickr Date Picker
+    flatpickr('#travelDate', {
+        dateFormat: 'd-m-Y',
+        minDate: 'today',
+        enableTime: false,
+        altInput: true,
+        altFormat: 'F j, Y',
+        animate: true,
+    });
+
+    // Get the slider and the budget value display elements
+    const slider = document.getElementById('budget');
+    const budgetValueDisplay = document.getElementById('budgetValue');
+
+    // Function to format the budget value with Indian Rupee symbol and commas
+    function formatBudget(value) {
+        return '₹' + Number(value).toLocaleString('en-IN');
+    }
+
+    // Update the display when the slider value changes
+    slider.addEventListener('input', function() {
+        budgetValueDisplay.textContent = formatBudget(slider.value);
+    });
+
+    // Initialize the display with the default slider value
+    budgetValueDisplay.textContent = formatBudget(slider.value);
+
+    // Form Submission with Web3Forms
+    document.getElementById('travelBookingForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        // Create a FormData object to collect form data
+        const form = this;
+        const formData = new FormData(form);
+
+        // Add the Web3Forms access key to the form data
+        formData.append('access_key', 'a8b1a31d-8cae-4a14-994a-4e5b051c1956'); // Replace with your Web3Forms access key
+
+        // Send the form data to Web3Forms API
+        fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert('Thank you for your enquiry! We will get back to you soon.');
+                document.getElementById('popupOverlay').classList.remove('active');
+                form.reset();
+                // Reset budget display
+                budgetValueDisplay.textContent = formatBudget(slider.value);
+            } else {
+                alert('Something went wrong. Please try again.');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('An error occurred. Please try again later.');
+        });
+    });
+</script>
+<!-- Navbar & Hero End -->
+
+    <!-- Tailwind CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8fafc;
+            overflow-x: hidden;
+        }
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #1a202c;
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            width: 120px;
+            height: 4px;
+            background: linear-gradient(to right, #3182ce, #2b6cb0);
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .activity-card, .package-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 15px;
+            overflow: hidden;
+            background: white;
+            position: relative;
+            perspective: 1000px;
+        }
+        .activity-card:hover, .package-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        .activity-card::before, .package-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(49, 130, 206, 0.2), rgba(43, 108, 176, 0.2));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1;
+        }
+        .activity-card:hover::before, .package-card:hover::before {
+            opacity: 1;
+        }
+        .activity-card img, .package-card img {
+            transition: transform 0.3s ease;
+        }
+        .activity-card:hover img, .package-card:hover img {
+            transform: scale(1.1);
+        }
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        .popup-content {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            max-width: 700px;
+            width: 90%;
+            position: relative;
+            animation: slideIn 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: #e53e3e;
+            transition: color 0.3s ease;
+        }
+        .close-btn:hover {
+            color: #c53030;
+        }
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .faq-item {
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border-radius: 10px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            background: white;
+        }
+        .faq-item:hover {
+            background: #edf2f7;
+            transform: translateX(5px);
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        .faq-answer.active {
+            max-height: 300px;
+        }
+        .btn {
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            background: linear-gradient(to right, #3182ce, #2b6cb0);
+        }
+        .btn:hover {
+            transform: scale(1.05);
+            background: linear-gradient(to right, #2b6cb0, #3182ce);
+        }
+        .form-input {
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .form-input:focus {
+            border-color: #3182ce;
+            box-shadow: 0 0 5px rgba(49, 130, 206, 0.5);
+            outline: none;
+        }
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 2rem;
+            }
+            .popup-content {
+                width: 95%;
+                padding: 1.5rem;
+            }
+            .activity-card, .package-card {
+                border-radius: 10px;
+            }
+        }
+    </style>
+</head>
+<body class="py-10">
+    <!-- Hero Section -->
+    <section class="relative">
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c" alt="Jim Corbett Jungle" class="w-full h-96 object-cover">
+        <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+            <h1 class="text-4xl md:text-5xl text-white font-bold text-center">Discover Jim Corbett National Park</h1>
+        </div>
+    </section>
+
+    <!-- Introduction Section -->
+    <section class="container mx-auto px-4 py-16">
+        <h2 class="section-title">Welcome to Jim Corbett</h2>
+        <p class="text-lg text-gray-700 text-center mb-8 max-w-3xl mx-auto">
+            Established in 1936 as India’s first national park, Jim Corbett National Park is a haven for wildlife lovers and adventure seekers. Located in the picturesque state of Uttarakhand, nestled in the foothills of the Himalayas, the park spans over 520 square kilometers and is home to the majestic Bengal tiger, leopards, elephants, and over 600 species of birds. Its diverse ecosystems, from dense sal forests to sprawling grasslands and the serene Kosi River, make it a must-visit destination. Our expertly crafted packages and activities ensure an immersive experience, blending adventure, relaxation, and education about the park’s rich biodiversity.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e" alt="Tiger" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <h3 class="text-xl font-semibold">Wildlife Encounters</h3>
+                    <p class="text-gray-600">Spot tigers, leopards, and more in their natural habitat with guided safaris.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1516684669134-9d0a94a1e1b3" alt="Jungle" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <h3 class="text-xl font-semibold">Nature Exploration</h3>
+                    <p class="text-gray-600">Trek through lush forests and discover the park’s flora and fauna.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" alt="River" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <h3 class="text-xl font-semibold">Riverside Retreats</h3>
+                    <p class="text-gray-600">Relax by the Kosi River with camping and stunning views.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Activities Section -->
+    <section class="container mx-auto px-4 py-16 bg-gray-100">
+        <h2 class="section-title">Activities in Jim Corbett</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Activity 1: Jeep Safari -->
+            <div class="activity-card cursor-pointer" onclick="openPopup('jeepSafariInfo')">
+                <img src="https://images.unsplash.com/photo-1564760055775-d63b17a55af8" alt="Jeep Safari" class="w-full h-48 object-cover">
+                <div class="p-4 relative z-10">
+                    <h3 class="text-xl font-semibold">Jeep Safari</h3>
+                    <p class="text-gray-600">Thrilling open-jeep tours through the park’s core zones.</p>
+                    <div class="mt-4 flex space-x-4">
+                        <button onclick="event.stopPropagation(); openPopup('jeepSafariInfo')" class="btn text-white px-4 py-2 rounded">Details</button>
+                        <button onclick="event.stopPropagation(); openPopup('jeepSafariBooking')" class="btn text-white px-4 py-2 rounded">Book Now</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Activity 2: Elephant Safari -->
+            <div class="activity-card cursor-pointer" onclick="openPopup('elephantSafariInfo')">
+                <img src="https://images.unsplash.com/photo-1575550959106-5a7defe28b56" alt="Elephant Safari" class="w-full h-48 object-cover">
+                <div class="p-4 relative z-10">
+                    <h3 class="text-xl font-semibold">Elephant Safari</h3>
+                    <p class="text-gray-600">Ride through the jungle on an elephant for a unique view.</p>
+                    <div class="mt-4 flex space-x-4">
+                        <button onclick="event.stopPropagation(); openPopup('elephantSafariInfo')" class="btn text-white px-4 py-2 rounded">Details</button>
+                        <button onclick="event.stopPropagation(); openPopup('elephantSafariBooking')" class="btn text-white px-4 py-2 rounded">Book Now</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Activity 3: Bird Watching -->
+            <div class="activity-card cursor-pointer" onclick="openPopup('birdWatchingInfo')">
+                <img src="https://images.unsplash.com/photo-1552727163-25a7a75e9c73" alt="Bird Watching" class="w-full h-48 object-cover">
+                <div class="p-4 relative z-10">
+                    <h3 class="text-xl font-semibold">Bird Watching</h3>
+                    <p class="text-gray-600">Spot over 600 bird species with expert guides.</p>
+                    <div class="mt-4 flex space-x-4">
+                        <button onclick="event.stopPropagation(); openPopup('birdWatchingInfo')" class="btn text-white px-4 py-2 rounded">Details</button>
+                        <button onclick="event.stopPropagation(); openPopup('birdWatchingBooking')" class="btn text-white px-4 py-2 rounded">Book Now</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Activity 4: Nature Trekking -->
+            <div class="activity-card cursor-pointer" onclick="openPopup('natureTrekkingInfo')">
+                <img src="https://images.unsplash.com/photo-1518495973543-1e281e4e2b90" alt="Nature Trekking" class="w-full h-48 object-cover">
+                <div class="p-4 relative z-10">
+                    <h3 class="text-xl font-semibold">Nature Trekking</h3>
+                    <p class="text-gray-600">Guided treks through scenic trails and forests.</p>
+                    <div class="mt-4 flex space-x-4">
+                        <button onclick="event.stopPropagation(); openPopup('natureTrekkingInfo')" class="btn text-white px-4 py-2 rounded">Details</button>
+                        <button onclick="event.stopPropagation(); openPopup('natureTrekkingBooking')" class="btn text-white px-4 py-2 rounded">Book Now</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Activity 5: Riverside Camping -->
+            <div class="activity-card cursor-pointer" onclick="openPopup('riversideCampingInfo')">
+                <img src="https://images.unsplash.com/photo-1504851149312-7a075b496cc7" alt="Riverside Camping" class="w-full h-48 object-cover">
+                <div class="p-4 relative z-10">
+                    <h3 class="text-xl font-semibold">Riverside Camping</h3>
+                    <p class="text-gray-600">Camp by the Kosi River with bonfires and stargazing.</p>
+                    <div class="mt-4 flex space-x-4">
+                        <button onclick="event.stopPropagation(); openPopup('riversideCampingInfo')" class="btn text-white px-4 py-2 rounded">Details</button>
+                        <button onclick="event.stopPropagation(); openPopup('riversideCampingBooking')" class="btn text-white px-4 py-2 rounded">Book Now</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Activity 6: Photography Tour -->
+            <div class="activity-card cursor-pointer" onclick="openPopup('photographyTourInfo')">
+                <img src="https://images.unsplash.com/photo-1509233725247-49e657c54213" alt="Photography Tour" class="w-full h-48 object-cover">
+                <div class="p-4 relative z-10">
+                    <h3 class="text-xl font-semibold">Photography Tour</h3>
+                    <p class="text-gray-600">Capture the park’s beauty with professional guidance.</p>
+                    <div class="mt-4 flex space-x-4">
+                        <button onclick="event.stopPropagation(); openPopup('photographyTourInfo')" class="btn text-white px-4 py-2 rounded">Details</button>
+                        <button onclick="event.stopPropagation(); openPopup('photographyTourBooking')" class="btn text-white px-4 py-2 rounded">Book Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Activity Popups -->
+        <div id="jeepSafariInfo" class="popup">
+            <div class="popup-content">
+                <span class="close-btn" onclick="closePopup('jeepSafariInfo')">×</span>
+                <h3 class="text-2xl font-bold mb-4">Jeep Safari</h3>
+                <img src="https://images.unsplash.com/photo-1564760055775-d63b17a55af8" alt="Jeep Safari" class="w-full h-48 object-cover mb-4 rounded">
+                <p class="text-gray-700">
+                    Embark on an exhilarating jeep safari through the core zones of Jim Corbett National Park, including Dhikala, Bijrani, and Jhirna. Accompanied by expert naturalists, you’ll traverse rugged terrains, dense forests, and open grasslands, with opportunities to spot Bengal tigers, leopards, elephants, and crocodiles. Learn about the park’s conservation efforts and biodiversity while enjoying the thrill of an open-vehicle adventure.
+                </p>
+                <p class="mt-2"><strong>Duration:</strong> 3-4 hours</p>
+                <p><strong>Price:</strong> ₹3500 per person</p>
+                <p><strong>Inclusions:</strong> Guide, jeep, park entry fees</p>
+                <p><strong>Best Time:</strong> November to June</p>
+                <button onclick="openPopup('jeepSafariBooking')" class="mt-4 btn text-white px-4 py-2 rounded">Book Now</button>
+            </div>
+        </div>
+        <div id="jeepSafariBooking" class="popup">
+            <div class="popup-content">
+                <span class="close-btn" onclick="closePopup('jeepSafariBooking')">×</span>
+                <h3 class="text-2xl font-bold mb-4">Book Jeep Safari</h3>
+                <form class="space-y-4" action="https://api.web3forms.com/submit" method="POST">
+                    <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY">
+                    <input type="hidden" name="subject" value="Jeep Safari Booking">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Full Name</label>
+                        <input type="text" name="name" placeholder="Enter your full name" class="form-input w-full p-3 border rounded-md" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Email Address</label>
+                        <input type="email" name="email" placeholder="Enter your email" class="form-input w-full p-3 border rounded-md" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Phone Number</label>
+                        <input type="tel" name="phone" placeholder="Enter your phone number" class="form-input w-full p-3 border rounded-md" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Preferred Date</label>
+                        <input type="date" name="date" class="form-input w-full p-3 border rounded-md" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Number of People</label>
+                        <input type="number" name="people" placeholder="Enter number of people" class="form-input w-full p-3 border rounded-md" min="1" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Safari Zone</label>
+                        <select name="zone" class="form-input w-full p-3 border rounded-md" required>
+                            <option value="" disabled selected>Select Zone</option>
+                            <option value="Dhikala">Dhikala</option>
+                            <option value="Bijrani">Bijrani</option>
+                            <option value="Jhirna">Jhirna</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Special Requests</label>
+                        <textarea name="requests" placeholder="Any special requests or notes" class="form-input w-full p-3 border rounded-md" rows="4"></textarea>
+                    </div>
+                    <button type="submit" class="btn text-white px-6 py-3 rounded-md w-full">Submit Booking</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="elephantSafariInfo" class="popup">
+            <div class="popup-content">
+                <span class="close-btn" onclick="closePopup('elephantSafariInfo')">×</span>
+                <h3 class="text-2xl font-bold mb-4">Elephant Safari</h3>
+                <img src="https://images.unsplash.com/photo-1575550959106-5a7defe28b56" alt="Elephant Safari" class="w-full h-48 object-cover mb-4 rounded">
+                <p class="text-gray-700">
+                    Experience the jungle from the back of an elephant, offering a serene and intimate wildlife encounter. This eco-friendly safari takes you through less accessible trails, providing close-up views of deer, wild boars, and occasionally tigers. Our trained mahouts share insights about elephant behavior and the park’s ecosystem, making this a memorable and educational experience.
+                </p>
+                <p class="mt-2"><strong>Duration:</strong> 2 hours</p>
+                <p><strong>Price:</strong> ₹4500 per person</p>
+                <p><strong>Inclusions:</strong> Mahout, park entry fees</p>
+                <p><strong>Best Time:</strong> Early morning</p>
+                <button onclick="openPopup('elephantSafariBooking')" class="mt-4 btn text-white px-4 py-2 rounded">Book Now</button>
+            </div>
+        </div>
+        <div id="elephantSafariBooking" class="popup">
+            <div class="popup-content">
+                <span class="close-btn" onclick="closePopup('elephantSafariBooking')">×</span>
+                <h3 class="text-2xl font-bold mb-4">Book Elephant Safari</h3>
+                <form class="space-y-4" action="https://api.web3forms.com/submit" method="POST">
+                    <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY">
+                    <input type="hidden" name="subject" value="Elephant Safari Booking">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Full Name</label>
+                        <input type="text" name="name" placeholder="Enter your full name" class="form-input w-full p-3 border rounded-md" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Email Address</label>
+                        <input type="email" name="email" placeholder="Enter your email" class="form-input w-full p-3 border rounded-md" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Phone Number</label>
+                        <input type="tel" name="phone" placeholder="Enter your phone number" class="form-input w-full p-3 border rounded-md" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Preferred Date</label>
+                        <input type="date" name="date" class="form-input w-full p-3 border rounded-md" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Number of People</label>
+                        <input type="number" name="people" placeholder="Enter number of people" class="form-input w-full p-3 border rounded-md" min="1" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Preferred Time Slot</label>
+                        <select name="time_slot" class="form-input w-full p-3 border rounded-md" required>
+                            <option value="" disabled selected>Select Time Slot</option>
+                            <option value="Morning">Morning (6:00 AM - 8:00 AM)</option>
+                            <option value="Afternoon">Afternoon (3:00 PM - 5:00 PM)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Special Requests</label>
+                        <textarea name="requests" placeholder="Any special requests or notes" class="form-input w-full p-3 border rounded-md" rows="4"></textarea>
+                    </div>
+                    <button type="submit" class="btn text-white px-6 py-3 rounded-md w-full">Submit Booking</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="birdWatchingInfo" class="popup">
+            <div class="popup-content">
+                <span class="close-btn" onclick="closePopup('birdWatchingInfo')">×</span>
+                <h3 class="text-2xl font-bold mb-4">Bird Watching</h3>
+                <img src="https://images.unsplash.com/photo-1552727163-25a7a75e9c73" alt="Bird Watching" class="w-full h-48 object-cover mb-4 rounded">
+                <p class="text-gray-700">
+                    Jim Corbett is a paradise for birdwatchers, hosting over 600 species, including the great hornbill, crested serpent eagle, and Himalayan kingfisher. Join our expert ornithologists for a guided tour through wetlands, forests, and riverbanks. Equipped with binoculars and bird guides, you’ll learn to identify species and understand their behaviors in their natural habitat.
+                </p>
+                <p class="mt-2"><strong>Duration:</strong> 4 hours</p>
+                <p><strong>Price:</strong> ₹2000 per person</p>
+                <p><strong>Inclusions:</strong> Guide, binoculars, bird guidebook</p>
+                <p><strong>Best Time:</strong> Winter months (November-February)</p>
+                <button onclick="openPopup('birdWatchingBooking')" class="mt-4 btn text-white px-4 py-2 rounded">Book Now</button>
+            </div>
+        </div>
+        <div id="birdWatchingBooking" class="popup">
+            <div class="popup-content">
+                <span class="close-btn" onclick="closePopup('birdWatchingBooking')">×</span>
+                <h3 class="text-2xl font-bold mb-4">Book Bird Watching</h3>
+                <form class="space-y-4" action="https://api.web3forms.com/submit" method="POST">
+                    <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY">
+                    <input type="hidden" name="subject" value="Bird Watching Booking">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Full Name</label>
+                        <input type="text" name="name" placeholder="Enter your full name" class="form-input w-full p-3 border rounded-md" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Email Address</label>
+                        <input type="email" name="email" placeholder="Enter your email" class="form-input w-full p-3 border rounded-md" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Phone Number</label>
+                        <input type="tel" name="phone" placeholder="Enter your phone number" class="form-input w-full p-3 border rounded-md" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Preferred Date</label>
+                        <input type="date" name="date" class="form-input w-full p-3 border rounded-md" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Number of People</label>
+                        <input type="number" name="people" placeholder="Enter number of people" class="form-input w-full p-3 border rounded-md" min="1" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Preferred Time Slot</label>
+                        <select name="time_slot" class="form-input w-full p-3 border rounded-md" required>
+                            <option value="" disabled selected>Select Time Slot</option>
+                            <option value="Morning">Morning (5:30 AM - 9:30 AM)</option>
+                            <option value="Evening">Evening (3:30 PM - 7:30 PM)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Special Requests</label>
+                        <textarea name="requests" placeholder="Any special requests or notes" class="form-input w-full p-3 border rounded-md" rows="4"></textarea>
+                    </div>
+                    <button type="submit" class="btn text-white px-6 py-3 rounded-md w-full">Submit Booking</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="natureTrekkingInfo" class="popup">
+            <div class="popup-content">
+                <span class="close-btn" onclick="closePopup('natureTrekkingInfo')">×</span>
+                <h3 class="text-2xl font-bold mb-4">Nature Trekking</h3>
+                <img src="https://images.unsplash.com/photo-1518495973543-1e281e4e2b90" alt="Nature Trekking" class="w-full h-48 object-cover mb-4 rounded">
+                <p class="text-gray-700">
+                    Explore the park’s scenic trails on foot, guided by experienced naturalists. Trek through dense forests, past waterfalls, and along riverbanks, discovering rare plants, animal tracks, and panoramic views. This activity is perfect for adventure enthusiasts and those looking to connect deeply with nature.
+                </p>
+                <p class="mt-2"><strong>Duration:</strong> 3-5 hours</p>
+                <p><strong>Price:</strong> ₹2500 per person</p>
+                <p><strong>Inclusions:</strong> Guide, trekking gear, refreshments</p>
+                <p><strong>Best Time:</strong> October to March</p>
+                <button onclick="openPopup('natureTrekkingBooking')" class="mt-4 btn text-white px-4 py-2 rounded">Book Now</button>
+            </div>
+        </div>
+        <div id="natureTrekkingBooking" class="popup">
+            <div class="popup-content">
+                <span class="close-btn" onclick="closePopup('natureTrekkingBooking')">×</span>
+                <h3 class="text-2xl font-bold mb-4">Book Nature Trekking</h3>
+                <form class="space-y-4" action="https://api.web3forms.com/submit" method="POST">
+                    <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY">
+                    <input type="hidden" name="subject" value="Nature Trekking Booking">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Full Name</label>
+                        <input type="text" name="name" placeholder="Enter your full name" class="form-input w-full p-3 border rounded-md" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Email Address</label>
+                        <input type="email" name="email" placeholder="Enter your email" class="form-input w-full p-3 border rounded-md" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Phone Number</label>
+                        <input type="tel" name="phone" placeholder="Enter your phone number" class="form-input w-full p-3 border rounded-md" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Preferred Date</label>
+                        <input type="date" name="date" class="form-input w-full p-3 border rounded-md" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Number of People</label>
+                        <input type="number" name="people" placeholder="Enter number of people" class="form-input w-full p-3 border rounded-md" min="1" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Trekking Route</label>
+                        <select name="route" class="form-input w-full p-3 border rounded-md" required>
+                            <option value="" disabled selected>Select Route</option>
+                            <option value="Dhikala Trail">Dhikala Trail</option>
+                            <option value="Kosi River Trail">Kosi River Trail</option>
+                            <option value="Sitabani Forest">Sitabani Forest</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Special Requests</label>
+                        <textarea name="requests" placeholder="Any special requests or notes" class="form-input w-full p-3 border rounded-md" rows="4"></textarea>
+                    </div>
+                    <button type="submit" class="btn text-white px-6 py-3 rounded-md w-full">Submit Booking</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="riversideCampingInfo" class="popup">
+            <div class="popup-content">
+                <span class="close-btn" onclick="closePopup('riversideCampingInfo')">×</span>
+                <h3 class="text-2xl font-bold mb-4">Riverside Camping</h3>
+                <img src="https://images.unsplash.com/photo-1504851149312-7a075b496cc7" alt="Riverside Camping" class="w-full h-48 object-cover mb-4 rounded">
+                <p class="text-gray-700">
+                    Spend a night under the stars by the Kosi River, surrounded by the sounds of nature. Our campsites offer comfortable tents, bonfires, and guided stargazing sessions. Enjoy barbeque dinners and storytelling sessions, making this a perfect retreat for families and groups.
+                </p>
+                <p class="mt-2"><strong>Duration:</strong> 1 night</p>
+                <p><strong>Price:</strong> ₹4000 per person</p>
+                <p><strong>Inclusions:</strong> Tent, meals, bonfire, guided activities</p>
+                <p><strong>Best Time:</strong> November to April</p>
+                <button onclick="openPopup('riversideCampingBooking')" class="mt-4 btn text-white px-4 py-2 rounded">Book Now</button>
+            </div>
+        </div>
+        <div id="riversideCampingBooking" class="popup">
+            <div class="popup-content">
+                <span class="close-btn" onclick="closePopup('riversideCampingBooking')">×</span>
+                <h3 class="text-2xl font-bold mb-4">Book Riverside Camping</h3>
+                <form class="space-y-4" action="https://api.web3forms.com/submit" method="POST">
+                    <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY">
+                    <input type="hidden" name="subject" value="Riverside Camping Booking">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Full Name</label>
+                        <input type="text" name="name" placeholder="Enter your full name" class="form-input w-full p-3 border rounded-md" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Email Address</label>
+                        <input type="email" name="email" placeholder="Enter your email" class="form-input w-full p-3 border rounded-md" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Phone Number</label>
+                        <input type="tel" name="phone" placeholder="Enter your phone number" class="form-input w-full p-3 border rounded-md" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Preferred Date</label>
+                        <input type="date" name="date" class="form-input w-full p-3 border rounded-md" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Number of People</label>
+                        <input type="number" name="people" placeholder="Enter number of people" class="form-input w-full p-3 border rounded-md" min="1" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Camping Preferences</label>
+                        <select name="camping_preference" class="form-input w-full p-3 border rounded-md" required>
+                            <option value="" disabled selected>Select Preference</option>
+                            <option value="Standard Tent">Standard Tent</option>
+                            <option value="Deluxe Tent">Deluxe Tent</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Special Requests</label>
+                        <textarea name="requests" placeholder="Any special requests or notes" class="form-input w-full p-3 border rounded-md" rows="4"></textarea>
+                    </div>
+                    <button type="submit" class="btn text-white px-6 py-3 rounded-md w-full">Submit Booking</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="photographyTourInfo" class="popup">
+            <div class="popup-content">
+                <span class="close-btn" onclick="closePopup('photographyTourInfo')">×</span>
+                <h3 class="text-2xl font-bold mb-4">Photography Tour</h3>
+                <img src="https://images.unsplash.com/photo-1509233725247-49e657c54213" alt="Photography Tour" class="w-full h-48 object-cover mb-4 rounded">
+                <p class="text-gray-700">
+                    Capture the stunning landscapes and wildlife of Jim Corbett with our guided photography tours. Led by professional photographers, these tours focus on techniques for wildlife and nature photography, including lighting, composition, and equipment use. Suitable for beginners and seasoned photographers alike.
+                </p>
+                <p class="mt-2"><strong>Duration:</strong> 5 hours</p>
+                <p><strong>Price:</strong> ₹5000 per person</p>
+                <p><strong>Inclusions:</strong> Guide, photography tips, refreshments</p>
+                <p><strong>Best Time:</strong> Early morning or late afternoon</p>
+                <button onclick="openPopup('photographyTourBooking')" class="mt-4 btn text-white px-4 py-2 rounded">Book Now</button>
+            </div>
+        </div>
+        <div id="photographyTourBooking" class="popup">
+            <div class="popup-content">
+                <span class="close-btn" onclick="closePopup('photographyTourBooking')">×</span>
+                <h3 class="text-2xl font-bold mb-4">Book Photography Tour</h3>
+                <form class="space-y-4" action="https://api.web3forms.com/submit" method="POST">
+                    <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY">
+                    <input type="hidden" name="subject" value="Photography Tour Booking">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Full Name</label>
+                        <input type="text" name="name" placeholder="Enter your full name" class="form-input w-full p-3 border rounded-md" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Email Address</label>
+                        <input type="email" name="email" placeholder="Enter your email" class="form-input w-full p-3 border rounded-md" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Phone Number</label>
+                        <input type="tel" name="phone" placeholder="Enter your phone number" class="form-input w-full p-3 border rounded-md" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Preferred Date</label>
+                        <input type="date" name="date" class="form-input w-full p-3 border rounded-md" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Number of People</label>
+                        <input type="number" name="people" placeholder="Enter number of people" class="form-input w-full p-3 border rounded-md" min="1" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Photography Focus</label>
+                        <select name="focus" class="form-input w-full p-3 border rounded-md" required>
+                            <option value="" disabled selected>Select Focus</option>
+                            <option value="Wildlife">Wildlife Photography</option>
+                            <option value="Landscape">Landscape Photography</option>
+                            <option value="Both">Both</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Special Requests</label>
+                        <textarea name="requests" placeholder="Any special requests or notes" class="form-input w-full p-3 border rounded-md" rows="4"></textarea>
+                    </div>
+                    <button type="submit" class="btn text-white px-6 py-3 rounded-md w-full">Submit Booking</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Packages Section -->
+    <section class="container mx-auto px-4 py-16">
+        <h2 class="section-title">Our Packages</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Package 1: Adventure Package -->
+            <div class="package-card cursor-pointer" onclick="openPopup('adventureInfo')">
+                <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" alt="Adventure Package" class="w-full h-48 object-cover">
+                <div class="p-4 relative z-10">
+                    <h3 class="text-xl font-semibold">Adventure Package</h3>
+                    <p class="text-gray-600">2 Nights / 3 Days, includes Jeep Safari, Nature Trekking, and Camping.</p>
+                    <p class="mt-2"><strong>Price:</strong> ₹12,000 per person</p>
+                    <div class="mt-4 flex space-x-4">
+                        <button onclick="event.stopPropagation(); openPopup('adventureInfo')" class="btn text-white px-4 py-2 rounded">Details</button>
+                        <button onclick="event.stopPropagation(); openPopup('adventureBooking')" class="btn text-white px-4 py-2 rounded">Book Now</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Package 2: Family Package -->
+            <div class="package-card cursor-pointer" onclick="openPopup('familyInfo')">
+                <img src="https://images.unsplash.com/photo-1516684669134-9d0a94a1e1b3" alt="Family Package" class="w-full h-48 object-cover">
+                <div class="p-4 relative z-10">
+                    <h3 class="text-xl font-semibold">Family Package</h3>
+                    <p class="text-gray-600">3 Nights / 4 Days, includes Jeep Safari, Bird Watching, and Resort Stay.</p>
+                    <p class="mt-2"><strong>Price:</strong> ₹18,000 per person</p>
+                    <div class="mt-4 flex space-x-4">
+                        <button onclick="event.stopPropagation(); openPopup('familyInfo')" class="btn text-white px-4 py-2 rounded">Details</button>
+                        <button onclick="event.stopPropagation(); openPopup('familyBooking')" class="btn text-white px-4 py-2 rounded">Book Now</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Package 3: Luxury Package -->
+            <div class="package-card cursor-pointer" onclick="openPopup('luxuryInfo')">
+                <img src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e" alt="Luxury Package" class="w-full h-48 object-cover">
+                <div class="p-4 relative z-10">
+                    <h3 class="text-xl font-semibold">Luxury Package</h3>
+                    <p class="text-gray-600">4 Nights / 5 Days, includes all safaris, spa, and luxury resort stay.</p>
+                    <p class="mt-2"><strong>Price:</strong> ₹30,000 per person</p>
+                    <div class="mt-4 flex space-x-4">
+                        <button onclick="event.stopPropagation(); openPopup('luxuryInfo')" class="btn text-white px-4 py-2 rounded">Details</button>
+                        <button onclick="event.stopPropagation(); openPopup('luxuryBooking')" class="btn text-white px-4 py-2 rounded">Book Now</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Package 4: Wildlife Explorer -->
+            <div class="package-card cursor-pointer" onclick="openPopup('wildlifeInfo')">
+                <img src="https://images.unsplash.com/photo-1564760055775-d63b17a55af8" alt="Wildlife Explorer" class="w-full h-48 object-cover">
+                <div class="p-4 relative z-10">
+                    <h3 class="text-xl font-semibold">Wildlife Explorer</h3>
+                    <p class="text-gray-600">3 Nights / 4 Days, includes Jeep and Elephant Safaris, Photography Tour.</p>
+                    <p class="mt-2"><strong>Price:</strong> ₹22,000 per person</p>
+                    <div class="mt-4 flex space-x-4">
+                        <button onclick="event.stopPropagation(); openPopup('wildlifeInfo')" class="btn text-white px-4 py-2 rounded">Details</button>
+                        <button onclick="event.stopPropagation(); openPopup('wildlifeBooking')" class="btn text-white px-4 py-2 rounded">Book Now</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Package 5: Eco Retreat -->
+            <div class="package-card cursor-pointer" onclick="openPopup('ecoInfo')">
+                <img src="https://images.unsplash.com/photo-1504851149312-7a075b496cc7" alt="Eco Retreat" class="w-full h-48 object-cover">
+                <div class="p-4 relative z-10">
+                    <h3 class="text-xl font-semibold">Eco Retreat</h3>
+                    <p class="text-gray-600">2 Nights / 3 Days, includes Riverside Camping, Bird Watching, and Nature Trekking.</p>
+                    <p class="mt-2"><strong>Price:</strong> ₹15,000 per person</p>
+                    <div class="mt-4 flex space-x-4">
+                        <button onclick="event.stopPropagation(); openPopup('ecoInfo')" class="btn text-white px-4 py-2 rounded">Details</button>
+                        <button onclick="event.stopPropagation(); openPopup('ecoBooking')" class="btn text-white px-4 py-2 rounded">Book Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Package Info and Booking Popups -->
+        <div id="adventureInfo" class="popup">
+            <div class="popup-content">
+                <span class="close-btn" onclick="closePopup('adventureInfo')">×</span>
+                <h3 class="text-2xl font-bold mb-4">Adventure Package</h3>
+                <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" alt="Adventure Package" class="w-full h-48 object-cover mb-4 rounded">
+                <p class="text-gray-700">
+                    Perfect for thrill-seekers, this package includes a jeep safari, nature trekking, and riverside camping. Stay in comfortable resorts and enjoy guided adventures through the park’s wilderness.
+                </p>
+                <p class="mt-2"><strong>Duration:</strong> 2 Nights / 3 Days</p>
+                <p><strong>Price:</strong> ₹12,000 per person</p>
+                <p><strong>Inclusions:</strong> Accommodation, meals, activities, guide</p>
+                <button onclick="openPopup('adventureBooking')" class="mt-4 btn text-white px-4 py-2 rounded">Book Now</button>
+            </div>
+        </div>
+        <div id="adventureBooking" class="popup">
+            <div class="popup-content">
+                <span class="close-btn" onclick="closePopup('adventureBooking')">×</span>
+                <h3 class="text-2xl font-bold mb-4">Book Adventure Package</h3>
+                <form class="space-y-4" action="https://api.web3forms.com/submit" method="POST">
+                    <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY">
+                    <input type="hidden" name="subject" value="Adventure Package Booking">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Full Name</label>
+                        <input type="text" name="name" placeholder="Enter your full name" class="form-input w-full p-3 border rounded-md" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Email Address</label>
+                        <input type="email" name="email" placeholder="Enter your email" class="form-input w-full p-3 border rounded-md" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Phone Number</label>
+                        <input type="tel" name="phone" placeholder="Enter your phone number" class="form-input w-full p-3 border rounded-md" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Check-in Date</label>
+                        <input type="date" name="check_in_date" class="form-input w-full p-3 border rounded-md" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Number of Adults</label>
+                        <input type="number" name="adults" placeholder="Enter number of adults" class="form-input w-full p-3 border rounded-md" min="1" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Number of Children</label>
+                        <input type="number" name="children" placeholder="Enter number of children" class="form-input w-full p-3 border rounded-md" min="0">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Accommodation Preference</label>
+                        <select name="accommodation" class="form-input w-full p-3 border rounded-md" required>
+                            <option value="" disabled selected>Select Accommodation</option>
+                            <option value="Resort">Resort</option>
+                            <option value="Eco Lodge">Eco Lodge</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Special Requests</label>
+                        <textarea name="requests" placeholder="Any special requests or notes" class="form-input w-full p-3 border rounded-md" rows="4"></textarea>
+                    </div>
+                    <button type="submit" class="btn text-white px-6 py-3 rounded-md w-full">Submit Booking</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="familyInfo" class="popup">
+            <div class="popup-content">
+                <span class="close-btn" onclick="closePopup('familyInfo')">×</span>
+                <h3 class="text-2xl font-bold mb-4">Family Package</h3>
+                <img src="https://images.unsplash.com/photo-1516684669134-9d0a94a1e1b3" alt="Family Package" class="w-full h-48 object-cover mb-4 rounded">
+                <p class="text-gray-700">
+                    Designed for families, this package offers a mix of adventure and relaxation with a jeep safari, bird watching, and a comfortable resort stay. Enjoy family-friendly activities and guided tours.
+                </p>
+                <p class="mt-2"><strong>Duration:</strong> 3 Nights / 4 Days</p>
+                <p><strong>Price:</strong> ₹18,000 per person</p>
+                <p><strong>Inclusions:</strong> Accommodation, meals, activities, guide</p>
+                <button onclick="openPopup('familyBooking')" class="mt-4 btn text-white px-4 py-2 rounded">Book Now</button>
+            </div>
+        </div>
+        <div id="familyBooking" class="popup">
+            <div class="popup-content">
+                <span class="close-btn" onclick="closePopup('familyBooking')">×</span>
+                <h3 class="text-2xl font-bold mb-4">Book Family Package</h3>
+                <form class="space-y-4" action="https://api.web3forms.com/submit" method="POST">
+                    <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY">
+                    <input type="hidden" name="subject" value="Family Package Booking">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Full Name</label>
+                        <input type="text" name="name" placeholder="Enter your full name" class="form-input w-full p-3 border rounded-md" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Email Address</label>
+                        <input type="email" name="email" placeholder="Enter your email" class="form-input w-full p-3 border rounded-md" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Phone Number</label>
+                        <input type="tel" name="phone" placeholder="Enter your phone number" class="form-input w-full p-3 border rounded-md" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Check-in Date</label>
+                        <input type="date" name="check_in_date" class="form-input w-full p-3 border rounded-md" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Number of Adults</label>
+                        <input type="number" name="adults" placeholder="Enter number of adults" class="form-input w-full p-3 border rounded-md" min="1" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Number of Children</label>
+                        <input type="number" name="children" placeholder="Enter number of children" class="form-input w-full p-3 border rounded-md" min="0">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Accommodation Preference</label>
+                        <select name="accommodation" class="form-input w-full p-3 border rounded-md" required>
+                            <option value="" disabled selected>Select Accommodation</option>
+                            <option value="Family Suite">Family Suite</option>
+                            <option value="Resort">Resort</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Special Requests</label>
+                        <textarea name="requests" placeholder="Any special requests or notes" class="form-input w-full p-3 border rounded-md" rows="4"></textarea>
+                    </div>
+                    <button type="submit" class="btn text-white px-6 py-3 rounded-md w-full">Submit Booking</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="luxuryInfo" class="popup">
+            <div class="popup-content">
+                <span class="close-btn" onclick="closePopup('luxuryInfo')">×</span>
+                <h3 class="text-2xl font-bold mb-4">Luxury Package</h3>
+                <img src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e" alt="Luxury Package" class="w-full h-48 object-cover mb-4 rounded">
+                <p class="text-gray-700">
+                    Indulge in a premium experience with all safaris, a spa retreat, and a stay in a luxury resort. This package combines adventure with comfort, offering personalized services and exclusive tours.
+                </p>
+                <p class="mt-2"><strong>Duration:</strong> 4 Nights / 5 Days</p>
+                <p><strong>Price:</strong> ₹30,000 per person</p>
+                <p><strong>Inclusions:</strong> Luxury accommodation, meals, activities, spa session</p>
+                <button onclick="openPopup('luxuryBooking')" class="mt-4 btn text-white px-4 py-2 rounded">Book Now</button>
+            </div>
+        </div>
+        <div id="luxuryBooking" class="popup">
+            <div class="popup-content">
+                <span class="close-btn" onclick="closePopup('luxuryBooking')">×</span>
+                <h3 class="text-2xl font-bold mb-4">Book Luxury Package</h3>
+                <form class="space-y-4" action="https://api.web3forms.com/submit" method="POST">
+                    <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY">
+                    <input type="hidden" name="subject" value="Luxury Package Booking">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Full Name</label>
+                        <input type="text" name="name" placeholder="Enter your full name" class="form-input w-full p-3 border rounded-md" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Email Address</label>
+                        <input type="email" name="email" placeholder="Enter your email" class="form-input w-full p-3 border rounded-md" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Phone Number</label>
+                        <input type="tel" name="phone" placeholder="Enter your phone number" class="form-input w-full p-3 border rounded-md" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Check-in Date</label>
+                        <input type="date" name="check_in_date" class="form-input w-full p-3 border rounded-md" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Number of Adults</label>
+                        <input type="number" name="adults" placeholder="Enter number of adults" class="form-input w-full p-3 border rounded-md" min="1" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Number of Children</label>
+                        <input type="number" name="children" placeholder="Enter number of children" class="form-input w-full p-3 border rounded-md" min="0">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Accommodation Preference</label>
+                        <select name="accommodation" class="form-input w-full p-3 border rounded-md" required>
+                            <option value="" disabled selected>Select Accommodation</option>
+                            <option value="Luxury Suite">Luxury Suite</option>
+                            <option value="Private Villa">Private Villa</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Special Requests</label>
+                        <textarea name="requests" placeholder="Any special requests or notes" class="form-input w-full p-3 border rounded-md" rows="4"></textarea>
+                    </div>
+                    <button type="submit" class="btn text-white px-6 py-3 rounded-md w-full">Submit Booking</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="wildlifeInfo" class="popup">
+            <div class="popup-content">
+                <span class="close-btn" onclick="closePopup('wildlifeInfo')">×</span>
+                <h3 class="text-2xl font-bold mb-4">Wildlife Explorer</h3>
+                <img src="https://images.unsplash.com/photo-1564760055775-d63b17a55af8" alt="Wildlife Explorer" class="w-full h-48 object-cover mb-4 rounded">
+                <p class="text-gray-700">
+                    Ideal for wildlife enthusiasts, this package includes jeep and elephant safaris, plus a photography tour. Stay in eco-friendly lodges and immerse yourself in the park’s biodiversity.
+                </p>
+                <p class="mt-2"><strong>Duration:</strong> 3 Nights / 4 Days</p>
+                <p><strong>Price:</strong> ₹22,000 per person</p>
+                <p><strong>Inclusions:</strong> Accommodation, meals, activities, guide</p>
+                <button onclick="openPopup('wildlifeBooking')" class="mt-4 btn text-white px-4 py-2 rounded">Book Now</button>
+            </div>
+        </div>
+        <div id="wildlifeBooking" class="popup">
+            <div class="popup-content">
+                <span class="close-btn" onclick="closePopup('wildlifeBooking')">×</span>
+                <h3 class="text-2xl font-bold mb-4">Book Wildlife Explorer</h3>
+                <form class="space-y-4" action="https://api.web3forms.com/submit" method="POST">
+                    <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY">
+                    <input type="hidden" name="subject" value="Wildlife Explorer Booking">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Full Name</label>
+                        <input type="text" name="name" placeholder="Enter your full name" class="form-input w-full p-3 border rounded-md" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Email Address</label>
+                        <input type="email" name="email" placeholder="Enter your email" class="form-input w-full p-3 border rounded-md" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Phone Number</label>
+                        <input type="tel" name="phone" placeholder="Enter your phone number" class="form-input w-full p-3 border rounded-md" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Check-in Date</label>
+                        <input type="date" name="check_in_date" class="form-input w-full p-3 border rounded-md" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Number of Adults</label>
+                        <input type="number" name="adults" placeholder="Enter number of adults" class="form-input w-full p-3 border rounded-md" min="1" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Number of Children</label>
+                        <input type="number" name="children" placeholder="Enter number of children" class="form-input w-full p-3 border rounded-md" min="0">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Accommodation Preference</label>
+                        <select name="accommodation" class="form-input w-full p-3 border rounded-md" required>
+                            <option value="" disabled selected>Select Accommodation</option>
+                            <option value="Eco Lodge">Eco Lodge</option>
+                            <option value="Resort">Resort</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Special Requests</label>
+                        <textarea name="requests" placeholder="Any special requests or notes" class="form-input w-full p-3 border rounded-md" rows="4"></textarea>
+                    </div>
+                    <button type="submit" class="btn text-white px-6 py-3 rounded-md w-full">Submit Booking</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="ecoInfo" class="popup">
+            <div class="popup-content">
+                <span class="close-btn" onclick="closePopup('ecoInfo')">×</span>
+                <h3 class="text-2xl font-bold mb-4">Eco Retreat</h3>
+                <img src="https://images.unsplash.com/photo-1504851149312-7a075b496cc7" alt="Eco Retreat" class="w-full h-48 object-cover mb-4 rounded">
+                <p class="text-gray-700">
+                    Embrace sustainable tourism with this package, featuring riverside camping, bird watching, and nature trekking. Stay in eco-friendly tents and learn about conservation efforts.
+                </p>
+                <p class="mt-2"><strong>Duration:</strong> 2 Nights / 3 Days</p>
+                <p><strong>Price:</strong> ₹15,000 per person</p>
+                <p><strong>Inclusions:</strong> Accommodation, meals, activities, guide</p>
+                <button onclick="openPopup('ecoBooking')" class="mt-4 btn text-white px-4 py-2 rounded">Book Now</button>
+            </div>
+        </div>
+        <div id="ecoBooking" class="popup">
+            <div class="popup-content">
+                <span class="close-btn" onclick="closePopup('ecoBooking')">×</span>
+                <h3 class="text-2xl font-bold mb-4">Book Eco Retreat</h3>
+                <form class="space-y-4" action="https://api.web3forms.com/submit" method="POST">
+                    <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY">
+                    <input type="hidden" name="subject" value="Eco Retreat Booking">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Full Name</label>
+                        <input type="text" name="name" placeholder="Enter your full name" class="form-input w-full p-3 border rounded-md" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Email Address</label>
+                        <input type="email" name="email" placeholder="Enter your email" class="form-input w-full p-3 border rounded-md" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Phone Number</label>
+                        <input type="tel" name="phone" placeholder="Enter your phone number" class="form-input w-full p-3 border rounded-md" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Check-in Date</label>
+                        <input type="date" name="check_in_date" class="form-input w-full p-3 border rounded-md" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Number of Adults</label>
+                        <input type="number" name="adults" placeholder="Enter number of adults" class="form-input w-full p-3 border rounded-md" min="1" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Number of Children</label>
+                        <input type="number" name="children" placeholder="Enter number of children" class="form-input w-full p-3 border rounded-md" min="0">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Accommodation Preference</label>
+                        <select name="accommodation" class="form-input w-full p機器 p-3 border rounded-md" required>
+                            <option value="" disabled selected>Select Accommodation</option>
+                            <option value="Eco Tent">Eco Tent</option>
+                            <option value="Eco Lodge">Eco Lodge</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Special Requests</label>
+                        <textarea name="requests" placeholder="Any special requests or notes" class="form-input w-full p-3 border rounded-md" rows="4"></textarea>
+                    </div>
+                    <button type="submit" class="btn text-white px-6 py-3 rounded-md w-full">Submit Booking</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="container mx-auto px-4 py-16 bg-gray-100">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <div class="max-w-3xl mx-auto">
+            <div class="faq-item">
+                <h3 class="text-lg font-semibold flex justify-between items-center" onclick="toggleFAQ(this)">
+                    What is the best time to visit Jim Corbett?
+                    <i class="fas fa-chevron-down"></i>
+                </h3>
+                <div class="faq-answer mt-2 text-gray-600">
+                    The best time is from November to June, when the weather is pleasant, and wildlife sightings are frequent. The park is closed during the monsoon season (July to October).
+                </div>
+            </div>
+            <div class="faq-item">
+                <h3 class="text-lg font-semibold flex justify-between items-center" onclick="toggleFAQ(this)">
+                    Are the safaris safe for children?
+                    <i class="fas fa-chevron-down"></i>
+                </h3>
+                <div class="faq-answer mt-2 text-gray-600">
+                    Yes, safaris are safe for children above 5 years, provided they are accompanied by adults. Guides ensure safety and provide child-friendly insights.
+                </div>
+            </div>
+            <div class="faq-item">
+                <h3 class="text-lg font-semibold flex justify-between items-center" onclick="toggleFAQ(this)">
+                    What should I pack for the trip?
+                    <i class="fas fa-chevron-down"></i>
+                </h3>
+                <div class="faq-answer mt-2 text-gray-600">
+                    Pack comfortable clothing, sturdy shoes, binoculars, a camera, insect repellent, sunscreen, and a hat. Neutral-colored clothing is recommended for safaris.
+                </div>
+            </div>
+            <div class="faq-item">
+                <h3 class="text-lg font-semibold flex justify-between items-center" onclick="toggleFAQ(this)">
+                    Can I book activities separately?
+                    <i class="fas fa-chevron-down"></i>
+                </h3>
+                <div class="faq-answer mt-2 text-gray-600">
+                    Yes, all activities can be booked individually or as part of a package. Use the booking forms provided for each activity.
+                </div>
+            </div>
+            <div class="faq-item">
+                <h3 class="text-lg font-semibold flex justify-between items-center" onclick="toggleFAQ(this)">
+                    Are there any restrictions in the park?
+                    <i class="fas fa-chevron-down"></i>
+                </h3>
+                <div class="faq-answer mt-2 text-gray-600">
+                    Visitors must follow park rules, including no littering, no loud noises, and staying within designated areas. Smoking and alcohol are prohibited.
+                </div>
+            </div>
+            <div class="faq-item">
+                <h3 class="text-lg font-semibold flex justify-between items-center" onclick="toggleFAQ(this)">
+                    Is accommodation included in packages?
+                    <i class="fas fa-chevron-down"></i>
+                </h3>
+                <div class="faq-answer mt-2 text-gray-600">
+                    Yes, all packages include accommodation, ranging from eco-friendly tents to luxury resorts, depending on the package chosen.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function openPopup(id) {
+            document.getElementById(id).style.display = 'flex';
+        }
+
+        function closePopup(id) {
+            document.getElementById(id).style.display = 'none';
+        }
+
+        function toggleFAQ(element) {
+            const answer = element.nextElementSibling;
+            const icon = element.querySelector('i');
+            answer.classList.toggle('active');
+            icon.classList.toggle('fa-chevron-down');
+            icon.classList.toggle('fa-chevron-up');
+        }
+
+        // Close popups when clicking outside
+        document.querySelectorAll('.popup').forEach(popup => {
+            popup.addEventListener('click', (e) => {
+                if (e.target === popup) {
+                    popup.style.display = 'none';
+                }
+            });
+        });
+
+        // Handle form submissions
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const formData = new FormData(form);
+                try {
+                    const response = await fetch(form.action, {
+                        method: 'POST',
+                        body: formData
+                    });
+                    if (response.ok) {
+                        alert('Thank you for your submission!');
+                        form.reset();
+                        closePopup(form.closest('.popup').id);
+                    } else {
+                        alert('There was an error submitting the form. Please try again.');
+                    }
+                } catch (error) {
+                    alert('There was an error submitting the form. Please try again.');
+                }
+            });
+        });
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Footer Start -->
+<div class="container-fluid footer py-5">
+    <div class="container py-5">
+        <div class="row g-5">
+            <div class="col-md-6 col-lg-6 col-xl-3">
+                <div class="footer-item d-flex flex-column">
+                    <h4 class="mb-4 text-white">Get In Touch</h4>
+                    <a href="tel:+918979931256"><i class="fas fa-phone me-2"></i> +91 8979931256</a>
+                    <a href="tel:+918979220256"><i class="fas fa-phone me-2"></i> +91 8979220256</a>
+                    <a href="mailto:info@yatrago.com"><i class="fas fa-envelope me-2"></i> info@yatrago.com</a>
+                    <a href="mailto:sales.yatrago@gmail.com"><i class="fas fa-envelope me-2"></i> sales.yatrago@gmail.com</a>
+                    <a href=""><i class="fas fa-home me-2"></i> 94, Yoravar Enclave, Phase-1, Ganesh Vihar, Sitapur, Jwalapur, Haridwar, Uttarakhand 249407</a>
+                    <div class="d-flex align-items-center">
+                        <i class="fas fa-share fa-2x text-white me-2"></i>
+                        <a class="btn-square btn btn-primary rounded-circle mx-1" href=""><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn-square btn btn-primary rounded-circle mx-1" href=""><i class="fab fa-twitter"></i></a>
+                        <a class="btn-square btn btn-primary rounded-circle mx-1" href=""><i class="fab fa-instagram"></i></a>
+                        <a class="btn-square btn btn-primary rounded-circle mx-1" href=""><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-6 col-xl-3">
+                <div class="footer-item d-flex flex-column">
+                    <h4 class="mb-4 text-white">Company</h4>
+                    <a href="about.html"><i class="fas fa-angle-right me-2"></i> About Us</a>
+                    <a href=""><i class="fas fa-angle-right me-2"></i> Careers</a>
+                    <a href=""><i class="fas fa-angle-right me-2"></i> Blog</a>
+                    <a href=""><i class="fas fa-angle-right me-2"></i> Press</a>
+                    <a href=""><i class="fas fa-angle-right me-2"></i> Gift Cards</a>
+                    <a href=""><i class="fas fa-angle-right me-2"></i> Magazine</a>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-6 col-xl-3">
+                <div class="footer-item d-flex flex-column">
+                    <h4 class="mb-4 text-white">Support</h4>
+                    <a href="contact.html"><i class="fas fa-angle-right me-2"></i> Contact Us</a>
+                    <a href=""><i class="fas fa-angle-right me-2"></i> Legal Notice</a>
+                    <a href=""><i class="fas fa-angle-right me-2"></i> Privacy Policy</a>
+                    <a href=""><i class="fas fa-angle-right me-2"></i> Terms and Conditions</a>
+                    <a href=""><i class="fas fa-angle-right me-2"></i> Sitemap</a>
+                    <a href=""><i class="fas fa-angle-right me-2"></i> Cookie policy</a>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-6 col-xl-3">
+                <div class="footer-item">
+                    <div class="row gy-3 gx-2 mb-4">
+                        <div class="col-xl-6">
+                            <form>
+                                <div class="form-floating">
+                                    <select class="form-select bg-dark border" id="select1">
+                                        <option value="1">Indian</option>
+                                        <option value="1">Arabic</option>
+                                        <option value="2">German</option>
+                                        <option value="3">Greek</option>
+                                        <option value="3">New York</option>
+                                    </select>
+                                    <label for="select1">Country</label>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-xl-6">
+                            <form>
+                                <div class="form-floating">
+                                    <select class="form-select bg-dark border" id="select1">
+                                        <option value="1">INR</option>
+                                        <option value="2">EUR</option>
+                                        <option value="3">USD</option>
+                                        <option value="3">GBP</option>
+                                    </select>
+                                    <label for="select1">Currency</label>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <h4 class="text-white mb-3">Payments</h4>
+                    <div class="footer-bank-card">
+                        <a href="#" class="text-white me-2"><i class="fab fa-cc-amex fa-2x"></i></a>
+                        <a href="#" class="text-white me-2"><i class="fab fa-cc-visa fa-2x"></i></a>
+                        <a href="#" class="text-white me-2"><i class="fas fa-credit-card fa-2x"></i></a>
+                        <a href="#" class="text-white me-2"><i class="fab fa-cc-mastercard fa-2x"></i></a>
+                        <a href="#" class="text-white me-2"><i class="fab fa-cc-paypal fa-2x"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-cc-discover fa-2x"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Footer End -->
+
+        
+        <!-- Copyright Start -->
+        <div class="container-fluid copyright text-body py-4">
+            <div class="container">
+                <div class="row g-4 align-items-center">
+                    <div class="col-md-6 text-center text-md-end mb-md-0">
+                        <i class="fas fa-copyright me-2"></i><a class="text-white" href="#">Yatra Go</a>, All right reserved.
+                    </div>
+                    <div class="col-md-6 text-center text-md-start">
+                        <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
+                        <!--/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
+                        <!--/*** you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". ***/-->
+                        Designed By  YATRA GO 
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Copyright End -->
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-primary btn-primary-outline-0 btn-md-square back-to-top"><i class="fa fa-arrow-up"></i></a>   
+
+        
+        <!-- JavaScript Libraries -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="lib/easing/easing.min.js"></script>
+        <script src="lib/waypoints/waypoints.min.js"></script>
+        <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+        <script src="lib/lightbox/js/lightbox.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+        <!-- Template Javascript -->
+        <script src="js/main.js"></script>
+    </body>
+
+</html>

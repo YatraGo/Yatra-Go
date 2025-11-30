@@ -1,0 +1,1241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <title>Yatra Go - Your Trusted Travel Partner</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="" name="keywords">
+        <meta content="" name="description">
+
+        <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">  
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.css">
+
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel-hotel/assets/owl.carousel-hotel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+    </head>
+
+    <body>
+
+        <!-- Spinner Start -->
+        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <!-- Spinner End -->
+
+        
+        <!-- Navbar & Hero Start --> 
+<div class="container-fluid position-relative p-0">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
+        <a href="" class="navbar-brand p-0 d-flex align-items-center">
+            <img src="img/Yatra Go Logo.png" alt="Yatra Go Logo" class="logo me-12" style="width: 130px; height: 150px;">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="fa fa-bars"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto py-0">
+                <a href="index.html" class="nav-item nav-link">Home</a>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Packages</a>
+                    <div class="dropdown-menu m-0">
+                        <a href="Uttarakhand.html" class="dropdown-item">Uttarakhand</a>
+                        <a href="Himachal_Pradesh.html" class="dropdown-item">Himachal Pradesh</a>
+                        <a href="Kashmir.html" class="dropdown-item">Kashmir</a>
+                        <a href="international.html" class="dropdown-item">International</a>
+                    </div>
+                </div>
+                <a href="destinations.html" class="nav-item nav-link">Destinations</a>
+                <a href="activity.html" class="nav-item nav-link">Activity</a>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Our Services</a>
+                    <div class="dropdown-menu m-0">
+                        <a href="blogs.html" class="dropdown-item">Blogs</a>
+                        <a href="hotel.html" class="dropdown-item">Hotel</a>
+                        <a href="car-rental.html" class="dropdown-item">Car/Coach Rental</a>
+                        <a href="railway-booking.html" class="dropdown-item">Railway Booking</a>
+                        <a href="air-ticket.html" class="dropdown-item">Air Ticket</a>
+                        <a href="bike-rental.html" class="dropdown-item">Bike Rental</a>
+                    </div>
+                </div>
+                <a href="about.html" class="nav-item nav-link">About Us</a>
+                <a href="contact.html" class="nav-item nav-link">Contact Us</a>
+                <a href="contact.html" class="nav-item nav-link">Query Now</a>
+            </div>
+        </div>
+    </nav>
+</div>
+<!-- Navbar End-->
+
+<style>
+    :root {
+        --primary-color: #1351a1;
+        --secondary-color: #3f51b5;
+        --dark-color: #333;
+        --light-color: #f8f9fa;
+    }
+    
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f5f5f5;
+    }
+    
+    /* Header Styles */
+    .header-banner {
+        background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('img/carousel-1.jpg');
+        background-size: cover;
+        background-position: center;
+        height: 400px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-align: center;
+    }
+    
+    .header-content h1 {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        color: rgba(255, 255, 255, 0.753)
+    }
+    
+    .header-content p {
+        font-size: 1.2rem;
+        max-width: 650px;
+        margin: 0 auto;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    }
+    
+    /* Search Box Styles */
+    .search-container {
+        position: absolute;
+        bottom: -50px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
+        max-width: 1000px;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        z-index: 100;
+    }
+    
+    .search-box {
+        padding: 20px;
+    }
+    
+    .search-title {
+        font-weight: 600;
+        color: var(--dark-color);
+        margin-bottom: 5px;
+        font-size: 0.9rem;
+    }
+    
+    .search-input {
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        padding: 12px 15px;
+        width: 100%;
+        transition: all 0.3s;
+    }
+    
+    .search-input:focus {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 2px rgba(233, 30, 99, 0.2);
+    }
+    
+    .date-picker, .guests-picker {
+        cursor: pointer;
+        background-color: white;
+    }
+    
+    .search-btn {
+        background: var(--primary-color);
+        color: white;
+        border: none;
+        border-radius: 4px;
+        padding: 12px 25px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s;
+        width: 100%;
+        font-size: 1.1rem;
+        box-shadow: 0 4px 8px rgba(30, 111, 233, 0.3);
+    }
+    
+    .search-btn:hover {
+        background: #ff791f;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 12px rgba(233, 30, 99, 0.4);
+    }
+    
+    /* Room Card Styles */
+    .room-title {
+        margin-top: 100px;
+        text-align: center;
+        margin-bottom: 40px;
+    }
+    
+    .room-title h2 {
+        font-weight: 700;
+        color: var(--dark-color);
+        position: relative;
+        display: inline-block;
+        padding-bottom: 15px;
+    }
+    
+    .room-title h2:after {
+        content: '';
+        display: block;
+        width: 80px;
+        height: 4px;
+        background: var(--primary-color);
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .room-title span {
+        color: var(--primary-color);
+    }
+    
+    .room-item {
+        transition: all 0.3s;
+        margin-bottom: 30px;
+    }
+    
+    .room-item:hover {
+        transform: translateY(-10px);
+    }
+    
+    .room-item .position-relative {
+        overflow: hidden;
+        border-radius: 8px 8px 0 0;
+    }
+    
+    .room-item img {
+        transition: all 0.5s;
+        height: 250px;
+        object-fit: cover;
+        width: 100%;
+    }
+    
+    .room-item:hover img {
+        transform: scale(1.1);
+    }
+    
+    .price-tag {
+        z-index: 10;
+        font-weight: 600;
+        font-size: 14px;
+    }
+    
+    .stars {
+        color: var(--primary-color);
+    }
+    
+    .amenity-icon {
+        color: var(--primary-color);
+        margin-right: 5px;
+    }
+    
+    .btn-view {
+        background-color: var(--primary-color);
+        border: none;
+        transition: all 0.3s;
+    }
+    
+    .btn-view:hover {
+        background-color: #ff791f;
+        transform: translateY(-2px);
+    }
+    
+    .btn-book {
+        background-color: var(--primary-color);
+        border: none;
+        transition: all 0.3s;
+    }
+    
+    .btn-book:hover {
+        background-color: #3eda17;
+        transform: translateY(-2px);
+    }
+    
+    /* Date Picker Custom Styles */
+    .flatpickr-calendar {
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+    }
+    
+    .flatpickr-day.selected {
+        background: var(--primary-color);
+        border-color: var(--primary-color);
+    }
+    
+    .flatpickr-day.selected:hover {
+        background: #ff791f;
+        border-color: #ff791f;
+    }
+    
+    /* Guest Counter */
+    .guest-counter {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 10px;
+    }
+    
+    .counter-btn {
+        width: 30px;
+        height: 30px;
+        background: #f0f0f0;
+        border: 1px solid #ddd;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 1.2rem;
+        transition: all 0.2s;
+    }
+    
+    .counter-btn:hover {
+        background: #e0e0e0;
+    }
+    
+    .counter-value {
+        font-size: 1.1rem;
+        font-weight: 500;
+        margin: 0 10px;
+    }
+    
+    .guest-dropdown {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+    
+    .guest-type {
+        font-weight: 600;
+        margin-bottom: 5px;
+    }
+    
+    .guest-description {
+        font-size: 0.8rem;
+        color: #777;
+        margin-bottom: 10px;
+    }
+
+    
+    /* Animation Classes */
+    .fadeInUp {
+        animation: fadeInUp 0.8s ease forwards;
+    }
+    
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.3s; }
+    .delay-3 { animation-delay: 0.5s; }
+</style>
+</head>
+<body>
+<!-- Header Banner with Search -->
+<div class="header-banner">
+    <div class="header-content">
+        <h1>Find Your Perfect Stay</h1>
+        <p>Discover amazing hotels and accommodations for your next adventure</p>
+    </div>
+    
+    <!-- Search Box -->
+    <div class="search-container">
+        <div class="search-box">
+            <div class="row">
+                <div class="col-md-3 mb-3">
+                    <div class="search-title">Destination or Hotel Name</div>
+                    <input type="text" class="search-input" placeholder="Where are you going?">
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="search-title">Check-in & Check-out</div>
+                    <input type="text" class="search-input date-picker" id="date-range" placeholder="Add dates">
+                </div>
+                <div class="col-md-3 mb-3">
+                    <div class="search-title">Guests</div>
+                    <div class="dropdown">
+                        <input type="text" class="search-input guests-picker" id="guests-dropdown" data-bs-toggle="dropdown" placeholder="2 Adults · 0 Children" readonly>
+                        <div class="dropdown-menu" aria-labelledby="guests-dropdown">
+                            <div class="mb-3">
+                                <div class="guest-type">Adults</div>
+                                <div class="guest-description">Ages 13 or above</div>
+                                <div class="guest-counter">
+                                    <select class="guest-dropdown" id="adult-dropdown">
+                                        <option value="0">0</option>
+                                        <option value="1">1</option>
+                                        <option value="2" selected>2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="guest-type">Children</div>
+                                <div class="guest-description">Ages 0-12</div>
+                                <div class="guest-counter">
+                                    <select class="guest-dropdown" id="child-dropdown">
+                                        <option value="0" selected>0</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 mb-3">
+                    <div class="search-title">&nbsp;</div>
+                    <button class="search-btn" id="search-button">
+                        <i class="fas fa-search me-2"></i> Search
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Room Section -->
+<div class="container py-3">
+    <div class="room-title">
+        <h2>Explore Our <span>Hotels</span></h2>
+    </div>
+    <div class="row g-4">
+        <!-- Room 1 -->
+        <div class="col-lg-4 col-md-6 fadeInUp delay-1">
+            <div class="room-item shadow rounded overflow-hidden">
+                <div class="position-relative">
+                    <img src="img/room-1.jpg" alt="Junior Suite">
+                    <small class="position-relative start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4 price-tag">INR 3,999/Night</small>
+                </div>
+                <div class="p-4 mt-2">
+                    <div class="d-flex justify-content-between mb-3">
+                        <h5 class="mb-0">Junior Suite</h5>
+                        <div class="ps-2 stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <div class="d-flex mb-3">
+                        <small class="border-end me-3 pe-3"><i class="fas fa-bed amenity-icon"></i>3 Bed</small>
+                        <small class="border-end me-3 pe-3"><i class="fas fa-bath amenity-icon"></i>2 Bath</small>
+                        <small><i class="fas fa-wifi amenity-icon"></i>Wifi</small>
+                    </div>
+                    <p class="text-body mb-3">Luxurious junior suite with spacious rooms and modern amenities for a comfortable stay.</p>
+                    <div class="d-flex justify-content-between">
+                        <a class="btn btn-sm btn-view text-white rounded py-2 px-4" href="">View Detail</a>
+                        <a class="btn btn-sm btn-book text-white rounded py-2 px-4" href="">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Room 2 -->
+        <div class="col-lg-4 col-md-6 fadeInUp delay-2">
+            <div class="room-item shadow rounded overflow-hidden">
+                <div class="position-relative">
+                    <img src="img/room-2.jpg" alt="Executive Suite">
+                    <small class="position-relative start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4 price-tag">INR 4,200/Night</small>
+                </div>
+                <div class="p-4 mt-2">
+                    <div class="d-flex justify-content-between mb-3">
+                        <h5 class="mb-0">Executive Suite</h5>
+                        <div class="ps-2 stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <div class="d-flex mb-3">
+                        <small class="border-end me-3 pe-3"><i class="fas fa-bed amenity-icon"></i>3 Bed</small>
+                        <small class="border-end me-3 pe-3"><i class="fas fa-bath amenity-icon"></i>2 Bath</small>
+                        <small><i class="fas fa-wifi amenity-icon"></i>Wifi</small>
+                    </div>
+                    <p class="text-body mb-3">Elegant executive suite with premium furnishings and exceptional service for business travelers.</p>
+                    <div class="d-flex justify-content-between">
+                        <a class="btn btn-sm btn-view text-white rounded py-2 px-4" href="">View Detail</a>
+                        <a class="btn btn-sm btn-book text-white rounded py-2 px-4" href="">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Room 3 -->
+        <div class="col-lg-4 col-md-6 fadeInUp delay-3">
+            <div class="room-item shadow rounded overflow-hidden">
+                <div class="position-relative">
+                    <img src="img/room-3.jpg" alt="Super Deluxe">
+                    <small class="position-relative start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4 price-tag">INR 4,500/Night</small>
+                </div>
+                <div class="p-4 mt-2">
+                    <div class="d-flex justify-content-between mb-3">
+                        <h5 class="mb-0">Super Deluxe</h5>
+                        <div class="ps-2 stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <div class="d-flex mb-3">
+                        <small class="border-end me-3 pe-3"><i class="fas fa-bed amenity-icon"></i>3 Bed</small>
+                        <small class="border-end me-3 pe-3"><i class="fas fa-bath amenity-icon"></i>2 Bath</small>
+                        <small><i class="fas fa-wifi amenity-icon"></i>Wifi</small>
+                    </div>
+                    <p class="text-body mb-3">Lavish super deluxe room with spectacular views and exclusive amenities for a memorable stay.</p>
+                    <div class="d-flex justify-content-between">
+                        <a class="btn btn-sm btn-view text-white rounded py-2 px-4" href="">View Detail</a>
+                        <a class="btn btn-sm btn-book text-white rounded py-2 px-4" href="">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Room 4 -->
+        <div class="col-lg-4 col-md-6 fadeInUp delay-1">
+            <div class="room-item shadow rounded overflow-hidden">
+                <div class="position-relative">
+                    <img src="img/room-2.jpg" alt="Family Suite">
+                    <small class="position-Relative start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4 price-tag">INR 5,000/Night</small>
+                </div>
+                <div class="p-4 mt-2">
+                    <div class="d-flex justify-content-between mb-3">
+                        <h5 class="mb-0">Family Suite</h5>
+                        <div class="ps-2 stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <div class="d-flex mb-3">
+                        <small class="border-end me-3 pe-3"><i class="fas fa-bed amenity-icon"></i>4 Bed</small>
+                        <small class="border-end me-3 pe-3"><i class="fas fa-bath amenity-icon"></i>2 Bath</small>
+                        <small><i class="fas fa-wifi amenity-icon"></i>Wifi</small>
+                    </div>
+                    <p class="text-body mb-3">Spacious family suite with entertainment options and kid-friendly amenities for the whole family.</p>
+                    <div class="d-flex justify-content-between">
+                        <a class="btn btn-sm btn-view text-white rounded py-2 px-4" href="">View Detail</a>
+                        <a class="btn btn-sm btn-book text-white rounded py-2 px-4" href="">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Room 5 -->
+        <div class="col-lg-4 col-md-6 fadeInUp delay-2">
+            <div class="room-item shadow rounded overflow-hidden">
+                <div class="position-relative">
+                    <img src="img/room-1.jpg" alt="Luxury Suite">
+                    <small class="position-relative start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4 price-tag">INR 5,500/Night</small>
+                </div>
+                <div class="p-4 mt-2">
+                    <div class="d-flex justify-content-between mb-3">
+                        <h5 class="mb-0">Luxury Suite</h5>
+                        <div class="ps-2 stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <div class="d-flex mb-3">
+                        <small class="border-end me-3 pe-3"><i class="fas fa-bed amenity-icon"></i>3 Bed</small>
+                        <small class="border-end me-3 pe-3"><i class="fas fa-bath amenity-icon"></i>2 Bath</small>
+                        <small><i class="fas fa-wifi amenity-icon"></i>Wifi</small>
+                    </div>
+                    <p class="text-body mb-3">Ultra-luxurious suite featuring premium furnishings and panoramic views of the surrounding area.</p>
+                    <div class="d-flex justify-content-between">
+                        <a class="btn btn-sm btn-view text-white rounded py-2 px-4" href="">View Detail</a>
+                        <a class="btn btn-sm btn-book text-white rounded py-2 px-4" href="">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Room 6 -->
+        <div class="col-lg-4 col-md-6 fadeInUp delay-3">
+            <div class="room-item shadow rounded overflow-hidden">
+                <div class="position-relative">
+                    <img src="img/room-3.jpg" alt="Presidential Suite">
+                    <small class="position-Relative start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4 price-tag">INR 5,999/Night</small>
+                </div>
+                <div class="p-4 mt-2">
+                    <div class="d-flex justify-content-between mb-3">
+                        <h5 class="mb-0">Presidential Suite</h5>
+                        <div class="ps-2 stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <div class="d-flex mb-3">
+                        <small class="border-end me-3 pe-3"><i class="fas fa-bed amenity-icon"></i>3 Bed</small>
+                        <small class="border-end me-3 pe-3"><i class="fas fa-bath amenity-icon"></i>3 Bath</small>
+                        <small><i class="fas fa-wifi amenity-icon"></i>Wifi</small>
+                    </div>
+                    <p class="text-body mb-3">Exclusive presidential suite with private terrace, butler service and opulent living space.</p>
+                    <div class="d-flex justify-content-between">
+                        <a class="btn btn-sm btn-view text-white rounded py-2 px-4" href="">View Detail</a>
+                        <a class="btn btn-sm btn-book text-white rounded py-2 px-4" href="">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.js"></script>
+<script>
+    // Initialize date picker
+    flatpickr("#date-range", {
+        mode: "range",
+        minDate: "today",
+        dateFormat: "Y-m-d",
+        altInput: true,
+        altFormat: "F j, Y",
+        showMonths: 2,
+        static: true
+    });
+    
+    // Guest counter functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const adultCount = document.getElementById('adult-count');
+        const childCount = document.getElementById('child-count');
+        const guestsInput = document.getElementById('guests-dropdown');
+        const increaseAdult = document.querySelector('.increase-adult');
+        const decreaseAdult = document.querySelector('.decrease-adult');
+        const increaseChild = document.querySelector('.increase-child');
+        const decreaseChild = document.querySelector('.decrease-child');
+        
+        function updateGuestsDisplay() {
+            const adults = parseInt(adultCount.textContent);
+            const children = parseInt(childCount.textContent);
+            guestsInput.value = `${adults} Adult${adults !== 1 ? 's' : ''} · ${children} Child${children !== 1 ? 'ren' : ''}`;
+        }
+        
+        increaseAdult.addEventListener('click', function() {
+            const current = parseInt(adultCount.textContent);
+            if (current < 10) {
+                adultCount.textContent = current + 1;
+                updateGuestsDisplay();
+            }
+        });
+        
+        decreaseAdult.addEventListener('click', function() {
+            const current = parseInt(adultCount.textContent);
+            if (current > 1) {
+                adultCount.textContent = current - 1;
+                updateGuestsDisplay();
+            }
+        });
+        
+        increaseChild.addEventListener('click', function() {
+            const current = parseInt(childCount.textContent);
+            if (current < 6) {
+                childCount.textContent = current + 1;
+                updateGuestsDisplay();
+            }
+        });
+        
+        decreaseChild.addEventListener('click', function() {
+            const current = parseInt(childCount.textContent);
+            if (current > 0) {
+                childCount.textContent = current - 1;
+                updateGuestsDisplay();
+            }
+        });
+        
+        // Initialize search functionality
+        const searchButton = document.getElementById('search-button');
+        searchButton.addEventListener('click', function() {
+            const destination = document.querySelector('.search-input').value;
+            const dates = document.getElementById('date-range').value;
+            const guests = guestsInput.value;
+            
+            if (!destination) {
+                alert('Please enter a destination or hotel name');
+                return;
+            }
+            
+            if (!dates) {
+                alert('Please select check-in and check-out dates');
+                return;
+            }
+            
+            // Here you would connect to your hotel database and filter results
+            console.log('Searching for:', {
+                destination: destination,
+                dates: dates,
+                guests: guests
+            });
+            
+            // For demonstration, just show an alert
+            alert(`Searching for hotels in ${destination} for ${dates} with ${guests}`);
+            
+            // In a real implementation, you would redirect to search results or filter the current page
+        });
+    });
+</script>
+
+
+
+
+<!-- Footer Start -->
+<div class="container-fluid footer py-5">
+    <div class="container py-5">
+        <div class="row g-5">
+            <div class="col-md-6 col-lg-6 col-xl-3">
+                <div class="footer-item d-flex flex-column">
+                    <h4 class="mb-4 text-white">Get In Touch</h4>
+                    <a href="tel:+918979931256"><i class="fas fa-phone me-2"></i> +91 8979931256</a>
+                    <a href="tel:+918979220256"><i class="fas fa-phone me-2"></i> +91 8979220256</a>
+                    <a href="mailto:info@yatrago.com"><i class="fas fa-envelope me-2"></i> info@yatrago.com</a>
+                    <a href="mailto:sales.yatrago@gmail.com"><i class="fas fa-envelope me-2"></i> sales.yatrago@gmail.com</a>
+                    <a href=""><i class="fas fa-home me-2"></i> 94, Yoravar Enclave, Phase-1, Ganesh Vihar, Sitapur, Jwalapur, Haridwar, Uttarakhand 249407</a>
+                    <div class="d-flex align-items-center">
+                        <i class="fas fa-share fa-2x text-white me-2"></i>
+                        <a class="btn-square btn btn-primary rounded-circle mx-1" href=""><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn-square btn btn-primary rounded-circle mx-1" href=""><i class="fab fa-twitter"></i></a>
+                        <a class="btn-square btn btn-primary rounded-circle mx-1" href=""><i class="fab fa-instagram"></i></a>
+                        <a class="btn-square btn btn-primary rounded-circle mx-1" href=""><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-6 col-xl-3">
+                <div class="footer-item d-flex flex-column">
+                    <h4 class="mb-4 text-white">Company</h4>
+                    <a href="about.html"><i class="fas fa-angle-right me-2"></i> About</a>
+                    <a href=""><i class="fas fa-angle-right me-2"></i> Careers</a>
+                    <a href=""><i class="fas fa-angle-right me-2"></i> Blog</a>
+                    <a href=""><i class="fas fa-angle-right me-2"></i> Press</a>
+                    <a href=""><i class="fas fa-angle-right me-2"></i> Gift Cards</a>
+                    <a href=""><i class="fas fa-angle-right me-2"></i> Magazine</a>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-6 col-xl-3">
+                <div class="footer-item d-flex flex-column">
+                    <h4 class="mb-4 text-white">Support</h4>
+                    <a href="contact.html"><i class="fas fa-angle-right me-2"></i> Contact</a>
+                    <a href=""><i class="fas fa-angle-right me-2"></i> Legal Notice</a>
+                    <a href=""><i class="fas fa-angle-right me-2"></i> Privacy Policy</a>
+                    <a href=""><i class="fas fa-angle-right me-2"></i> Terms and Conditions</a>
+                    <a href=""><i class="fas fa-angle-right me-2"></i> Sitemap</a>
+                    <a href=""><i class="fas fa-angle-right me-2"></i> Cookie policy</a>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-6 col-xl-3">
+                <div class="footer-item">
+                    <div class="row gy-3 gx-2 mb-4">
+                        <div class="col-xl-6">
+                            <form>
+                                <div class="form-floating">
+                                    <select class="form-control bg-dark border" id="select1">
+                                        <option value="1">Indian</option>
+                                        <option value="1">Arabic</option>
+                                        <option value="2">German</option>
+                                        <option value="3">Greek</option>
+                                        <option value="3">New York</option>
+                                    </select>
+                                    <label for="select1">Country</label>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-xl-6">
+                            <form>
+                                <div class="form-floating">
+                                    <select class="form-control bg-dark border" id="select1">
+                                        <option value="1">INR</option>
+                                        <option value="2">EUR</option>
+                                        <option value="3">USD</option>
+                                        <option value="3">GBP</option>
+                                    </select>
+                                    <label for="select1">Currency</label>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <h4 class="text-white mb-3">Payments</h4>
+                    <div class="footer-bank-card">
+                        <a href="#" class="text-white me-2"><i class="fab fa-cc-amex fa-2x"></i></a>
+                        <a href="#" class="text-white me-2"><i class="fab fa-cc-visa fa-2x"></i></a>
+                        <a href="#" class="text-white me-2"><i class="fas fa-credit-card fa-2x"></i></a>
+                        <a href="#" class="text-white me-2"><i class="fab fa-cc-mastercard fa-2x"></i></a>
+                        <a href="#" class="text-white me-2"><i class="fab fa-cc-paypal fa-2x"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-cc-discover fa-2x"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Footer End -->
+
+        
+        <!-- Copyright Start -->
+        <div class="container-fluid copyright text-body py-4">
+            <div class="container">
+                <div class="row g-4 align-items-center">
+                    <div class="col-md-6 text-center text-md-end mb-md-0">
+                        <i class="fas fa-copyright me-2"></i><a class="text-white" href="#">Yatra Go</a>, All right reserved.
+                    </div>
+                    <div class="col-md-6 text-center text-md-start">
+                        <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
+                        <!--/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
+                        <!--/*** you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". ***/-->
+                        Designed By  YATRA GO 
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Copyright End -->
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-primary btn-primary-outline-0 btn-md-square back-to-top"><i class="fa fa-arrow-up"></i></a>
+
+        <!-- JavaScript Libraries -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="lib/wow/wow.min.js"></script>
+        <script src="lib/easing/easing.min.js"></script>
+        <script src="lib/waypoints/waypoints.min.js"></script>
+        <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+        <script src="lib/lightbox/js/lightbox.min.js"></script>
+
+        <!-- Template Javascript -->
+        <script src="js/main.js"></script>
+        <script src="js/package-modal.js"></script>
+        <script src="script.js"></script>
+    </body>
+</html>
+
+
+
+
+
+
+<style>
+
+:root {
+    --primary: #0e7dc7;
+    --light: #F1F8FF;
+    --dark: #0F172B;
+}
+
+.fw-medium {
+    font-weight: 500 !important;
+}
+
+.fw-semi-bold {
+    font-weight: 600 !important;
+}
+
+.back-to-top {
+    position: fixed;
+    display: none;
+    right: 45px;
+    bottom: 45px;
+    z-index: 99;
+}
+
+
+
+/* Header Styles */
+.page-header {
+    background-blend-mode: darken;
+    transition: all 0.5s;
+    position: relative;
+}
+
+/* Animation Classes */
+.animated {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translate3d(0, -20px, 0);
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 20px, 0);
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+.fadeInDown {
+    animation-name: fadeInDown;
+}
+
+.fadeInUp {
+    animation-name: fadeInUp;
+    animation-delay: 0.2s;
+}
+
+/* Search Bar Styles */
+.bg-white.rounded-3 {
+    border-radius: 12px !important;
+    transition: all 0.3s ease;
+}
+
+.bg-white.rounded-3:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Form Elements */
+.form-control, .form-select {
+    height: 50px;
+    font-size: 15px;
+}
+
+.form-control:focus, .form-select:focus {
+    box-shadow: none;
+    border-color: transparent;
+}
+
+.input-group-text {
+    color: #555;
+}
+
+/* Label Styling */
+.form-label {
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.25rem;
+}
+
+/* Button Styling */
+.btn-primary {
+    background-color: #0e7dc7;
+    border-color: #0e7dc7;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: all 0.3s;
+    box-shadow: 0 5px 15px rgba(255, 87, 34, 0.3);
+}
+
+.btn-primary:hover {
+    background-color: #E64A19;
+    border-color: #E64A19;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255, 87, 34, 0.4);
+}
+
+.btn-primary:active, .btn-primary:focus {
+    background-color: #D84315;
+    border-color: #D84315;
+    box-shadow: 0 3px 10px rgba(255, 87, 34, 0.4);
+}
+
+/* Input Hover Effects */
+.input-group:hover hr {
+    border-color: #0e7dc7;
+}
+
+/* Horizontal Rules */
+hr {
+    margin-top: 0.5rem;
+    margin-bottom: 0;
+    transition: all 0.3s;
+}
+
+/* Custom Date Input Styling */
+input[type="date"] {
+    position: relative;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    background: transparent;
+    color: transparent;
+    cursor: pointer;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 991.98px) {
+    .bg-white.rounded-3 {
+        padding: 1.5rem !important;
+    }
+    
+    .col-lg-1, .col-lg-2, .col-lg-3 {
+        margin-bottom: 1rem;
+    }
+    
+    .page-header {
+        min-height: 650px !important;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .page-header {
+        min-height: 750px !important;
+    }
+    
+    .display-3 {
+        font-size: 2.5rem;
+    }
+}
+
+/* Destination Dropdown Styling */
+#destinationSuggestions {
+    position: absolute;
+    width: 100%;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1000;
+    background: white;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    display: none;
+}
+
+#destinationSuggestions div {
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+#destinationSuggestions div:hover {
+    background-color: #f8f9fa;
+    color: #0e7dc7;
+}
+
+/* Focus states */
+.form-control:focus + hr, .form-select:focus + hr {
+    border-color: #0e7dc7;
+    border-width: 2px;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #0e7dc7;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #E64A19;
+}
+
+</style>
+
+
+<script>
+
+(function ($) {
+    "use strict";
+
+    // Spinner
+    var spinner = function () {
+        setTimeout(function () {
+            if ($('#spinner').length > 0) {
+                $('#spinner').removeClass('show');
+            }
+        }, 1);
+    };
+    spinner();
+    
+    
+    // Initiate the wowjs
+    new WOW().init();
+    
+    
+    // Dropdown on mouse hover
+    const $dropdown = $(".dropdown");
+    const $dropdownToggle = $(".dropdown-toggle");
+    const $dropdownMenu = $(".dropdown-menu");
+    const showClass = "show";
+    
+    $(window).on("load resize", function() {
+        if (this.matchMedia("(min-width: 992px)").matches) {
+            $dropdown.hover(
+            function() {
+                const $this = $(this);
+                $this.addClass(showClass);
+                $this.find($dropdownToggle).attr("aria-expanded", "true");
+                $this.find($dropdownMenu).addClass(showClass);
+            },
+            function() {
+                const $this = $(this);
+                $this.removeClass(showClass);
+                $this.find($dropdownToggle).attr("aria-expanded", "false");
+                $this.find($dropdownMenu).removeClass(showClass);
+            }
+            );
+        } else {
+            $dropdown.off("mouseenter mouseleave");
+        }
+    });
+    
+    
+    // Back to top button
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 300) {
+            $('.back-to-top').fadeIn('slow');
+        } else {
+            $('.back-to-top').fadeOut('slow');
+        }
+    });
+    $('.back-to-top').click(function () {
+        $('html, body').animate({scrollTop: 0}, 1500, 'easeInOutExpo');
+        return false;
+    });
+
+
+    // Facts counter
+    $('[data-toggle="counter-up"]').counterUp({
+        delay: 10,
+        time: 2000
+    });
+
+
+    // Modal Video
+    $(document).ready(function () {
+        var $videoSrc;
+        $('.btn-play').click(function () {
+            $videoSrc = $(this).data("src");
+        });
+        console.log($videoSrc);
+
+        $('#videoModal').on('shown.bs.modal', function (e) {
+            $("#video").attr('src', $videoSrc + "?autoplay=1&amp;modestbranding=1&amp;showinfo=0");
+        })
+
+        $('#videoModal').on('hide.bs.modal', function (e) {
+            $("#video").attr('src', $videoSrc);
+        })
+    });
+
+
+    //search bar
+    // Set default dates (today and tomorrow)
+    window.onload = function() {
+        const today = new Date();
+        const tomorrow = new Date(today);
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        
+        document.getElementById('checkin').valueAsDate = today;
+        document.getElementById('checkout').valueAsDate = tomorrow;
+    };
+
+    // Hotel search function
+    function searchHotels() {
+        const destination = document.getElementById('destination').value.toLowerCase();
+        const checkin = document.getElementById('checkin').value;
+        const checkout = document.getElementById('checkout').value;
+        const adults = document.getElementById('adults').value;
+        const children = document.getElementById('children').value;
+        
+        // Define available destinations (in a real implementation, this would come from a database)
+        const availableDestinations = ["new york", "paris", "london", "tokyo", "dubai", "rome", "bali"];
+        
+        // Check if the destination exists
+        if (availableDestinations.includes(destination)) {
+            // Redirect to search results page with query parameters
+            window.location.href = `hotel-results.html?destination=${encodeURIComponent(destination)}&checkin=${checkin}&checkout=${checkout}&adults=${adults}&children=${children}`;
+        } else {
+            // Show "not available" message
+            alert("Sorry, we don't have hotels available in this destination yet.");
+        }
+        
+        // Prevent form submission
+        return false;
+    }
+
+})(jQuery);
+
+</script>
+
+
+

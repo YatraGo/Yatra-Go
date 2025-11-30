@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Yatra Go - Taxi Rentals (Under Construction)</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="img/Yatra Go.png">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600&family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- Animation CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #5985ff, #e0e0f5);
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+        .construction-container {
+            background: rgba(248, 245, 243, 0.9);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 130px;
+            animation: fadeInUp 1.5s ease-in-out;
+        }
+        h1 {
+            font-size: 3rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            animation: bounce 2s infinite;
+        }
+        p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        .highlight {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+        .social-links a {
+            margin: 0 10px;
+            font-size: 1.5rem;
+            color: #3498db;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        .social-links a:hover {
+            color: #e74c3c;
+            transform: scale(1.2);
+        }
+        .back-to-home {
+            margin-top: 30px;
+        }
+        .back-to-home a {
+            text-decoration: none;
+            color: #fff;
+            background: #3498db;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+        .back-to-home a:hover {
+            background: #e74c3c;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-20px);
+            }
+            60% {
+                transform: translateY(-10px);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Spinner Start -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <!-- Spinner End -->
+
+    <!-- Navbar Start -->
+    <div class="container-fluid position-relative p-0">
+        <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
+            <a href="" class="navbar-brand p-0">
+                <h1 class="m-0"></i>Yatra Go</h1>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="fa fa-bars"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav ms-auto py-0">
+                    <a href="index.html" class="nav-item nav-link">Home</a>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Package</a>
+                        <div class="dropdown-menu m-0">
+                            <a href="Uttarakhand.html" class="dropdown-item">Uttarakhand</a>
+                            <a href="Himachal_Pradesh.html" class="dropdown-item">Himachal Pradesh</a>
+                            <a href="Kashmir.html" class="dropdown-item">Kashmir</a>
+                            <a href="international.html" class="dropdown-item">International</a>
+                        </div>
+                    </div>
+                    <a href="destinations.html" class="nav-item nav-link">Destinations</a>
+                    <a href="activity.html" class="nav-item nav-link">Activity</a>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Our Services</a>
+                        <div class="dropdown-menu m-0">
+                            <a href="blogs.html" class="dropdown-item">Blogs</a>
+                            <a href="hotel.html" class="dropdown-item">Hotel</a>
+                            <a href="car-rental.html" class="dropdown-item">Car/Coach Rental</a>
+                            <a href="railway-booking.html" class="dropdown-item">Railway Booking</a>
+                            <a href="air-ticket.html" class="dropdown-item">Air Ticket</a>
+                            <a href="bike-rental.html" class="dropdown-item">Bike Rental</a>
+                        </div>
+                    </div>
+                    <a href="about.html" class="nav-item nav-link">About Us</a>
+                    <a href="contact.html" class="nav-item nav-link">Contact Us</a>
+                    <a href="contact.html" class="nav-item nav-link">Query Now</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <!-- Navbar End -->
+
+    <!-- Under Construction Content -->
+    <div class="construction-container">
+        <h1 class="animate__animated animate__bounce">Taxi Rentals - Coming Soon!</h1>
+        <p><span class="highlight">We're Working on Something Amazing!</span></p>
+        <p>Thank you for visiting! Our <strong>Taxi Rentals</strong> service is currently under construction as we work hard to bring you a seamless and reliable transportation experience.</p>
+        <p>Stay tuned for exciting updates, new features, and a fresh look that will elevate your travel journey with us.</p>
+        <h2>What’s Coming Soon?</h2>
+        <ul style="list-style: none; padding: 0;">
+            <li>✔️ Wide range of vehicles for all your travel needs</li>
+            <li>✔️ Easy online booking and payment options</li>
+            <li>✔️ Affordable and transparent pricing</li>
+            <li>✔️ 24/7 customer support for a hassle-free experience</li>
+        </ul>
+        <p>In the meantime, feel free to reach out to us at <a href="mailto:sales.yatrago@gmail.com"><strong>sales.yatrago@gmail.com</strong></a> for any inquiries or follow us on our social media channels to stay updated.</p>
+        <div class="social-links">
+            <a href="https://facebook.com/share/18X4gLJ5Le/?mibextid=wwXlfr" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://instagram.com/yatrago_official?igsh=ODdxcnJ4ZWkyNmli&utm_source=qr" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://instagram.com/yatrago_official?igsh=ODdxcnJ4ZWkyNmli&utm_source=qr" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://instagram.com/yatrago_official?igsh=ODdxcnJ4ZWkyNmli&utm_source=qr" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
+        <div class="back-to-home">
+            <a href="index.html" class="btn btn-primary">Back to Home</a>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>Thank you for your understanding and support.</p>
+        <p><strong>Yatra Go - Taxi Rentals</strong><br>Innovating for You</p>
+        <p>&copy; 2025 Yatra Go. All rights reserved.</p>
+    </div>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/lightbox/js/lightbox.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+
+    <!-- Spinner Script -->
+    <script>
+        setTimeout(() => {
+            document.getElementById('spinner').style.display = 'none';
+        }, 1000);
+    </script>
+</body>
+</html>
