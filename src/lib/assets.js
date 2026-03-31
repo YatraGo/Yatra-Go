@@ -12,7 +12,7 @@ export const asset = (path) => {
     if (normalized.startsWith('public/')) {
         normalized = normalized.slice('public/'.length);
     }
-    return ${baseUrl};
+    return `${baseUrl}${normalized}`;
 };
 const normalizeMediaValue = (value, key) => {
     if (typeof value === 'string' && /^(img|image|src|gallery)/i.test(key)) {
