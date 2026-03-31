@@ -198,4 +198,4 @@ export const BLOG_POSTS = [
             <p>Leave the pizza and pasta behind for a few days, and let the mountain chefs surprise you. Happy eating!</p>
         `
     }
-];.map(normalizeAssetFields);
+].map(normalizeAssetFields);
