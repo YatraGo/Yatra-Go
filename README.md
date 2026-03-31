@@ -45,6 +45,6 @@ In GitHub repo settings:
 ## Notes about blank/black screen issues
 
 - App uses `HashRouter` for GitHub Pages compatibility.
-- `vite.config.js` uses `base: '/yatrago/'` for repo subpath assets.
+- `vite.config.js` uses `base: './'` for production (relative assets) so it survives repo name changes.
 - `public/404.html` redirects unknown paths to hash routes.
 - Public asset links use `import.meta.env.BASE_URL` where needed.

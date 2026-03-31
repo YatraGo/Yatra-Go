@@ -4,8 +4,8 @@ import tailwindcss from '@tailwindcss/vite'
 import Sitemap from 'vite-plugin-sitemap'
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => ({
-  // GitHub Pages serves this project repo from /Yatra-Go/.
-  base: mode === 'production' ? '/Yatra-Go/' : '/',
+  // Use a relative base path for production to ensure assets load correctly on GitHub Pages
+  base: mode === 'production' ? './' : '/',
   build: {
     rollupOptions: {
       output: {
