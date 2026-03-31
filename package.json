@@ -9,7 +9,7 @@
     "build": "vite build",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
-    "go-live": "git add . && git -c core.safecrlf=false commit -m \"Deploy update\" || echo No changes to commit && git push -u origin main && npm run deploy",
+    "go-live": "git add . && git -c core.safecrlf=false commit -m \"Deploy update\" || echo No changes to commit && git branch -M main && git push -u origin main && npm run deploy",
     "lint": "eslint .",
     "preview": "vite preview"
   },
