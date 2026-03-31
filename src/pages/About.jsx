@@ -10,7 +10,6 @@ import {
 } from 'lucide-react';
 import ScrollReveal from '../components/ui/ScrollReveal';
 import { asset } from '../lib/assets';
-import { asset } from '../lib/assets';
 
 // ─── Animation Wrapper ───
 const FadeIn = ({ children, delay = 0, dir = 'up', className = '' }) => (

@@ -6,7 +6,6 @@ import { ArrowRight, CalendarDays, CheckCircle2, ChevronDown, Compass, LoaderCir
 import LocationAutocomplete from '../components/ui/LocationAutocomplete';
 import { generateItinerary, isHelicopterEligible } from '../lib/itineraryBuilder';
 import { asset } from '../lib/assets';
-import { asset } from '../lib/assets';
 
 const quickDayOptions = ['2', '3', '4', '5', '7'];
 
