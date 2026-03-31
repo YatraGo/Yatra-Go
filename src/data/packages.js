@@ -673,3 +673,7 @@ export const ACTIVITIES = [
         src: 'https://www.yatrago.com/activities/bike-rental',
     },
 ].map(normalizeAssetFields);
+
+export const getPackageBySlug = (slug) => {
+    return ALL_PACKAGES.find(p => p.slug === slug);
+};
