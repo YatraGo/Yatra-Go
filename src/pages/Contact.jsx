@@ -127,12 +127,12 @@ const Contact = () => {
                 <meta name="description" content="Contact Yatra Go for tour packages, cab bookings, and travel enquiries. Based in Haridwar, Uttarakhand." />
             </Helmet>
 
-            <section className="bg-white/80 py-20 backdrop-blur-sm">
+            <section className="bg-white/80 py-12 sm:py-20 backdrop-blur-sm">
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                    <div className="rounded-[2.4rem] border border-slate-200/90 bg-white px-6 py-8 shadow-[0_28px_70px_-45px_rgba(15,23,42,0.25)] md:px-10">
-                        <div className="mb-4 text-sm font-bold text-slate-500">Home / Pages / Contact</div>
-                        <p className="text-sm font-black uppercase tracking-[0.24em] text-brand-gold">Contact Us</p>
-                        <h1 className="mt-3 text-4xl font-serif font-black text-slate-900 md:text-5xl">Contact For Any Query</h1>
+                    <div className="rounded-[2rem] sm:rounded-[2.4rem] border border-slate-200/90 bg-white px-6 py-6 sm:py-8 shadow-[0_28px_70px_-45px_rgba(15,23,42,0.25)] md:px-10">
+                        <div className="mb-3 sm:mb-4 text-[10px] sm:text-sm font-bold text-slate-500">Home / Pages / Contact</div>
+                        <p className="text-[10px] sm:text-sm font-black uppercase tracking-[0.24em] text-brand-gold">Contact Us</p>
+                        <h1 className="mt-2 sm:mt-3 text-2xl sm:text-4xl font-serif font-black text-slate-900 md:text-5xl leading-tight">Contact For Any Query</h1>
                     </div>
                 </div>
             </section>
@@ -141,11 +141,11 @@ const Contact = () => {
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                     <div className="grid gap-10 lg:grid-cols-[0.86fr_1.14fr]">
                         <ScrollReveal direction="left">
-                            <div className="rounded-[2.4rem] border border-slate-200/90 bg-white p-8 shadow-[0_24px_60px_-42px_rgba(15,23,42,0.25)] md:p-10">
-                                <div className="space-y-8">
-                                    <div>
-                                        <h3 className="text-lg font-serif font-black text-slate-900">Address</h3>
-                                        <p className="mt-3 text-base leading-8 text-slate-600">
+                            <div className="rounded-[2rem] sm:rounded-[2.4rem] border border-slate-200/90 bg-white p-6 sm:p-10 shadow-[0_24px_60px_-42px_rgba(15,23,42,0.25)]">
+                                <div className="space-y-6 sm:space-y-8 text-center sm:text-left">
+                                    <div className="group">
+                                        <h3 className="text-base sm:text-lg font-serif font-black text-slate-900 uppercase tracking-tight">Address</h3>
+                                        <p className="mt-2 sm:mt-3 text-sm sm:text-base leading-7 sm:leading-8 text-slate-600 font-medium">
                                             Yatra Go House, Yoravar Enclave,
                                             <br />
                                             Phase-1, Ganesh Vihar, Sitapur,
@@ -156,168 +156,172 @@ const Contact = () => {
                                         </p>
                                     </div>
 
-                                    <div>
-                                        <h3 className="text-lg font-serif font-black text-slate-900">Mobile</h3>
-                                        <div className="mt-3 space-y-2">
-                                            <a href="tel:+918979931256" className="block text-base font-bold text-slate-600 transition-colors hover:text-brand-gold">+91 8979931256</a>
-                                            <a href="tel:+918979220256" className="block text-base font-bold text-slate-600 transition-colors hover:text-brand-gold">+91 8979220256</a>
+                                    <div className="group">
+                                        <h3 className="text-base sm:text-lg font-serif font-black text-slate-900 uppercase tracking-tight">Mobile</h3>
+                                        <div className="mt-2 sm:mt-3 space-y-1 sm:space-y-2">
+                                            <a href="tel:+918979931256" className="block text-sm sm:text-base font-bold text-slate-600 transition-colors hover:text-brand-gold tracking-tight">+91 8979931256</a>
+                                            <a href="tel:+918979220256" className="block text-sm sm:text-base font-bold text-slate-600 transition-colors hover:text-brand-gold tracking-tight">+91 8979220256</a>
                                         </div>
                                     </div>
 
-                                    <div>
-                                        <h3 className="text-lg font-serif font-black text-slate-900">Email</h3>
-                                        <div className="mt-3 space-y-2">
-                                            <a href="mailto:info@yatrago.com" className="block text-base font-bold text-slate-600 transition-colors hover:text-brand-gold">info@yatrago.com</a>
-                                            <a href="mailto:sales.yatrago@gmail.com" className="block text-base font-bold text-slate-600 transition-colors hover:text-brand-gold">sales.yatrago@gmail.com</a>
+                                    <div className="group">
+                                        <h3 className="text-base sm:text-lg font-serif font-black text-slate-900 uppercase tracking-tight">Email</h3>
+                                        <div className="mt-2 sm:mt-3 space-y-1 sm:space-y-2 overflow-hidden">
+                                            <a href="mailto:info@yatrago.com" className="block text-sm sm:text-base font-bold text-slate-600 transition-colors hover:text-brand-gold truncate">info@yatrago.com</a>
+                                            <a href="mailto:sales.yatrago@gmail.com" className="block text-sm sm:text-base font-bold text-slate-600 transition-colors hover:text-brand-gold truncate">sales.yatrago@gmail.com</a>
                                         </div>
                                     </div>
 
-                                    <div>
-                                        <h3 className="text-lg font-serif font-black text-slate-900">Website</h3>
+                                    <div className="group">
+                                        <h3 className="text-base sm:text-lg font-serif font-black text-slate-900 uppercase tracking-tight">Website</h3>
                                         <a
                                             href="https://www.yatrago.com"
                                             target="_blank"
                                             rel="noreferrer"
-                                            className="mt-3 inline-block text-base font-bold text-slate-600 transition-colors hover:text-brand-gold"
+                                            className="mt-2 sm:mt-3 inline-block text-sm sm:text-base font-bold text-slate-600 transition-colors hover:text-brand-gold"
                                         >
                                             www.yatrago.com
                                         </a>
                                     </div>
                                 </div>
 
-                                <div className="mt-8 grid gap-3 border-t border-slate-100 pt-8 sm:grid-cols-2">
-                                    <div className="rounded-2xl bg-slate-50 px-5 py-4">
-                                        <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">Response Time</p>
-                                        <p className="mt-2 text-base font-black text-slate-900">Quick call-back support</p>
+                                <div className="mt-8 grid gap-3 border-t border-slate-100 pt-8 grid-cols-1 sm:grid-cols-2">
+                                    <div className="rounded-2xl bg-slate-50 px-5 py-4 border border-slate-100/50">
+                                        <p className="text-[9px] sm:text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">Response Time</p>
+                                        <p className="mt-1 sm:mt-2 text-sm sm:text-base font-black text-slate-900 leading-tight">Quick support</p>
                                     </div>
-                                    <div className="rounded-2xl bg-slate-50 px-5 py-4">
-                                        <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">Travel Desk</p>
-                                        <p className="mt-2 text-base font-black text-slate-900">Tours, hotels, transport</p>
+                                    <div className="rounded-2xl bg-slate-50 px-5 py-4 border border-slate-100/50">
+                                        <p className="text-[9px] sm:text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">Travel Desk</p>
+                                        <p className="mt-1 sm:mt-2 text-sm sm:text-base font-black text-slate-900 leading-tight">Expert support</p>
                                     </div>
                                 </div>
                             </div>
                         </ScrollReveal>
 
                         <ScrollReveal direction="right">
-                            <form onSubmit={handleSubmit} className="rounded-[2.4rem] border border-slate-200/90 bg-white p-8 shadow-[0_28px_70px_-45px_rgba(15,23,42,0.25)] md:p-10">
-                                <p className="text-sm font-black uppercase tracking-[0.24em] text-brand-gold">Send us a message</p>
-                                <h2 className="mt-3 text-3xl font-serif font-black text-slate-900 md:text-4xl">Plan Your Trip With Confidence</h2>
-                                <p className="mt-4 max-w-2xl text-base leading-8 text-slate-600">
+                            <form onSubmit={handleSubmit} className="rounded-[2rem] sm:rounded-[2.4rem] border border-slate-200/90 bg-white p-6 sm:p-10 shadow-[0_28px_70px_-45px_rgba(15,23,42,0.25)]">
+                                <p className="text-[10px] sm:text-sm font-black uppercase tracking-[0.24em] text-brand-gold">Send us a message</p>
+                                <h2 className="mt-2 sm:mt-3 text-2xl sm:text-3xl font-serif font-black text-slate-900 md:text-4xl leading-tight">Plan Your Trip With Confidence</h2>
+                                <p className="mt-3 sm:mt-4 max-w-2xl text-sm sm:text-base leading-7 sm:leading-8 text-slate-600 font-medium">
                                     We&apos;re here to make your travel dreams come true. Whether you need help choosing the right tour, dates, or destination, our team is ready to guide you.
                                 </p>
 
-                                <div className="mt-8 grid gap-5 md:grid-cols-2">
-                                    <div className="space-y-2">
-                                        <label className="pl-1 text-[11px] font-black uppercase tracking-[0.18em] text-slate-400">Your Name</label>
+                                <div className="mt-8 grid gap-4 sm:gap-5 md:grid-cols-2">
+                                    <div className="space-y-1.5">
+                                        <label className="pl-1 text-[9px] sm:text-[11px] font-black uppercase tracking-[0.18em] text-slate-400">Your Name</label>
                                         <input
                                             type="text"
                                             required
                                             value={form.name}
                                             onChange={(event) => setForm({ ...form, name: event.target.value })}
-                                            placeholder="Enter your full name"
-                                            className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 text-sm font-semibold text-slate-800 outline-none transition-all focus:border-brand-gold focus:bg-white focus:ring-4 focus:ring-brand-gold/10"
+                                            placeholder="Full name"
+                                            className="w-full rounded-xl sm:rounded-2xl border border-slate-200 bg-slate-50 px-4 sm:px-5 py-3 sm:py-4 text-xs sm:text-sm font-bold text-slate-800 outline-none transition-all focus:border-brand-gold focus:bg-white focus:ring-4 focus:ring-brand-gold/10"
                                         />
                                     </div>
-                                    <div className="space-y-2">
-                                        <label className="pl-1 text-[11px] font-black uppercase tracking-[0.18em] text-slate-400">Your Email</label>
+                                    <div className="space-y-1.5">
+                                        <label className="pl-1 text-[9px] sm:text-[11px] font-black uppercase tracking-[0.18em] text-slate-400">Your Email</label>
                                         <input
                                             type="email"
                                             required
                                             value={form.email}
                                             onChange={(event) => setForm({ ...form, email: event.target.value })}
-                                            placeholder="Enter your email address"
-                                            className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 text-sm font-semibold text-slate-800 outline-none transition-all focus:border-brand-gold focus:bg-white focus:ring-4 focus:ring-brand-gold/10"
+                                            placeholder="Email address"
+                                            className="w-full rounded-xl sm:rounded-2xl border border-slate-200 bg-slate-50 px-4 sm:px-5 py-3 sm:py-4 text-xs sm:text-sm font-bold text-slate-800 outline-none transition-all focus:border-brand-gold focus:bg-white focus:ring-4 focus:ring-brand-gold/10"
                                         />
                                     </div>
-                                    <div className="space-y-2">
-                                        <label className="pl-1 text-[11px] font-black uppercase tracking-[0.18em] text-slate-400">Contact Number</label>
+                                    <div className="space-y-1.5">
+                                        <label className="pl-1 text-[9px] sm:text-[11px] font-black uppercase tracking-[0.18em] text-slate-400">Contact Number</label>
                                         <input
                                             type="tel"
                                             required
                                             value={form.phone}
                                             onChange={(event) => setForm({ ...form, phone: event.target.value })}
-                                            placeholder="Enter mobile number"
-                                            className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 text-sm font-semibold text-slate-800 outline-none transition-all focus:border-brand-gold focus:bg-white focus:ring-4 focus:ring-brand-gold/10"
+                                            placeholder="Mobile number"
+                                            className="w-full rounded-xl sm:rounded-2xl border border-slate-200 bg-slate-50 px-4 sm:px-5 py-3 sm:py-4 text-xs sm:text-sm font-bold text-slate-800 outline-none transition-all focus:border-brand-gold focus:bg-white focus:ring-4 focus:ring-brand-gold/10"
                                         />
                                     </div>
-                                    <div className="space-y-2">
-                                        <label className="pl-1 text-[11px] font-black uppercase tracking-[0.18em] text-slate-400">Number of Travelers</label>
+                                    <div className="space-y-1.5">
+                                        <label className="pl-1 text-[9px] sm:text-[11px] font-black uppercase tracking-[0.18em] text-slate-400">Travelers</label>
                                         <div className="relative">
                                             <select
                                                 value={form.travelers}
                                                 onChange={(event) => setForm({ ...form, travelers: event.target.value })}
-                                                className="w-full cursor-pointer appearance-none rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 text-sm font-semibold text-slate-800 outline-none transition-all focus:border-brand-gold focus:bg-white focus:ring-4 focus:ring-brand-gold/10"
+                                                className="w-full cursor-pointer appearance-none rounded-xl sm:rounded-2xl border border-slate-200 bg-slate-50 px-4 sm:px-5 py-3 sm:py-4 text-xs sm:text-sm font-bold text-slate-800 outline-none transition-all focus:border-brand-gold focus:bg-white focus:ring-4 focus:ring-brand-gold/10"
                                             >
-                                                <option value="1">1 Traveler</option>
-                                                <option value="2">2 Travelers</option>
-                                                <option value="3-4">3-4 Travelers</option>
-                                                <option value="5-8">5-8 Travelers</option>
-                                                <option value="9+">9+ Travelers</option>
+                                                <option value="1">1 Person</option>
+                                                <option value="2">2 People</option>
+                                                <option value="3-4">3-4 People</option>
+                                                <option value="5-8">5-8 People</option>
+                                                <option value="9+">9+ People</option>
                                             </select>
-                                            <ChevronDown size={18} className="pointer-events-none absolute right-5 top-1/2 -translate-y-1/2 text-slate-400" />
+                                            <ChevronDown size={16} className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-slate-400" />
                                         </div>
                                     </div>
-                                    <div className="space-y-2">
-                                        <label className="pl-1 text-[11px] font-black uppercase tracking-[0.18em] text-slate-400">Preferred Destination</label>
+                                    <div className="space-y-1.5">
+                                        <label className="pl-1 text-[9px] sm:text-[11px] font-black uppercase tracking-[0.18em] text-slate-400">Destination</label>
                                         <input
                                             type="text"
                                             value={form.destination}
                                             onChange={(event) => setForm({ ...form, destination: event.target.value })}
-                                            placeholder="Uttarakhand, Char Dham, Rishikesh..."
-                                            className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 text-sm font-semibold text-slate-800 outline-none transition-all focus:border-brand-gold focus:bg-white focus:ring-4 focus:ring-brand-gold/10"
+                                            placeholder="Uttarakhand, Char Dham..."
+                                            className="w-full rounded-xl sm:rounded-2xl border border-slate-200 bg-slate-50 px-4 sm:px-5 py-3 sm:py-4 text-xs sm:text-sm font-bold text-slate-800 outline-none transition-all focus:border-brand-gold focus:bg-white focus:ring-4 focus:ring-brand-gold/10"
                                         />
                                     </div>
-                                    <div className="relative">
-                                        <label className="mb-2 block pl-1 text-[11px] font-black uppercase tracking-[0.18em] text-slate-400">Trip Duration</label>
-                                        <select
-                                            value={form.tripFocus}
-                                            onChange={(event) => setForm({ ...form, tripFocus: event.target.value })}
-                                            className="w-full cursor-pointer appearance-none rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 text-sm font-semibold text-slate-800 outline-none transition-all focus:border-brand-gold focus:bg-white focus:ring-4 focus:ring-brand-gold/10"
-                                        >
-                                            <option value="">Select duration</option>
-                                            {durationOptions.map((option) => (
-                                                <option key={option}>{option}</option>
-                                            ))}
-                                        </select>
-                                        <ChevronDown size={18} className="pointer-events-none absolute right-5 top-[calc(50%+12px)] -translate-y-1/2 text-slate-400" />
+                                    <div className="space-y-1.5">
+                                        <label className="mb-1.5 block pl-1 text-[9px] sm:text-[11px] font-black uppercase tracking-[0.18em] text-slate-400">Duration</label>
+                                        <div className="relative">
+                                            <select
+                                                value={form.tripFocus}
+                                                onChange={(event) => setForm({ ...form, tripFocus: event.target.value })}
+                                                className="w-full cursor-pointer appearance-none rounded-xl sm:rounded-2xl border border-slate-200 bg-slate-50 px-4 sm:px-5 py-3 sm:py-4 text-xs sm:text-sm font-bold text-slate-800 outline-none transition-all focus:border-brand-gold focus:bg-white focus:ring-4 focus:ring-brand-gold/10"
+                                            >
+                                                <option value="">Select days</option>
+                                                {durationOptions.map((option) => (
+                                                    <option key={option}>{option}</option>
+                                                ))}
+                                            </select>
+                                            <ChevronDown size={16} className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-slate-400" />
+                                        </div>
                                     </div>
-                                    <div className="space-y-2">
-                                        <label className="pl-1 text-[11px] font-black uppercase tracking-[0.18em] text-slate-400">Travel Date</label>
+                                    <div className="space-y-1.5">
+                                        <label className="pl-1 text-[9px] sm:text-[11px] font-black uppercase tracking-[0.18em] text-slate-400">Travel Date</label>
                                         <input
                                             type="date"
                                             value={form.travelDate}
                                             onChange={(event) => setForm({ ...form, travelDate: event.target.value })}
-                                            className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 text-sm font-semibold text-slate-800 outline-none transition-all focus:border-brand-gold focus:bg-white focus:ring-4 focus:ring-brand-gold/10"
+                                            className="w-full rounded-xl sm:rounded-2xl border border-slate-200 bg-slate-50 px-4 sm:px-5 py-3 sm:py-4 text-xs sm:text-sm font-bold text-slate-800 outline-none transition-all focus:border-brand-gold focus:bg-white focus:ring-4 focus:ring-brand-gold/10"
                                         />
                                     </div>
-                                    <div className="relative">
-                                        <label className="mb-2 block pl-1 text-[11px] font-black uppercase tracking-[0.18em] text-slate-400">Package Type</label>
-                                        <select
-                                            value={form.serviceType}
-                                            onChange={(event) => setForm({ ...form, serviceType: event.target.value })}
-                                            className="w-full cursor-pointer appearance-none rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 text-sm font-semibold text-slate-800 outline-none transition-all focus:border-brand-gold focus:bg-white focus:ring-4 focus:ring-brand-gold/10"
-                                        >
-                                            <option value="">Select package type</option>
-                                            {packageOptions.map((option) => (
-                                                <option key={option}>{option}</option>
-                                            ))}
-                                        </select>
-                                        <ChevronDown size={18} className="pointer-events-none absolute right-5 top-[calc(50%+12px)] -translate-y-1/2 text-slate-400" />
+                                    <div className="space-y-1.5">
+                                        <label className="mb-1.5 block pl-1 text-[9px] sm:text-[11px] font-black uppercase tracking-[0.18em] text-slate-400">Package Style</label>
+                                        <div className="relative">
+                                            <select
+                                                value={form.serviceType}
+                                                onChange={(event) => setForm({ ...form, serviceType: event.target.value })}
+                                                className="w-full cursor-pointer appearance-none rounded-xl sm:rounded-2xl border border-slate-200 bg-slate-50 px-4 sm:px-5 py-3 sm:py-4 text-xs sm:text-sm font-bold text-slate-800 outline-none transition-all focus:border-brand-gold focus:bg-white focus:ring-4 focus:ring-brand-gold/10"
+                                            >
+                                                <option value="">Select style</option>
+                                                {packageOptions.map((option) => (
+                                                    <option key={option}>{option}</option>
+                                                ))}
+                                            </select>
+                                            <ChevronDown size={16} className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-slate-400" />
+                                        </div>
                                     </div>
-                                    <div className="space-y-2 md:col-span-2">
-                                        <label className="pl-1 text-[11px] font-black uppercase tracking-[0.18em] text-slate-400">Special Requirements or Questions</label>
+                                    <div className="space-y-1.5 md:col-span-2">
+                                        <label className="pl-1 text-[9px] sm:text-[11px] font-black uppercase tracking-[0.18em] text-slate-400">Special Notes</label>
                                         <textarea
-                                            rows={5}
+                                            rows={4}
                                             value={form.message}
                                             onChange={(event) => setForm({ ...form, message: event.target.value })}
-                                            placeholder="Tell us about destinations, hotel preference, pickup, tour type, or anything important for your trip."
-                                            className="w-full resize-none rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 text-sm font-semibold text-slate-800 outline-none transition-all focus:border-brand-gold focus:bg-white focus:ring-4 focus:ring-brand-gold/10"
+                                            placeholder="Destinations, hotel preference, pickup city..."
+                                            className="w-full resize-none rounded-xl sm:rounded-2xl border border-slate-200 bg-slate-50 px-4 sm:px-5 py-3 sm:py-4 text-xs sm:text-sm font-bold text-slate-800 outline-none transition-all focus:border-brand-gold focus:bg-white focus:ring-4 focus:ring-brand-gold/10"
                                         />
                                     </div>
                                 </div>
 
                                 {error && (
-                                    <div className="mt-5 rounded-2xl border border-rose-200 bg-rose-50 px-5 py-4 text-sm font-semibold text-rose-700">
+                                    <div className="mt-5 rounded-2xl border border-rose-200 bg-rose-50 px-5 py-4 text-xs sm:text-sm font-bold text-rose-700">
                                         {error}
                                     </div>
                                 )}
@@ -325,10 +329,10 @@ const Contact = () => {
                                 <button
                                     type="submit"
                                     disabled={submitting}
-                                    className="mt-6 inline-flex w-full items-center justify-center gap-3 rounded-2xl bg-brand-dark px-8 py-4 text-sm font-black uppercase tracking-[0.18em] text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand-gold hover:text-brand-dark disabled:opacity-70 sm:w-auto"
+                                    className="mt-6 inline-flex w-full items-center justify-center gap-3 rounded-xl sm:rounded-2xl bg-brand-dark px-8 py-4 text-xs sm:text-sm font-black uppercase tracking-[0.18em] text-white transition-all duration-300 hover:bg-brand-gold hover:text-brand-dark disabled:opacity-70 sm:w-auto active:scale-95 shadow-xl shadow-brand-dark/10"
                                 >
                                     <Send size={18} />
-                                    {submitting ? 'Sending Query...' : 'Send Query'}
+                                    {submitting ? 'Sending...' : 'Send Inquiry'}
                                 </button>
                             </form>
                         </ScrollReveal>

@@ -71,7 +71,7 @@ const About = () => (
         </Helmet>
 
         {/* ── HERO BANNER ── */}
-        <section className="relative h-[65vh] min-h-[420px] flex items-center justify-center overflow-hidden">
+        <section className="relative h-[55vh] sm:h-[65vh] min-h-[400px] sm:min-h-[420px] flex items-center justify-center overflow-hidden">
             <img
                 src={asset('assets/About us.png')}
                 alt="Kedarnath mountains — YatraGo"
@@ -79,24 +79,24 @@ const About = () => (
             />
             <div className="absolute inset-0 bg-gradient-to-b from-brand-dark/75 via-brand-dark/55 to-brand-dark/85" />
             <FadeIn className="relative z-10 text-center px-4 max-w-3xl mx-auto">
-                <span className="inline-block text-brand-gold font-bold uppercase tracking-widest text-sm mb-3">Established 2014 · Haridwar, Uttarakhand</span>
-                <h1 className="text-5xl xl:text-6xl font-serif font-black text-white mb-5 leading-tight">
+                <span className="inline-block text-brand-gold font-bold uppercase tracking-widest text-[10px] sm:text-sm mb-3">Established 2014 · Haridwar, Uttarakhand</span>
+                <h1 className="text-4xl sm:text-5xl xl:text-6xl font-serif font-black text-white mb-4 sm:mb-5 leading-tight">
                     Our Story of <span className="text-brand-gold">Inspiring Journeys</span>
                 </h1>
-                <p className="text-white/75 text-lg max-w-xl mx-auto">A Haridwar-born travel agency that has helped 5000+ families, pilgrims and adventure seekers discover the real India.</p>
+                <p className="text-white/75 text-base sm:text-lg max-w-xl mx-auto font-medium">A Haridwar-born travel agency that has helped 5000+ families, pilgrims and adventure seekers discover the real India.</p>
             </FadeIn>
         </section>
 
         {/* ── STATS STRIP ── */}
-        <section className="bg-brand-gold py-12 relative overflow-hidden">
+        <section className="bg-brand-gold py-8 sm:py-12 relative overflow-hidden">
             <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,white,transparent)] animate-pulse" />
-            <div className="max-w-6xl mx-auto px-4 grid grid-cols-2 sm:grid-cols-4 gap-8 text-center relative z-10">
+            <div className="max-w-6xl mx-auto px-4 grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-8 text-center relative z-10">
                 {stats.map((s, i) => (
                     <ScrollReveal key={i} delay={i * 0.1}>
                         <div className="text-brand-dark group cursor-default">
-                            <div className="flex justify-center mb-3 text-brand-dark/70 group-hover:scale-110 group-hover:text-brand-dark transition-all duration-300">{s.icon}</div>
-                            <div className="text-4xl xl:text-5xl font-black font-serif tracking-tight">{s.value}</div>
-                            <div className="text-sm font-bold mt-2 opacity-80 uppercase tracking-wider">{s.label}</div>
+                            <div className="flex justify-center mb-2 sm:mb-3 text-brand-dark/70 group-hover:scale-110 group-hover:text-brand-dark transition-all duration-300">{s.icon}</div>
+                            <div className="text-3xl sm:text-4xl xl:text-5xl font-black font-serif tracking-tight">{s.value}</div>
+                            <div className="text-[10px] sm:text-sm font-bold mt-1 sm:mt-2 opacity-80 uppercase tracking-wider">{s.label}</div>
                         </div>
                     </ScrollReveal>
                 ))}
@@ -104,27 +104,27 @@ const About = () => (
         </section>
 
         {/* ── OUR STORY ── */}
-        <section className="py-24 bg-white">
+        <section className="py-16 sm:py-24 bg-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="grid lg:grid-cols-2 gap-16 items-center">
+                <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
                     <FadeIn dir="left">
-                        <div className="grid grid-cols-2 gap-4">
-                            <img src={asset('assets/Kedarnath 1.png')} alt="Chardham Yatra" className="rounded-2xl h-60 w-full object-cover shadow-lg mt-8" />
-                            <img src={asset('assets/Haridwar Aarti.png')} alt="Haridwar Ganga Aarti" className="rounded-2xl h-60 w-full object-cover shadow-lg" />
-                            <img src={asset('assets/Devprayag.png')} alt="Devprayag" className="rounded-2xl h-48 w-full object-cover shadow-lg -mt-4" />
-                            <img src={asset('assets/Shimla 1.png')} alt="Shimla Hill Station" className="rounded-2xl h-48 w-full object-cover shadow-lg mt-4" />
+                        <div className="grid grid-cols-2 gap-3 sm:gap-4">
+                            <img src={asset('assets/Kedarnath 1.png')} alt="Chardham Yatra" className="rounded-2xl h-44 sm:h-60 w-full object-cover shadow-lg mt-6 sm:mt-8" />
+                            <img src={asset('assets/Haridwar Aarti.png')} alt="Haridwar Ganga Aarti" className="rounded-2xl h-44 sm:h-60 w-full object-cover shadow-lg" />
+                            <img src={asset('assets/Devprayag.png')} alt="Devprayag" className="rounded-2xl h-36 sm:h-48 w-full object-cover shadow-lg -mt-3 sm:-mt-4" />
+                            <img src={asset('assets/Shimla 1.png')} alt="Shimla Hill Station" className="rounded-2xl h-36 sm:h-48 w-full object-cover shadow-lg mt-3 sm:mt-4" />
                         </div>
-                        <div className="mt-5 bg-brand-dark text-white p-5 rounded-2xl">
-                            <p className="text-brand-gold font-bold text-sm mb-1">📍 Our Headquarters</p>
-                            <p className="text-white/80 text-sm">94, Yoravar Enclave, Phase-1, Ganesh Vihar, Sitapur, Jwalapur, Haridwar, Uttarakhand — 249407</p>
+                        <div className="mt-5 bg-brand-dark text-white p-4 sm:p-5 rounded-2xl">
+                            <p className="text-brand-gold font-bold text-xs sm:text-sm mb-1">📍 Our Headquarters</p>
+                            <p className="text-white/80 text-xs sm:text-sm">94, Yoravar Enclave, Phase-1, Ganesh Vihar, Sitapur, Jwalapur, Haridwar, Uttarakhand — 249407</p>
                         </div>
                     </FadeIn>
                     <FadeIn dir="right">
-                        <span className="inline-block text-brand-gold font-bold uppercase tracking-widest text-sm mb-3">Who We Are</span>
-                        <h2 className="text-4xl font-serif font-black text-brand-dark leading-tight mb-6">
+                        <span className="inline-block text-brand-gold font-bold uppercase tracking-widest text-[10px] sm:text-sm mb-3">Who We Are</span>
+                        <h2 className="text-3xl sm:text-4xl font-serif font-black text-brand-dark leading-tight mb-5 sm:mb-6">
                             Born in the Land of <span className="text-brand-gold">the Gods</span>
                         </h2>
-                        <div className="space-y-4 text-gray-600 leading-relaxed">
+                        <div className="space-y-4 text-gray-600 leading-relaxed text-sm sm:text-base">
                             <p>
                                 <strong>YatraGo</strong> was founded in 2014 in the holy city of Haridwar, Uttarakhand — at the very doorstep of the Himalayas. What started as a small local cab and pilgrimage service has grown into one of the most trusted full-service travel agencies in North India.
                             </p>
@@ -135,11 +135,11 @@ const About = () => (
                                 We are not just a travel agency. We are <em>travel storytellers</em> — every tour we design carries the soul of the destination and the genuine care of our team.
                             </p>
                         </div>
-                        <div className="mt-7 flex gap-4">
-                            <Link to="/contact" className="inline-flex items-center gap-2 bg-brand-gold text-brand-dark font-black px-6 py-3 rounded-lg hover:bg-yellow-400 transition-colors shadow">
+                        <div className="mt-6 sm:mt-7 flex flex-col sm:flex-row gap-3 sm:gap-4">
+                            <Link to="/contact" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-brand-gold text-brand-dark font-black px-6 py-3.5 sm:py-3 rounded-[14px] sm:rounded-lg hover:bg-yellow-400 transition-colors shadow">
                                 <Phone size={16} /> Talk to Us
                             </Link>
-                            <Link to="/tour-packages" className="inline-flex items-center gap-2 border-2 border-brand-dark text-brand-dark font-bold px-6 py-3 rounded-lg hover:bg-brand-dark hover:text-white transition-colors">
+                            <Link to="/tour-packages" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 border-2 border-brand-dark text-brand-dark font-bold px-6 py-3.5 sm:py-3 rounded-[14px] sm:rounded-lg hover:bg-brand-dark hover:text-white transition-colors">
                                 View Packages <ArrowRight size={16} />
                             </Link>
                         </div>
@@ -149,16 +149,16 @@ const About = () => (
         </section>
 
         {/* ── MISSION & VISION ── */}
-        <section className="py-24 bg-gray-50">
+        <section className="py-16 sm:py-24 bg-gray-50">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <ScrollReveal direction="up">
-                    <div className="text-center mb-14">
-                        <span className="inline-block text-brand-gold font-bold uppercase tracking-widest text-sm mb-3">What Drives Us</span>
-                        <h2 className="text-4xl xl:text-5xl font-serif font-black text-brand-dark">Mission & Vision</h2>
+                    <div className="text-center mb-10 sm:mb-14">
+                        <span className="inline-block text-brand-gold font-bold uppercase tracking-widest text-[10px] sm:text-sm mb-3">What Drives Us</span>
+                        <h2 className="text-3xl sm:text-4xl xl:text-5xl font-serif font-black text-brand-dark">Mission & Vision</h2>
                         <div className="w-16 h-1 bg-brand-gold mx-auto mt-4 rounded-full"></div>
                     </div>
                 </ScrollReveal>
-                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
                     {/* Mission */}
                     <ScrollReveal delay={0.1}>
                         <div className="premium-card overflow-hidden h-full group bg-white">
@@ -248,13 +248,13 @@ const About = () => (
         </section>
 
         {/* ── WHY CHOOSE US ── */}
-        <section className="py-20 bg-white">
+        <section className="py-16 sm:py-20 bg-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <FadeIn className="text-center mb-14">
-                    <span className="inline-block text-brand-gold font-bold uppercase tracking-widest text-sm mb-3">Our Advantage</span>
-                    <h2 className="text-4xl xl:text-5xl font-serif font-black text-brand-dark">Why Choose Yatra Go?</h2>
+                <FadeIn className="text-center mb-10 sm:mb-14">
+                    <span className="inline-block text-brand-gold font-bold uppercase tracking-widest text-[10px] sm:text-sm mb-3">Our Advantage</span>
+                    <h2 className="text-3xl sm:text-4xl xl:text-5xl font-serif font-black text-brand-dark">Why Choose Yatra Go?</h2>
                     <div className="w-16 h-1 bg-brand-gold mx-auto mt-4 rounded-full"></div>
-                    <p className="text-gray-500 mt-4 max-w-xl mx-auto">We're not just another travel company. Here's what makes us different from everyone else.</p>
+                    <p className="text-gray-500 mt-4 max-w-xl mx-auto text-sm sm:text-base">We're not just another travel company. Here's what makes us different from everyone else.</p>
                 </FadeIn>
                 <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
                     {whyUs.map((w, i) => (
@@ -271,12 +271,12 @@ const About = () => (
         </section>
 
         {/* ── JOURNEY TIMELINE ── */}
-        <section className="py-20 bg-brand-dark relative overflow-hidden">
+        <section className="py-16 sm:py-20 bg-brand-dark relative overflow-hidden">
             <div className="absolute inset-0 opacity-5" style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1400)', backgroundSize: 'cover' }}></div>
             <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <FadeIn className="text-center mb-14">
-                    <span className="inline-block text-brand-gold font-bold uppercase tracking-widest text-sm mb-3">Our Journey</span>
-                    <h2 className="text-4xl font-serif font-black text-white">From 2014 to Today</h2>
+                <FadeIn className="text-center mb-10 sm:mb-14">
+                    <span className="inline-block text-brand-gold font-bold uppercase tracking-widest text-[10px] sm:text-sm mb-3">Our Journey</span>
+                    <h2 className="text-3xl sm:text-4xl font-serif font-black text-white">From 2014 to Today</h2>
                     <div className="w-16 h-1 bg-brand-gold mx-auto mt-4 rounded-full"></div>
                 </FadeIn>
                 <div className="relative">
@@ -287,10 +287,10 @@ const About = () => (
                             <FadeIn key={i} delay={i * 0.1} dir={i % 2 === 0 ? 'left' : 'right'}>
                                 <div className={`flex gap-8 items-start ${i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
                                     <div className={`flex-1 ${i % 2 === 0 ? 'md:text-right' : 'md:text-left'}`}>
-                                        <div className="bg-white/8 border border-white/10 rounded-2xl p-5 hover:bg-white/12 transition-colors">
-                                            <span className="inline-block bg-brand-gold text-brand-dark font-black text-sm px-3 py-1 rounded-full mb-2">{m.year}</span>
-                                            <h3 className="text-white font-bold text-lg font-serif mb-2">{m.title}</h3>
-                                            <p className="text-white/60 text-sm">{m.desc}</p>
+                                        <div className="bg-white/8 border border-white/10 rounded-2xl p-4 sm:p-5 hover:bg-white/12 transition-colors">
+                                            <span className="inline-block bg-brand-gold text-brand-dark font-black text-xs sm:text-sm px-2.5 sm:px-3 py-1 rounded-full mb-2">{m.year}</span>
+                                            <h3 className="text-white font-bold text-base sm:text-lg font-serif mb-2">{m.title}</h3>
+                                            <p className="text-white/60 text-xs sm:text-sm">{m.desc}</p>
                                         </div>
                                     </div>
                                     <div className="shrink-0 w-4 h-4 rounded-full bg-brand-gold border-4 border-brand-dark mt-5 hidden md:block"></div>
@@ -304,10 +304,10 @@ const About = () => (
         </section>
 
         {/* ── ACHIEVEMENTS / AWARDS ── */}
-        <section className="py-16 bg-amber-50 border-y border-amber-100">
+        <section className="py-12 sm:py-16 bg-amber-50 border-y border-amber-100">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <FadeIn className="text-center mb-10">
-                    <h2 className="text-3xl font-serif font-black text-brand-dark">Recognition & Achievements</h2>
+                <FadeIn className="text-center mb-8 sm:mb-10">
+                    <h2 className="text-2xl sm:text-3xl font-serif font-black text-brand-dark">Recognition & Achievements</h2>
                     <div className="w-12 h-1 bg-brand-gold mx-auto mt-3 rounded-full"></div>
                 </FadeIn>
                 <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -330,22 +330,22 @@ const About = () => (
         </section>
 
         {/* ── FINAL CTA ── */}
-        <section className="py-20 bg-gradient-to-br from-brand-dark via-slate-800 to-slate-900 relative overflow-hidden">
+        <section className="py-16 sm:py-20 bg-gradient-to-br from-brand-dark via-slate-800 to-slate-900 relative overflow-hidden">
             <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1400)', backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
             <div className="absolute inset-0 bg-brand-dark/60"></div>
             <FadeIn className="relative z-10 max-w-3xl mx-auto text-center px-4">
-                <h2 className="text-4xl font-serif font-black text-white mb-5">
+                <h2 className="text-3xl sm:text-4xl font-serif font-black text-white mb-4 sm:mb-5">
                     Let's Plan Your <span className="text-brand-gold">Next Adventure</span>
                 </h2>
-                <p className="text-white/70 text-lg mb-8">
+                <p className="text-white/70 text-sm sm:text-lg mb-8 sm:mb-10 lg:px-12 font-medium">
                     Join thousands of happy travelers who chose Yatra Go. Talk to our expert, share your dream, and we'll make it real.
                 </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                    <Link to="/contact" className="inline-flex items-center justify-center gap-2 bg-brand-gold text-brand-dark font-black px-8 py-4 rounded-xl hover:bg-yellow-400 transition-colors shadow-xl text-base">
-                        <Phone size={18} /> Talk to a Travel Expert
+                <div className="flex flex-col sm:flex-row gap-4 justify-center w-full sm:w-auto">
+                    <Link to="/contact" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-brand-gold text-brand-dark font-black px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl hover:bg-yellow-400 transition-colors shadow-xl text-sm sm:text-base">
+                        <Phone size={18} className="w-4 h-4 sm:w-[18px] sm:h-[18px]" /> Talk to a Travel Expert
                     </Link>
-                    <Link to="/tour-packages" className="inline-flex items-center justify-center gap-2 border-2 border-white/30 text-white font-bold px-8 py-4 rounded-xl hover:border-brand-gold hover:text-brand-gold transition-colors text-base">
-                        Explore Packages <ArrowRight size={18} />
+                    <Link to="/tour-packages" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 border-2 border-white/30 text-white font-bold px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl hover:border-brand-gold hover:text-brand-gold transition-colors text-sm sm:text-base">
+                        Explore Packages <ArrowRight size={18} className="w-4 h-4 sm:w-[18px] sm:h-[18px]" />
                     </Link>
                 </div>
             </FadeIn>

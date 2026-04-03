@@ -187,14 +187,14 @@ const LoginModal = ({ onClose }) => {
                     <div className="h-1 bg-gradient-to-r from-brand-gold via-brand-dark to-brand-gold opacity-60"></div>
 
                     {/* Premium Header Section */}
-                    <div className="relative bg-gradient-to-br from-brand-dark via-brand-dark to-black px-8 py-6">
+                    <div className="relative bg-gradient-to-br from-brand-dark via-brand-dark to-black px-6 py-6 sm:px-8 sm:py-6">
                         {/* Decorative elements */}
                         <div className="absolute top-0 right-0 w-32 h-32 bg-brand-gold/5 rounded-full blur-3xl"></div>
                         <div className="absolute bottom-0 left-0 w-24 h-24 bg-brand-gold/5 rounded-full blur-3xl"></div>
 
                         <button onClick={onClose}
-                            className="absolute top-5 right-5 w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 text-white transition-all duration-300 flex items-center justify-center backdrop-blur-sm border border-white/10 hover:border-white/30 shadow-lg cursor-pointer">
-                            <X size={18} />
+                            className="absolute top-4 right-4 sm:top-5 sm:right-5 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white/10 hover:bg-white/20 text-white transition-all duration-300 flex items-center justify-center backdrop-blur-sm border border-white/10 hover:border-white/30 shadow-lg cursor-pointer">
+                            <X size={18} className="w-4 h-4 sm:w-[18px] sm:h-[18px]" />
                         </button>
 
                         <motion.div
@@ -213,7 +213,7 @@ const LoginModal = ({ onClose }) => {
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.2 }}
-                            className="text-white text-2xl font-black font-serif mb-1"
+                            className="text-white text-xl sm:text-2xl font-black font-serif mb-1"
                         >
                             {mode === 'login' ? '✨ Welcome Back!' : '🚀 Join YatraGo'}
                         </motion.h2>
@@ -222,7 +222,7 @@ const LoginModal = ({ onClose }) => {
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.3 }}
-                            className="text-white/70 text-sm leading-relaxed font-medium"
+                            className="text-white/70 text-xs sm:text-sm leading-relaxed font-medium"
                         >
                             {mode === 'login' 
                                 ? 'Access your bookings, dashboards & exclusive travel experiences.' 
@@ -241,18 +241,18 @@ const LoginModal = ({ onClose }) => {
                         </motion.div>
                     </div>
 
-                    <div className="px-8 py-6">
+                    <div className="px-5 sm:px-8 py-5 sm:py-6">
                         {/* Enhanced Mode toggle */}
                         <div className="flex rounded-xl overflow-hidden bg-gray-100/50 border border-gray-200 mb-5 p-0.5">
                             <button onClick={() => { setMode('login'); setError(''); }}
-                                className={`flex-1 py-3 px-3 text-sm font-bold transition-all duration-300 rounded-lg cursor-pointer ${mode === 'login' 
-                                    ? 'bg-gradient-to-br from-brand-gold to-yellow-500 text-brand-dark shadow-lg' 
+                                className={`flex-1 py-2.5 sm:py-3 px-3 text-xs sm:text-sm font-bold transition-all duration-300 rounded-lg cursor-pointer ${mode === 'login' 
+                                    ? 'bg-gradient-to-br from-brand-gold to-yellow-500 text-brand-dark shadow-md sm:shadow-lg' 
                                     : 'text-gray-500 hover:text-gray-700 hover:bg-white'}`}>
                                 🔐 Login
                             </button>
                             <button onClick={() => { setMode('register'); setError(''); }}
-                                className={`flex-1 py-3 px-3 text-sm font-bold transition-all duration-300 rounded-lg cursor-pointer ${mode === 'register' 
-                                    ? 'bg-gradient-to-br from-brand-gold to-yellow-500 text-brand-dark shadow-lg' 
+                                className={`flex-1 py-2.5 sm:py-3 px-3 text-xs sm:text-sm font-bold transition-all duration-300 rounded-lg cursor-pointer ${mode === 'register' 
+                                    ? 'bg-gradient-to-br from-brand-gold to-yellow-500 text-brand-dark shadow-md sm:shadow-lg' 
                                     : 'text-gray-500 hover:text-gray-700 hover:bg-white'}`}>
                                 ✨ Register
                             </button>
@@ -384,14 +384,14 @@ const LoginModal = ({ onClose }) => {
                                 type="button"
                                 onClick={handleGoogleSignIn}
                                 disabled={googleLoading}
-                                className="w-full flex items-center justify-center gap-3 bg-gradient-to-r from-white to-gray-50 hover:from-brand-gold/5 hover:to-yellow-50 border-2 border-gray-200 hover:border-brand-gold text-gray-700 font-bold py-3 rounded-xl transition-all duration-300 hover:shadow-lg disabled:opacity-60 disabled:cursor-not-allowed group shadow-sm relative overflow-hidden cursor-pointer"
+                                className="w-full flex items-center justify-center gap-3 bg-gradient-to-r from-white to-gray-50 hover:from-brand-gold/5 hover:to-yellow-50 border-2 border-gray-200 hover:border-brand-gold text-gray-700 font-bold py-2.5 sm:py-3 rounded-xl transition-all duration-300 hover:shadow-lg disabled:opacity-60 disabled:cursor-not-allowed group shadow-sm relative overflow-hidden cursor-pointer"
                             >
                                 <div className="absolute inset-0 bg-gradient-to-r from-brand-gold/0 via-brand-gold/5 to-brand-gold/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                                 <div className="relative flex items-center justify-center gap-3">
                                     {googleLoading ? (
-                                        <Loader2 size={18} className="animate-spin text-brand-gold" />
+                                        <Loader2 size={18} className="animate-spin text-brand-gold sm:w-[18px] sm:h-[18px] w-4 h-4" />
                                     ) : (
-                                        <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className="transition-transform group-hover:scale-110">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className="transition-transform group-hover:scale-110 sm:w-5 sm:h-5 w-4 h-4">
                                             <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
                                             <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
                                             <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
@@ -421,11 +421,11 @@ const LoginModal = ({ onClose }) => {
                                 transition={{ delay: mode === 'register' ? 0.6 : 0.5 }}
                                 type="submit"
                                 disabled={loading}
-                                className="w-full bg-gradient-to-r from-brand-gold to-yellow-500 hover:from-yellow-500 hover:to-brand-gold text-brand-dark font-black py-3.5 rounded-xl transition-all duration-300 shadow-lg hover:shadow-2xl hover:scale-[1.02] active:scale-95 disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2 mt-4 text-base cursor-pointer"
+                                className="w-full bg-gradient-to-r from-brand-gold to-yellow-500 hover:from-yellow-500 hover:to-brand-gold text-brand-dark font-black py-3 sm:py-3.5 rounded-xl transition-all duration-300 shadow-lg hover:shadow-2xl hover:scale-[1.02] active:scale-95 disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2 mt-4 text-sm sm:text-base cursor-pointer"
                             >
                                 {loading ? (
                                     <>
-                                        <Loader2 size={20} className="animate-spin" />
+                                        <Loader2 size={20} className="animate-spin sm:w-5 sm:h-5 w-4 h-4" />
                                         <span>Processing...</span>
                                     </>
                                 ) : (
@@ -496,11 +496,11 @@ const LoginModal = ({ onClose }) => {
                                 transition={{ delay: 0.2 }}
                                 type="submit"
                                 disabled={loading}
-                                className="w-full bg-gradient-to-r from-brand-gold to-yellow-500 hover:from-yellow-500 hover:to-brand-gold text-brand-dark font-black py-3.5 rounded-xl transition-all duration-300 shadow-lg hover:shadow-2xl hover:scale-[1.02] active:scale-95 disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2 mt-4 text-base cursor-pointer"
+                                className="w-full bg-gradient-to-r from-brand-gold to-yellow-500 hover:from-yellow-500 hover:to-brand-gold text-brand-dark font-black py-3 sm:py-3.5 rounded-xl transition-all duration-300 shadow-lg hover:shadow-2xl hover:scale-[1.02] active:scale-95 disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2 mt-4 text-sm sm:text-base cursor-pointer"
                             >
                                 {loading ? (
                                     <>
-                                        <Loader2 size={20} className="animate-spin" />
+                                        <Loader2 size={20} className="animate-spin sm:w-5 sm:h-5 w-4 h-4" />
                                         <span>Sending...</span>
                                     </>
                                 ) : (
@@ -521,7 +521,7 @@ const LoginModal = ({ onClose }) => {
                                     setResetMessage('');
                                     setForgotEmail('');
                                 }}
-                                className="w-full bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold py-3 rounded-xl transition-colors text-base cursor-pointer"
+                                className="w-full bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold py-2.5 sm:py-3 rounded-xl transition-colors text-sm sm:text-base cursor-pointer"
                             >
                                 ← Back to Login
                             </motion.button>

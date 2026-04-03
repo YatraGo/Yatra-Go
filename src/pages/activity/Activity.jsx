@@ -14,39 +14,39 @@ import { asset } from '../../lib/assets';
 // ─── Activity Card ───
 const ActivityCard = ({ activity }) => (
     <div className="h-full">
-        <div className="premium-card flex flex-col h-full bg-white rounded-3xl overflow-hidden group">
-            <div className="relative h-56 overflow-hidden">
+        <div className="premium-card flex flex-col h-full bg-white rounded-2xl sm:rounded-3xl overflow-hidden group">
+            <div className="relative h-48 sm:h-56 overflow-hidden">
                 <img src={activity.img} alt={activity.name}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
                     loading="lazy"
                     onError={(e) => { e.target.src = asset('assets/Activities.png'); }} />
                 <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/80 via-transparent to-transparent opacity-40 group-hover:opacity-60 transition-opacity" />
-                <span className={`absolute top-4 left-4 text-[9px] font-black px-2.5 py-1.5 rounded-full shadow-lg ${activity.badgeColor} uppercase tracking-widest`}>{activity.badge}</span>
-                <span className={`absolute top-4 right-4 text-[9px] font-black px-2.5 py-1.5 rounded-full shadow-lg ${activity.difficultyColor} uppercase tracking-widest bg-white/90 backdrop-blur-sm`}>{activity.difficulty}</span>
-                <div className="absolute bottom-4 left-5 flex items-center gap-2 text-white font-bold text-xs drop-shadow-md">
-                    <MapPin size={13} className="text-brand-gold" /> {activity.location.split(',')[0]}
+                <span className={`absolute top-3 sm:top-4 left-3 sm:left-4 text-[8px] sm:text-[9px] font-black px-2 sm:px-2.5 py-1 sm:py-1.5 rounded-full shadow-lg ${activity.badgeColor} uppercase tracking-widest`}>{activity.badge}</span>
+                <span className={`absolute top-3 sm:top-4 right-3 sm:right-4 text-[8px] sm:text-[9px] font-black px-2 sm:px-2.5 py-1 sm:py-1.5 rounded-full shadow-lg ${activity.difficultyColor} uppercase tracking-widest bg-white/90 backdrop-blur-sm`}>{activity.difficulty}</span>
+                <div className="absolute bottom-3 sm:bottom-4 left-4 sm:left-5 flex items-center gap-2 text-white font-bold text-[10px] sm:text-xs drop-shadow-md">
+                    <MapPin size={12} className="text-brand-gold sm:w-[13px] sm:h-[13px]" /> {activity.location.split(',')[0]}
                 </div>
             </div>
-            <div className="p-6 flex flex-col flex-1">
+            <div className="p-5 sm:p-6 flex flex-col flex-1">
                 <div className="flex items-start justify-between mb-3 gap-2">
-                    <h3 className="font-bold text-brand-dark text-xl font-serif group-hover:text-brand-gold transition-colors duration-300 leading-tight line-clamp-2 min-h-[56px] w-full">{activity.name}</h3>
-                    <div className="flex items-center gap-1 text-xs font-black text-gray-500 shrink-0 bg-gray-50 px-2.5 py-1 rounded-xl">
-                        <Star size={12} className="fill-brand-gold text-brand-gold" /> {activity.rating}
+                    <h3 className="font-bold text-brand-dark text-lg sm:text-xl font-serif group-hover:text-brand-gold transition-colors duration-300 leading-tight line-clamp-2 min-h-[48px] sm:min-h-[56px] w-full">{activity.name}</h3>
+                    <div className="flex items-center gap-1 text-[10px] sm:text-xs font-black text-gray-500 shrink-0 bg-gray-50 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-lg sm:rounded-xl">
+                        <Star size={10} className="fill-brand-gold text-brand-gold sm:w-3 sm:h-3" /> {activity.rating}
                     </div>
                 </div>
-                <div className="flex gap-4 text-[10px] font-black text-gray-400 uppercase tracking-widest mb-4">
+                <div className="flex gap-3 sm:gap-4 text-[9px] sm:text-[10px] font-black text-gray-400 uppercase tracking-widest mb-3 sm:mb-4">
                     <span className="flex items-center gap-1.5"><Clock size={12} className="text-brand-blue" /> {activity.duration}</span>
                     <span className="flex items-center gap-1.5"><Users size={12} className="text-brand-gold" /> {activity.groupSize}</span>
                 </div>
-                <p className="text-gray-500 text-sm leading-relaxed line-clamp-2 mb-6 flex-1 font-medium">{activity.desc}</p>
-                <div className="mt-auto flex items-center justify-between pt-5 border-t border-gray-100">
+                <p className="text-gray-500 text-xs sm:text-sm leading-relaxed line-clamp-2 mb-4 sm:mb-6 flex-1 font-medium">{activity.desc}</p>
+                <div className="mt-auto flex items-center justify-between pt-4 sm:pt-5 border-t border-gray-100">
                     <div>
-                        <span className="text-[10px] text-gray-400 font-black uppercase tracking-widest block leading-none mb-1">Fee Starts</span>
-                        <div className="text-2xl font-black text-brand-gold font-serif">₹{activity.price.toLocaleString('en-IN')}</div>
+                        <span className="text-[9px] sm:text-[10px] text-gray-400 font-black uppercase tracking-widest block leading-none mb-1">Fee Starts</span>
+                        <div className="text-xl sm:text-2xl font-black text-brand-gold font-serif">₹{activity.price.toLocaleString('en-IN')}</div>
                     </div>
                     <Link to={`/activity/${activity.id}`}
-                        className="bg-brand-dark text-white px-5 py-3 rounded-2xl text-[13px] font-black hover:bg-brand-gold hover:text-brand-dark transition-all duration-300 flex items-center gap-2 shadow-xl shadow-brand-dark/10 group-hover:-translate-y-1 shimmer-effect">
-                        Explore <ArrowRight size={14} />
+                        className="bg-brand-dark text-white px-4 py-2.5 sm:px-5 sm:py-3 rounded-xl sm:rounded-2xl text-[11px] sm:text-[13px] font-black hover:bg-brand-gold hover:text-brand-dark transition-all duration-300 flex items-center gap-2 shadow-xl shadow-brand-dark/10 group-hover:-translate-y-1 shimmer-effect shrink-0">
+                        Explore <ArrowRight size={14} className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
                     </Link>
                 </div>
             </div>
@@ -92,14 +92,14 @@ const Activity = () => {
                     className="relative z-10 text-center px-4 max-w-4xl mx-auto"
                 >
                     <ScrollReveal direction="down">
-                        <span className="inline-block text-brand-gold font-black uppercase tracking-[0.4em] text-[10px] mb-6 bg-brand-gold/10 backdrop-blur-md px-4 py-2 rounded-full border border-brand-gold/20">The Himalaya Collection</span>
-                        <h1 className="text-6xl xl:text-7xl font-serif font-black text-white mb-8 leading-[1.1] tracking-tight">
+                        <span className="inline-block text-brand-gold font-black uppercase tracking-[0.4em] text-[10px] mb-5 sm:mb-6 bg-brand-gold/10 backdrop-blur-md px-4 py-2 rounded-full border border-brand-gold/20">The Himalaya Collection</span>
+                        <h1 className="text-5xl sm:text-6xl xl:text-7xl font-serif font-black text-white mb-6 sm:mb-8 leading-[1.1] tracking-tight">
                             Adventure <span className="text-brand-gold italic">Redefined</span>
                         </h1>
-                        <p className="text-white/70 text-lg max-w-2xl mx-auto mb-10 leading-relaxed font-medium">Bespoke outdoor experiences engineered for thrill, managed with precision safety by Himalayan elite guides.</p>
+                        <p className="text-white/70 text-base sm:text-lg max-w-2xl mx-auto mb-8 sm:mb-10 leading-relaxed font-medium">Bespoke outdoor experiences engineered for thrill, managed with precision safety by Himalayan elite guides.</p>
                         <a href="#activities"
-                            className="inline-flex items-center gap-3 bg-brand-gold text-brand-dark font-black px-10 py-5 rounded-2xl hover:bg-white transition-all duration-300 shadow-2xl shadow-brand-gold/30 hover:-translate-y-1 text-lg">
-                            <Zap size={22} /> See Our Catalog
+                            className="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-brand-gold text-brand-dark font-black px-8 sm:px-10 py-4 sm:py-5 rounded-2xl hover:bg-white transition-all duration-300 shadow-2xl shadow-brand-gold/30 hover:-translate-y-1 text-base sm:text-lg">
+                            <Zap size={22} className="shrink-0" /> See Our Catalog
                         </a>
 
                         {/* Trending Shelf */}
@@ -144,18 +144,18 @@ const Activity = () => {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     {/* Category filter */}
                     <ScrollReveal direction="up">
-                        <div className="flex flex-wrap items-center gap-3 mb-16 justify-center">
-                            <span className="text-xs font-black text-gray-300 uppercase tracking-[0.2em] mr-4 flex items-center gap-2 shadow-sm p-3 border rounded-xl"><Filter size={14} /> Catalog Filter</span>
+                        <div className="flex items-center gap-3 mb-10 sm:mb-16 overflow-x-auto hide-scrollbar pb-3 w-full border-b sm:border-0 border-slate-100 sm:justify-center px-2">
+                            <span className="text-[10px] sm:text-xs font-black text-gray-400 uppercase tracking-[0.2em] mr-2 sm:mr-4 flex items-center gap-2 shadow-sm p-2 sm:p-3 border rounded-xl shrink-0"><Filter size={14} /> Filter</span>
                             {CATEGORIES.map(cat => (
                                 <button key={cat} onClick={() => setCategory(cat)}
-                                    className={`px-7 py-3 rounded-2xl text-xs font-black transition-all duration-300 uppercase tracking-widest ${category === cat ? 'bg-brand-gold text-brand-dark shadow-xl shadow-brand-gold/20 active-pill' : 'bg-white text-gray-400 hover:text-brand-dark hover:shadow-lg'}`}>
+                                    className={`px-5 sm:px-7 py-2.5 sm:py-3 rounded-xl sm:rounded-2xl text-[10px] sm:text-xs font-black transition-all duration-300 uppercase tracking-widest shrink-0 whitespace-nowrap ${category === cat ? 'bg-brand-gold text-brand-dark shadow-xl shadow-brand-gold/20 active-pill' : 'bg-white text-gray-400 hover:text-brand-dark hover:shadow-lg'}`}>
                                     {cat}
                                 </button>
                             ))}
                         </div>
                     </ScrollReveal>
 
-                    <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                    <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8 px-2 sm:px-0">
                         {filtered.map((act, i) => (
                             <ScrollReveal key={act.id} direction="up" delay={i % 4 * 0.1}>
                                 <ActivityCard activity={act} />
@@ -222,15 +222,15 @@ const Activity = () => {
                     <ScrollReveal direction="up">
                         <h2 className="text-5xl font-serif font-black text-white mb-6 leading-tight">Ready to Feel the Rush?</h2>
                         <p className="text-white/50 mb-12 text-lg font-medium max-w-2xl mx-auto">Book any activity instantly via WhatsApp or call our adventure desk — we'll confirm your slot within 2 hours.</p>
-                        <div className="flex flex-col sm:flex-row gap-6 justify-center">
+                        <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center w-full px-2 sm:px-0">
                             <a href="https://wa.me/918979931256?text=Hi! I want to book an adventure activity. Please share details."
                                 target="_blank" rel="noopener noreferrer"
-                                className="inline-flex items-center justify-center gap-3 bg-green-500 text-white font-black px-10 py-5 rounded-2xl hover:bg-white transition-all duration-300 shadow-2xl shadow-green-500/20 text-lg hover:-translate-y-1">
-                                <MessageCircle size={22} /> Instant WhatsApp Booking
+                                className="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-green-500 text-white font-black px-6 sm:px-10 py-4 sm:py-5 rounded-xl sm:rounded-2xl hover:bg-white transition-all duration-300 shadow-2xl shadow-green-500/20 text-sm sm:text-lg hover:-translate-y-1">
+                                <MessageCircle size={20} className="sm:w-[22px] sm:h-[22px]" /> Instant WhatsApp Booking
                             </a>
                             <a href="tel:+918979931256"
-                                className="inline-flex items-center justify-center gap-3 border-2 border-brand-gold text-brand-gold font-black px-10 py-5 rounded-2xl hover:bg-brand-gold hover:text-brand-dark transition-all duration-300 text-lg hover:-translate-y-1">
-                                <Phone size={22} /> +91 8979931256
+                                className="w-full sm:w-auto inline-flex items-center justify-center gap-3 border-2 border-brand-gold text-brand-gold font-black px-6 sm:px-10 py-4 sm:py-5 rounded-xl sm:rounded-2xl hover:bg-brand-gold hover:text-brand-dark transition-all duration-300 text-sm sm:text-lg hover:-translate-y-1">
+                                <Phone size={20} className="sm:w-[22px] sm:h-[22px]" /> +91 8979931256
                             </a>
                         </div>
                     </ScrollReveal>

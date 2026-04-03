@@ -140,7 +140,7 @@ const Login = () => {
             
             <ScrollReveal direction="up">
                 <div className="max-w-xl w-full">
-                    <div className="relative overflow-hidden rounded-[3rem] border border-white bg-white/70 p-8 md:p-12 shadow-[0_40px_100px_-20px_rgba(0,0,0,0.1)] backdrop-blur-2xl">
+                    <div className="relative overflow-hidden rounded-[2rem] sm:rounded-[3rem] border border-white bg-white/70 p-6 sm:p-8 md:p-12 shadow-[0_40px_100px_-20px_rgba(0,0,0,0.1)] backdrop-blur-2xl">
                         
                         {/* Shimmer line atop card */}
                         <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-brand-gold/40 to-transparent" />
@@ -153,11 +153,11 @@ const Login = () => {
                             >
                                 <Compass size={32} />
                             </motion.div>
-                            <h2 className="text-4xl md:text-5xl font-serif font-black text-slate-900 leading-[1.1] mb-4">
+                            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-black text-slate-900 leading-[1.1] mb-3 sm:mb-4">
                                 {isLogin ? 'Explore Your' : 'Begin Your'} <br />
                                 <span className="text-brand-gold">{isLogin ? 'Travel Lounge' : 'Yatra Journey'}</span>
                             </h2>
-                            <p className="text-slate-500 font-medium italic text-lg">
+                            <p className="text-slate-500 font-medium italic text-sm sm:text-lg px-2">
                                 {isLogin ? 'Welcome back to base camp, explorer.' : 'Join our elite circle of world travelers today.'}
                             </p>
                         </div>
@@ -193,7 +193,7 @@ const Login = () => {
                                                 required
                                                 value={name}
                                                 onChange={(e) => setName(e.target.value)}
-                                                className="pl-14 w-full px-6 py-4.5 rounded-2xl border border-slate-100 bg-white/50 focus:bg-white focus:border-brand-gold focus:ring-4 focus:ring-brand-gold/10 outline-none transition-all font-bold text-slate-900 text-lg shadow-sm"
+                                                className="pl-12 sm:pl-14 w-full px-5 sm:px-6 py-3.5 sm:py-4.5 rounded-[14px] sm:rounded-2xl border border-slate-100 bg-white/50 focus:bg-white focus:border-brand-gold focus:ring-4 focus:ring-brand-gold/10 outline-none transition-all font-bold text-slate-900 text-base sm:text-lg shadow-sm"
                                                 placeholder="Full Legal Name"
                                             />
                                         </motion.div>
@@ -209,7 +209,7 @@ const Login = () => {
                                         required
                                         value={email}
                                         onChange={(e) => setEmail(e.target.value)}
-                                        className="pl-14 w-full px-6 py-4.5 rounded-2xl border border-slate-100 bg-white/50 focus:bg-white focus:border-brand-gold focus:ring-4 focus:ring-brand-gold/10 outline-none transition-all font-bold text-slate-900 text-lg shadow-sm"
+                                        className="pl-12 sm:pl-14 w-full px-5 sm:px-6 py-3.5 sm:py-4.5 rounded-[14px] sm:rounded-2xl border border-slate-100 bg-white/50 focus:bg-white focus:border-brand-gold focus:ring-4 focus:ring-brand-gold/10 outline-none transition-all font-bold text-slate-900 text-base sm:text-lg shadow-sm"
                                         placeholder="Email Address"
                                     />
                                 </div>
@@ -223,7 +223,7 @@ const Login = () => {
                                         required
                                         value={password}
                                         onChange={(e) => setPassword(e.target.value)}
-                                        className="pl-14 w-full px-6 py-4.5 rounded-2xl border border-slate-100 bg-white/50 focus:bg-white focus:border-brand-gold focus:ring-4 focus:ring-brand-gold/10 outline-none transition-all font-bold text-slate-900 text-lg shadow-sm"
+                                        className="pl-12 sm:pl-14 w-full px-5 sm:px-6 py-3.5 sm:py-4.5 rounded-[14px] sm:rounded-2xl border border-slate-100 bg-white/50 focus:bg-white focus:border-brand-gold focus:ring-4 focus:ring-brand-gold/10 outline-none transition-all font-bold text-slate-900 text-base sm:text-lg shadow-sm"
                                         placeholder="Secure Password"
                                     />
                                 </div>
@@ -232,19 +232,19 @@ const Login = () => {
                             <button 
                                 type="submit" 
                                 disabled={loading}
-                                className="w-full bg-brand-dark text-white font-black py-5 rounded-2xl hover:bg-brand-gold hover:text-brand-dark transition-all duration-500 shadow-2xl shadow-brand-dark/20 flex items-center justify-center gap-3 text-xl disabled:opacity-70 group hover:-translate-y-1 relative overflow-hidden shimmer-effect"
+                                className="w-full bg-brand-dark text-white font-black py-4 sm:py-5 rounded-[14px] sm:rounded-2xl hover:bg-brand-gold hover:text-brand-dark transition-all duration-500 shadow-xl sm:shadow-2xl shadow-brand-dark/20 flex items-center justify-center gap-2 sm:gap-3 text-lg sm:text-xl disabled:opacity-70 group hover:-translate-y-1 relative overflow-hidden shimmer-effect"
                             >
-                                <span className="relative z-10 flex items-center gap-3">
-                                    {loading ? <Sparkles className="animate-spin" size={20} /> : (isLogin ? <Lock size={20} /> : <User size={20} />)}
+                                <span className="relative z-10 flex items-center gap-2 sm:gap-3">
+                                    {loading ? <Sparkles className="animate-spin sm:w-5 sm:h-5 w-4 h-4" /> : (isLogin ? <Lock className="sm:w-5 sm:h-5 w-4 h-4" /> : <User className="sm:w-5 sm:h-5 w-4 h-4" />)}
                                     {loading ? 'Authenticating...' : (isLogin ? 'Access Lounge' : 'Join Explorer Circle')}
-                                    {!loading && <ArrowRight size={20} className="group-hover:translate-x-2 transition-transform" />}
+                                    {!loading && <ArrowRight className="group-hover:translate-x-2 transition-transform sm:w-5 sm:h-5 w-4 h-4" />}
                                 </span>
                             </button>
 
                             {/* Divider */}
-                            <div className="flex items-center gap-4 py-2">
+                            <div className="flex items-center gap-3 sm:gap-4 py-1 sm:py-2">
                                 <div className="flex-1 h-px bg-slate-100" />
-                                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-300">or continue with</span>
+                                <span className="text-[9px] sm:text-[10px] font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] text-slate-300">or continue with</span>
                                 <div className="flex-1 h-px bg-slate-100" />
                             </div>
 
@@ -253,19 +253,20 @@ const Login = () => {
                                 type="button"
                                 onClick={handleGoogleSignIn}
                                 disabled={googleLoading}
-                                className="w-full flex items-center justify-center gap-4 bg-white border-2 border-slate-100 hover:border-brand-gold text-slate-800 font-black py-4 rounded-2xl transition-all duration-300 shadow-sm hover:shadow-lg hover:-translate-y-0.5 disabled:opacity-60 group"
+                                className="w-full flex items-center justify-center gap-3 sm:gap-4 bg-white border border-slate-200 hover:border-brand-gold text-slate-800 font-black py-3.5 sm:py-4 rounded-[14px] sm:rounded-2xl transition-all duration-300 shadow-sm hover:shadow-lg hover:-translate-y-0.5 disabled:opacity-60 group"
                             >
                                 {googleLoading ? (
-                                    <Sparkles size={20} className="animate-spin text-brand-gold" />
+                                    <Sparkles className="animate-spin text-brand-gold sm:w-5 sm:h-5 w-4 h-4" />
                                 ) : (
-                                    <svg width="22" height="22" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
-                                        <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-                                        <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
-                                        <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                                    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" className="sm:w-5 sm:h-5 w-5 h-5 block shrink-0">
+                                        <path d="M44.5 20H24v8.5h11.8C34.7 33.9 30.1 37 24 37c-7.2 0-13-5.8-13-13s5.8-13 13-13c3.1 0 5.9 1.1 8.1 2.9l6.4-6.4C34.6 4.1 29.6 2 24 2 11.8 2 2 11.8 2 24s9.8 22 22 22c11 0 21-8 21-22 0-1.3-.2-2.7-.5-4z" fill="#4285F4"/>
+                                        <path d="M44.5 20H24v8.5h11.8C34.7 33.9 30.1 37 24 37c-7.2 0-13-5.8-13-13s5.8-13 13-13c3.1 0 5.9 1.1 8.1 2.9l6.4-6.4C34.6 4.1 29.6 2 24 2 11.8 2 24s9.8 22 22 22c11 0 21-8 21-22 0-1.3-.2-2.7-.5-4z" fill="#34A853" opacity=".1"/>
+                                        <path d="M11 14.3c-1.3 2.8-2 5.9-2 9.7s.7 6.9 2 9.7L4.3 39C1.6 34.5 0 29.4 0 24s1.6-10.5 4.3-15l6.7 5.3z" fill="#FBBC05"/>
+                                        <path d="M24 9.5c3.1 0 5.9 1.1 8.1 2.9l6.4-6.4C34.6 2.1 29.6 0 24 0 14.6 0 6.5 5.5 2.6 13.5L11 20.2c2.1-6.1 7.9-10.7 13-10.7z" fill="#EA4335"/>
+                                        <path d="M24 38.5c-5.1 0-10.9-4.6-13-10.7l-8.4 6.7C6.5 42.5 14.6 48 24 48c5.6 0 10.6-2.1 14.5-5.6l-6.4-6.4c-2.2 1.6-4.9 2.5-8.1 2.5z" fill="#34A853"/>
                                     </svg>
                                 )}
-                                <span className="text-base">
+                                <span className="text-sm sm:text-base">
                                     {googleLoading ? 'Signing in...' : 'Continue with Google'}
                                 </span>
                             </button>
@@ -280,7 +281,7 @@ const Login = () => {
                                         setIsLogin(!isLogin);
                                         setError('');
                                     }}
-                                    className="inline-flex items-center gap-2 font-serif font-black text-slate-900 text-lg hover:text-brand-gold transition-colors group"
+                                    className="inline-flex items-center gap-2 font-serif font-black text-slate-900 text-base sm:text-lg hover:text-brand-gold transition-colors group"
                                 >
                                     {isLogin ? 'Create Your Account' : 'Sign Into Your Lounge'}
                                     <span className="block h-1 w-0 bg-brand-gold group-hover:w-full transition-all duration-300 mx-auto" />
@@ -289,20 +290,20 @@ const Login = () => {
                         </form>
                     </div>
                     
-                    <div className="mt-12 flex items-center justify-center gap-8 px-4 opacity-40">
-                        <div className="flex items-center gap-2 grayscale hover:grayscale-0 transition-all cursor-default group">
-                            <ShieldCheck size={20} />
-                            <span className="text-[10px] font-black uppercase tracking-[0.2em]">SSL Verified</span>
+                    <div className="mt-8 sm:mt-12 flex flex-wrap items-center justify-center gap-4 sm:gap-8 px-2 opacity-50 sm:opacity-40">
+                        <div className="flex items-center gap-1.5 sm:gap-2 grayscale hover:grayscale-0 transition-all cursor-default group">
+                            <ShieldCheck className="w-[14px] h-[14px] sm:w-5 sm:h-5" />
+                            <span className="text-[8px] sm:text-[10px] font-black uppercase tracking-[0.15em] sm:tracking-[0.2em]">SSL Verified</span>
                         </div>
-                        <div className="w-1 h-1 bg-slate-300 rounded-full" />
-                        <div className="flex items-center gap-2 grayscale hover:grayscale-0 transition-all cursor-default group">
-                            <Lock size={20} />
-                            <span className="text-[10px] font-black uppercase tracking-[0.2em]">AES-256 Auth</span>
+                        <div className="hidden sm:block w-1 h-1 bg-slate-300 rounded-full" />
+                        <div className="flex items-center gap-1.5 sm:gap-2 grayscale hover:grayscale-0 transition-all cursor-default group">
+                            <Lock className="w-[14px] h-[14px] sm:w-5 sm:h-5" />
+                            <span className="text-[8px] sm:text-[10px] font-black uppercase tracking-[0.15em] sm:tracking-[0.2em]">AES-256 Auth</span>
                         </div>
-                        <div className="w-1 h-1 bg-slate-300 rounded-full" />
-                        <div className="flex items-center gap-2 grayscale hover:grayscale-0 transition-all cursor-default group">
-                            <Sparkles size={20} />
-                            <span className="text-[10px] font-black uppercase tracking-[0.2em]">Premium Access</span>
+                        <div className="hidden sm:block w-1 h-1 bg-slate-300 rounded-full" />
+                        <div className="flex items-center gap-1.5 sm:gap-2 grayscale hover:grayscale-0 transition-all cursor-default group w-full sm:w-auto justify-center mt-2 sm:mt-0">
+                            <Sparkles className="w-[14px] h-[14px] sm:w-5 sm:h-5" />
+                            <span className="text-[8px] sm:text-[10px] font-black uppercase tracking-[0.15em] sm:tracking-[0.2em]">Premium Access</span>
                         </div>
                     </div>
                 </div>

@@ -199,11 +199,11 @@ const TourDetails = () => {
                                 </span>
                             </div>
 
-                            <h1 className="mt-6 max-w-4xl text-4xl font-serif font-black leading-tight text-white sm:text-5xl lg:text-6xl">
+                            <h1 className="mt-4 sm:mt-6 max-w-4xl text-3xl font-serif font-black leading-tight text-white sm:text-5xl lg:text-6xl">
                                 {pkg.title}
                             </h1>
 
-                            <p className="mt-5 max-w-3xl text-base leading-8 text-white/75 sm:text-lg">
+                            <p className="mt-4 sm:mt-5 max-w-3xl text-sm leading-7 text-white/75 sm:text-lg sm:leading-8">
                                 {pkg.desc}
                             </p>
 
@@ -222,49 +222,49 @@ const TourDetails = () => {
                                 </span>
                             </div>
 
-                            <div className="mt-10 flex flex-wrap gap-3">
+                            <div className="mt-8 flex flex-wrap gap-2 sm:gap-3">
                                 {gallery.map((image, index) => (
                                     <button
                                         key={`${pkg.slug}-${index}`}
                                         type="button"
                                         onClick={() => setActiveImage(image)}
-                                        className={`overflow-hidden rounded-[22px] border-2 transition-all ${
+                                        className={`overflow-hidden rounded-xl sm:rounded-[22px] border-2 transition-all cursor-pointer ${
                                             activeImage === image ? 'border-brand-gold shadow-[0_10px_30px_rgba(229,186,74,0.25)]' : 'border-white/10'
                                         }`}
                                     >
-                                        <img src={image} alt={`${pkg.title} ${index + 1}`} className="h-20 w-28 object-cover" />
+                                        <img src={image} alt={`${pkg.title} ${index + 1}`} className="h-14 w-20 sm:h-20 sm:w-28 object-cover" />
                                     </button>
                                 ))}
                             </div>
                         </div>
 
-                        <div className="rounded-[34px] border border-white/10 bg-white/10 p-6 text-white shadow-[0_24px_80px_rgba(15,23,42,0.30)] backdrop-blur-xl sm:p-7">
-                            <div className="flex items-start justify-between gap-4">
+                        <div className="rounded-[2rem] sm:rounded-[34px] border border-white/10 bg-white/10 p-5 sm:p-7 text-white shadow-[0_24px_80px_rgba(15,23,42,0.30)] backdrop-blur-xl">
+                            <div className="flex flex-col sm:flex-row items-center sm:items-start justify-between gap-4 text-center sm:text-left">
                                 <div>
-                                    <div className="text-xs uppercase tracking-[0.24em] text-brand-gold/80">Starting from</div>
-                                    <div className="mt-3 text-4xl font-black text-white">{formatPrice(pkg.price)}</div>
-                                    <div className="mt-2 text-sm text-white/60">per person, customizable before final confirmation</div>
+                                    <div className="text-[10px] uppercase tracking-[0.24em] text-brand-gold/80">Starting from</div>
+                                    <div className="mt-2 sm:mt-3 text-3xl sm:text-4xl font-black text-white">{formatPrice(pkg.price)}</div>
+                                    <div className="mt-1 sm:mt-2 text-[10px] sm:text-xs text-white/60">per person, customizable before final confirmation</div>
                                 </div>
                                 {pkg.originalPrice && (
-                                    <div className="rounded-2xl bg-emerald-400/15 px-4 py-3 text-right">
-                                        <div className="text-xs uppercase tracking-[0.18em] text-emerald-200">Savings</div>
-                                        <div className="mt-1 text-lg font-bold text-emerald-100">{discount}% OFF</div>
+                                    <div className="rounded-xl sm:rounded-2xl bg-emerald-400/15 px-4 py-2 sm:py-3 w-full sm:w-auto">
+                                        <div className="text-[10px] uppercase tracking-[0.18em] text-emerald-200">Savings</div>
+                                        <div className="mt-0.5 sm:mt-1 text-base sm:text-lg font-bold text-emerald-100">{discount}% OFF</div>
                                     </div>
                                 )}
                             </div>
 
-                            <div className="mt-6 grid gap-3 sm:grid-cols-3">
-                                <div className="rounded-2xl bg-white/10 px-4 py-4">
-                                    <div className="text-xs uppercase tracking-[0.18em] text-white/55">Duration</div>
-                                    <div className="mt-2 text-base font-bold">{pkg.days}</div>
+                            <div className="mt-6 grid grid-cols-3 gap-2 sm:gap-3">
+                                <div className="rounded-xl sm:rounded-2xl bg-white/10 px-2 py-3 sm:px-4 sm:py-4 text-center sm:text-left">
+                                    <div className="text-[9px] sm:text-xs uppercase tracking-[0.18em] text-white/55">Duration</div>
+                                    <div className="mt-1 sm:mt-2 text-xs sm:text-base font-bold">{pkg.days}</div>
                                 </div>
-                                <div className="rounded-2xl bg-white/10 px-4 py-4">
-                                    <div className="text-xs uppercase tracking-[0.18em] text-white/55">Inclusions</div>
-                                    <div className="mt-2 text-base font-bold">{pkg.includes?.length || 0} items</div>
+                                <div className="rounded-xl sm:rounded-2xl bg-white/10 px-2 py-3 sm:px-4 sm:py-4 text-center sm:text-left">
+                                    <div className="text-[9px] sm:text-xs uppercase tracking-[0.18em] text-white/55">Inclusions</div>
+                                    <div className="mt-1 sm:mt-2 text-xs sm:text-base font-bold">{pkg.includes?.length || 0} items</div>
                                 </div>
-                                <div className="rounded-2xl bg-white/10 px-4 py-4">
-                                    <div className="text-xs uppercase tracking-[0.18em] text-white/55">Itinerary</div>
-                                    <div className="mt-2 text-base font-bold">{pkg.itinerary?.length || 0} days</div>
+                                <div className="rounded-xl sm:rounded-2xl bg-white/10 px-2 py-3 sm:px-4 sm:py-4 text-center sm:text-left">
+                                    <div className="text-[9px] sm:text-xs uppercase tracking-[0.18em] text-white/55">Itinerary</div>
+                                    <div className="mt-1 sm:mt-2 text-xs sm:text-base font-bold">{pkg.itinerary?.length || 0} days</div>
                                 </div>
                             </div>
                         </div>

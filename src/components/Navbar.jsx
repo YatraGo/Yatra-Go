@@ -117,7 +117,7 @@ const Navbar = () => {
         <>
             <header className="fixed top-0 left-0 w-full z-[120] transition-all duration-500 font-sans">
 
-                <div className={`overflow-hidden transition-all duration-500 w-full border-b border-white/10 ${isScrolled ? 'h-0 opacity-0' : 'h-10 opacity-100'}`}>
+                <div className={`hidden sm:block overflow-hidden transition-all duration-500 w-full border-b border-white/10 ${isScrolled ? 'h-0 opacity-0' : 'h-10 opacity-100'}`}>
                     <div className="max-w-7xl mx-auto flex justify-between items-center px-4 sm:px-6 lg:px-8 h-full text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">
                         <div className="flex gap-6">
                             <a href="tel:+918979931256" className="flex items-center gap-2 hover:text-brand-gold transition-colors">
@@ -139,7 +139,7 @@ const Navbar = () => {
                     className={`transition-all duration-700 relative w-full border-b ${
                         isScrolled 
                             ? 'border-slate-200 bg-white/95 py-2 shadow-sm' 
-                            : 'border-white/20 bg-white/80 py-4 lg:py-5'
+                            : 'border-white/20 bg-white/80 py-3 lg:py-5'
                     } backdrop-blur-[40px] shadow-sm`}
                     onMouseMove={handleNavPointerMove}
                     onMouseLeave={handleNavPointerLeave}
@@ -174,7 +174,7 @@ const Navbar = () => {
                                         <img
                                             src={logoSrc}
                                             alt="Yatra Go"
-                                            className="h-10 xl:h-12 w-auto object-contain transition-all duration-500"
+                                            className="h-8 sm:h-10 xl:h-12 w-auto object-contain transition-all duration-500"
                                             onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'inline'; }}
                                         />
                                         <div className="absolute inset-0 bg-brand-gold/10 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
@@ -306,9 +306,9 @@ const Navbar = () => {
                             <div className="lg:hidden flex items-center">
                                 <button
                                     onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                                    className="relative flex h-12 w-12 items-center justify-center rounded-2xl bg-white text-brand-dark transition-all active:scale-95 shadow-xl border border-slate-200"
+                                    className="relative flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-2xl bg-white text-brand-dark transition-all active:scale-95 shadow-xl border border-slate-200"
                                 >
-                                    {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+                                    {isMobileMenuOpen ? <X size={20} className="sm:w-6 sm:h-6" /> : <Menu size={20} className="sm:w-6 sm:h-6" />}
                                 </button>
                             </div>
                         </div>
@@ -324,15 +324,15 @@ const Navbar = () => {
                                 transition={{ type: "spring", stiffness: 300, damping: 30 }}
                                 className="lg:hidden absolute inset-x-0 top-full overflow-hidden border-b border-slate-200 bg-white/98 shadow-2xl backdrop-blur-3xl z-[130] max-h-[85vh] flex flex-col"
                             >
-                                <div className="px-6 py-8 flex flex-col overflow-y-auto">
-                                    <div className="mb-8 flex flex-col gap-4 border-b border-white/10 pb-8">
-                                        <a href="tel:+918979931256" className="flex items-center justify-center gap-3 py-4 rounded-2xl bg-slate-50 text-base font-black text-slate-900 border border-slate-200">
-                                            <Phone size={18} className="text-brand-gold" /> +91 89799 31256
+                                <div className="px-5 sm:px-6 py-6 sm:py-8 flex flex-col overflow-y-auto w-full">
+                                    <div className="mb-6 sm:mb-8 flex flex-col gap-4 border-b border-slate-200/50 pb-6 sm:pb-8">
+                                        <a href="tel:+918979931256" className="flex items-center justify-center gap-3 py-3.5 sm:py-4 rounded-xl sm:rounded-2xl bg-slate-50 text-sm sm:text-base font-black text-slate-900 border border-slate-200/80 shadow-sm">
+                                            <Phone size={16} className="text-brand-gold sm:w-5 sm:h-5" /> +91 89799 31256
                                         </a>
-                                        <div className="flex justify-center gap-6 text-slate-400">
-                                            <a href="https://www.facebook.com/profile.php?id=61570195815554" className="w-12 h-12 rounded-xl bg-slate-50 flex items-center justify-center hover:text-brand-gold border border-slate-100"><Facebook size={20} /></a>
-                                            <a href="https://www.instagram.com/yatrago_official/" className="w-12 h-12 rounded-xl bg-slate-60 flex items-center justify-center hover:text-brand-gold border border-slate-100"><Instagram size={20} /></a>
-                                            <a href="https://www.youtube.com/@YatraGo-q4o" className="w-12 h-12 rounded-xl bg-slate-50 flex items-center justify-center hover:text-brand-gold border border-slate-100"><Youtube size={20} /></a>
+                                        <div className="flex justify-center gap-4 sm:gap-6 text-slate-400">
+                                            <a href="https://www.facebook.com/profile.php?id=61570195815554" className="w-11 h-11 sm:w-12 sm:h-12 rounded-[14px] sm:rounded-xl bg-slate-50 flex items-center justify-center hover:text-brand-gold border border-slate-100"><Facebook size={18} className="sm:w-5 sm:h-5" /></a>
+                                            <a href="https://www.instagram.com/yatrago_official/" className="w-11 h-11 sm:w-12 sm:h-12 rounded-[14px] sm:rounded-xl bg-slate-50 flex items-center justify-center hover:text-brand-gold border border-slate-100"><Instagram size={18} className="sm:w-5 sm:h-5" /></a>
+                                            <a href="https://www.youtube.com/@YatraGo-q4o" className="w-11 h-11 sm:w-12 sm:h-12 rounded-[14px] sm:rounded-xl bg-slate-50 flex items-center justify-center hover:text-brand-gold border border-slate-100"><Youtube size={18} className="sm:w-5 sm:h-5" /></a>
                                         </div>
                                     </div>
 
@@ -340,13 +340,13 @@ const Navbar = () => {
                                         {navLinks.map((link) => (
                                             <div key={link.name} className="w-full">
                                                 <div
-                                                    className={`flex justify-between items-center w-full rounded-2xl px-4 py-4 text-sm font-black uppercase tracking-[0.2em] transition-all
-                                                ${isActive(link.path) ? 'bg-brand-gold text-brand-dark shadow-lg' : 'text-slate-500 active:bg-slate-50'}`}
+                                                    className={`flex justify-between items-center w-full rounded-[14px] sm:rounded-2xl px-4 py-3.5 sm:py-4 text-xs sm:text-sm font-black uppercase tracking-[0.15em] sm:tracking-[0.2em] transition-all
+                                                ${isActive(link.path) ? 'bg-brand-gold text-brand-dark shadow-md sm:shadow-lg' : 'text-slate-600 hover:bg-slate-50 active:bg-slate-50'}`}
                                                     onClick={() => (link.dropdown || link.megaMenu) ? toggleDropdown(link.name) : setIsMobileMenuOpen(false)}
                                                 >
                                                     <Link to={(link.dropdown || link.megaMenu) ? '#' : link.path} className="flex-1">{link.name}</Link>
                                                     {(link.dropdown || link.megaMenu) && (
-                                                        <ChevronDown size={18} className={`transition-transform duration-500 ${openDropdowns[link.name] ? 'rotate-180 text-brand-gold' : ''}`} />
+                                                        <ChevronDown size={16} className={`sm:w-[18px] sm:h-[18px] transition-transform duration-500 ${openDropdowns[link.name] ? 'rotate-180 text-brand-gold' : ''}`} />
                                                     )}
                                                 </div>
 
@@ -356,15 +356,15 @@ const Navbar = () => {
                                                             initial={{ opacity: 0, height: 0 }}
                                                             animate={{ opacity: 1, height: 'auto' }}
                                                             exit={{ opacity: 0, height: 0 }}
-                                                            className="overflow-hidden bg-white/5 rounded-2xl mt-1"
+                                                            className="overflow-hidden bg-slate-50/50 rounded-[14px] sm:rounded-2xl mt-1 border border-slate-100/50"
                                                         >
                                                             {link.megaMenu ? link.megaMenu.map((group) => (
-                                                                <div key={group.region} className="border-b border-white/10 last:border-0 p-4">
-                                                                    <div className="pl-2 text-[9px] font-black uppercase tracking-[0.3em] text-brand-gold mb-2">{group.region}</div>
+                                                                <div key={group.region} className="border-b border-slate-200/50 last:border-0 p-4">
+                                                                    <div className="pl-2 text-[9px] font-black uppercase tracking-[0.2em] text-brand-gold mb-2">{group.region}</div>
                                                                     {group.items.map(item => (
                                                                         <Link key={item.name} to={item.path}
                                                                             onClick={() => setIsMobileMenuOpen(false)}
-                                                                            className="flex items-center justify-between rounded-xl px-4 py-3 text-xs font-bold text-slate-600 active:text-brand-dark active:bg-slate-50 transition-all">
+                                                                            className="flex items-center justify-between rounded-xl px-4 py-2.5 text-xs font-bold text-slate-600 hover:text-brand-dark hover:bg-white transition-all">
                                                                             <span>{item.name}</span>
                                                                             {item.badge && <span className="rounded-full bg-brand-gold/20 px-2 py-0.5 text-[8px] font-black text-brand-gold">{item.badge}</span>}
                                                                         </Link>
@@ -375,7 +375,7 @@ const Navbar = () => {
                                                                     key={subItem.name}
                                                                     to={subItem.path}
                                                                     onClick={() => setIsMobileMenuOpen(false)}
-                                                                    className="block px-8 py-4 text-xs font-bold text-slate-600 active:text-brand-dark active:bg-slate-50 transition-all border-b border-slate-100 last:border-0"
+                                                                    className="block px-6 py-3.5 text-xs font-bold text-slate-600 hover:text-brand-dark hover:bg-white transition-all border-b border-slate-100 last:border-0"
                                                                 >
                                                                     {subItem.name}
                                                                 </Link>
@@ -387,23 +387,33 @@ const Navbar = () => {
                                         ))}
                                     </div>
 
-                                    <div className="flex flex-col gap-4 py-8 mt-4">
+                                    <div className="flex flex-col gap-3 py-6 mt-2 border-t border-slate-100">
                                         {currentUser ? (
-                                            <button
-                                                onClick={() => setLogoutPopupOpen(true)}
-                                                className="w-full rounded-2xl bg-rose-500/10 px-6 py-5 font-black uppercase tracking-widest text-rose-400 border border-rose-500/20 flex items-center justify-center gap-3"
-                                            >
-                                                <LogOut size={20} /> Logout Account
-                                            </button>
+                                            <>
+                                                <Link 
+                                                    to={isAdmin ? '/admin/dashboard' : '/dashboard'}
+                                                    onClick={() => setIsMobileMenuOpen(false)}
+                                                    className="w-full rounded-[14px] sm:rounded-2xl bg-brand-dark px-5 sm:px-6 py-4 sm:py-5 text-xs sm:text-sm font-black uppercase tracking-[0.15em] sm:tracking-[0.2em] text-white shadow-xl shadow-brand-dark/20 flex items-center justify-center gap-2"
+                                                >
+                                                    <Sparkles size={16} className="text-brand-gold animate-pulse sm:w-5 sm:h-5" />
+                                                    {isAdmin ? 'Admin Panel' : 'My Lounge'}
+                                                </Link>
+                                                <button
+                                                    onClick={() => setLogoutPopupOpen(true)}
+                                                    className="w-full rounded-[14px] sm:rounded-2xl bg-rose-50 px-5 sm:px-6 py-4 sm:py-5 text-xs sm:text-sm font-black uppercase tracking-[0.15em] sm:tracking-[0.2em] text-rose-500 border border-rose-100 flex items-center justify-center gap-2"
+                                                >
+                                                    <LogOut size={16} className="sm:w-5 sm:h-5" /> Logout Account
+                                                </button>
+                                            </>
                                         ) : (
-                                            <div className="grid grid-cols-2 gap-4">
-                                                <button onClick={() => { setIsMobileMenuOpen(false); setBookingModalOpen(true); }} className="rounded-2xl border-2 border-slate-200 py-5 text-center font-black uppercase tracking-[0.2em] text-slate-400">
+                                            <div className="grid grid-cols-2 gap-3 sm:gap-4">
+                                                <button onClick={() => { setIsMobileMenuOpen(false); setBookingModalOpen(true); }} className="rounded-[14px] sm:rounded-2xl border border-slate-200 py-3.5 sm:py-5 text-center text-xs sm:text-sm font-black uppercase tracking-[0.15em] sm:tracking-[0.2em] text-slate-500 hover:bg-slate-50 active:scale-95 transition-all shadow-sm">
                                                     Enquire
                                                 </button>
                                                 <Link
                                                     to="/login"
                                                     onClick={() => setIsMobileMenuOpen(false)}
-                                                    className="rounded-2xl bg-brand-gold py-5 text-center font-black uppercase tracking-[0.2em] text-brand-dark shadow-xl shadow-brand-gold/20"
+                                                    className="rounded-[14px] sm:rounded-2xl bg-brand-gold py-3.5 sm:py-5 text-center text-xs sm:text-sm font-black uppercase tracking-[0.15em] sm:tracking-[0.2em] text-brand-dark shadow-xl shadow-brand-gold/20 active:scale-95 transition-all"
                                                 >
                                                     Login
                                                 </Link>

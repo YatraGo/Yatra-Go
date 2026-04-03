@@ -25,7 +25,7 @@ const floatingCards = [
         title: 'Adventure Blast',
         subtitle: 'Rafting & Bonfire sessions',
         icon: <Zap className="text-orange-400" size={18} />,
-        className: 'top-24 right-0 md:right-6',
+        className: 'top-24 right-2 sm:right-0 md:right-6',
         rotation: 4,
         delay: 0.2
     },
@@ -45,11 +45,12 @@ const Hero3D = () => {
     const [destination, setDestination] = useState('');
 
     const heroMedia = [
-        { type: 'image', src: 'https://traveltonirvana.com/wp-content/uploads/2023/10/Untitled-design-2048x1152-1.png' },
-        { type: 'image', src: 'https://cdn.pixabay.com/photo/2022/10/05/07/11/temple-7499927_1280.jpg' },
+        { type: 'image', src: 'public/assets/Kedarnath 2.png' },
+        { type: 'image', src: 'public/assets/Rishikesh Hero.jpg' },
         { type: 'video', src: asset('assets/Rafting.mp4') },
-        { type: 'image', src: 'https://i.pinimg.com/1200x/fd/51/a4/fd51a47d301454df285cb6d8c908580f.jpg' },
-        { type: 'image', src: 'https://i.pinimg.com/1200x/09/59/37/0959373d3581db78d3a8679000b98c26.jpg' },
+        { type: 'image', src: 'public/assets/Haridwar 2.png' },
+        { type: 'image', src: 'public/assets/R6.jpg' },
+        { type: 'image', src: 'public/assets/Shimla 1.png' },
     ];
 
     useEffect(() => {
@@ -69,7 +70,7 @@ const Hero3D = () => {
     };
 
     return (
-        <section className="relative min-h-[92vh] bg-[#020617] pb-16 pt-12">
+        <section className="relative min-h-[100vh] sm:min-h-[92vh] bg-[#020617] pb-16 pt-24 sm:pt-12">
             <div className="absolute inset-0 z-0 overflow-hidden">
                 <AnimatePresence mode="popLayout">
                     {currentItem.type === 'image' ? (
@@ -155,7 +156,7 @@ const Hero3D = () => {
                                     size="lg"
                                     onClick={handleStartBuilder}
                                     disabled={!destination.trim()}
-                                    className="rounded-xl px-7 py-3 text-lg shadow-lg shadow-orange-500/40 transition hover:scale-105 disabled:cursor-not-allowed disabled:opacity-70"
+                                    className="w-full lg:w-auto rounded-xl px-7 py-3 text-lg shadow-lg shadow-orange-500/40 transition hover:scale-105 disabled:cursor-not-allowed disabled:opacity-70 justify-center"
                                     icon={Search}
                                 >
                                     Build
@@ -164,7 +165,7 @@ const Hero3D = () => {
                         </motion.div>
                     </motion.div>
 
-                    <motion.div className="relative min-h-[420px]">
+                    <motion.div className="relative min-h-[360px] sm:min-h-[420px] mt-8 lg:mt-0">
                         <div className="absolute inset-0 overflow-hidden rounded-3xl border border-white/20">
                             <img src={asset('assets/Keda.jpg')} className="h-full w-full object-cover" alt="Kedarnath preview" />
                         </div>

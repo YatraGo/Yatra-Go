@@ -49,7 +49,7 @@ export const BLOG_POSTS = [
         date: 'September 22, 2023',
         author: { name: 'Priya Verma', avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80', role: 'Pilgrimage Expert' },
         excerpt: 'Plan your sacred pilgrimage to Yamunotri, Gangotri, Kedarnath, and Badrinath. Learn the best routes, VIP Darshan tips...',
-        imageUrl: 'https://images.unsplash.com/photo-1605640840605-14ac1855827b?w=800&q=80',
+        imageUrl: 'public/assets/Kedarnath 1.png',
         featured: false,
         content: `
             <p>The Chardham Yatra is not just a tour; it is a profound spiritual awakening. Nestled at colossal altitudes in the Garhwal Himalayas, the four sacred shrines—Yamunotri, Gangotri, Kedarnath, and Badrinath—draw millions of devoted pilgrims every year seeking Moksha (salvation). Undertaking this journey requires rigorous planning, physical endurance, and a pure heart.</p>
@@ -81,7 +81,7 @@ export const BLOG_POSTS = [
         date: 'August 10, 2023',
         author: { name: 'Yatra Go Experts', avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&q=80', role: 'Lifestyle Reviewer' },
         excerpt: 'Experience the serene blend of luxury and raw nature. We review the most premium camping sites alongside the Ganges offering world-class amenities, private pools, and starlit dining...',
-        imageUrl: 'https://images.unsplash.com/photo-1523987355523-c7b5b0dd90a7?w=800&q=80',
+        imageUrl: 'public/assets/Camping Y.png',
         featured: false,
         content: `
             <p>Gone are the days when camping in Rishikesh meant sleeping on a thin mat in a cramped dome tent. The era of "Glamping" (Glamorous Camping) has firmly rooted itself along the shores of the Ganges. Imagine waking up to the soothing sounds of the river, stepping out onto a wooden deck, and having a private butler serve you freshly brewed Himalayan tea. This is luxury redefined.</p>
@@ -111,7 +111,7 @@ export const BLOG_POSTS = [
         date: 'July 18, 2023',
         author: { name: 'Aryan Sharma', avatar: 'https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=100&q=80', role: 'Head of Trekking Operations' },
         excerpt: 'Everything you need to know before hitting the rapids in Rishikesh. We break down the courses from Marine Drive to Shivpuri, safety protocols, and what to pack for the ultimate splash...',
-        imageUrl: 'public/assets/Rafting1.png',
+        imageUrl: 'public/assets/R1.jpg',
         featured: false,
         content: `
             <p>Rishikesh holds the undisputed crown as India's River Rafting capital. The mighty Ganges flowing down from the glaciers offers some of the most thrilling, pulse-pounding, Grade II to Grade IV rapids accessible to both beginners and experts alike.</p>
@@ -146,7 +146,7 @@ export const BLOG_POSTS = [
         date: 'June 30, 2023',
         author: { name: 'Rohan Gupta', avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80', role: 'Cultural Expert' },
         excerpt: 'A mesmerizing photo-journey through Devprayag, the divine confluence of Alaknanda and Bhagirathi rivers. Discover why this small town is a photographer\'s absolute paradise...',
-        imageUrl: 'https://images.unsplash.com/photo-1590050752117-238cb0fb12b1?w=800&q=80',
+        imageUrl: 'public/assets/Devprayag.png',
         featured: false,
         content: `
             <p>There are rare places on earth where nature stages poetry. Devprayag, located around 70km from Rishikesh, is one such masterpiece. This small, cascading town is globally renowned as the precise point where the violent, muddy waters of the Bhagirathi river collide with the calm, emerald streams of the Alaknanda to officially form the holy river Ganga.</p>
@@ -175,7 +175,7 @@ export const BLOG_POSTS = [
         date: 'May 12, 2023',
         author: { name: 'Priya Verma', avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80', role: 'Pilgrimage Expert' },
         excerpt: 'From the warm, comforting Kafuli to the sweet Bal Mithai, explore the authentic culinary treasures of the Garhwal Himalayas. The true taste of Uttarakhand awaits...',
-        imageUrl: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800&q=80',
+        imageUrl: 'public/assets/Garhwali Khana.png',
         featured: false,
         content: `
             <p>If you travel to Uttarakhand without diving into the local Garhwali cuisine, you've missed half the cultural experience. The food here is distinctly marked by the harsh but fertile mountain climate—it's incredibly earthy, highly nutritious, and designed to generate warmth in freezing temperatures.</p>

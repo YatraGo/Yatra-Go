@@ -637,9 +637,9 @@ const TermsConditions = () => {
           backdrop-filter: blur(8px);
           position: relative;
           overflow: hidden;
-          flex: 1 1 220px;
+          flex: 1 1 200px;
           max-width: 280px;
-          min-width: 220px;
+          min-width: 140px;
           justify-content: flex-start;
           text-align: left;
         }
@@ -1094,8 +1094,8 @@ const TermsConditions = () => {
         .tc-contact-title {
           margin: 0;
           font-family: 'Cinzel', serif;
-          font-size: clamp(2rem, 5vw, 3rem);
-          line-height: 1.08;
+          font-size: clamp(1.4rem, 4vw, 2.8rem);
+          line-height: 1.1;
           color: #0c3553;
         }
         .tc-contact-title em {
@@ -1106,8 +1106,8 @@ const TermsConditions = () => {
           margin: 0;
           max-width: 560px;
           color: #5f7e94;
-          font-size: 1rem;
-          line-height: 1.8;
+          font-size: 0.9rem;
+          line-height: 1.6;
         }
         .tc-contact-grid {
           display: grid;
@@ -1120,9 +1120,9 @@ const TermsConditions = () => {
           overflow: hidden;
           display: flex;
           flex-direction: column;
-          min-height: 250px;
-          padding: 28px;
-          border-radius: 28px;
+          min-height: 180px;
+          padding: 24px;
+          border-radius: 24px;
           text-decoration: none;
           color: #0c3553;
           border: 1px solid rgba(19,153,222,0.1);
@@ -1131,7 +1131,7 @@ const TermsConditions = () => {
           text-align: left;
           font: inherit;
           transform-style: preserve-3d;
-          box-shadow: 0 22px 44px rgba(12,53,83,0.1), 0 8px 18px rgba(12,53,83,0.06);
+          box-shadow: 0 16px 36px rgba(12,53,83,0.08);
           transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.35s ease, box-shadow 0.35s ease, background 0.35s ease;
           isolation: isolate;
           will-change: transform;
@@ -1176,16 +1176,16 @@ const TermsConditions = () => {
           gap: 14px;
         }
         .tc-contact-icon {
-          width: 58px;
-          height: 58px;
-          border-radius: 18px;
+          width: 48px;
+          height: 48px;
+          border-radius: 14px;
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          font-size: 1.7rem;
+          font-size: 1.4rem;
           background: linear-gradient(145deg, rgba(244,249,252,0.96), rgba(224,235,244,0.96));
           border: 1px solid rgba(19,153,222,0.12);
-          box-shadow: inset 0 1px 0 rgba(255,255,255,0.8), 0 12px 22px rgba(12,53,83,0.08);
+          box-shadow: inset 0 1px 0 rgba(255,255,255,0.8), 0 8px 16px rgba(12,53,83,0.06);
           transition: transform 0.35s ease, background 0.35s ease;
         }
         .tc-contact-card:hover .tc-contact-icon {
@@ -1309,11 +1309,11 @@ const TermsConditions = () => {
         }
         .tc-concierge-modal {
           position: relative;
-          width: min(1240px, 100%);
-          max-height: 94vh;
+          width: min(1240px, 96%);
+          max-height: 90vh;
           overflow-y: auto;
           overflow-x: hidden;
-          border-radius: 34px;
+          border-radius: 28px;
           border: 1px solid rgba(12,53,83,0.12);
           background:
             radial-gradient(circle at top right, rgba(19,153,222,0.14), transparent 22%),
@@ -1321,7 +1321,6 @@ const TermsConditions = () => {
             linear-gradient(145deg, rgba(255,255,255,0.98), rgba(242,248,253,0.96));
           box-shadow: 0 44px 120px rgba(12,53,83,0.18);
           transform-style: preserve-3d;
-          animation: tc-concierge-float 7s ease-in-out infinite;
         }
         .tc-concierge-modal::before {
           content: '';
@@ -1399,17 +1398,17 @@ const TermsConditions = () => {
           box-shadow: 0 0 18px rgba(255,178,87,0.85);
         }
         .tc-concierge-aside h3 {
-          margin: 22px 0 12px;
+          margin: 18px 0 10px;
           color: #0c3553;
           font-family: 'Cinzel', serif;
-          font-size: clamp(2rem, 4vw, 2.8rem);
-          line-height: 1.08;
+          font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+          line-height: 1.1;
         }
         .tc-concierge-aside p {
           margin: 0;
           color: #4e6b82;
-          line-height: 1.8;
-          font-size: 1.02rem;
+          line-height: 1.6;
+          font-size: 0.95rem;
         }
         .tc-concierge-points {
           margin: 34px 0 0;
@@ -1503,15 +1502,16 @@ const TermsConditions = () => {
         .tc-concierge-form-head h4 {
           margin: 0;
           color: #0c3553;
-          font-size: clamp(1.7rem, 2vw, 2.1rem);
+          font-size: clamp(1.4rem, 2.5vw, 2.1rem);
           font-weight: 800;
+          line-height: 1.2;
         }
         .tc-concierge-form-head span {
           display: block;
-          margin-top: 6px;
+          margin-top: 4px;
           color: #628097;
-          font-size: 1rem;
-          line-height: 1.7;
+          font-size: 0.9rem;
+          line-height: 1.5;
         }
         .tc-concierge-badge {
           padding: 11px 16px;
@@ -1551,13 +1551,13 @@ const TermsConditions = () => {
           border: 1px solid rgba(12,53,83,0.12);
           background: rgba(255,255,255,0.92);
           color: #0c3553;
-          border-radius: 20px;
-          padding: 17px 18px;
+          border-radius: 16px;
+          padding: 14px 16px;
           outline: none;
-          font-size: 1rem;
+          font-size: 0.95rem;
           line-height: 1.5;
           transition: border-color 0.24s ease, box-shadow 0.24s ease, transform 0.24s ease, background 0.24s ease;
-          box-shadow: 0 12px 28px rgba(12,53,83,0.06), inset 0 1px 0 rgba(255,255,255,0.72);
+          box-shadow: 0 8px 24px rgba(12,53,83,0.04), inset 0 1px 0 rgba(255,255,255,0.72);
         }
         .tc-concierge-control:hover,
         .tc-concierge-field textarea:hover {
@@ -1681,6 +1681,9 @@ const TermsConditions = () => {
           .tc-concierge-overlay {
             padding: 16px;
           }
+          .tc-concierge-layout {
+            grid-template-columns: 1fr;
+          }
           .tc-concierge-aside,
           .tc-concierge-form-shell {
             padding: 30px 22px;
@@ -1702,45 +1705,99 @@ const TermsConditions = () => {
 
         @media (max-width: 640px) {
           .tc-tabs-wrapper { padding: 0 16px 0; }
-          .tc-tab-btn {
-            flex-basis: 100%;
-            max-width: none;
-            min-width: 0;
-            padding: 12px 16px;
+          .tc-tabs-row {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
           }
-          .tc-panel { padding: 28px 20px; }
+          .tc-tab-btn {
+            flex: 1 1 0;
+            min-width: 0;
+            max-width: none;
+            padding: 12px 10px;
+            flex-direction: column;
+            text-align: center;
+            justify-content: center;
+            gap: 5px;
+            border-radius: 16px;
+          }
+          .tc-tab-label {
+            font-size: 0.7rem;
+          }
+          .tc-tab-num {
+            position: absolute;
+            top: 6px;
+            right: 6px;
+            font-size: 0.6rem;
+          }
+          .tc-panel { padding: 24px 16px; }
+          .tc-panel-title { font-size: 1.5rem; }
+          .tc-para-card { padding: 16px; gap: 12px; }
+          .tc-para-icon-wrap { width: 36px; height: 36px; }
+          .tc-para-icon { font-size: 1.1rem; }
+          .tc-feature-card { padding: 20px 16px; }
+          .tc-timeline-card-inner { padding: 12px 14px; flex-direction: column; align-items: flex-start; gap: 8px; }
+          .tc-timeline-badge { align-self: flex-start; }
           .tc-cards-grid { grid-template-columns: 1fr; }
-          .tc-cta { padding: 36px 24px; }
-          .tc-contact-modal { padding: 24px 18px 18px; border-radius: 26px; }
-          .tc-contact-grid { grid-template-columns: 1fr; }
-          .tc-contact-footer { flex-direction: column; align-items: stretch; }
+          .tc-cta { padding: 32px 20px; border-radius: 24px; }
+          .tc-cta h3 { font-size: 1.4rem; }
+          .tc-contact-modal { padding: 18px 16px; border-radius: 20px; max-height: 94vh; overflow-y: auto; }
+          .tc-contact-title { font-size: 1.6rem; text-align: left; }
+          .tc-contact-subtitle { font-size: 0.85rem; line-height: 1.5; }
+          .tc-contact-grid { grid-template-columns: 1fr; gap: 14px; margin-top: 24px; }
           .tc-contact-card {
             min-height: 0;
-            padding: 22px 18px;
+            padding: 20px;
           }
           .tc-contact-card h4 {
-            font-size: 1.08rem;
+            font-size: 1rem;
+            margin: 14px 0 6px;
           }
           .tc-contact-card p,
           .tc-contact-footer-copy {
-            font-size: 0.92rem;
-          }
-          .tc-contact-chip,
-          .tc-contact-meta > span:last-child {
             font-size: 0.84rem;
+            line-height: 1.5;
           }
-          .tc-concierge-overlay { padding: 12px; }
-          .tc-concierge-modal { border-radius: 24px; }
+          .tc-contact-meta {
+            padding-top: 14px;
+            font-size: 0.78rem;
+            gap: 8px;
+          }
+          .tc-contact-chip {
+            font-size: 0.72rem;
+            padding: 5px 10px;
+          }
+          .tc-contact-footer {
+            flex-direction: column;
+            gap: 16px;
+            padding: 18px;
+            text-align: center;
+          }
+          .tc-contact-mini {
+            width: 100%;
+            justify-content: center;
+          }
+          .tc-concierge-overlay { padding: 8px; }
+          .tc-concierge-modal { border-radius: 20px; width: 96%; max-height: 94vh; }
           .tc-concierge-layout { grid-template-columns: 1fr; }
-          .tc-concierge-aside { padding: 24px 18px 20px; border-right: 0; border-bottom: 1px solid rgba(12,53,83,0.08); }
-          .tc-concierge-form-shell { padding: 22px 18px 20px; }
-          .tc-concierge-form-head { flex-direction: column; align-items: start; }
+          .tc-concierge-aside { padding: 24px 16px; }
+          .tc-concierge-aside h3 { font-size: 1.8rem; }
+          .tc-concierge-form-shell { padding: 24px 16px; }
+          .tc-concierge-form-head h4 { font-size: 1.4rem; }
           .tc-concierge-grid,
           .tc-concierge-grid.tc-concierge-grid-3,
-          .tc-concierge-stats { grid-template-columns: 1fr; }
-          .tc-concierge-actions { flex-direction: column; align-items: stretch; }
-          .tc-concierge-submit { width: 100%; min-width: 0; }
-          .tc-concierge-modal { max-height: 96vh; }
+          .tc-concierge-stats { grid-template-columns: 1fr; gap: 12px; }
+          .tc-concierge-submit { padding: 16px 20px; font-size: 0.9rem; width: 100%; margin-top: 10px; }
+          .tc-concierge-actions { flex-direction: column; align-items: stretch; gap: 14px; }
+          .tc-concierge-note { font-size: 0.78rem; text-align: center; }
+          .tc-concierge-points li { 
+            grid-template-columns: 44px 1fr;
+            padding: 16px;
+            border-radius: 18px;
+          }
+          .tc-concierge-point-icon { width: 44px; height: 44px; font-size: 1rem; }
+          .tc-concierge-point-copy strong { font-size: 0.95rem; }
+          .tc-concierge-point-copy span { font-size: 0.85rem; }
         }
       `}</style>
 

@@ -16,8 +16,8 @@ const Footer = () => {
             {/* Pre-footer CTA strip */}
             <div className="relative z-10 border-y border-white/5 bg-white/[0.02] backdrop-blur-sm overflow-hidden group">
                 <div className="absolute inset-0 bg-gradient-to-r from-brand-blue/10 via-brand-gold/5 to-brand-emerald/10 opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 relative">
-                    <div className="flex flex-col lg:flex-row items-center justify-between gap-10">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 relative">
+                    <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-10">
                         <div className="text-center lg:text-left max-w-2xl">
                             <span className="inline-flex items-center gap-2 text-brand-gold font-black uppercase tracking-[0.3em] text-[10px] mb-4">
                                 <Sparkles size={12} /> Elite Travel Strategy
@@ -25,12 +25,12 @@ const Footer = () => {
                             <h3 className="text-3xl md:text-4xl font-serif font-black mb-4 leading-tight">Ready to Sculpt Your <span className="text-brand-gold italic">Elite Expedition?</span></h3>
                             <p className="text-slate-400 font-medium leading-relaxed italic">Consult with our master travel strategists and receive a bespoke blueprint for your next journey, curated with precision and trust.</p>
                         </div>
-                        <div className="flex flex-col sm:flex-row gap-4 shrink-0">
-                            <a href="tel:+918979931256" className="inline-flex h-14 items-center justify-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-8 text-sm font-black uppercase tracking-widest text-white transition-all hover:bg-white/10 hover:border-brand-gold active:scale-95">
-                                <Phone size={18} className="text-brand-gold" /> +91 89799-31256
+                        <div className="flex flex-col sm:flex-row gap-4 shrink-0 w-full lg:w-auto">
+                            <a href="tel:+918979931256" className="w-full sm:w-auto inline-flex h-14 items-center justify-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-6 sm:px-8 text-xs sm:text-sm font-black uppercase tracking-widest text-white transition-all hover:bg-white/10 hover:border-brand-gold active:scale-95">
+                                <Phone size={18} className="text-brand-gold shrink-0" /> +91 89799-31256
                             </a>
-                            <Link to="/contact" className="inline-flex h-14 items-center justify-center gap-3 rounded-2xl bg-brand-gold px-8 text-sm font-black uppercase tracking-widest text-brand-dark transition-all hover:bg-white active:scale-95 shadow-2xl shadow-brand-gold/20 shimmer-effect">
-                                <Mail size={18} /> Reserve a Consultation
+                            <Link to="/contact" className="w-full sm:w-auto inline-flex h-14 items-center justify-center gap-3 rounded-2xl bg-brand-gold px-6 sm:px-8 text-xs sm:text-sm font-black uppercase tracking-widest text-brand-dark transition-all hover:bg-white active:scale-95 shadow-2xl shadow-brand-gold/20 shimmer-effect">
+                                <Mail size={18} className="shrink-0" /> Reserve a Consultation
                             </Link>
                         </div>
                     </div>
@@ -38,9 +38,9 @@ const Footer = () => {
             </div>
 
             {/* Main footer body */}
-            <div className="pt-24 pb-12 relative z-10">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-16 mb-20">
+            <div className="pt-16 sm:pt-24 pb-10 sm:pb-12 relative z-10">
+                <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 sm:gap-16 mb-16 sm:mb-20">
 
                         {/* Col 1: Brand */}
                         <div className="lg:col-span-2 space-y-8">
@@ -82,7 +82,7 @@ const Footer = () => {
 
                         {/* Col 2: Curated Collections */}
                         <div>
-                            <h4 className="text-white font-black font-serif mb-8 text-lg border-b border-white/5 pb-4 tracking-tight">Curated Packages</h4>
+                            <h4 className="text-white font-black font-serif mb-6 sm:mb-8 text-xl sm:text-lg border-b border-white/5 pb-4 tracking-tight">Curated Packages</h4>
                             <ul className="space-y-4">
                                 {[
                                     { name: 'Char Dham Yatra', path: '/tour/char-dham-yatra' },
@@ -104,13 +104,12 @@ const Footer = () => {
 
                         {/* Col 3: Fleet & Concierge */}
                         <div>
-                            <h4 className="text-white font-black font-serif mb-8 text-lg border-b border-white/5 pb-4 tracking-tight">Fleet & Concierge</h4>
+                            <h4 className="text-white font-black font-serif mb-6 sm:mb-8 text-xl sm:text-lg border-b border-white/5 pb-4 tracking-tight">Fleet & Concierge</h4>
                             <ul className="space-y-4">
                                 {[
                                     { name: 'Luxury Hotel Curation', path: '/services/hotel' },
                                     { name: 'Elite Car Rental', path: '/services/car-rental' },
                                     { name: 'Adventure Activities', path: '/activity' },
-                                    { name: 'Global Air Ticketing', path: '/services/air-ticket' },
                                     { name: 'Bike Expeditions', path: '/services/bike-rental' },
                                     { name: 'Honeymoon Touches', path: '/tour/romantic-himachal-honeymoon' },
                                 ].map((l, i) => (
@@ -126,7 +125,7 @@ const Footer = () => {
 
                         {/* Col 4: Corporate */}
                         <div>
-                            <h4 className="text-white font-black font-serif mb-8 text-lg border-b border-white/5 pb-4 tracking-tight">Company info</h4>
+                            <h4 className="text-white font-black font-serif mb-6 sm:mb-8 text-xl sm:text-lg border-b border-white/5 pb-4 tracking-tight">Company info</h4>
                             <ul className="space-y-4 mb-8">
                                 {[
                                     { name: 'Our Story', path: '/about-us' },
@@ -159,28 +158,28 @@ const Footer = () => {
                     </div>
 
                     {/* Bottom Utility Bar */}
-                    <div className="pt-10 border-t border-white/5 flex flex-col lg:flex-row justify-between items-center gap-6">
-                        <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8">
+                    <div className="pt-10 border-t border-white/5 flex flex-col lg:flex-row justify-between items-center gap-8">
+                        <div className="flex flex-col md:flex-row items-center gap-6 md:gap-8 w-full lg:w-auto text-center md:text-left">
                             <p className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-500">
                                 &copy; {currentYear} <span className="text-white">Yatra Go</span>. All rights reserved.
                             </p>
-                            <div className="flex items-center gap-6">
+                            <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-6">
                                 <Link to="/privacy-policy" className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-500 hover:text-white transition-colors">Privacy</Link>
                                 <Link to="/terms-and-conditions" className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-500 hover:text-white transition-colors">Terms</Link>
                                 <a href={sitemapHref} className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-500 hover:text-white transition-colors">Sitemap</a>
                             </div>
                         </div>
                         
-                        <div className="flex items-center gap-6 text-[10px] font-black uppercase tracking-[0.3em] text-slate-500">
+                        <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-6 text-[10px] font-black uppercase tracking-[0.3em] text-slate-500 w-full lg:w-auto">
                             <div className="flex items-center gap-2">
-                                <ShieldCheck size={14} className="text-brand-gold" />
+                                <ShieldCheck size={14} className="text-brand-gold shrink-0" />
                                 <span>SSL Encrypted</span>
                             </div>
-                            <div className="w-px h-4 bg-white/10" />
-                            <p className="flex items-center gap-2">
+                            <div className="hidden sm:block w-px h-4 bg-white/10" />
+                            <p className="flex items-center justify-center gap-2 w-full sm:w-auto mt-2 sm:mt-0">
                                 DESIGNED by
                                 <a href="https://yatrago.com/" target="_blank" rel="noopener noreferrer"
-                                    className="text-white hover:text-brand-gold transition-colors">AMAN VERMA</a>
+                                    className="text-white hover:text-brand-gold transition-colors">Yuvan Creations</a>
                             </p>
                         </div>
                     </div>

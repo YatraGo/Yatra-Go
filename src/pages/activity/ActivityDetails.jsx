@@ -197,9 +197,12 @@ const ActivityDetails = () => {
                     onError={(e) => { e.target.src = 'https://images.unsplash.com/photo-1539228945657-b12e1ffb1574?w=1200&q=80'; }} />
                 <div className="absolute inset-0 bg-gradient-to-b from-brand-dark/40 via-brand-dark/20 to-brand-dark/95" />
                 <div className="relative z-10 w-full max-w-7xl mx-auto px-4 pb-16 md:pb-24">
-                    <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>
-                        <Link to="/activity" className="inline-flex items-center gap-2 text-white/80 hover:text-brand-gold font-bold text-sm mb-8 transition-colors group">
-                            <ArrowLeft size={18} className="group-hover:-translate-x-1 transition-transform" /> Back to Catalog
+                    <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }} className="w-full">
+                        <Link 
+                            to="/activity" 
+                            className="inline-flex items-center gap-2 text-white/90 hover:text-brand-gold font-bold text-xs sm:text-sm mb-6 sm:mb-8 transition-all group bg-black/20 backdrop-blur-md px-4 py-2 rounded-full border border-white/10 hover:bg-black/40"
+                        >
+                            <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform sm:w-[18px] sm:h-[18px]" /> Back to Catalog
                         </Link>
                         <div className="flex flex-wrap items-center gap-4 mb-6">
                             <span className="bg-brand-gold text-brand-dark px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest">{activity.category} Adventure</span>
@@ -209,19 +212,23 @@ const ActivityDetails = () => {
                                 <span className="text-white/60 text-sm">({activity.reviews} reviews)</span>
                             </div>
                         </div>
-                        <h1 className="text-5xl md:text-7xl font-serif font-black text-white leading-tight tracking-tight mb-4">
+                        <h1 className="text-3xl sm:text-5xl md:text-7xl font-serif font-black text-white leading-tight tracking-tight mb-4">
                             {activity.name} <span className="text-brand-gold italic">Expedition</span>
                         </h1>
-                        <div className="flex flex-wrap items-center gap-8 text-white/90">
-                            <div className="flex items-center gap-3"><MapPin size={22} className="text-brand-gold" /><span className="text-lg font-bold uppercase tracking-wide">{activity.location}</span></div>
-                            <div className="flex items-center gap-3 border-l border-white/20 pl-8"><Clock size={22} className="text-brand-gold" /><span className="text-lg font-bold uppercase tracking-wide">{currentDuration}</span></div>
+                        <div className="flex flex-col sm:flex-row flex-wrap items-start sm:items-center gap-4 sm:gap-8 text-white/90">
+                            <div className="flex items-center gap-3"><MapPin size={22} className="text-brand-gold" /><span className="text-sm sm:text-lg font-bold uppercase tracking-wide">{activity.location}</span></div>
+                            <div className="hidden sm:block border-l border-white/20 h-8" />
+                            <div className="flex items-center gap-3"><Clock size={22} className="text-brand-gold" /><span className="text-sm sm:text-lg font-bold uppercase tracking-wide">{currentDuration}</span></div>
                             {(selectedRoute || selectedThrillOption) && (
-                                <div className="flex items-center gap-3 border-l border-white/20 pl-8">
-                                    <Zap size={22} className="text-brand-gold" />
-                                    <span className="text-lg font-bold uppercase tracking-wide">
-                                        {selectedRoute ? `${selectedRoute.label} · ${selectedRoute.grade}` : selectedThrillOption?.name}
-                                    </span>
-                                </div>
+                                <>
+                                    <div className="hidden sm:block border-l border-white/20 h-8" />
+                                    <div className="flex items-center gap-3">
+                                        <Zap size={22} className="text-brand-gold" />
+                                        <span className="text-sm sm:text-lg font-bold uppercase tracking-wide">
+                                            {selectedRoute ? `${selectedRoute.label} · ${selectedRoute.grade}` : selectedThrillOption?.name}
+                                        </span>
+                                    </div>
+                                </>
                             )}
                         </div>
                     </motion.div>
@@ -231,18 +238,18 @@ const ActivityDetails = () => {
             {/* ─── Stats Strip ─── */}
             <div className="bg-white border-b border-slate-100 shadow-sm relative z-20">
                 <div className="max-w-7xl mx-auto px-4 py-8">
-                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
                         {[
-                            { icon: <Zap size={24} className="text-orange-400" />, label: 'Intensity', value: currentDifficulty },
-                            { icon: <ShieldCheck size={24} className="text-blue-400" />, label: 'Grade / Platform', value: currentGrade },
-                            { icon: <Users size={24} className="text-emerald-400" />, label: 'Min. Age', value: selectedThrillOption?.minAge || activity.minAge },
-                            { icon: <Clock size={24} className="text-purple-400" />, label: 'Duration', value: currentDuration },
+                            { icon: <Zap size={20} className="text-orange-400 sm:w-6 sm:h-6" />, label: 'Intensity', value: currentDifficulty },
+                            { icon: <ShieldCheck size={20} className="text-blue-400 sm:w-6 sm:h-6" />, label: 'Grade', value: currentGrade },
+                            { icon: <Users size={20} className="text-emerald-400 sm:w-6 sm:h-6" />, label: 'Min. Age', value: selectedThrillOption?.minAge || activity.minAge },
+                            { icon: <Clock size={20} className="text-purple-400 sm:w-6 sm:h-6" />, label: 'Duration', value: currentDuration },
                         ].map((stat, i) => (
-                            <div key={i} className="flex items-center gap-4 group">
-                                <div className="bg-slate-50 p-4 rounded-2xl group-hover:scale-110 transition-transform duration-300">{stat.icon}</div>
+                            <div key={i} className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-2 sm:gap-4 group">
+                                <div className="bg-slate-50 p-3 sm:p-4 rounded-xl sm:rounded-2xl group-hover:scale-110 transition-transform duration-300">{stat.icon}</div>
                                 <div>
-                                    <p className="text-[10px] text-slate-400 font-black uppercase tracking-widest">{stat.label}</p>
-                                    <p className="font-black text-brand-dark text-sm">{stat.value}</p>
+                                    <p className="text-[9px] sm:text-[10px] text-slate-400 font-black uppercase tracking-widest">{stat.label}</p>
+                                    <p className="font-black text-brand-dark text-[11px] sm:text-sm">{stat.value}</p>
                                 </div>
                             </div>
                         ))}
@@ -258,7 +265,7 @@ const ActivityDetails = () => {
                     <div className="space-y-20">
                         <ScrollReveal direction="up">
                             <h2 className="text-3xl font-serif font-black text-brand-dark mb-6">The <span className="text-brand-gold italic">Experience</span></h2>
-                            <p className="text-slate-500 text-lg leading-relaxed font-medium italic mb-10 border-l-4 border-brand-gold pl-8">
+                            <p className="text-slate-500 text-sm sm:text-lg leading-relaxed font-medium italic mb-10 border-l-4 border-brand-gold pl-4 sm:pl-8">
                                 "{selectedRoute ? selectedRoute.desc : selectedThrillOption ? selectedThrillOption.desc : activity.desc}"
                             </p>
                             <h3 className="text-xl font-serif font-black text-brand-dark mb-8 uppercase tracking-wider flex items-center gap-3">
@@ -293,12 +300,12 @@ const ActivityDetails = () => {
                             <div className="bg-brand-dark rounded-[3rem] p-12 text-white overflow-hidden relative">
                                 <div className="absolute top-0 right-0 w-64 h-64 bg-brand-gold/5 blur-3xl rounded-full" />
                                 <div className="grid md:grid-cols-2 gap-12 relative z-10">
-                                    <div>
-                                        <h3 className="text-2xl font-serif font-black text-brand-gold mb-8 uppercase tracking-tight flex items-center gap-3"><Shield size={24} /> Purely Included</h3>
-                                        <ul className="space-y-4">
+                                    <div className="w-full">
+                                        <h3 className="text-xl sm:text-2xl font-serif font-black text-brand-gold mb-6 sm:mb-8 uppercase tracking-tight flex items-center gap-3"><Shield size={22} /> Purely Included</h3>
+                                        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                             {activity.includes.map((inc, i) => (
-                                                <li key={i} className="flex items-center gap-4 text-white/80 font-bold tracking-wide">
-                                                    <div className="w-2 h-2 rounded-full bg-brand-gold shrink-0" />{inc}
+                                                <li key={i} className="flex items-center gap-3 text-white/80 font-bold tracking-wide text-xs sm:text-sm">
+                                                    <div className="w-1.5 h-1.5 rounded-full bg-brand-gold shrink-0" />{inc}
                                                 </li>
                                             ))}
                                         </ul>
@@ -314,9 +321,9 @@ const ActivityDetails = () => {
 
                     {/* Right Column — Booking */}
                     <div className="lg:sticky lg:top-36 h-fit space-y-8">
-                        <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }}
-                            className="bg-white rounded-[3rem] p-10 border border-slate-100 shadow-2xl shadow-slate-200/60 overflow-hidden relative">
-                            <div className="absolute top-0 right-0 w-32 h-32 bg-brand-gold/5 blur-2xl rounded-full" />
+                        <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}
+                            className="bg-white rounded-[2rem] sm:rounded-[3rem] p-6 sm:p-10 border border-slate-100 shadow-2xl shadow-slate-200/60 overflow-hidden relative">
+                            <div className="absolute top-0 right-0 w-24 h-24 sm:w-32 sm:h-32 bg-brand-gold/5 blur-2xl rounded-full" />
 
                             {/* Selectors */}
                             {isRafting && activity.raftingRoutes && (

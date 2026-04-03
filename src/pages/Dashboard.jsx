@@ -29,7 +29,8 @@ import {
     Star,
     Zap,
     MoveRight,
-    Heart
+    Heart,
+    Home
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { auth, db } from '../firebase/config';
@@ -199,6 +200,7 @@ const Dashboard = () => {
     if (!currentUser) return <Navigate to="/login" replace />;
 
     const navItems = [
+        { id: 'home', label: 'Home Page', icon: Home, type: 'link' },
         { id: 'overview', label: 'Lounge Overview', icon: Compass },
         { id: 'bookings', label: 'My Bookings', icon: Ticket },
         { id: 'wishlist', label: 'Favourite', icon: Heart },
@@ -252,7 +254,7 @@ const Dashboard = () => {
                         {navItems.map((item) => (
                             <button
                                 key={item.id}
-                                onClick={() => setActiveTab(item.id)}
+                                onClick={() => item.type === 'link' ? navigate('/') : setActiveTab(item.id)}
                                 className={`group flex w-full items-center gap-4 rounded-[1.25rem] px-5 py-4 text-[10px] font-black uppercase tracking-[0.2em] transition-all duration-300 ${
                                     activeTab === item.id
                                         ? 'bg-brand-dark text-white shadow-xl shadow-brand-dark/10 translate-x-1'
@@ -281,13 +283,13 @@ const Dashboard = () => {
             </aside>
 
                 {/* 🌟 MAIN CONTENT AREA */}
-                <div className="flex-1 min-h-screen pt-4 lg:pt-8 lg:pr-12 pb-24 h-full">
-                <div className="mx-auto max-w-7xl">
+                <div className="flex-1 min-h-screen pt-4 lg:pt-8 lg:pr-12 pb-24 h-full w-full max-w-full overflow-x-hidden">
+                <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-0">
                     
                     {/* Header Reveal */}
                     <ScrollReveal direction="down">
-                        <header className="overflow-hidden rounded-[3rem] border border-white/60 bg-white/20 shadow-[0_30px_100px_rgba(8,38,61,0.04)] backdrop-blur-2xl ring-1 ring-black/[0.02]">
-                            <div className="grid gap-10 px-8 py-10 lg:grid-cols-[1.2fr_0.8fr] lg:px-12">
+                        <header className="overflow-hidden rounded-3xl lg:rounded-[3rem] border border-white/60 bg-white/20 shadow-[0_30px_100px_rgba(8,38,61,0.04)] backdrop-blur-2xl ring-1 ring-black/[0.02]">
+                            <div className="grid gap-8 lg:gap-10 px-6 py-8 lg:px-12 lg:py-10 lg:grid-cols-[1.2fr_0.8fr]">
                                 <div>
                                     <div className="inline-flex items-center gap-2 rounded-full bg-brand-gold/10 px-4 py-2 text-[10px] font-black uppercase tracking-[0.3em] text-brand-dark">
                                         <Compass size={14} className="text-brand-gold" /> Personalized Concierge
@@ -322,24 +324,31 @@ const Dashboard = () => {
                     </ScrollReveal>
 
                     {/* Mobile Navigation */}
-                    <div className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-3 lg:hidden">
+                    <div className="mt-8 grid grid-cols-3 sm:grid-cols-3 gap-3 lg:hidden">
                         {navItems.map((item) => (
                             <button
                                 key={item.id}
-                                onClick={() => setActiveTab(item.id)}
-                                className={`flex flex-col items-center justify-center gap-2 rounded-2xl p-4 text-[9px] font-black uppercase tracking-widest transition-all ${
+                                onClick={() => item.type === 'link' ? navigate('/') : setActiveTab(item.id)}
+                                className={`flex flex-col items-center justify-center gap-2 rounded-2xl p-3 text-[9px] font-black uppercase tracking-widest transition-all ${
                                     activeTab === item.id
                                         ? 'bg-brand-dark text-white shadow-xl shadow-brand-dark/20'
-                                        : 'bg-white text-slate-400 shadow-sm border border-slate-100'
+                                        : 'bg-white text-slate-400 shadow-sm border border-slate-100 hover:bg-slate-50'
                                 }`}
                             >
-                                <item.icon size={20} className={activeTab === item.id ? 'text-brand-gold' : ''} />
-                                {item.label.split(' ')[1] || item.label}
+                                <item.icon size={18} className={activeTab === item.id ? 'text-brand-gold' : item.id === 'home' ? 'text-brand-blue' : ''} />
+                                <span className="text-center leading-tight">{item.label.split(' ')[1] || item.label}</span>
                             </button>
                         ))}
+                        <button
+                            onClick={() => setLogoutPopupOpen(true)}
+                            className="flex flex-col items-center justify-center gap-2 rounded-2xl p-3 text-[9px] font-black uppercase tracking-widest transition-all bg-white text-rose-500 shadow-sm border border-rose-100 hover:bg-rose-50"
+                        >
+                            <LogOut size={18} />
+                            <span className="text-center leading-tight">Exit</span>
+                        </button>
                     </div>
 
-                    <div className="mt-12">
+                    <div className="mt-8 lg:mt-12">
                         <AnimatePresence mode="wait">
                             {/* OVERVIEW TAB */}
                             {activeTab === 'overview' && (
@@ -352,7 +361,7 @@ const Dashboard = () => {
                                 >
                                     <div className="grid gap-10 xl:grid-cols-[1.2fr_0.8fr]">
                                         <div className="space-y-10">
-                                            <div className="rounded-[3rem] border border-white/60 bg-white/20 p-8 shadow-3xl shadow-slate-200/10 backdrop-blur-2xl relative overflow-hidden accent-pattern-blue ring-1 ring-black/[0.02]">
+                                            <div className="rounded-3xl lg:rounded-[3rem] border border-white/60 bg-white/20 p-6 lg:p-8 shadow-3xl shadow-slate-200/10 backdrop-blur-2xl relative overflow-hidden accent-pattern-blue ring-1 ring-black/[0.02]">
                                                 <div className="flex items-center justify-between mb-10">
                                                     <div>
                                                         <div className="text-[10px] font-black uppercase tracking-[0.3em] text-brand-blue">Travel Pulse</div>
@@ -368,19 +377,19 @@ const Dashboard = () => {
                                                         </div>
                                                     ) : bookings.slice(0, 3).length > 0 ? (
                                                         bookings.slice(0, 3).map((booking, i) => (
-                                                            <div key={booking.id} className="admin-glass group flex flex-col gap-6 rounded-[2.5rem] border-slate-50 bg-white/50 p-6 sm:flex-row sm:items-center sm:justify-between transition-all hover:bg-white hover:shadow-xl">
-                                                                <div className="flex items-center gap-5">
-                                                                    <div className={`h-14 w-14 rounded-2xl flex items-center justify-center text-white shadow-lg group-hover:rotate-6 transition-transform ${booking.status === 'confirmed' ? 'bg-emerald-500' : 'bg-brand-dark'}`}>
+                                                            <div key={booking.id} className="admin-glass group flex flex-col gap-5 sm:gap-6 rounded-3xl lg:rounded-[2.5rem] border-slate-50 bg-white/50 p-4 sm:p-5 lg:p-6 sm:flex-row sm:items-center sm:justify-between transition-all hover:bg-white hover:shadow-xl w-full min-w-0">
+                                                                <div className="flex items-center gap-4 sm:gap-5 w-full min-w-0 flex-1">
+                                                                    <div className={`shrink-0 h-12 w-12 sm:h-14 sm:w-14 rounded-2xl flex items-center justify-center text-white shadow-lg group-hover:rotate-6 transition-transform ${booking.status === 'confirmed' ? 'bg-emerald-500' : 'bg-brand-dark'}`}>
                                                                         <MapPin size={24} />
                                                                     </div>
-                                                                    <div className="min-w-0">
-                                                                        <div className="truncate text-xl font-serif font-black text-slate-900 mb-1">{booking.packageTitle || 'Tailored Journey'}</div>
-                                                                        <div className="flex items-center gap-3 text-xs font-bold text-slate-400 italic">
-                                                                            <CalendarDays size={14} className="text-brand-gold" /> {booking.travelDate || 'Consultation Phase'}
+                                                                    <div className="min-w-0 flex-1">
+                                                                        <div className="truncate text-lg sm:text-xl font-serif font-black text-slate-900 mb-1">{booking.packageTitle || 'Tailored Journey'}</div>
+                                                                        <div className="flex items-center gap-2 sm:gap-3 text-xs font-bold text-slate-400 italic truncate">
+                                                                            <CalendarDays size={14} className="text-brand-gold shrink-0" /> <span className="truncate">{booking.travelDate || 'Consultation Phase'}</span>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <div className="flex items-center gap-4">
+                                                                <div className="flex items-center justify-between sm:justify-end gap-4 w-full sm:w-auto shrink-0 mt-2 sm:mt-0 pt-3 sm:pt-0 border-t sm:border-0 border-slate-100/50">
                                                                     <span className={`px-4 py-1.5 rounded-full text-[9px] font-black uppercase tracking-[0.2em] border shadow-sm ${
                                                                         booking.status === 'confirmed' ? 'bg-emerald-50 text-emerald-600 border-emerald-100' : 
                                                                         booking.status === 'pending' ? 'bg-brand-gold/5 text-brand-gold border-brand-gold/20' : 
@@ -388,7 +397,7 @@ const Dashboard = () => {
                                                                     }`}>
                                                                         {booking.status || 'pending'}
                                                                     </span>
-                                                                    <button onClick={() => navigate(`/checkout/${booking.id}`)} className="h-12 w-12 rounded-xl bg-slate-50 flex items-center justify-center text-slate-300 hover:bg-brand-dark hover:text-white transition-all">
+                                                                    <button onClick={() => navigate(`/checkout/${booking.id}`)} className="h-10 w-10 sm:h-12 sm:w-12 rounded-xl bg-slate-50 flex items-center justify-center text-slate-300 hover:bg-brand-dark hover:text-white transition-all shrink-0">
                                                                         <ArrowUpRight size={20} />
                                                                     </button>
                                                                 </div>
@@ -402,13 +411,13 @@ const Dashboard = () => {
                                                 </div>
                                             </div>
 
-                                            <div className="rounded-[3rem] bg-brand-dark p-8 lg:p-12 text-white shadow-[0_50px_100px_rgba(8,38,61,0.2)] relative overflow-hidden group">
+                                            <div className="rounded-3xl lg:rounded-[3rem] bg-brand-dark p-8 lg:p-12 text-white shadow-[0_50px_100px_rgba(8,38,61,0.2)] relative overflow-hidden group">
                                                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(255,138,23,0.15),_transparent_50%)]" />
                                                 <div className="relative">
                                                     <div className="flex flex-col md:flex-row items-center justify-between gap-10">
                                                         <div className="max-w-md text-center md:text-left">
                                                             <div className="text-[10px] font-black uppercase tracking-[0.4em] text-brand-gold mb-4">Limited Access</div>
-                                                            <h2 className="text-4xl font-serif font-black leading-tight">Map Your Next Discovery</h2>
+                                                            <h2 className="text-4xl font-serif font-black leading-tight text-slate-100">Map Your Next Discovery</h2>
                                                             <p className="mt-4 text-slate-400 font-medium italic leading-relaxed">Let our curators design a bespoke itinerary tailored to your specific travel vision.</p>
                                                             <button onClick={() => setActiveTab('request')} className="mt-8 inline-flex items-center gap-3 bg-white text-brand-dark px-10 py-4 rounded-2xl font-black uppercase tracking-widest text-[10px] hover:bg-brand-gold transition-all duration-300 group/btn">
                                                                 Start Consulting <MoveRight size={16} className="group-hover/btn:translate-x-2 transition-transform" />
@@ -428,7 +437,7 @@ const Dashboard = () => {
                                         </div>
 
                                         <div className="space-y-10">
-                                            <div className="rounded-[3rem] border border-slate-100 bg-white p-8 lg:p-10 shadow-3xl shadow-slate-200/20 relative group overflow-hidden">
+                                            <div className="rounded-3xl lg:rounded-[3rem] border border-slate-100 bg-white p-6 lg:p-10 shadow-3xl shadow-slate-200/20 relative group overflow-hidden">
                                                 <div className="absolute -bottom-10 -right-10 text-slate-50 opacity-10 group-hover:scale-125 transition-transform duration-1000">
                                                     <History size={180} />
                                                 </div>
@@ -470,7 +479,7 @@ const Dashboard = () => {
                                                 </div>
                                             </div>
 
-                                            <div className="rounded-[3rem] border border-white bg-brand-cream/40 p-10 backdrop-blur-xl relative overflow-hidden group">
+                                            <div className="rounded-3xl lg:rounded-[3rem] border border-white bg-brand-cream/40 p-6 lg:p-10 backdrop-blur-xl relative overflow-hidden group">
                                                 <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:scale-110 transition-transform duration-1000">
                                                     <Navigation size={120} className="text-brand-dark" />
                                                 </div>
@@ -484,7 +493,7 @@ const Dashboard = () => {
                                     </div>
 
                                     {/* Recommended Section */}
-                                    <div className="rounded-[3rem] border border-white/60 bg-white/20 p-10 lg:p-14 shadow-3xl shadow-slate-200/10 backdrop-blur-3xl relative overflow-hidden ring-1 ring-black/[0.02]">
+                                    <div className="rounded-3xl lg:rounded-[3rem] border border-white/60 bg-white/20 p-6 lg:p-14 shadow-3xl shadow-slate-200/10 backdrop-blur-3xl relative overflow-hidden ring-1 ring-black/[0.02]">
                                         <div className="flex flex-col md:flex-row justify-between items-end gap-8 mb-12">
                                             <div>
                                                 <div className="text-[10px] font-black uppercase tracking-[0.3em] text-brand-gold">Intelligent Curation</div>
@@ -528,7 +537,7 @@ const Dashboard = () => {
                                     exit={{ opacity: 0, x: 20 }}
                                     className="space-y-10"
                                 >
-                                    <div className="admin-glass p-8 lg:p-12 bg-white/10 backdrop-blur-xl border-white/40 ring-1 ring-black/[0.02]">
+                                    <div className="admin-glass p-6 lg:p-12 bg-white/10 backdrop-blur-xl border-white/40 ring-1 ring-black/[0.02] rounded-3xl lg:rounded-[3rem]">
                                         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-8 mb-12">
                                             <div>
                                                 <div className="text-[10px] font-black uppercase tracking-[0.3em] text-brand-gold">History & Logistics</div>
@@ -540,34 +549,34 @@ const Dashboard = () => {
                                         <div className="grid gap-6">
                                             {bookings.length > 0 ? bookings.map((booking, i) => (
                                                 <ScrollReveal key={booking.id} direction="up" delay={i * 0.05}>
-                                                    <div className="premium-card rounded-[3rem] border border-slate-100 bg-white p-6 lg:p-8 transition-all hover:border-brand-gold group relative overflow-hidden">
+                                                    <div className="premium-card rounded-3xl lg:rounded-[3rem] border border-slate-100 bg-white p-6 lg:p-8 transition-all hover:border-brand-gold group relative overflow-hidden">
                                                         <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity">
                                                             <Ticket size={120} />
                                                         </div>
-                                                        <div className="flex flex-col xl:flex-row gap-8 relative z-10">
-                                                            <div className="flex-1 space-y-8">
-                                                                <div className="flex flex-wrap items-center gap-4">
-                                                                    <div className="h-14 w-14 rounded-2xl bg-brand-dark text-white flex items-center justify-center shadow-xl">
+                                                        <div className="flex flex-col xl:flex-row gap-8 relative z-10 w-full overflow-hidden">
+                                                            <div className="flex-1 space-y-8 min-w-0 w-full">
+                                                                <div className="flex items-center gap-4 sm:gap-5 min-w-0 w-full">
+                                                                    <div className="shrink-0 h-12 w-12 sm:h-14 sm:w-14 rounded-2xl bg-brand-dark text-white flex items-center justify-center shadow-xl">
                                                                         <MapPin size={24} />
                                                                     </div>
-                                                                    <div>
-                                                                        <h3 className="text-2xl font-serif font-black text-slate-900 group-hover:text-brand-gold transition-colors">{booking.packageTitle}</h3>
-                                                                        <div className="flex items-center gap-2 text-xs font-bold text-slate-400 mt-1 uppercase tracking-widest">{booking.destination || 'Destination Pending'}</div>
+                                                                    <div className="min-w-0 flex-1 w-full">
+                                                                        <h3 className="truncate text-xl sm:text-2xl font-serif font-black text-slate-900 group-hover:text-brand-gold transition-colors">{booking.packageTitle}</h3>
+                                                                        <div className="truncate flex items-center gap-2 text-[10px] sm:text-xs font-bold text-slate-400 mt-1 uppercase tracking-widest">{booking.destination || 'Destination Pending'}</div>
                                                                     </div>
                                                                 </div>
 
-                                                                <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+                                                                <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 min-w-0">
                                                                     {[
                                                                         { label: 'Departure', value: booking.travelDate || 'Discussion', icon: CalendarDays, color: 'text-brand-gold' },
                                                                         { label: 'Identity', value: booking.customerName || 'Explorer', icon: UserCircle2, color: 'text-indigo-500' },
                                                                         { label: 'Group', value: `${booking.travelers || 1} Person(s)`, icon: Users, color: 'text-brand-blue' },
                                                                         { label: 'Status', value: booking.status || 'Triage', icon: Star, color: 'text-emerald-500' }
                                                                     ].map((info, idx) => (
-                                                                        <div key={idx} className="space-y-2">
-                                                                             <div className="flex items-center gap-2 text-[9px] font-black uppercase tracking-[0.2em] text-slate-300">
+                                                                        <div key={idx} className="space-y-2 min-w-0">
+                                                                             <div className="flex items-center gap-2 text-[8px] sm:text-[9px] font-black uppercase tracking-[0.2em] text-slate-300 truncate">
                                                                                 <info.icon size={12} className={info.color} /> {info.label}
                                                                              </div>
-                                                                             <p className="font-serif font-black text-slate-900 truncate">{info.value}</p>
+                                                                             <p className="font-serif font-black text-slate-900 truncate text-sm sm:text-base">{info.value}</p>
                                                                         </div>
                                                                     ))}
                                                                 </div>
@@ -579,7 +588,7 @@ const Dashboard = () => {
                                                                 )}
                                                             </div>
 
-                                                            <div className="shrink-0 flex flex-col justify-between items-end border-l border-slate-50 pl-8 lg:w-48">
+                                                            <div className="shrink-0 flex flex-col justify-between items-start xl:items-end border-t xl:border-t-0 xl:border-l border-slate-100 pt-6 xl:pt-0 xl:pl-8 lg:w-48 gap-6 xl:gap-0">
                                                                 <div className={`px-4 py-1.5 rounded-full text-[9px] font-black uppercase tracking-widest border shadow-sm ${
                                                                     booking.status === 'confirmed' ? 'bg-emerald-50 text-emerald-600 border-emerald-100' : 
                                                                     booking.status === 'pending' ? 'bg-brand-gold/5 text-brand-gold border-brand-gold/20' : 
@@ -619,7 +628,7 @@ const Dashboard = () => {
                                     className="space-y-10"
                                 >
                                     <div className="grid xl:grid-cols-[1fr_400px] gap-12 items-start">
-                                        <div className="admin-glass p-8 lg:p-12 accent-pattern bg-white/10 backdrop-blur-xl border-white/40 ring-1 ring-black/[0.02]">
+                                        <div className="admin-glass p-6 lg:p-12 accent-pattern bg-white/10 backdrop-blur-xl border-white/40 ring-1 ring-black/[0.02] rounded-3xl lg:rounded-[3rem]">
                                             <div className="mb-12">
                                                 <div className="inline-flex items-center gap-2 rounded-full bg-brand-gold/10 px-4 py-2 text-[10px] font-black uppercase tracking-[0.3em] text-brand-dark">
                                                      <Star size={14} className="text-brand-gold" /> Custom Protocol
@@ -702,7 +711,7 @@ const Dashboard = () => {
                                                     className="w-full inline-flex items-center justify-center gap-3 bg-brand-dark text-white font-black px-12 py-6 rounded-2xl hover:bg-brand-gold hover:text-brand-dark transition-all duration-300 shadow-2xl shadow-brand-dark/20 text-lg hover:-translate-y-1 disabled:opacity-50 group"
                                                 >
                                                     {bookingSaving ? <RefreshCw className="animate-spin" size={20} /> : <Zap size={20} className="text-brand-gold" />}
-                                                    {bookingSaving ? 'Transmitting Data...' : 'Transmit Request Protocol'}
+                                                    {bookingSaving ? 'Fetching Data...' : 'Send Request'}
                                                 </button>
                                             </form>
                                         </div>
@@ -752,7 +761,7 @@ const Dashboard = () => {
                                     exit={{ opacity: 0, x: -20 }}
                                     className="space-y-10"
                                 >
-                                    <div className="rounded-[3rem] border border-white/60 bg-white/20 p-10 shadow-4xl shadow-slate-200/10 backdrop-blur-3xl lg:p-14 accent-pattern-blue ring-1 ring-black/[0.02]">
+                                    <div className="rounded-3xl lg:rounded-[3rem] border border-white/60 bg-white/20 p-6 shadow-4xl shadow-slate-200/10 backdrop-blur-3xl lg:p-14 accent-pattern-blue ring-1 ring-black/[0.02]">
                                         <div className="mb-14 flex flex-col md:flex-row items-center gap-10">
                                             <div className="relative group">
                                                 <div className="flex h-32 w-32 items-center justify-center rounded-[2.5rem] bg-brand-dark text-white shadow-2xl ring-4 ring-white transition-transform group-hover:scale-105 group-hover:-rotate-3">
@@ -841,7 +850,7 @@ const Dashboard = () => {
                                                     className="inline-flex items-center justify-center gap-4 bg-brand-dark text-white font-black px-14 py-6 rounded-2xl hover:bg-brand-gold hover:text-brand-dark transition-all duration-500 shadow-4xl shadow-brand-dark/30 text-lg hover:-translate-y-2 disabled:opacity-50 group"
                                                 >
                                                     {profileSaving ? <RefreshCw className="animate-spin" size={24} /> : <Zap size={24} className="group-hover:text-white transition-colors" />}
-                                                    {profileSaving ? 'Synchronizing Archive...' : 'Apply Registry Update'}
+                                                    {profileSaving ? 'Synchronizing Archive...' : 'Save Changes'}
                                                 </button>
                                             </div>
                                         </form>
@@ -858,7 +867,7 @@ const Dashboard = () => {
                                     exit={{ opacity: 0, scale: 0.98 }}
                                     className="space-y-10"
                                 >
-                                    <div className="admin-glass p-8 lg:p-12 bg-white/10 backdrop-blur-xl border-white/40 ring-1 ring-black/[0.02]">
+                                    <div className="admin-glass p-6 lg:p-12 bg-white/10 backdrop-blur-xl border-white/40 ring-1 ring-black/[0.02] rounded-3xl lg:rounded-[3rem]">
                                         <div className="mb-12 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-8">
                                             <div>
                                                 <div className="inline-flex items-center gap-2 rounded-full bg-rose-50 px-4 py-2 text-[10px] font-black uppercase tracking-[0.3em] text-rose-500">
@@ -875,7 +884,7 @@ const Dashboard = () => {
                                                 const pkg = allPackages.find(p => p.id === pkgId);
                                                 if (!pkg) return null;
                                                 return (
-                                                    <div key={pkgId} className="premium-card rounded-[2.5rem] border border-slate-100 bg-white overflow-hidden transition-all hover:border-brand-gold shadow-sm group flex flex-col h-full">
+                                                    <div key={pkgId} className="premium-card rounded-3xl lg:rounded-[2.5rem] border border-slate-100 bg-white overflow-hidden transition-all hover:border-brand-gold shadow-sm group flex flex-col h-full">
                                                         <div className="h-48 overflow-hidden relative shrink-0">
                                                             {pkg.imageUrl || pkg.img ? (
                                                                 <img src={pkg.imageUrl || pkg.img} alt={pkg.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
@@ -934,7 +943,7 @@ const Dashboard = () => {
             <SuccessPopup
                 open={showSuccess}
                 onClose={() => setShowSuccess(false)}
-                title="Request Transmitted"
+                title="Request Sent"
                 message="Your custom expedition protocol has been successfully received. A concierge lead will connect with your strategy within 120 minutes."
                 eyebrow="Mission Logged"
                 variant="auth-card"

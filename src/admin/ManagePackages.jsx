@@ -183,72 +183,72 @@ const ManagePackages = () => {
     };
 
     return (
-        <div className="space-y-10">
-            <div className="grid xl:grid-cols-[420px_1fr] gap-10 items-start">
+        <div className="space-y-6 sm:space-y-10">
+            <div className="grid xl:grid-cols-[420px_1fr] gap-6 sm:gap-10 items-start">
                 {/* 🌟 PREMIUM CREATE FORM */}
-                <form onSubmit={handleSubmit} className="admin-glass p-8 lg:p-10 sticky top-10">
-                    <div className="mb-10">
-                        <div className="inline-flex items-center gap-2 rounded-full bg-brand-gold/10 px-4 py-2 text-[10px] font-black uppercase tracking-[0.3em] text-brand-dark">
-                            <Sparkles size={14} className="text-brand-gold" /> Inventory Desk
+                <form onSubmit={handleSubmit} className="admin-glass p-6 sm:p-8 lg:p-10 sticky top-4 lg:top-10">
+                    <div className="mb-6 sm:mb-10">
+                        <div className="inline-flex items-center gap-2 rounded-full bg-brand-gold/10 px-3 sm:px-4 py-1.5 sm:py-2 text-[8px] sm:text-[10px] font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] text-brand-dark">
+                            <Sparkles className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-brand-gold" /> Inventory Desk
                         </div>
-                        <h2 className="mt-6 text-3xl font-serif font-black text-brand-dark">{editingId ? 'Edit Expedition' : 'Curate Journey'}</h2>
-                        <p className="text-xs font-bold text-slate-400 mt-2 uppercase tracking-widest leading-relaxed">Defining high-impact travel experiences</p>
+                        <h2 className="mt-4 sm:mt-6 text-2xl sm:text-3xl font-serif font-black text-brand-dark">{editingId ? 'Edit Expedition' : 'Curate Journey'}</h2>
+                        <p className="text-[10px] sm:text-xs font-bold text-slate-400 mt-1 sm:mt-2 uppercase tracking-widest leading-relaxed">Defining high-impact travel experiences</p>
                     </div>
 
                     <div className="space-y-6">
-                        <div className="space-y-2">
-                             <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-2">Expedition Title</label>
+                        <div className="space-y-1.5 sm:space-y-2">
+                             <label className="text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1 sm:ml-2">Expedition Title</label>
                              <input 
                                 value={form.title} 
                                 onChange={(event) => setForm((current) => ({ ...current, title: event.target.value }))} 
                                 placeholder="e.g. Valley of Flowers Trek" 
-                                className="w-full rounded-2xl border border-slate-100 bg-white/50 px-5 py-4 text-sm font-bold outline-none transition-all focus:bg-white focus:border-brand-gold focus:ring-4 focus:ring-brand-gold/5" 
+                                className="w-full rounded-xl sm:rounded-2xl border border-slate-100 bg-white/50 px-4 sm:px-5 py-3.5 sm:py-4 text-xs sm:text-sm font-bold outline-none transition-all focus:bg-white focus:border-brand-gold focus:ring-4 focus:ring-brand-gold/5" 
                                 required 
                              />
                         </div>
                         
-                        <div className="space-y-2">
-                             <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-2">Unique Slug</label>
+                        <div className="space-y-1.5 sm:space-y-2">
+                             <label className="text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1 sm:ml-2">Unique Slug</label>
                              <input 
                                 value={form.slug} 
                                 onChange={(event) => setForm((current) => ({ ...current, slug: event.target.value }))} 
                                 placeholder="valley-trek-2024" 
-                                className="w-full rounded-2xl border border-slate-100 bg-white/50 px-5 py-4 text-sm font-bold outline-none transition-all focus:bg-white focus:border-brand-gold focus:ring-4 focus:ring-brand-gold/5" 
+                                className="w-full rounded-xl sm:rounded-2xl border border-slate-100 bg-white/50 px-4 sm:px-5 py-3.5 sm:py-4 text-xs sm:text-sm font-bold outline-none transition-all focus:bg-white focus:border-brand-gold focus:ring-4 focus:ring-brand-gold/5" 
                                 required 
                              />
                         </div>
 
-                        <div className="grid grid-cols-2 gap-4">
-                            <div className="space-y-2">
-                                <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-2">Destination</label>
-                                <input value={form.location} onChange={(event) => setForm((current) => ({ ...current, location: event.target.value }))} placeholder="Joshimath" className="w-full rounded-2xl border border-slate-100 bg-white/50 px-5 py-4 text-sm font-bold outline-none transition-all focus:bg-white focus:border-brand-gold" required />
+                        <div className="grid grid-cols-2 gap-3 sm:gap-4">
+                            <div className="space-y-1.5 sm:space-y-2">
+                                <label className="text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1 sm:ml-2">Destination</label>
+                                <input value={form.location} onChange={(event) => setForm((current) => ({ ...current, location: event.target.value }))} placeholder="Joshimath" className="w-full rounded-xl sm:rounded-2xl border border-slate-100 bg-white/50 px-4 sm:px-5 py-3.5 sm:py-4 text-xs sm:text-sm font-bold outline-none transition-all focus:bg-white focus:border-brand-gold" required />
                             </div>
-                            <div className="space-y-2">
-                                <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-2">Region</label>
-                                <input value={form.region} onChange={(event) => setForm((current) => ({ ...current, region: event.target.value }))} placeholder="Garhwal" className="w-full rounded-2xl border border-slate-100 bg-white/50 px-5 py-4 text-sm font-bold outline-none transition-all focus:bg-white focus:border-brand-gold" required />
-                            </div>
-                        </div>
-
-                        <div className="grid grid-cols-2 gap-4">
-                            <div className="space-y-2">
-                                <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-2">Duration</label>
-                                <input value={form.days} onChange={(event) => setForm((current) => ({ ...current, days: event.target.value }))} placeholder="5 Days" className="w-full rounded-2xl border border-slate-100 bg-white/50 px-5 py-4 text-sm font-bold outline-none transition-all focus:bg-white focus:border-brand-gold" />
-                            </div>
-                            <div className="space-y-2">
-                                <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-2">Price (Rs.)</label>
-                                <input type="number" value={form.price} onChange={(event) => setForm((current) => ({ ...current, price: event.target.value }))} placeholder="12500" className="w-full rounded-2xl border border-slate-100 bg-white/50 px-5 py-4 text-sm font-bold outline-none transition-all focus:bg-white focus:border-brand-gold" required />
+                            <div className="space-y-1.5 sm:space-y-2">
+                                <label className="text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1 sm:ml-2">Region</label>
+                                <input value={form.region} onChange={(event) => setForm((current) => ({ ...current, region: event.target.value }))} placeholder="Garhwal" className="w-full rounded-xl sm:rounded-2xl border border-slate-100 bg-white/50 px-4 sm:px-5 py-3.5 sm:py-4 text-xs sm:text-sm font-bold outline-none transition-all focus:bg-white focus:border-brand-gold" required />
                             </div>
                         </div>
 
-                        <div className="space-y-2">
-                            <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-2">Display Image URL</label>
+                        <div className="grid grid-cols-2 gap-3 sm:gap-4">
+                            <div className="space-y-1.5 sm:space-y-2">
+                                <label className="text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1 sm:ml-2">Duration</label>
+                                <input value={form.days} onChange={(event) => setForm((current) => ({ ...current, days: event.target.value }))} placeholder="5 Days" className="w-full rounded-xl sm:rounded-2xl border border-slate-100 bg-white/50 px-4 sm:px-5 py-3.5 sm:py-4 text-xs sm:text-sm font-bold outline-none transition-all focus:bg-white focus:border-brand-gold" />
+                            </div>
+                            <div className="space-y-1.5 sm:space-y-2">
+                                <label className="text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1 sm:ml-2">Price (Rs.)</label>
+                                <input type="number" value={form.price} onChange={(event) => setForm((current) => ({ ...current, price: event.target.value }))} placeholder="12500" className="w-full rounded-xl sm:rounded-2xl border border-slate-100 bg-white/50 px-4 sm:px-5 py-3.5 sm:py-4 text-xs sm:text-sm font-bold outline-none transition-all focus:bg-white focus:border-brand-gold" required />
+                            </div>
+                        </div>
+
+                        <div className="space-y-1.5 sm:space-y-2">
+                            <label className="text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1 sm:ml-2">Display Image URL</label>
                             <div className="relative">
-                                <UploadCloud className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-300" size={18} />
+                                <UploadCloud className="absolute left-4 sm:left-5 top-1/2 -translate-y-1/2 text-slate-300 w-4 h-4 sm:w-4.5 sm:h-4.5" />
                                 <input 
                                     value={form.imageUrl} 
                                     onChange={(event) => setForm((current) => ({ ...current, imageUrl: event.target.value }))} 
                                     placeholder="https://images.unsplash.com/..." 
-                                    className="w-full rounded-2xl border border-slate-100 bg-white/50 pl-14 pr-5 py-4 text-sm font-bold outline-none transition-all focus:bg-white focus:border-brand-gold" 
+                                    className="w-full rounded-xl sm:rounded-2xl border border-slate-100 bg-white/50 pl-11 sm:pl-14 pr-4 sm:pr-5 py-3.5 sm:py-4 text-xs sm:text-sm font-bold outline-none transition-all focus:bg-white focus:border-brand-gold" 
                                 />
                             </div>
                             {form.imageUrl && (
@@ -258,9 +258,9 @@ const ManagePackages = () => {
                             )}
                         </div>
 
-                        <div className="space-y-2">
-                            <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-2">Catalog Status</label>
-                            <select value={form.status} onChange={(event) => setForm((current) => ({ ...current, status: event.target.value }))} className="w-full rounded-2xl border border-slate-100 bg-white/50 px-5 py-4 text-sm font-black uppercase tracking-widest outline-none transition-all focus:bg-white focus:border-brand-gold appearance-none">
+                        <div className="space-y-1.5 sm:space-y-2">
+                            <label className="text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1 sm:ml-2">Catalog Status</label>
+                            <select value={form.status} onChange={(event) => setForm((current) => ({ ...current, status: event.target.value }))} className="w-full rounded-xl sm:rounded-2xl border border-slate-100 bg-white/50 px-4 sm:px-5 py-3.5 sm:py-4 text-xs sm:text-sm font-black uppercase tracking-widest outline-none transition-all focus:bg-white focus:border-brand-gold appearance-none">
                                 <option value="active">Active Listing</option>
                                 <option value="draft">Draft Protocol</option>
                                 <option value="archived">Vault Records</option>
@@ -274,12 +274,12 @@ const ManagePackages = () => {
                         </div>
                     )}
 
-                    <div className="flex flex-col gap-3 mt-10">
-                        <button type="submit" disabled={saving} className="w-full inline-flex items-center justify-center gap-3 bg-brand-dark text-white font-black px-8 py-5 rounded-2xl hover:bg-brand-gold transition-all duration-300 shadow-xl shadow-brand-dark/10 disabled:opacity-50">
-                            {saving ? 'Processing...' : editingId ? <><Save size={18} /> Sync Expedition</> : <><Plus size={18} /> Finalize Protocol</>}
+                    <div className="flex flex-col gap-3 mt-8 sm:mt-10">
+                        <button type="submit" disabled={saving} className="w-full inline-flex items-center justify-center gap-2 sm:gap-3 bg-brand-dark text-white font-black px-6 sm:px-8 py-4 sm:py-5 rounded-xl sm:rounded-2xl hover:bg-brand-gold transition-all duration-300 shadow-xl shadow-brand-dark/10 disabled:opacity-50 text-[11px] sm:text-sm">
+                            {saving ? 'Processing...' : editingId ? <><Edit2 className="w-3.5 h-3.5 sm:w-4.5 sm:h-4.5" /> Sync Expedition</> : <><Plus className="w-3.5 h-3.5 sm:w-4.5 sm:h-4.5" /> Finalize Protocol</>}
                         </button>
-                        <button type="button" onClick={handleSeedPackages} disabled={seeding} className="w-full inline-flex items-center justify-center gap-3 border-2 border-slate-100 text-slate-400 font-black px-8 py-5 rounded-2xl hover:border-brand-dark hover:text-brand-dark transition-all duration-300">
-                             <UploadCloud size={18} /> {seeding ? 'Importing...' : 'Sync Featured Base'}
+                        <button type="button" onClick={handleSeedPackages} disabled={seeding} className="w-full inline-flex items-center justify-center gap-2 sm:gap-3 border-2 border-slate-100 text-slate-400 font-black px-6 sm:px-8 py-4 sm:py-5 rounded-xl sm:rounded-2xl hover:border-brand-dark hover:text-brand-dark transition-all duration-300 text-[11px] sm:text-sm">
+                             <UploadCloud className="w-3.5 h-3.5 sm:w-4.5 sm:h-4.5" /> {seeding ? 'Importing...' : 'Sync Featured Base'}
                         </button>
                         {editingId && (
                             <button type="button" onClick={resetForm} className="w-full py-4 text-[10px] font-black uppercase tracking-widest text-slate-400 hover:text-brand-dark transition-colors">Abort Editing</button>
@@ -288,38 +288,38 @@ const ManagePackages = () => {
                 </form>
 
                 {/* 🌟 PREMIUM PACKAGE LIST */}
-                <div className="space-y-8">
-                    <div className="admin-glass p-8 lg:p-10">
-                        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 mb-10">
+                <div className="space-y-6 sm:space-y-8">
+                    <div className="admin-glass p-6 sm:p-8 lg:p-10">
+                        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 mb-8 sm:mb-10">
                             <div>
-                                <h2 className="text-3xl font-serif font-black text-brand-dark">Expedition Registry</h2>
-                                <p className="text-xs font-bold text-slate-400 mt-2 uppercase tracking-widest leading-relaxed">{packages.length} protocol(s) currently active</p>
+                                <h2 className="text-2xl sm:text-3xl font-serif font-black text-brand-dark">Expedition Registry</h2>
+                                <p className="text-[10px] sm:text-xs font-bold text-slate-400 mt-1 sm:mt-2 uppercase tracking-widest leading-relaxed">{packages.length} protocol(s) currently active</p>
                             </div>
                             <div className="relative w-full sm:w-80 group">
-                                <Search className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-300 group-focus-within:text-brand-gold transition-colors" size={20} />
-                                <input type="text" value={searchTerm} onChange={(event) => setSearchTerm(event.target.value)} placeholder="Filter catalog..." className="w-full rounded-2xl border border-slate-100 bg-white/50 pl-14 pr-6 py-4 text-xs font-black uppercase tracking-widest outline-none transition-all focus:bg-white focus:border-brand-gold shadow-sm" />
+                                <Search className="absolute left-4 sm:left-5 top-1/2 -translate-y-1/2 text-slate-300 group-focus-within:text-brand-gold transition-colors w-4 h-4 sm:w-5 sm:h-5" />
+                                <input type="text" value={searchTerm} onChange={(event) => setSearchTerm(event.target.value)} placeholder="Filter catalog..." className="w-full rounded-xl sm:rounded-2xl border border-slate-100 bg-white/50 pl-11 sm:pl-14 pr-5 sm:pr-6 py-3.5 sm:py-4 text-[10px] sm:text-xs font-black uppercase tracking-widest outline-none transition-all focus:bg-white focus:border-brand-gold shadow-sm" />
                             </div>
                         </div>
 
                         <div className="space-y-4">
                             {filteredPackages.map((pkg, i) => (
                                 <ScrollReveal key={pkg.id} direction="up" delay={i * 0.05}>
-                                    <div className="premium-card rounded-[2.5rem] border border-slate-100 bg-white p-6 transition-all duration-500 hover:border-brand-gold/30 group">
-                                        <div className="flex flex-col lg:flex-row gap-8 items-start justify-between">
-                                            <div className="w-full lg:w-48 h-48 lg:h-32 shrink-0 rounded-2xl overflow-hidden bg-slate-50 border border-slate-100">
+                                    <div className="premium-card rounded-2xl sm:rounded-[2.5rem] border border-slate-100 bg-white p-5 sm:p-6 transition-all duration-500 hover:border-brand-gold/30 group">
+                                        <div className="flex flex-col lg:flex-row gap-5 sm:gap-8 items-start justify-between">
+                                            <div className="w-full lg:w-48 h-40 sm:h-48 lg:h-32 shrink-0 rounded-xl sm:rounded-2xl overflow-hidden bg-slate-50 border border-slate-100">
                                                 {pkg.imageUrl ? (
                                                     <img src={pkg.imageUrl} alt={pkg.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                                                 ) : (
                                                     <div className="w-full h-full flex flex-col items-center justify-center text-slate-300 bg-slate-50">
-                                                        <Package size={32} />
+                                                        <Package className="w-6 h-6 sm:w-8 sm:h-8" />
                                                         <span className="text-[8px] font-black uppercase tracking-widest mt-2">No Visual</span>
                                                     </div>
                                                 )}
                                             </div>
-                                            <div className="flex-1">
-                                                <div className="flex flex-wrap items-center gap-3">
-                                                    <h3 className="text-2xl font-serif font-black text-slate-900 group-hover:text-brand-gold transition-colors">{pkg.title}</h3>
-                                                    <span className={`px-4 py-1.5 text-[9px] font-black uppercase tracking-[0.2em] rounded-full shadow-sm border ${
+                                            <div className="flex-1 min-w-0">
+                                                <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+                                                    <h3 className="text-xl sm:text-2xl font-serif font-black text-slate-900 group-hover:text-brand-gold transition-colors truncate">{pkg.title}</h3>
+                                                    <span className={`px-3 sm:px-4 py-1 sm:py-1.5 text-[7px] sm:text-[9px] font-black uppercase tracking-[0.15em] sm:tracking-[0.2em] rounded-full shadow-sm border ${
                                                         pkg.status === 'active' ? 'bg-emerald-50 text-emerald-600 border-emerald-100' : 
                                                         pkg.status === 'draft' ? 'bg-amber-50 text-amber-600 border-amber-100' : 
                                                         'bg-slate-50 text-slate-500 border-slate-100'
@@ -328,7 +328,7 @@ const ManagePackages = () => {
                                                     </span>
                                                 </div>
                                                 
-                                                <div className="mt-6 grid grid-cols-2 md:grid-cols-4 gap-6">
+                                                <div className="mt-5 sm:mt-6 grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
                                                     <div className="space-y-1.5">
                                                         <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-slate-400">
                                                             <MapPin size={12} className="text-brand-gold" /> Territory
@@ -355,15 +355,15 @@ const ManagePackages = () => {
                                                     </div>
                                                 </div>
                                                 
-                                                <p className="mt-6 text-[9px] font-black uppercase tracking-[0.4em] text-slate-300">ID: #{pkg.id.slice(0,10)} · Protocol Slug: {pkg.slug}</p>
+                                                <p className="mt-5 sm:mt-6 text-[7px] sm:text-[9px] font-black uppercase tracking-[0.2em] sm:tracking-[0.4em] text-slate-300">ID: #{pkg.id.slice(0,8)}... · Protocol Slug: {pkg.slug}</p>
                                             </div>
 
-                                            <div className="flex shrink-0 gap-3 place-self-end lg:place-self-start">
-                                                <button onClick={() => handleEdit(pkg)} className="h-14 w-14 flex items-center justify-center rounded-2xl bg-brand-gold/10 text-brand-gold hover:bg-brand-dark hover:text-white transition-all shadow-sm">
-                                                    <Edit2 size={20} />
+                                            <div className="flex shrink-0 gap-2 sm:gap-3 lg:gap-3 place-self-end lg:place-self-start mt-4 lg:mt-0">
+                                                <button onClick={() => handleEdit(pkg)} className="h-10 w-10 sm:h-14 sm:w-14 flex items-center justify-center rounded-xl sm:rounded-2xl bg-brand-gold/10 text-brand-gold hover:bg-brand-dark hover:text-white transition-all shadow-sm">
+                                                    <Edit2 className="w-4 h-4 sm:w-5 sm:h-5" />
                                                 </button>
-                                                <button onClick={() => handleDelete(pkg.id)} className="h-14 w-14 flex items-center justify-center rounded-2xl bg-rose-50 text-rose-500 hover:bg-rose-500 hover:text-white transition-all shadow-sm">
-                                                    <Trash2 size={20} />
+                                                <button onClick={() => handleDelete(pkg.id)} className="h-10 w-10 sm:h-14 sm:w-14 flex items-center justify-center rounded-xl sm:rounded-2xl bg-rose-50 text-rose-500 hover:bg-rose-500 hover:text-white transition-all shadow-sm">
+                                                    <Trash2 className="w-4 h-4 sm:w-5 sm:h-5" />
                                                 </button>
                                             </div>
                                         </div>

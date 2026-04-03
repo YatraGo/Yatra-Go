@@ -21,6 +21,7 @@ import {
     Target,
     UserCheck,
     Users,
+    Home,
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { auth, db } from '../firebase/config';
@@ -337,6 +338,7 @@ const AdminDashboard = () => {
     };
 
     const navItems = [
+        { id: 'home', label: 'Back to Home', icon: Home, type: 'link' },
         { id: 'overview', label: 'Overview', icon: LayoutDashboard },
         { id: 'packages', label: 'Packages', icon: Package },
         { id: 'bookings', label: 'Bookings', icon: CalendarClock },
@@ -398,42 +400,42 @@ const AdminDashboard = () => {
                 
                 <div className="relative flex h-full flex-col">
                     <div className="flex h-28 items-center justify-center border-b border-slate-50 px-8">
-                        <Link to="/" className="flex items-center gap-4 group/logo">
-                            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-dark shadow-xl shadow-brand-dark/10 ring-1 ring-white/10 transition-transform duration-500 group-hover/logo:scale-105">
+                        <Link to="/" className="flex items-center gap-3 sm:gap-4 group/logo">
+                            <div className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-xl sm:rounded-2xl bg-brand-dark shadow-xl shadow-brand-dark/10 ring-1 ring-white/10 transition-transform duration-500 group-hover/logo:scale-105">
                                 <img
                                     src={logoSrc}
                                     alt="Yatra Go"
-                                    className="h-8 w-auto object-contain brightness-0 invert"
+                                    className="h-6 sm:h-8 w-auto object-contain brightness-0 invert"
                                     onError={(event) => {
                                         event.target.style.display = 'none';
                                         event.target.nextSibling.style.display = 'flex';
                                     }}
                                 />
-                                <span className="hidden h-8 w-8 items-center justify-center rounded-xl bg-brand-gold text-sm font-black text-white">YG</span>
+                                <span className="hidden h-6 w-6 sm:h-8 sm:w-8 items-center justify-center rounded-lg sm:rounded-xl bg-brand-gold text-[10px] sm:text-sm font-black text-white">YG</span>
                             </div>
                             <div className="flex flex-col">
-                                <span className="text-[10px] font-black uppercase tracking-[0.4em] text-brand-gold leading-none">Yatra Go</span>
-                                <span className="mt-1.5 text-xl font-serif font-black text-brand-dark tracking-tight">Admin Panel</span>
+                                <span className="text-[8px] sm:text-[10px] font-black uppercase tracking-[0.3em] sm:tracking-[0.4em] text-brand-gold leading-none">Yatra Go</span>
+                                <span className="mt-1 text-lg sm:mt-1.5 sm:text-xl font-serif font-black text-brand-dark tracking-tight">Admin Panel</span>
                             </div>
                         </Link>
                     </div>
 
                     <div className="px-6 pt-10">
-                        <div className="rounded-[2.5rem] bg-gradient-to-br from-brand-dark to-slate-800 p-6 text-white shadow-2xl shadow-brand-dark/20 relative overflow-hidden group/profile">
-                            <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover/profile:bg-brand-gold/10 transition-colors duration-700" />
-                            <div className="flex items-center gap-4 relative z-10">
-                                <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-white/10 backdrop-blur ring-1 ring-white/20 text-xl font-black text-brand-gold shadow-lg">
-                                    {currentUser.email?.charAt(0).toUpperCase() || 'A'}
+                        <div className="rounded-[1.5rem] sm:rounded-[2.5rem] bg-gradient-to-br from-brand-dark to-slate-800 p-4 sm:p-6 text-white shadow-2xl shadow-brand-dark/20 relative overflow-hidden group/profile">
+                            <div className="absolute top-0 right-0 w-24 sm:w-32 h-24 sm:h-32 bg-white/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover/profile:bg-brand-gold/10 transition-colors duration-700" />
+                            <div className="flex items-center gap-3 sm:gap-4 relative z-10">
+                                <div className="flex h-10 w-10 sm:h-14 sm:w-14 shrink-0 items-center justify-center rounded-xl sm:rounded-2xl bg-white/10 backdrop-blur ring-1 ring-white/20 text-base sm:text-xl font-black text-brand-gold shadow-lg">
+                                    {currentUser.user?.charAt(0).toUpperCase() || 'YG'}
                                 </div>
                                 <div className="min-w-0">
-                                    <div className="truncate text-lg font-black tracking-tight">{userProfile?.name?.split(' ')[0] || 'Admin'}</div>
-                                    <div className="mt-1 truncate text-xs text-slate-300 font-bold">{currentUser.email}</div>
+                                    <div className="truncate text-base sm:text-lg font-black tracking-tight">Yatra Go</div>
+                                    <div className="mt-0.5 sm:mt-1 truncate text-[10px] text-slate-300 font-bold">{currentUser.email}</div>
                                 </div>
                             </div>
-                            <div className="mt-6 flex items-center justify-between rounded-2xl bg-black/30 px-4 py-3 text-xs backdrop-blur relative z-10 border border-white/5">
+                            <div className="mt-4 sm:mt-6 flex items-center justify-between rounded-xl sm:rounded-2xl bg-black/30 px-3 sm:px-4 py-2 sm:py-3 text-[10px] backdrop-blur relative z-10 border border-white/5">
                                 <span className="font-black uppercase tracking-widest text-slate-300">Security Dept.</span>
-                                <span className="inline-flex items-center gap-1.5 font-black uppercase tracking-[0.2em] text-emerald-400">
-                                    <Crown size={12} className="text-brand-gold" /> Level 1
+                                <span className="inline-flex items-center gap-1 sm:gap-1.5 font-black uppercase tracking-[0.15em] sm:tracking-[0.2em] text-emerald-400">
+                                    <Crown className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-brand-gold" /> Level 1
                                 </span>
                             </div>
                         </div>
@@ -443,11 +445,11 @@ const AdminDashboard = () => {
                         {navItems.map((item) => (
                             <button
                                 key={item.id}
-                                onClick={() => setActiveTab(item.id)}
-                                className={`group flex w-full items-center gap-4 rounded-[1.25rem] px-5 py-4 text-xs font-black uppercase tracking-[0.2em] transition-all duration-300 ${
+                                onClick={() => item.type === 'link' ? navigate('/') : setActiveTab(item.id)}
+                                className={`group flex w-full items-center gap-4 rounded-[1.25rem] px-5 py-4 text-xs font-black uppercase tracking-[0.2em] transition-all duration-300 cursor-pointer ${
                                     activeTab === item.id
-                                        ? 'bg-brand-dark text-white shadow-xl shadow-brand-dark/10 translate-x-1'
-                                        : 'text-slate-600 hover:bg-slate-50 hover:text-brand-dark'
+                                        ? 'bg-brand-dark text-white shadow-xl shadow-brand-dark/20 translate-x-1'
+                                        : 'text-slate-600 hover:bg-white hover:text-brand-dark hover:shadow-lg hover:shadow-slate-500/60 hover:-translate-y-0.5'
                                 }`}
                             >
                                 <item.icon size={18} className={activeTab === item.id ? 'text-brand-gold' : 'group-hover:text-brand-gold transition-colors'} />
@@ -462,9 +464,9 @@ const AdminDashboard = () => {
                     <div className="p-6">
                         <button
                             onClick={() => setLogoutPopupOpen(true)}
-                            className="flex w-full items-center justify-center gap-3 rounded-2xl border border-rose-100 bg-rose-50/50 px-5 py-4 text-xs font-black uppercase tracking-[0.2em] text-rose-500 transition-all hover:bg-rose-500 hover:text-white hover:border-rose-500 active:scale-95"
+                            className="flex w-full items-center justify-center gap-2 sm:gap-3 rounded-xl sm:rounded-2xl border border-rose-100 bg-rose-50/50 px-4 sm:px-5 py-3 sm:py-4 text-[10px] sm:text-xs font-black uppercase tracking-[0.15em] sm:tracking-[0.2em] text-rose-500 transition-all hover:bg-rose-500 hover:text-white hover:border-rose-500 active:scale-95"
                         >
-                            <LogOut size={16} />
+                            <LogOut className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                             Exit Desk
                         </button>
                     </div>
@@ -489,25 +491,25 @@ const AdminDashboard = () => {
                                     </p>
                                 </div>
                                 <div className="grid gap-3 sm:gap-4 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
-                                    <div className="rounded-xl sm:rounded-2xl bg-brand-dark p-4 sm:p-5 text-white shadow-2xl shadow-brand-dark/15 border border-white/5 relative group">
-                                        <div className="absolute top-0 right-0 p-3 opacity-5 group-hover:opacity-10 transition-opacity">
-                                            <CalendarClock size={50} />
+                                    <div className="rounded-xl sm:rounded-2xl bg-brand-dark p-4 sm:p-5 text-white shadow-2xl shadow-brand-dark/15 border border-white/5 relative group overflow-hidden">
+                                        <div className="absolute top-11 right-1 -translate-y-1/2 p-3 opacity-30 group-hover:opacity-20 transition-all group-hover:scale-110">
+                                            <CalendarClock size={40} />
                                         </div>
                                         <div className="text-[9px] sm:text-[10px] font-black uppercase tracking-[0.2em] text-brand-gold">Awaiting Action</div>
                                         <div className="mt-2 sm:mt-3 text-3xl sm:text-4xl font-black font-serif">{stats.pendingBookings}</div>
                                         <div className="mt-1 sm:mt-2 text-[11px] sm:text-xs font-bold text-slate-300">Fresh trip requests today</div>
                                     </div>
-                                    <div className="rounded-xl sm:rounded-2xl border border-slate-200 bg-white p-4 sm:p-5 shadow-sm ring-1 ring-slate-50 group">
-                                        <div className="absolute top-0 right-0 p-3 opacity-5 group-hover:opacity-10 transition-opacity">
-                                            <Users size={50} />
+                                    <div className="rounded-xl sm:rounded-2xl border border-slate-200 bg-white p-4 sm:p-5 shadow-sm ring-1 ring-slate-50 group overflow-hidden relative">
+                                        <div className="absolute top-11 right-1 -translate-y-1/2 p-3 opacity-30 group-hover:opacity-20 transition-all group-hover:scale-110">
+                                            <Users size={40} />
                                         </div>
                                         <div className="text-[9px] sm:text-[10px] font-black uppercase tracking-[0.2em] text-indigo-500">Global Reach</div>
                                         <div className="mt-2 sm:mt-3 text-3xl sm:text-4xl font-black font-serif text-slate-900">{stats.users}</div>
                                         <div className="mt-1 sm:mt-2 text-[11px] sm:text-xs font-bold text-slate-700">Total travelers registered</div>
                                     </div>
-                                    <div className="rounded-xl sm:rounded-2xl border border-brand-gold/20 bg-brand-gold/5 p-4 sm:p-5 shadow-sm ring-1 ring-brand-gold/5 group">
-                                        <div className="absolute top-0 right-0 p-3 opacity-5 group-hover:opacity-10 transition-opacity">
-                                            <MessageSquare size={50} />
+                                    <div className="rounded-xl sm:rounded-2xl border border-brand-gold/20 bg-brand-gold/5 p-4 sm:p-5 shadow-sm ring-1 ring-brand-gold/5 group overflow-hidden relative">
+                                        <div className="absolute top-11 right-1 -translate-y-1/2 p-3 opacity-30 group-hover:opacity-20 transition-all group-hover:scale-110">
+                                            <MessageSquare size={40} />
                                         </div>
                                         <div className="text-[9px] sm:text-[10px] font-black uppercase tracking-[0.2em] text-brand-gold">Signal Queue</div>
                                         <div className="mt-2 sm:mt-3 text-3xl sm:text-4xl font-black font-serif text-slate-900">{stats.newEnquiries}</div>
@@ -519,19 +521,19 @@ const AdminDashboard = () => {
                     </ScrollReveal>
 
                     {/* Mobile Navigation */}
-                    <div className="mt-6 grid grid-cols-3 gap-2 sm:gap-3 lg:hidden">
+                    <div className="mt-4 sm:mt-6 grid grid-cols-3 gap-2 lg:hidden">
                         {navItems.map((item) => (
                             <button
                                 key={item.id}
-                                onClick={() => setActiveTab(item.id)}
-                                className={`flex items-center justify-center gap-2 rounded-lg sm:rounded-xl px-2 py-2 sm:px-3 sm:py-3 text-[8px] sm:text-[9px] font-black uppercase tracking-wider transition-all ${
+                                onClick={() => item.type === 'link' ? navigate('/') : setActiveTab(item.id)}
+                                className={`flex items-center justify-center gap-1.5 sm:gap-2 rounded-lg sm:rounded-xl px-2 py-3 text-[8px] sm:text-[9px] font-black uppercase tracking-wider transition-all cursor-pointer ${
                                     activeTab === item.id
-                                        ? 'bg-brand-dark text-white shadow-xl shadow-brand-dark/20'
-                                        : 'bg-white/80 text-slate-700 shadow-sm'
+                                        ? 'bg-brand-dark text-white shadow-xl shadow-brand-dark/20 scale-105'
+                                        : 'bg-white/80 text-slate-700 shadow-sm border border-slate-100 hover:bg-white hover:shadow-md hover:scale-[1.02] active:scale-95'
                                 }`}
                             >
-                                <item.icon size={12} sm:size={14} className={activeTab === item.id ? 'text-brand-gold' : ''} />
-                                <span className="hidden sm:inline">{item.label}</span>
+                                <item.icon className={`w-3 h-3 sm:w-3.5 sm:h-3.5 ${activeTab === item.id ? 'text-brand-gold' : item.id === 'home' ? 'text-brand-blue' : ''}`} />
+                                <span className="truncate">{item.label.split(' ').pop()}</span>
                             </button>
                         ))}
                     </div>
@@ -732,56 +734,56 @@ const AdminDashboard = () => {
 
                     {activeTab === 'settings' && (
                         <div className="mt-12 space-y-12">
-                            <ScrollReveal direction="up" className="grid gap-10 xl:grid-cols-[1.2fr_0.8fr]">
-                                <div className="rounded-[3.5rem] bg-brand-dark p-10 lg:p-14 text-white shadow-4xl shadow-brand-dark/30 relative overflow-hidden group">
-                                     <div className="absolute top-0 right-0 w-96 h-96 bg-[radial-gradient(circle_at_center,_rgba(255,138,23,0.15),_transparent_70%)] blur-3xl opacity-50" />
-                                     <div className="relative flex flex-col sm:flex-row sm:items-center sm:justify-between gap-10">
-                                        <div className="flex items-center gap-6">
-                                            <div className="h-24 w-24 rounded-[2.5rem] bg-white/10 flex items-center justify-center text-4xl font-black text-brand-gold shadow-2xl backdrop-blur ring-1 ring-white/20">
+                            <ScrollReveal direction="up" className="grid gap-6 sm:gap-10 xl:grid-cols-[1.2fr_0.8fr]">
+                                <div className="rounded-[2rem] sm:rounded-[3.5rem] bg-brand-dark p-6 sm:p-10 lg:p-14 text-white shadow-2xl sm:shadow-4xl shadow-brand-dark/30 relative overflow-hidden group">
+                                     <div className="absolute top-0 right-0 w-64 md:w-96 h-64 md:h-96 bg-[radial-gradient(circle_at_center,_rgba(255,138,23,0.15),_transparent_70%)] blur-3xl opacity-50" />
+                                     <div className="relative flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 sm:gap-10">
+                                        <div className="flex items-center gap-4 sm:gap-6">
+                                            <div className="h-16 sm:h-24 w-16 sm:w-24 rounded-[1.5rem] sm:rounded-[2.5rem] shrink-0 bg-white/10 flex items-center justify-center text-2xl sm:text-4xl font-black text-brand-gold shadow-2xl backdrop-blur ring-1 ring-white/20">
                                                 {userProfile?.name?.charAt(0) || 'A'}
                                             </div>
-                                            <div>
-                                                <div className="text-[11px] font-black uppercase tracking-[0.4em] text-brand-gold">Executive Identity</div>
-                                                <h2 className="mt-2 text-4xl font-serif font-black tracking-tight text-slate-200">{userProfile?.name || 'Yatra Go Admin'}</h2>
-                                                <p className="mt-2 text-sm font-bold text-slate-200">{currentUser.email}</p>
+                                            <div className="min-w-0">
+                                                <div className="text-[9px] sm:text-[11px] font-black uppercase tracking-[0.3em] sm:tracking-[0.4em] text-brand-gold">Executive Identity</div>
+                                                <h2 className="mt-1 sm:mt-2 text-2xl sm:text-4xl font-serif font-black tracking-tight text-slate-200 truncate">{userProfile?.name || 'Yatra Go Admin'}</h2>
+                                                <p className="mt-1 sm:mt-2 text-xs sm:text-sm font-bold text-slate-200 truncate">{currentUser.email}</p>
                                             </div>
                                         </div>
-                                        <div className="shrink-0 flex items-center gap-3 rounded-2xl bg-white/5 border border-white/10 px-6 py-4 backdrop-blur">
-                                            <BadgeCheck size={20} className="text-emerald-400" />
-                                            <span className="text-[10px] font-black uppercase tracking-[0.3em]">Corporate Verified</span>
+                                        <div className="shrink-0 flex items-center justify-center w-full sm:w-auto gap-2 sm:gap-3 rounded-xl sm:rounded-2xl bg-white/5 border border-white/10 px-4 sm:px-6 py-3 sm:py-4 backdrop-blur">
+                                            <BadgeCheck className="w-[18px] h-[18px] sm:w-5 sm:h-5 text-emerald-400" />
+                                            <span className="text-[9px] sm:text-[10px] font-black uppercase tracking-[0.2em] sm:tracking-[0.3em]">Corporate Verified</span>
                                         </div>
                                      </div>
                                      
-                                     <div className="mt-16 grid gap-6 md:grid-cols-3">
+                                     <div className="mt-10 sm:mt-16 grid gap-4 sm:gap-6 grid-cols-2 md:grid-cols-3">
                                         {[
                                             { label: 'System Queue', value: settingsSnapshot.pendingLoadLabel, note: settingsSnapshot.responseGoalLabel, icon: Activity, color: 'text-brand-gold' },
                                             { label: 'Booking Reach', value: `${settingsSnapshot.bookingPhoneCoverage}%`, note: 'Phone capture rate', icon: Phone, color: 'text-brand-blue' },
                                             { label: 'ROI Benchmark', value: `${settingsSnapshot.bookingConversion}%`, note: 'Confirmed / Requests', icon: Target, color: 'text-emerald-400' }
                                         ].map((stat, i) => (
-                                            <div key={i} className="rounded-3xl bg-white/5 border border-white/5 p-6 hover:bg-white/10 transition-colors">
-                                                <div className={`flex h-10 w-10 items-center justify-center rounded-xl bg-white/5 ${stat.color} mb-6`}>
-                                                    <stat.icon size={20} />
+                                            <div key={i} className="rounded-2xl sm:rounded-3xl bg-white/5 border border-white/5 p-4 sm:p-6 hover:bg-white/10 transition-colors">
+                                                <div className={`flex h-8 sm:h-10 w-8 sm:w-10 items-center justify-center rounded-lg sm:rounded-xl bg-white/5 ${stat.color} mb-4 sm:mb-6`}>
+                                                    <stat.icon className="w-4 h-4 sm:w-5 sm:h-5" />
                                                 </div>
-                                                <div className="text-2xl font-black">{stat.value}</div>
-                                                <div className="mt-1 text-[9px] font-black uppercase tracking-widest text-slate-100">{stat.label}</div>
-                                                <p className="mt-3 text-[10px] font-bold text-slate-100 leading-relaxed">{stat.note}</p>
+                                                <div className="text-xl sm:text-2xl font-black">{stat.value}</div>
+                                                <div className="mt-0.5 sm:mt-1 text-[8px] sm:text-[9px] font-black uppercase tracking-widest text-slate-100">{stat.label}</div>
+                                                <p className="mt-2 sm:mt-3 text-[9px] sm:text-[10px] font-bold text-slate-100 leading-relaxed">{stat.note}</p>
                                             </div>
                                         ))}
                                      </div>
                                 </div>
 
-                                    <div className="rounded-[3.5rem] border border-slate-200 bg-white p-10 shadow-3xl shadow-slate-200/20 relative overflow-hidden group">
-                                     <div className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-400">Operations Point</div>
-                                     <h2 className="mt-4 text-3xl font-serif font-black text-slate-950">Priority Contact</h2>
-                                     <p className="mt-6 text-xl font-bold text-brand-dark italic break-all underline decoration-brand-gold/30 underline-offset-4">{getAdminEmail()}</p>
-                                     <p className="mt-6 text-sm font-medium leading-[1.8] text-slate-700 italic">
+                                <div className="rounded-[2rem] sm:rounded-[3.5rem] border border-slate-200 bg-white p-6 sm:p-10 shadow-2xl sm:shadow-3xl shadow-slate-200/20 relative overflow-hidden group">
+                                     <div className="text-[9px] sm:text-[10px] font-black uppercase tracking-[0.3em] sm:tracking-[0.4em] text-slate-400">Operations Point</div>
+                                     <h2 className="mt-2 sm:mt-4 text-2xl sm:text-3xl font-serif font-black text-slate-950">Priority Contact</h2>
+                                     <p className="mt-3 sm:mt-6 text-base sm:text-xl font-bold text-brand-dark italic break-all underline decoration-brand-gold/30 underline-offset-4">{getAdminEmail()}</p>
+                                     <p className="mt-4 sm:mt-6 text-xs sm:text-sm font-medium leading-[1.6] sm:leading-[1.8] text-slate-700 italic">
                                          New traveler registrations, triage reports, and strategic signals are prioritized via this address.
                                      </p>
                                      
-                                     <div className="mt-12 p-8 rounded-[2.5rem] bg-brand-dark shadow-2xl shadow-brand-dark/20 relative group/standards overflow-hidden">
-                                         <div className="absolute bottom-0 right-0 w-32 h-32 bg-brand-gold/5 rounded-full blur-3xl" />
-                                         <div className="text-[10px] font-black uppercase tracking-[0.3em] text-brand-gold/60 mb-8 flex items-center gap-2">
-                                             <ShieldCheck size={14} /> Compliance Pulse
+                                     <div className="mt-8 sm:mt-12 p-5 sm:p-8 rounded-[1.5rem] sm:rounded-[2.5rem] bg-brand-dark shadow-xl sm:shadow-2xl shadow-brand-dark/20 relative group/standards overflow-hidden">
+                                         <div className="absolute bottom-0 right-0 w-24 sm:w-32 h-24 sm:h-32 bg-brand-gold/5 rounded-full blur-3xl" />
+                                         <div className="text-[8px] sm:text-[10px] font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] text-brand-gold/60 mb-5 sm:mb-8 flex items-center gap-1.5 sm:gap-2">
+                                             <ShieldCheck className="w-3 h-3 sm:w-[14px] sm:h-[14px]" /> Compliance Pulse
                                          </div>
                                          <div className="space-y-4">
                                              {serviceChecklist.map((item) => (
