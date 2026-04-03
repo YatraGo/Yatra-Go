@@ -60,10 +60,10 @@ const WelcomeSection = () => (
                     className="relative"
                 >
                     <div className="grid grid-cols-2 gap-4">
-                        <img src="https://images.unsplash.com/photo-1598977120050-1c04c1f03af4?w=500&q=80" alt="Kedarnath" className="rounded-2xl h-64 w-full object-cover shadow-lg" />
-                        <img src="https://images.unsplash.com/photo-1545579133-99bb5ad189be?w=500&q=80" alt="Rishikesh Rafting" className="rounded-2xl h-64 w-full object-cover shadow-lg mt-8" />
-                        <img src="https://images.unsplash.com/photo-1566372433-5e35fe0b2e4e?w=500&q=80" alt="Kashmir Dal Lake" className="rounded-2xl h-48 w-full object-cover shadow-lg -mt-4" />
-                        <img src="https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=500&q=80" alt="Manali Mountains" className="rounded-2xl h-48 w-full object-cover shadow-lg mt-4" />
+                        <img src="https://images.unsplash.com/photo-1519904981063-b0cf448d479e?w=500&q=80" alt="Kedarnath" className="rounded-2xl h-64 w-full object-cover shadow-lg" />
+                        <img src="https://images.unsplash.com/photo-1539228945657-b12e1ffb1574?w=500&q=80" alt="Rishikesh Rafting" className="rounded-2xl h-64 w-full object-cover shadow-lg mt-8" />
+                        <img src="https://images.unsplash.com/photo-1595815771614-ade9d652a65d?w=500&q=80" alt="Kashmir Dal Lake" className="rounded-2xl h-48 w-full object-cover shadow-lg -mt-4" />
+                        <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=500&q=80" alt="Manali Mountains" className="rounded-2xl h-48 w-full object-cover shadow-lg mt-4" />
                     </div>
                     <div className="absolute -bottom-4 -left-4 bg-brand-gold text-brand-dark px-5 py-3 rounded-2xl shadow-lg font-black text-center">
                         <div className="text-2xl font-serif">5000+</div>
@@ -336,7 +336,7 @@ const TaxiServices = () => (
 // Section 7 – Travel Styles, Perfectly Matched with real destination photos
 // ─────────────────────────────────────────────────────────────
 const themes = [
-    { label: 'Honeymoon', link: '/destination/kashmir', img: 'https://images.unsplash.com/photo-1566372433-5e35fe0b2e4e?w=500&q=80', desc: 'Romantic stays in Kashmir, Manali & Mussoorie' },
+    { label: 'Honeymoon', link: '/destination/kashmir', img: 'https://images.unsplash.com/photo-1595815771614-ade9d652a65d?w=500&q=80', desc: 'Romantic stays in Kashmir, Manali & Mussoorie' },
     { label: 'Religious Yatra', link: '/destination/uttarakhand', img: 'https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=500&q=80', desc: 'Char Dham, Haridwar & Kedarnath pilgrimage' },
     { label: 'Family Tours', link: '/tour-packages', img: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=500&q=80', desc: 'Kid-friendly comfortable family holiday packages' },
     { label: 'Corporate Groups', link: '/contact', img: 'https://images.unsplash.com/photo-1519009010498-26b3d8a0c476?w=500&q=80', desc: 'Team outings & corporate retreat planning' },

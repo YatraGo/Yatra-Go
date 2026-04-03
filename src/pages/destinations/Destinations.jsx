@@ -365,7 +365,7 @@ const Destinations = () => {
                         asset('assets/Tour Package.png'),
                         asset('assets/Kedarnath 1.png'),
                         asset('assets/Camping Y.png'),
-                        'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=600&q=80',
+                        'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600&q=80',
                         asset('assets/Haridwar 2.png'),
                         asset('assets/R3.jpg'),
                     ].map((src, i) => (

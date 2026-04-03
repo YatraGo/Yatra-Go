@@ -194,7 +194,7 @@ const ActivityDetails = () => {
                 <motion.img initial={{ scale: 1.1 }} animate={{ scale: 1 }} transition={{ duration: 1.5 }}
                     src={activity.img} alt={activity.name}
                     className="absolute inset-0 w-full h-full object-cover"
-                    onError={(e) => { e.target.src = 'https://images.unsplash.com/photo-1545579133-99bb5ad189be?w=1200&q=80'; }} />
+                    onError={(e) => { e.target.src = 'https://images.unsplash.com/photo-1539228945657-b12e1ffb1574?w=1200&q=80'; }} />
                 <div className="absolute inset-0 bg-gradient-to-b from-brand-dark/40 via-brand-dark/20 to-brand-dark/95" />
                 <div className="relative z-10 w-full max-w-7xl mx-auto px-4 pb-16 md:pb-24">
                     <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>

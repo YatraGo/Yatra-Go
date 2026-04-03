@@ -95,7 +95,7 @@ export const UTTARAKHAND_PACKAGES = [
         rating: 4.9,
         reviews: 242,
         tag: 'BESTSELLER',
-        img: 'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=800&q=80',
+        img: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&q=80',
         gallery: [
             'public/assets/Kedar.png',
             'public/assets/Badrinath.jpg',
