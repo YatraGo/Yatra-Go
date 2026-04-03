@@ -166,7 +166,7 @@ const Hero3D = () => {
 
                     <motion.div className="relative min-h-[420px]">
                         <div className="absolute inset-0 overflow-hidden rounded-3xl border border-white/20">
-                            <img src="public/assets/Keda.jpg" className="h-full w-full object-cover" alt="Kedarnath preview" />
+                            <img src={asset('assets/Keda.jpg')} className="h-full w-full object-cover" alt="Kedarnath preview" />
                         </div>
 
                         <div className="absolute inset-0 p-6 pointer-events-none">

@@ -18,7 +18,7 @@ export const UTTARAKHAND_PACKAGES = [
         rating: 4.9,
         reviews: 412,
         tag: 'BESTSELLER',
-        img: 'https://www.chardhamhotels.net/images/chardham-2025.jpg', 
+        img: 'https://images.unsplash.com/photo-1519904981063-b0cf448d479e?w=800&q=80', 
         gallery: [
             'public/assets/Yamunotri.jpg',
             'public/assets/Gangotri.webp',
@@ -378,7 +378,7 @@ export const UTTARAKHAND_PACKAGES = [
         rating: 4.7,
         reviews: 92,
         tag: 'SCENIC',
-        img: 'https://img.traveltriangle.com/blog/wp-content/uploads/2019/12/Harsil-Village_12th-Dec.jpg',
+        img: 'https://images.unsplash.com/photo-1588147363102-1f5be5f79573?w=800&q=80',
         gallery: [
             'https://img.traveltriangle.com/blog/wp-content/uploads/2019/12/Harsil-Village_12th-Dec.jpg',
         ],

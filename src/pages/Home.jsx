@@ -264,10 +264,10 @@ const AdventureActivities = () => (
 // Section 6 – Best Taxi Services with real photos
 // ─────────────────────────────────────────────────────────────
 const vehicles = [
-    { name: 'Innova Crysta', type: 'SUV - 6+1 Seats', img: 'https://images.unsplash.com/photo-1609520778573-f82b4c9a1c4c?w=500&q=80', tags: ['A/C', 'Luggage'], badge: '* Premium' },
-    { name: 'Tempo Traveller', type: 'Van - 12 Seats', img: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=500&q=80', tags: ['Group Trips', 'A/C'], badge: '* Group Fav' },
-    { name: 'Swift Dzire', type: 'Sedan - 4+1 Seats', img: 'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=500&q=80', tags: ['Budget', 'A/C'], badge: '* Economy' },
-    { name: 'Fortuner', type: 'SUV - 7 Seats', img: 'https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=500&q=80', tags: ['Hilly Terrain', 'Luxury'], badge: '* Hill Special' },
+    { name: 'Innova Crysta', type: 'SUV - 6+1 Seats', img: 'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=500&q=80', tags: ['A/C', 'Luggage'], badge: '* Premium' },
+    { name: 'Tempo Traveller', type: 'Van - 12 Seats', img: 'https://images.unsplash.com/photo-1621533036440-62e742880572?w=500&q=80', tags: ['Group Trips', 'A/C'], badge: '* Group Fav' },
+    { name: 'Swift Dzire', type: 'Sedan - 4+1 Seats', img: 'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?w=500&q=80', tags: ['Budget', 'A/C'], badge: '* Economy' },
+    { name: 'Fortuner', type: 'SUV - 7 Seats', img: 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=500&q=80', tags: ['Hilly Terrain', 'Luxury'], badge: '* Hill Special' },
 ];
 
 const TaxiServices = () => (
