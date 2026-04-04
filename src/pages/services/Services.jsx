@@ -48,7 +48,7 @@ const SERVICES_DATA = {
         categories: [
             { name: 'Swift Dzire', img: 'public/assets/Swift Dzire.jpg', desc: 'Sedan · 4+1 Seats · AC · Budget Option', price: '₹3500/day' },
             { name: 'Etios', img: 'public/assets/Etios.jpg', desc: 'Sedan · 4+1 Seats · AC · Budget Option', price: '₹3500/day' },
-            { name: 'Ertiga', img: 'public/assets/Ertiga.png', desc: 'MVP · 7 Seats', price: '₹4500/day' },
+            { name: 'Ertiga', img: 'public/assets/Ertiga.jpg', desc: 'MVP · 7 Seats', price: '₹4500/day' },
             { name: 'Kia Carens', img: 'public/assets/Carens.avif', desc: 'MVP · 7 Seats', price: '₹4500/day' },
             { name: 'Innova Crysta', img: 'public/assets/Crysta.jpg', desc: 'SUV · 7 Seats · AC', price: '₹6000/day' },
             { name: 'Toyota Fortuner',   img: 'public/assets/Fortuner.jpg', desc: 'Luxury SUV · 7 Seats · Hill Special', price: 'Enquire Rates' },
