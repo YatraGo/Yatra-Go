@@ -11,6 +11,7 @@ import {
 import Hero3D from '../components/Hero3D';
 import PackageModal from '../components/PackageModal';
 import { PACKAGES, ACTIVITIES, formatPrice } from '../data/packages';
+import { asset } from '../lib/assets';
 
 // ─────────────────────────────────────────────────────────────
 // Section 2 – Welcome to YatraGo
@@ -60,8 +61,8 @@ const WelcomeSection = () => (
                     className="relative"
                 >
                     <div className="grid grid-cols-2 gap-3 sm:gap-4 mt-8 lg:mt-0">
-                        <img src="public/assets/Kedarnath 1.png" alt="Kedarnath" className="rounded-2xl h-40 sm:h-64 w-full object-cover shadow-lg" />
-                        <img src="public/assets/Rishikesh.jpg" alt="Rishikesh Rafting" className="rounded-2xl h-40 sm:h-64 w-full object-cover shadow-lg mt-6 sm:mt-8" />
+                        <img src={asset('assets/Kedarnath 1.png')} alt="Kedarnath" className="rounded-2xl h-40 sm:h-64 w-full object-cover shadow-lg" />
+                        <img src={asset('assets/Rishikesh.jpg')} alt="Rishikesh Rafting" className="rounded-2xl h-40 sm:h-64 w-full object-cover shadow-lg mt-6 sm:mt-8" />
                         <img src="https://images.unsplash.com/photo-1595815771614-ade9d652a65d?w=500&q=80" alt="Kashmir Dal Lake" className="rounded-2xl h-32 sm:h-48 w-full object-cover shadow-lg -mt-3 sm:-mt-4" />
                         <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=500&q=80" alt="Manali Mountains" className="rounded-2xl h-32 sm:h-48 w-full object-cover shadow-lg mt-3 sm:mt-4" />
                     </div>
@@ -264,10 +265,10 @@ const AdventureActivities = () => (
 // Section 6 – Best Taxi Services with real photos
 // ─────────────────────────────────────────────────────────────
 const vehicles = [
-    { name: 'Swift Dzire', type: 'Sedan - 4+1 Seats', img: 'public/assets/Swift Dzire.jpg', tags: ['Budget', 'A/C'], badge: '* Economy' },
-    { name: 'Ertiga', type: '7 Seats', img: 'public/assets/Ertiga.jpg', tags: ['A/C', 'Excellent'], badge: '* Budget' },
-    { name: 'Innova Crysta', type: 'SUV - 6+1 Seats', img: 'public/assets/Crysta.jpg', tags: ['A/C', 'Luggage'], badge: '* Premium' },
-    { name: 'Tempo Traveller', type: 'Van - 12 Seats', img: 'public/assets/Tempo Traveller 12+1 Seater Luxury.jpg', tags: ['Group Trips', 'A/C'], badge: '* Group Fav' },
+    { name: 'Swift Dzire', type: 'Sedan - 4+1 Seats', img: asset('assets/Swift Dzire.jpg'), tags: ['Budget', 'A/C'], badge: '* Economy' },
+    { name: 'Ertiga', type: '7 Seats', img: asset('assets/Ertiga.jpg'), tags: ['A/C', 'Excellent'], badge: '* Budget' },
+    { name: 'Innova Crysta', type: 'SUV - 6+1 Seats', img: asset('assets/Crysta.jpg'), tags: ['A/C', 'Luggage'], badge: '* Premium' },
+    { name: 'Tempo Traveller', type: 'Van - 12 Seats', img: asset('assets/Tempo Traveller 12+1 Seater Luxury.jpg'), tags: ['Group Trips', 'A/C'], badge: '* Group Fav' },
 ];
 
 const TaxiServices = () => (
@@ -336,12 +337,12 @@ const TaxiServices = () => (
 // Section 7 – Travel Styles, Perfectly Matched with real destination photos
 // ─────────────────────────────────────────────────────────────
 const themes = [
-    { label: 'Honeymoon', link: '/tour/romantic-himachal-honeymoon', img: 'public/assets/Romantic Himachal.png', desc: 'Romantic stays in Kashmir, Manali & Mussoorie' },
-    { label: 'Religious Yatra', link: '/destination/uttarakhand', img: 'public/assets/Uttarakhand.jpg', desc: 'Char Dham, Haridwar & Kedarnath pilgrimage' },
+    { label: 'Honeymoon', link: '/tour/romantic-himachal-honeymoon', img: asset('assets/Romantic Himachal.png'), desc: 'Romantic stays in Kashmir, Manali & Mussoorie' },
+    { label: 'Religious Yatra', link: '/destination/uttarakhand', img: asset('assets/Uttarakhand.jpg'), desc: 'Char Dham, Haridwar & Kedarnath pilgrimage' },
     { label: 'Family Tours', link: '/tour-packages', img: 'https://res.cloudinary.com/jerrick/image/upload/v1678459920/640b441016713b001d851c82.jpg', desc: 'Kid-friendly comfortable family holiday packages' },
     { label: 'Corporate Groups', link: '/contact', img: 'https://5.imimg.com/data5/SELLER/Default/2022/1/SU/VL/NV/146195647/corporate-tours-service.jpeg', desc: 'Team outings & corporate retreat planning' },
     { label: 'Adventure Seekers', link: '/activity', img: 'https://images.unsplash.com/photo-1551632811-561732d1e306?w=500&q=80', desc: 'Trekking, rafting, camping combo packs' },
-    { label: 'Budget Travel', link: '/tour-packages', img: 'public/assets/Budget Tour.jpg', desc: 'Maximum experience, minimum spend packages' },
+    { label: 'Budget Travel', link: '/tour-packages', img: asset('assets/Budget Tour.jpg'), desc: 'Maximum experience, minimum spend packages' },
 ];
 
 const ThemePackages = () => (
