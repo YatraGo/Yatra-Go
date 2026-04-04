@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/Yatra-Go/logo.png" />
+    <link rel="apple-touch-icon" href="/Yatra-Go/logo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Redirecting...</title>
+    <script>
+      (function () {
+        var base = '/Yatra-Go/';
+        var path = window.location.pathname;
+        if (path.indexOf(base) === 0) {
+          path = path.slice(base.length);
+        }
+        if (path.startsWith('/')) {
+          path = path.slice(1);
+        }
+        var target = base + '#/' + path + window.location.search + window.location.hash;
+        window.location.replace(target);
+      })();
+    </script>
+  </head>
+  <body></body>
+</html>
