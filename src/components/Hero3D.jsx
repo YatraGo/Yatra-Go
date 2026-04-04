@@ -45,12 +45,12 @@ const Hero3D = () => {
     const [destination, setDestination] = useState('');
 
     const heroMedia = [
-        { type: 'image', src: 'public/assets/Kedarnath 2.png' },
-        { type: 'image', src: 'public/assets/Rishikesh Hero.jpg' },
+        { type: 'image', src: asset('assets/Kedarnath 2.png') },
+        { type: 'image', src: asset('assets/Rishikesh Hero.jpg') },
         { type: 'video', src: asset('assets/Rafting.mp4') },
-        { type: 'image', src: 'public/assets/Haridwar 2.png' },
-        { type: 'image', src: 'public/assets/R6.jpg' },
-        { type: 'image', src: 'public/assets/Shimla 1.png' },
+        { type: 'image', src: asset('assets/Haridwar 2.png') },
+        { type: 'image', src: asset('assets/R6.jpg') },
+        { type: 'image', src: asset('assets/Shimla 1.png') },
     ];
 
     useEffect(() => {
