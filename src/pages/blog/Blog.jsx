@@ -11,8 +11,8 @@ import { submitWeb3Form } from '../../lib/web3forms';
 const HERO_IMG = asset('assets/Kedarnath 2.png');
 
 const BlogCard = ({ post }) => (
-    <Link to={`/blog/${post.id}`} className="block group bg-white rounded-3xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-2xl hover:border-brand-gold/50 transition-all duration-500 flex flex-col h-full cursor-pointer relative hover:-translate-y-1">
-        <div className="relative h-64 overflow-hidden">
+    <Link to={`/blog/${post.slug || post.id}`} className="block group bg-white rounded-2xl sm:rounded-3xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-2xl hover:border-brand-gold/50 transition-all duration-500 flex flex-col h-full cursor-pointer relative hover:-translate-y-1">
+        <div className="relative h-32 sm:h-64 overflow-hidden">
             <img
                 src={post.imageUrl}
                 alt={post.title}
@@ -23,39 +23,39 @@ const BlogCard = ({ post }) => (
             <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/90 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
             
             {/* Category Tag */}
-            <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-md text-brand-dark text-[10px] font-black uppercase tracking-widest px-3 py-1.5 rounded-full shadow-lg group-hover:bg-brand-gold transition-colors">
+            <div className="absolute top-2 left-2 bg-white/90 backdrop-blur-md text-brand-dark text-[7px] sm:text-[10px] font-black uppercase tracking-widest px-2 py-0.5 sm:px-3 sm:py-1.5 rounded-full shadow-lg group-hover:bg-brand-gold transition-colors">
                 {post.category}
             </div>
 
             {/* Read Time */}
-            <div className="absolute top-4 right-4 bg-brand-dark/70 backdrop-blur-md border border-white/20 text-white text-[10px] font-bold px-2.5 py-1.5 rounded-full flex items-center gap-1.5">
-                <BookOpen size={12} className="text-brand-gold" /> {post.readTime}
+            <div className="absolute top-2 right-2 bg-brand-dark/70 backdrop-blur-md border border-white/20 text-white text-[7px] sm:text-[10px] font-bold px-2 py-0.5 sm:px-2.5 sm:py-1.5 rounded-full flex items-center gap-1">
+                <BookOpen size={9} className="text-brand-gold shrink-0" /> {post.readTime}
             </div>
             
             {/* Author floating over image edge */}
-            <div className="absolute bottom-4 left-6 flex items-center gap-3 z-10">
-                <img src={post.author.avatar} alt={post.author.name} className="w-8 h-8 rounded-full border-2 border-brand-gold shadow-md object-cover" />
+            <div className="absolute bottom-2 left-2 flex items-center gap-1.5 z-10">
+                <img src={post.author.avatar} alt={post.author.name} className="w-6 h-6 sm:w-8 sm:h-8 rounded-full border border-brand-gold shadow-md object-cover shrink-0" />
                 <div>
-                    <span className="text-white text-xs font-bold block leading-none">{post.author.name}</span>
-                    <span className="text-white/70 text-[10px] uppercase tracking-wider">{post.date}</span>
+                    <span className="text-white text-[9px] sm:text-xs font-bold block leading-none">{post.author.name.split(' ')[0]}</span>
+                    <span className="text-white/70 text-[8px] sm:text-[10px] uppercase tracking-wider block">{post.date.split(' ')[0]}</span>
                 </div>
             </div>
         </div>
         
-        <div className="p-6 flex-1 flex flex-col relative z-20">
-            <h3 className="text-xl font-black font-serif text-brand-dark mb-3 leading-tight group-hover:text-brand-blue transition-colors line-clamp-2 min-h-[56px]">
+        <div className="p-3 sm:p-6 flex-1 flex flex-col relative z-20">
+            <h3 className="text-xs sm:text-xl font-black font-serif text-brand-dark mb-2 leading-tight group-hover:text-brand-blue transition-colors line-clamp-2 min-h-[32px] sm:min-h-[56px]">
                 {post.title}
             </h3>
-            <p className="text-gray-500 text-sm leading-relaxed mb-6 line-clamp-3 flex-1 font-medium">
+            <p className="text-gray-500 text-[10px] sm:text-sm leading-relaxed mb-4 line-clamp-2 flex-1 font-medium">
                 {post.excerpt}
             </p>
-            <div className="mt-auto flex items-center justify-between border-t border-gray-100 pt-5">
-                <span className="text-[11px] font-black text-gray-400 uppercase tracking-widest flex items-center gap-1">
-                    <Sparkles size={14} className="text-brand-gold hidden group-hover:block transition-all" /> 
-                    Premium Guide
+            <div className="mt-auto flex items-center justify-between border-t border-gray-100 pt-3 sm:pt-5">
+                <span className="text-[8px] sm:text-[11px] font-black text-gray-400 uppercase tracking-widest flex items-center gap-0.5">
+                    <Sparkles size={10} className="text-brand-gold hidden sm:group-hover:block transition-all" /> 
+                    Guide
                 </span>
-                <span className="flex items-center gap-2 text-brand-dark font-black text-sm group-hover:text-brand-gold transition-colors">
-                    Read Story <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                <span className="flex items-center gap-1 text-brand-dark font-black text-xs sm:text-sm group-hover:text-brand-gold transition-colors">
+                    Read <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform shrink-0" />
                 </span>
             </div>
         </div>
@@ -135,7 +135,7 @@ const Blog = () => {
                     
                     {/* Featured Post (Full Width) */}
                     <ScrollReveal direction="up" className="mb-16">
-                        <Link to={`/blog/${featuredPost.id}`} className="block bg-white rounded-[2rem] overflow-hidden shadow-2xl border border-gray-100 flex flex-col md:flex-row group cursor-pointer hover:border-brand-gold/50 transition-all duration-500 hover:-translate-y-1">
+                        <Link to={`/blog/${featuredPost.slug || featuredPost.id}`} className="block bg-white rounded-[2rem] overflow-hidden shadow-2xl border border-gray-100 flex flex-col md:flex-row group cursor-pointer hover:border-brand-gold/50 transition-all duration-500 hover:-translate-y-1">
                             <div className="md:w-7/12 relative h-80 md:h-auto overflow-hidden">
                                 <img 
                                     src={featuredPost.imageUrl} 
@@ -195,7 +195,7 @@ const Blog = () => {
                     </div>
 
                     {/* Standard Posts Grid */}
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-8">
                         {regularPosts.map((post, i) => (
                             <ScrollReveal key={post.id} direction="up" delay={i * 0.1}>
                                 <BlogCard post={post} />

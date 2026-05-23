@@ -256,13 +256,13 @@ const About = () => (
                     <div className="w-16 h-1 bg-brand-gold mx-auto mt-4 rounded-full"></div>
                     <p className="text-gray-500 mt-4 max-w-xl mx-auto text-sm sm:text-base">We're not just another travel company. Here's what makes us different from everyone else.</p>
                 </FadeIn>
-                <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5">
                     {whyUs.map((w, i) => (
                         <FadeIn key={i} delay={i * 0.06}>
-                            <div className="group bg-gray-50 border border-gray-100 rounded-2xl p-6 hover:bg-brand-dark hover:border-brand-dark hover:shadow-xl transition-all duration-300 cursor-default">
-                                <div className="text-brand-gold group-hover:scale-110 transition-transform mb-4">{w.icon}</div>
-                                <h3 className="font-bold text-brand-dark group-hover:text-white text-base mb-2 font-serif transition-colors">{w.title}</h3>
-                                <p className="text-gray-500 group-hover:text-white/70 text-sm leading-relaxed transition-colors">{w.desc}</p>
+                            <div className="group bg-gray-50 border border-gray-100 rounded-xl sm:rounded-2xl p-3.5 sm:p-6 hover:bg-brand-dark hover:border-brand-dark hover:shadow-xl transition-all duration-300 cursor-default h-full">
+                                <div className="text-brand-gold group-hover:scale-110 transition-transform mb-2 sm:mb-4">{w.icon}</div>
+                                <h3 className="font-bold text-brand-dark group-hover:text-white text-xs sm:text-base mb-1.5 sm:mb-2 font-serif transition-colors leading-tight">{w.title}</h3>
+                                <p className="text-gray-500 group-hover:text-white/70 text-[10px] sm:text-sm leading-relaxed transition-colors line-clamp-3 sm:line-clamp-none">{w.desc}</p>
                             </div>
                         </FadeIn>
                     ))}
@@ -310,18 +310,18 @@ const About = () => (
                     <h2 className="text-2xl sm:text-3xl font-serif font-black text-brand-dark">Recognition & Achievements</h2>
                     <div className="w-12 h-1 bg-brand-gold mx-auto mt-3 rounded-full"></div>
                 </FadeIn>
-                <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5">
                     {[
-                        { icon: <Award size={28} />, title: 'Best Tour Operator 2023', body: 'Uttarakhand Tourism Excellence Awards' },
-                        { icon: <Star size={28} />, title: '4.9 / 5.0 Rating', body: 'Across 1000+ verified Google reviews' },
-                        { icon: <Users size={28} />, title: '5000+ Happy Travelers', body: 'Families, pilgrims, honeymooners & adventurers served' },
-                        { icon: <Heart size={28} />, title: '10+ Years of Trust', body: 'A decade of crafting unforgettable journeys in Uttarakhand' },
+                        { icon: <Award size={24} />, title: 'Best Operator 2023', body: 'Uttarakhand Tourism Excellence' },
+                        { icon: <Star size={24} />, title: '4.9/5 Rating', body: '1000+ Verified Google Reviews' },
+                        { icon: <Users size={24} />, title: '5000+ Travelers', body: 'Families, pilgrims & adventurers served' },
+                        { icon: <Heart size={24} />, title: '10+ Years Trust', body: 'Decade of pure Himalayan trust' },
                     ].map((a, i) => (
                         <FadeIn key={i} delay={i * 0.08}>
-                            <div className="bg-white border border-amber-100 rounded-2xl p-6 text-center shadow-sm hover:shadow-md transition-shadow">
-                                <div className="text-brand-gold w-12 h-12 bg-amber-50 rounded-xl flex items-center justify-center mx-auto mb-3">{a.icon}</div>
-                                <h3 className="font-bold text-brand-dark font-serif mb-1">{a.title}</h3>
-                                <p className="text-gray-500 text-sm">{a.body}</p>
+                            <div className="bg-white border border-amber-100 rounded-xl sm:rounded-2xl p-3 sm:p-6 text-center shadow-sm hover:shadow-md transition-shadow h-full flex flex-col items-center justify-center">
+                                <div className="text-brand-gold w-9 h-9 sm:w-12 sm:h-12 bg-amber-50 rounded-lg sm:rounded-xl flex items-center justify-center mx-auto mb-2 sm:mb-3 shrink-0">{a.icon}</div>
+                                <h3 className="font-bold text-brand-dark font-serif text-xs sm:text-base mb-1 leading-tight">{a.title}</h3>
+                                <p className="text-gray-500 text-[10px] sm:text-sm leading-relaxed">{a.body}</p>
                             </div>
                         </FadeIn>
                     ))}

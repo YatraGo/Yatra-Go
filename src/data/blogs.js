@@ -3,6 +3,7 @@ import { normalizeAssetFields } from '../lib/assets';
 export const BLOG_POSTS = [
     {
         id: 1,
+        slug: 'exploring-hidden-trails-uttarakhand-trekking',
         title: 'Exploring the Hidden Trails: A Complete Guide to Uttarakhand Trekking',
         category: 'Adventure',
         readTime: '8 min read',
@@ -43,6 +44,7 @@ export const BLOG_POSTS = [
     },
     {
         id: 2,
+        slug: 'ultimate-chardham-yatra-travel-itinerary',
         title: 'The Ultimate Chardham Yatra Travel Itinerary (2024 Guide)',
         category: 'Spiritual',
         readTime: '12 min read',
@@ -75,6 +77,7 @@ export const BLOG_POSTS = [
     },
     {
         id: 3,
+        slug: 'top-10-luxury-riverside-camps-rishikesh',
         title: 'Top 10 Luxury Riverside Camps in Rishikesh You Must Visit',
         category: 'Stay & Relax',
         readTime: '6 min read',
@@ -105,6 +108,7 @@ export const BLOG_POSTS = [
     },
     {
         id: 4,
+        slug: 'river-rafting-101-ganges-pro',
         title: 'River Rafting 101: Navigating the Ganges Like a Pro',
         category: 'Activity',
         readTime: '5 min read',
@@ -140,6 +144,7 @@ export const BLOG_POSTS = [
     },
     {
         id: 5,
+        slug: 'devprayag-where-rivers-meet',
         title: 'Devprayag: Where the Rivers Meet and Spirituality Begins',
         category: 'Destinations',
         readTime: '7 min read',
@@ -169,6 +174,7 @@ export const BLOG_POSTS = [
     },
     {
         id: 6,
+        slug: '5-must-try-local-delicacies-garhwali',
         title: '5 Must-Try Local Delicacies When Traveling Through Garhwal',
         category: 'Culture & Food',
         readTime: '4 min read',
@@ -196,6 +202,161 @@ export const BLOG_POSTS = [
             <p>A dessert strictly native to the region, predominantly Kumaon. It's a dark, roasted milk fudge covered entirely in tiny white sugar balls. It has a rich, deeply caramelized flavor that pairs perfectly with a view of the mountains.</p>
 
             <p>Leave the pizza and pasta behind for a few days, and let the mountain chefs surprise you. Happy eating!</p>
+        `
+    },
+    {
+        id: 7,
+        slug: 'best-time-for-kedarnath-yatra',
+        title: 'Best Time to Visit Kedarnath Yatra: Weather & Darshan Guide',
+        category: 'Spiritual',
+        readTime: '6 min read',
+        date: 'March 10, 2026',
+        author: { name: 'Priya Verma', avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80', role: 'Pilgrimage Expert' },
+        excerpt: 'Planning your trip to Kedarnath? Learn about the best months to visit, temperature variations, temple opening dates, and how to avoid the heavy monsoon landslides.',
+        imageUrl: 'public/assets/Kedarnath 1.png',
+        featured: false,
+        content: `
+            <p>Planning a pilgrimage to the holy temple of Kedarnath requires a deep understanding of high-altitude Himalayan weather. Sitting at an elevation of 3,584 meters (11,759 feet) above sea level, the temple is surrounded by massive snow-covered peaks, meaning the weather remains cold and unpredictable throughout the year.</p>
+
+            <h3>Month-by-Month Weather & Pilgrimage Breakdown</h3>
+            
+            <h4>May to June (Summer Season - Highly Recommended)</h4>
+            <p>This is the most popular time to visit Kedarnath. The temple gates open in late April or early May. During summer, the snow melts, daytime temperatures hover around a comfortable 15°C to 20°C, and the trekking path is clear. However, due to high demand, expect large crowds and longer waiting times for Darshan.</p>
+
+            <h4>July to August (Monsoon Season - High Risk)</h4>
+            <p>We advise avoiding travel during the monsoon. The Garhwal hills experience heavy downpours, leading to frequent landslides, flash floods, and road blockages along the Rishikesh-Kedarnath highway. Helicopter services are also frequently suspended due to fog and low visibility.</p>
+
+            <h4>September to November (Autumn Season - Clear Skies & Crisp Cold)</h4>
+            <p>For travelers who want clear mountain views, crisp blue skies, and fewer crowds, autumn is the perfect window. The weather is dry and sunny during the day (10°C), though nights drop below freezing (0°C to -5°C). Bring heavy woolens, gloves, and thermal layers. The temple gates close for winter on the auspicious day of Bhai Dooj in November.</p>
+
+            <h3>Summary Table</h3>
+            <table class="min-w-full border-collapse border border-gray-200 mt-4 text-sm text-left">
+                <thead>
+                    <tr class="bg-gray-100">
+                        <th class="border border-gray-200 p-2">Months</th>
+                        <th class="border border-gray-200 p-2">Avg Temp</th>
+                        <th class="border border-gray-200 p-2">Crowd Level</th>
+                        <th class="border border-gray-200 p-2">Recommendation Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="border border-gray-200 p-2">May - Jun</td>
+                        <td class="border border-gray-200 p-2">12°C to 20°C</td>
+                        <td class="border border-gray-200 p-2">Very High</td>
+                        <td class="border border-gray-200 p-2 text-green-600 font-bold">Highly Recommended</td>
+                    </tr>
+                    <tr>
+                        <td class="border border-gray-200 p-2">Jul - Aug</td>
+                        <td class="border border-gray-200 p-2">15°C to 22°C</td>
+                        <td class="border border-gray-200 p-2">Low</td>
+                        <td class="border border-gray-200 p-2 text-red-600 font-bold">Avoid (Landslide Risk)</td>
+                    </tr>
+                    <tr>
+                        <td class="border border-gray-200 p-2">Sep - Oct</td>
+                        <td class="border border-gray-200 p-2">5°C to 15°C</td>
+                        <td class="border border-gray-200 p-2">Moderate</td>
+                        <td class="border border-gray-200 p-2 text-green-600 font-bold">Recommended (Cold)</td>
+                    </tr>
+                    <tr>
+                        <td class="border border-gray-200 p-2">Nov - Apr</td>
+                        <td class="border border-gray-200 p-2">Sub-zero</td>
+                        <td class="border border-gray-200 p-2">Zero</td>
+                        <td class="border border-gray-200 p-2 text-red-500 font-bold">Closed (Heavy Snow)</td>
+                    </tr>
+                </tbody>
+            </table>
+        `
+    },
+    {
+        id: 8,
+        slug: 'chardham-packing-list',
+        title: 'The Complete Char Dham Yatra Packing List: Clothing & Medical Checklist',
+        category: 'Spiritual',
+        readTime: '5 min read',
+        date: 'March 15, 2026',
+        author: { name: 'Priya Verma', avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80', role: 'Pilgrimage Expert' },
+        excerpt: 'Ensure a safe and comfortable pilgrimage. Get our comprehensive packing checklist covering winter clothing, hiking shoes, medicines, and essential documents for Char Dham.',
+        imageUrl: 'public/assets/Devprayag.png',
+        featured: false,
+        content: `
+            <p>Packing for the Char Dham Yatra is very different from packing for a standard hill station vacation. The pilgrimage involves long driving hours, high-altitude trekking, and sudden weather drops that can plunge below freezing in a matter of minutes. Being well-prepared is essential for your safety and comfort.</p>
+
+            <h3>1. Essential Winter Clothing</h3>
+            <p>Layering is the key to managing high-altitude Himalayan temperatures:</p>
+            <ul>
+                <li><strong>Thermal Innerwear:</strong> Pack at least 3 pairs of high-quality thermal tops and bottoms.</li>
+                <li><strong>Fleece & Sweaters:</strong> Bring lightweight fleece jackets or woolen sweaters for daytime wear.</li>
+                <li><strong>Heavy Down Jacket:</strong> A windproof, waterproof down jacket is critical for nights in Kedarnath and Badrinath.</li>
+                <li><strong>Raincoat / Poncho:</strong> Sudden mountain rain or hail is common. Keep a lightweight poncho handy in your daypack.</li>
+                <li><strong>Head & Hands:</strong> Woolen caps (covering ears), neck mufflers, and insulated waterproof gloves.</li>
+            </ul>
+
+            <h3>2. Footwear for Trekking</h3>
+            <p>You will need to walk long distances (especially the 16km Kedarnath and 6km Yamunotri paths):</p>
+            <ul>
+                <li><strong>Trekking Shoes:</strong> Pack high-ankle waterproof trekking shoes with a rubber grip (like Decathlon/Trek). Do not wear flat-soled sneakers or sandals on the trek.</li>
+                <li><strong>Socks:</strong> Bring 4-5 pairs of thick woolen socks and a few cotton pairs.</li>
+            </ul>
+
+            <h3>3. Medical Kit (Altitude & General)</h3>
+            <p>Pharmacy shops are limited in high altitudes. Pack a small pouch containing:</p>
+            <ul>
+                <li><strong>Altitude Sickness Pills:</strong> Consult your doctor about taking Diamox.</li>
+                <li><strong>Pain Relief:</strong> Moov/Volini spray, Band-aids, and painkiller tablets for sore leg muscles.</li>
+                <li><strong>General Medicines:</strong> Tablets for motion sickness (essential for winding mountain roads), cold/cough, fever, and digestive relief.</li>
+                <li><strong>Personal items:</strong> High SPF sunscreen, moisturizing cold cream, lip balm, and hand sanitizer.</li>
+            </ul>
+
+            <h3>4. Documents Checklist</h3>
+            <p>Ensure you carry printed physical copies of:</p>
+            <ol>
+                <li>Aadhaar Card or Voter ID card.</li>
+                <li>Uttarakhand Char Dham Yatra Registration Receipt.</li>
+                <li>Kedarnath Helicopter Tickets (if pre-booked).</li>
+                <li>Emergency contact numbers and hotel booking vouchers.</li>
+            </ol>
+        `
+    },
+    {
+        id: 9,
+        slug: 'haridwar-to-kedarnath-distance',
+        title: 'Haridwar to Kedarnath Distance, Route Map, Cabs & Travel Modes',
+        category: 'Destinations',
+        readTime: '7 min read',
+        date: 'March 20, 2026',
+        author: { name: 'Rohan Gupta', avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80', role: 'Cultural Expert' },
+        excerpt: 'Complete travel guide detailing the route from Haridwar to Kedarnath Temple. Learn about the driving distance, popular stopovers, taxi costs, and trekking guidelines.',
+        imageUrl: 'public/assets/Kedarnath 1.png',
+        featured: false,
+        content: `
+            <p>The journey from the holy city of Haridwar to the divine temple of Kedarnath is one of the most scenic and spiritually moving road trips in India. Traveling along mountain rivers and lush valleys, the journey is an adventure in itself.</p>
+
+            <h3>Distance Overview</h3>
+            <p>The total travel distance is divided into two parts: a motorable road section and a trekking section.</p>
+            <ul>
+                <li><strong>Haridwar to Sonprayag/Gaurikund (Road Distance):</strong> Approx 235 km. Takes about 8 to 9 hours of driving due to winding mountain roads.</li>
+                <li><strong>Gaurikund to Kedarnath (Trekking Distance):</strong> 16 km uphill trek, taking about 6 to 8 hours on foot or 4 to 5 hours by pony/doli.</li>
+            </ul>
+
+            <h3>The Driving Route & Key Stopovers</h3>
+            <p>The driving route follows National Highway 107 (NH-107) and offers spectacular views of confluences:</p>
+            <ol>
+                <li><strong>Haridwar to Rishikesh (30 km):</strong> Smooth plains, takes about 1 hour.</li>
+                <li><strong>Rishikesh to Devprayag (70 km):</strong> Start of the hilly terrain. You will see the confluence where Alaknanda and Bhagirathi rivers merge to form the Ganga.</li>
+                <li><strong>Devprayag to Rudraprayag (65 km):</strong> Winding valley roads. Witness the confluence of Alaknanda and Mandakini Rivers.</li>
+                <li><strong>Rudraprayag to Guptkashi (45 km):</strong> Head north towards the Kedarnath valley, following the Mandakini River.</li>
+                <li><strong>Guptkashi to Sonprayag (30 km):</strong> The final transit point where private cabs drop off passengers.</li>
+                <li><strong>Sonprayag to Gaurikund (5 km):</strong> Shared local government shuttles take you to the official trekking point of Gaurikund.</li>
+            </ol>
+
+            <h3>Best Modes of Transport</h3>
+            
+            <h4>1. Renting a Private Taxi (Highly Recommended)</h4>
+            <p>Hiring a private cab like a Swift Dzire or Innova Crysta from a trusted <strong>travel agency in Haridwar</strong> like Yatra Go is the most comfortable and reliable option. It allows you to take custom rest stops and drive at a safe pace.</p>
+
+            <h4>2. Public Buses & Shared Cabs</h4>
+            <p>Uttarakhand State Transport (UTC) operates direct early morning buses from Haridwar to Sonprayag. Local shared jeeps are also available from Haridwar and Rishikesh, but they can be crowded and less comfortable for families.</p>
         `
     }
 ].map(normalizeAssetFields);

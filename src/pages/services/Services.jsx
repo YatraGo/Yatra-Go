@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import VehicleBookingModal from '../../components/VehicleBookingModal';
 import VehicleSidebarModal from '../../components/VehicleSidebarModal';
 import ServiceEnquiryCard from '../../components/ServiceEnquiryCard';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { normalizeAssetFields } from '../../lib/assets';
 import {
@@ -83,9 +83,23 @@ const SERVICES = Object.fromEntries(Object.entries(SERVICES_DATA).map(([key, val
 
 const Services = () => {
     const { type } = useParams();
+    const location = useLocation();
     const service = SERVICES[type] || SERVICES['hotel'];
     const [selectedCar, setSelectedCar] = useState(null);
     const [sidebarModalOpen, setSidebarModalOpen] = useState(false);
+
+    useEffect(() => {
+        const searchParams = new URLSearchParams(location.search);
+        const select = searchParams.get('select') || location.state?.selectVehicle;
+        if (select && ['car-rental', 'bike-rental'].includes(type)) {
+            const found = service.categories.find(
+                cat => cat.name.toLowerCase() === select.toLowerCase()
+            );
+            if (found) {
+                setSelectedCar(found);
+            }
+        }
+    }, [location.search, location.state, type, service.categories]);
 
     return (
         <div className="min-h-screen bg-gray-50">
@@ -163,56 +177,56 @@ const Services = () => {
                         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
                             <h2 className="text-2xl font-serif font-black text-brand-dark mb-5">Our Options</h2>
                             {['car-rental', 'bike-rental'].includes(type) ? (
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div className="grid grid-cols-2 gap-3 sm:gap-6">
                                     {service.categories.map((cat, i) => (
-                                        <div key={i} className="group bg-white rounded-3xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-2xl hover:border-brand-gold/50 transition-all duration-300 flex flex-col relative cursor-pointer" onClick={() => setSelectedCar(cat)}>
-                                            <div className="absolute top-4 right-4 z-30 bg-white/90 backdrop-blur-sm text-brand-dark text-[10px] font-black px-2.5 py-1 rounded-full shadow-[0_4px_10px_rgba(0,0,0,0.15)] flex items-center gap-1 group-hover:bg-brand-gold transition-colors">
-                                                <CheckCircle2 size={12} className="text-green-500 group-hover:text-brand-dark" /> Verified
+                                        <div key={i} className="group bg-white rounded-2xl sm:rounded-3xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-2xl hover:border-brand-gold/50 transition-all duration-300 flex flex-col relative cursor-pointer" onClick={() => setSelectedCar(cat)}>
+                                            <div className="absolute top-2 right-2 z-30 bg-white/90 backdrop-blur-sm text-brand-dark text-[7px] sm:text-[10px] font-black px-1.5 py-0.5 sm:px-2.5 sm:py-1 rounded-full shadow-md flex items-center gap-0.5 group-hover:bg-brand-gold transition-colors">
+                                                <CheckCircle2 size={10} className="text-green-500 group-hover:text-brand-dark shrink-0" /> Verified
                                             </div>
                                             {cat.price && (
-                                                <div className="absolute top-4 left-0 z-30 bg-brand-dark text-white font-black px-4 py-1.5 rounded-r-xl shadow-[0_4px_15px_rgba(8,38,61,0.5)] flex items-center gap-1 border-y-2 border-r-2 border-brand-gold transform transition-transform group-hover:scale-105 origin-left">
-                                                    <span className="text-brand-gold text-lg">₹</span>
+                                                <div className="absolute top-2 left-0 z-30 bg-brand-dark text-white font-black px-2 py-0.5 sm:px-4 sm:py-1.5 rounded-r-lg sm:rounded-r-xl shadow-md flex items-center gap-0.5 border-y border-r sm:border-y-2 sm:border-r-2 border-brand-gold transform transition-transform group-hover:scale-105 origin-left text-[9px] sm:text-xs">
+                                                    <span className="text-brand-gold text-[10px] sm:text-lg">₹</span>
                                                     {cat.price.replace('₹', '')}
                                                 </div>
                                             )}
-                                            <div className="h-48 overflow-hidden bg-gray-50 relative flex items-center justify-center">
+                                            <div className="h-32 sm:h-48 overflow-hidden bg-gray-50 relative flex items-center justify-center">
                                                 <div className="absolute inset-0 bg-gradient-to-t from-gray-200/50 to-transparent flex items-center justify-center pointer-events-none z-10"></div>
                                                 <img src={cat.img} alt={cat.name}
                                                     className={`w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 relative z-20 ${type === 'bike-rental' ? 'scale-110' : ''}`}
                                                     loading="lazy"
                                                     onError={(e) => { e.target.src = 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80'; }} />
                                             </div>
-                                            <div className="p-6 flex-1 flex flex-col">
-                                                <h3 className="font-serif font-black text-xl text-brand-dark group-hover:text-brand-blue transition-colors mb-2 pr-2">{cat.name}</h3>
+                                            <div className="p-3 sm:p-6 flex-1 flex flex-col">
+                                                <h3 className="font-serif font-black text-xs sm:text-xl text-brand-dark group-hover:text-brand-blue transition-colors mb-1 pr-1 truncate">{cat.name}</h3>
                                                 
-                                                <div className="flex flex-wrap gap-1.5 mb-5 overflow-hidden h-auto">
+                                                <div className="flex flex-wrap gap-1 mb-3 overflow-hidden h-auto">
                                                     {cat.desc.split('·').map((tag, idx) => (
-                                                        <span key={idx} className="bg-gray-50 text-gray-500 border border-gray-100 text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded-md">
+                                                        <span key={idx} className="bg-gray-50 text-gray-500 border border-gray-100 text-[8px] sm:text-[10px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded">
                                                             {tag.trim()}
                                                         </span>
                                                     ))}
                                                 </div>
 
-                                                <button className="mt-auto w-full bg-brand-dark text-white font-bold py-3 rounded-xl flex justify-center items-center gap-2 group-hover:bg-brand-blue transition-colors shadow-md group-hover:shadow-lg">
-                                                    {type === 'bike-rental' ? <Bike size={16} /> : <Car size={16} />} View Details & Book
+                                                <button className="mt-auto w-full bg-brand-dark text-white font-bold py-2 sm:py-3 rounded-lg sm:rounded-xl flex justify-center items-center gap-1.5 group-hover:bg-brand-blue transition-colors shadow-md group-hover:shadow-lg text-[9px] sm:text-base shrink-0">
+                                                    {type === 'bike-rental' ? <Bike size={12} /> : <Car size={12} />} Book Now
                                                 </button>
                                             </div>
                                         </div>
                                     ))}
                                 </div>
                             ) : (
-                                <div className="grid sm:grid-cols-2 gap-4">
+                                <div className="grid grid-cols-2 gap-3 sm:gap-4">
                                     {service.categories.map((cat, i) => (
-                                        <div key={i} className="group bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-lg transition-all">
-                                            <div className="h-40 overflow-hidden">
+                                        <div key={i} className="group bg-white rounded-xl sm:rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-lg transition-all flex flex-col">
+                                            <div className="h-24 sm:h-40 overflow-hidden shrink-0">
                                                 <img src={cat.img} alt={cat.name}
                                                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                                                     loading="lazy"
                                                     onError={(e) => { e.target.src = 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80'; }} />
                                             </div>
-                                            <div className="p-4">
-                                                <h3 className="font-bold text-brand-dark mb-1">{cat.name}</h3>
-                                                <p className="text-gray-500 text-sm">{cat.desc}</p>
+                                            <div className="p-3 sm:p-4 flex-1 flex flex-col">
+                                                <h3 className="font-bold text-brand-dark text-xs sm:text-base mb-1 truncate">{cat.name}</h3>
+                                                <p className="text-gray-500 text-[10px] sm:text-sm line-clamp-2 leading-relaxed">{cat.desc}</p>
                                             </div>
                                         </div>
                                     ))}

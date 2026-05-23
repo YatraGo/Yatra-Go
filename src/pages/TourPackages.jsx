@@ -30,9 +30,9 @@ const BADGE_STYLE = {
 
 const PackageCard = ({ pkg, isWishlisted, onToggleWishlist }) => (
     <div className="h-full flex flex-col">
-        <div className="group relative flex-1 flex flex-col rounded-3xl sm:rounded-[2.5rem] bg-white border border-slate-100 shadow-[0_15px_40px_-15px_rgba(0,0,0,0.05)] transition-all duration-500 hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.12)] hover:-translate-y-2 overflow-hidden active:scale-[0.98]">
+        <div className="group relative flex-1 flex flex-col rounded-2xl sm:rounded-[2.5rem] bg-white border border-slate-100 shadow-[0_15px_40px_-15px_rgba(0,0,0,0.05)] transition-all duration-500 hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.12)] hover:-translate-y-2 overflow-hidden active:scale-[0.98]">
             {/* Image Section */}
-            <div className="relative h-56 sm:h-64 shrink-0 overflow-hidden">
+            <div className="relative h-32 sm:h-64 shrink-0 overflow-hidden">
                 <img src={pkg.img} alt={pkg.title}
                     className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
                     loading="lazy"
@@ -49,63 +49,63 @@ const PackageCard = ({ pkg, isWishlisted, onToggleWishlist }) => (
                         e.stopPropagation();
                         onToggleWishlist(pkg.id || pkg.slug);
                     }}
-                    className={`absolute top-4 right-4 sm:top-5 sm:right-5 h-8 w-8 sm:h-10 sm:w-10 rounded-full backdrop-blur-md flex items-center justify-center border transition-all duration-300 z-10 ${
+                    className={`absolute top-2 right-2 sm:top-5 sm:right-5 h-7 w-7 sm:h-10 sm:w-10 rounded-full backdrop-blur-md flex items-center justify-center border transition-all duration-300 z-10 ${
                         isWishlisted 
                         ? 'bg-rose-500 border-rose-500 text-white shadow-lg' 
                         : 'bg-white/20 border-white/20 text-white hover:bg-white/40'
                     }`}
                 >
-                    <Heart className={`w-4 h-4 sm:w-5 sm:h-5 ${isWishlisted ? 'animate-heart-pop' : ''}`} fill={isWishlisted ? 'currentColor' : 'none'} />
+                    <Heart className={`w-3.5 h-3.5 sm:w-5 sm:h-5 ${isWishlisted ? 'animate-heart-pop' : ''}`} fill={isWishlisted ? 'currentColor' : 'none'} />
                 </button>
 
                 {/* Badges & Tags */}
                 {pkg.tag && (
-                    <div className="absolute top-4 left-4 sm:top-5 sm:left-5">
-                        <span className={`px-3 py-1 sm:px-4 sm:py-1.5 rounded-full text-[9px] sm:text-[10px] font-black uppercase tracking-[0.2em] shadow-lg backdrop-blur-md ${BADGE_STYLE[pkg.tag] || 'bg-slate-900/80 text-white'}`}>
+                    <div className="absolute top-2 left-2 sm:top-5 sm:left-5">
+                        <span className={`px-2 py-0.5 sm:px-4 sm:py-1.5 rounded-full text-[7px] sm:text-[10px] font-black uppercase tracking-[0.15em] sm:tracking-[0.2em] shadow-lg backdrop-blur-md ${BADGE_STYLE[pkg.tag] || 'bg-slate-900/80 text-white'}`}>
                             {pkg.tag}
                         </span>
                     </div>
                 )}
 
-                <div className="absolute bottom-4 left-4 right-4 sm:bottom-5 sm:left-5 sm:right-5 flex items-center justify-between">
-                    <div className="flex items-center gap-1.5 sm:gap-2 px-2 py-1 sm:px-3 sm:py-1.5 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 text-white text-[9px] sm:text-[10px] font-black uppercase tracking-widest shadow-lg">
-                        <MapPin size={10} className="text-brand-gold sm:w-3 sm:h-3" /> {pkg.location.split('·')[0].trim()}
+                <div className="absolute bottom-2 left-2 right-2 sm:bottom-5 sm:left-5 sm:right-5 flex items-center justify-between gap-1">
+                    <div className="flex items-center gap-1 sm:gap-2 px-1.5 py-0.5 sm:px-3 sm:py-1.5 rounded-lg sm:rounded-xl bg-white/10 backdrop-blur-md border border-white/20 text-white text-[7px] sm:text-[10px] font-black uppercase tracking-widest shadow-lg truncate">
+                        <MapPin size={9} className="text-brand-gold shrink-0 sm:w-3 sm:h-3" /> <span className="truncate">{pkg.location.split('·')[0].trim()}</span>
                     </div>
-                    <div className="flex items-center gap-1.5 sm:gap-2 px-2 py-1 sm:px-3 sm:py-1.5 rounded-xl bg-brand-gold text-brand-dark text-[9px] sm:text-[10px] font-black uppercase tracking-widest shadow-xl">
-                        <Clock size={10} className="sm:w-3 sm:h-3" /> {pkg.days}
+                    <div className="flex items-center gap-1 sm:gap-2 px-1.5 py-0.5 sm:px-3 sm:py-1.5 rounded-lg sm:rounded-xl bg-brand-gold text-brand-dark text-[7px] sm:text-[10px] font-black uppercase tracking-widest shadow-xl shrink-0">
+                        <Clock size={9} className="shrink-0 sm:w-3 sm:h-3" /> {pkg.days}
                     </div>
                 </div>
             </div>
 
             {/* Content Section */}
-            <div className="p-6 sm:p-8 flex flex-col flex-1 relative bg-white">
-                <div className="flex items-start justify-between mb-3 sm:mb-4 gap-3 sm:gap-4">
-                    <h3 className="font-serif font-black text-slate-900 text-lg sm:text-xl leading-tight group-hover:text-brand-gold transition-colors duration-300 line-clamp-2 min-h-[3rem] sm:min-h-[3.5rem]">
+            <div className="p-3 sm:p-8 flex flex-col flex-1 relative bg-white">
+                <div className="flex items-start justify-between mb-2 sm:mb-4 gap-2 sm:gap-4">
+                    <h3 className="font-serif font-black text-slate-900 text-xs sm:text-xl leading-tight group-hover:text-brand-gold transition-colors duration-300 line-clamp-2 min-h-[2rem] sm:min-h-[3.5rem]">
                         {pkg.title}
                     </h3>
-                    <div className="flex items-center gap-1 sm:gap-1.5 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-xl bg-slate-50 border border-slate-100 text-[10px] sm:text-xs font-black text-slate-500 shrink-0 h-fit">
-                        <Star size={10} className="fill-brand-gold text-brand-gold shadow-sm sm:w-3 sm:h-3" /> {pkg.rating}
+                    <div className="flex items-center gap-0.5 sm:gap-1.5 px-1.5 py-0.5 sm:px-2.5 sm:py-1 rounded-lg bg-slate-50 border border-slate-100 text-[8px] sm:text-xs font-black text-slate-500 shrink-0 h-fit">
+                        <Star size={9} className="fill-brand-gold text-brand-gold shadow-sm sm:w-3 sm:h-3" /> {pkg.rating}
                     </div>
                 </div>
 
-                <p className="text-slate-500 text-xs sm:text-sm leading-relaxed line-clamp-2 mb-6 sm:mb-8 italic font-medium">"{pkg.desc}"</p>
+                <p className="text-slate-500 text-[10px] sm:text-sm leading-relaxed line-clamp-2 mb-4 sm:mb-8 italic font-medium">"{pkg.desc}"</p>
 
-                <div className="mt-auto pt-4 sm:pt-6 border-t border-slate-50 flex items-center justify-between gap-4">
+                <div className="mt-auto pt-2 sm:pt-6 border-t border-slate-50 flex flex-col min-[480px]:flex-row min-[480px]:items-center justify-between gap-2">
                     <div>
                         {pkg.originalPrice && (
-                            <div className="text-[9px] sm:text-[10px] text-slate-300 line-through font-black tracking-widest uppercase mb-0.5">{formatPrice(pkg.originalPrice)}</div>
+                            <div className="text-[8px] sm:text-[10px] text-slate-300 line-through font-black tracking-widest uppercase mb-0.5 leading-none">{formatPrice(pkg.originalPrice)}</div>
                         )}
-                        <div className="flex items-baseline gap-1">
-                            <span className="text-2xl sm:text-3xl font-serif font-black text-brand-dark tracking-tighter">{formatPrice(pkg.price)}</span>
-                            <span className="text-[9px] sm:text-[10px] text-slate-400 font-bold uppercase tracking-widest">/person</span>
+                        <div className="flex items-baseline gap-0.5 leading-none">
+                            <span className="text-sm sm:text-3xl font-serif font-black text-brand-dark tracking-tighter leading-none">{formatPrice(pkg.price)}</span>
+                            <span className="text-[8px] sm:text-[10px] text-slate-400 font-bold uppercase tracking-widest leading-none">/p</span>
                         </div>
                     </div>
 
                     <Link
                         to={`/tour/${pkg.slug}`}
-                        className="flex h-10 w-10 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-[14px] sm:rounded-2xl bg-brand-dark text-white hover:bg-brand-gold hover:text-brand-dark transition-all duration-300 shadow-xl shadow-brand-dark/10 group/btn cursor-pointer"
+                        className="flex h-8 w-full min-[480px]:w-10 min-[480px]:h-10 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-lg sm:rounded-2xl bg-brand-dark text-white hover:bg-brand-gold hover:text-brand-dark transition-all duration-300 shadow-lg shadow-brand-dark/10 group/btn cursor-pointer"
                     >
-                        <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover/btn:translate-x-1 group-hover/btn:-rotate-45 transition-transform" />
+                        <ArrowRight className="w-3.5 h-3.5 sm:w-5 sm:h-5 group-hover/btn:translate-x-1 group-hover/btn:-rotate-45 transition-transform" />
                     </Link>
                 </div>
             </div>
@@ -226,7 +226,7 @@ const TourPackages = () => {
                             </div>
                         </ScrollReveal>
                     ) : (
-                        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                        <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-8">
                             {filtered.map((pkg, i) => (
                                 <ScrollReveal key={pkg.slug} direction="up" delay={i % 4 * 0.1}>
                                     <PackageCard 

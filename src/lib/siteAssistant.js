@@ -82,6 +82,7 @@ export const CHAT_SUGGESTIONS = [
 
 const normalize = (text = '') => text.toLowerCase();
 const GREETING_PATTERN = /^(hi|hello|hey|hii|heyy|hola|namaste|good morning|good afternoon|good evening)\b/i;
+const HINDI_SCRIPT_PATTERN = /[\u0900-\u097F]/;
 
 const buildPackageContext = (pkg) => [
   `Package: ${pkg.title}`,
@@ -258,13 +259,22 @@ export const getBookingGuide = () =>
 
 export const getHeuristicAnswer = (message) => {
   const text = normalize(message);
+  const isHindiText = HINDI_SCRIPT_PATTERN.test(message);
 
   if (!text.trim()) {
-    return 'Ask me about packages, activities, services, booking steps, pricing, or contact details for Yatra Go.';
+    return isHindiText
+      ? 'Aap Yatra Go ke packages, activities, services, booking steps, pricing, ya contact details ke baare mein pooch sakte hain.'
+      : 'Ask me about packages, activities, services, booking steps, pricing, or contact details for Yatra Go.';
   }
 
   if (GREETING_PATTERN.test(message.trim())) {
     return 'Hello! Welcome to Yatra Go. How would you like me to assist you today?';
+  }
+
+  if (/(hindi|हिंदी|language|bhasha|भाषा|baat kar|speak)/i.test(message)) {
+    return isHindiText || /hindi|हिंदी/i.test(message)
+      ? 'Bilkul, main Hindi mein baat kar sakta hoon. Aap apna sawal Hindi mein pooch sakte hain, main aapko clear aur professional jawab dunga.'
+      : 'Yes, I can converse in Hindi as well. You can ask your next question in Hindi.';
   }
 
   if (text.includes('contact') || text.includes('call') || text.includes('phone') || text.includes('email') || text.includes('address') || text.includes('whatsapp')) {
@@ -296,7 +306,9 @@ export const getHeuristicAnswer = (message) => {
       .join('\n')}\n\nIf you want, I can compare them point by point.`;
   }
 
-  return 'I can help with Yatra Go packages, activities, services, contact details, and booking guidance. Ask about any specific thing and I will answer that exact topic.';
+  return isHindiText
+    ? 'Main Yatra Go ke packages, activities, services, contact details aur booking guidance mein madad kar sakta hoon. Aap specific sawal poochiye, main direct usi topic par jawab dunga.'
+    : 'I can help with Yatra Go packages, activities, services, contact details, and booking guidance. Ask about any specific thing and I will answer that exact topic.';
 };
 
 export const buildGeminiSystemPrompt = (visitorName) => `
@@ -313,8 +325,3 @@ Rules:
 - Mention contact channels only when useful.
 - If the user is logged in and their name is available, you may greet them by name when appropriate. Current user name: ${visitorName || 'Guest'}.
 `.trim();
-
-export const geminiConfig = {
-  model: import.meta.env.VITE_GEMINI_MODEL || 'gemini-3-flash-preview',
-  apiKey: import.meta.env.VITE_GEMINI_API_KEY,
-};

@@ -14,6 +14,8 @@ import {
     MessageSquare,
     Package,
     Phone,
+    RefreshCw,
+    Search,
     Settings,
     ShieldCheck,
     SlidersHorizontal,
@@ -92,6 +94,46 @@ const AdminDashboard = () => {
     const [adminSettings, setAdminSettings] = useState(defaultAdminSettings);
     const [logoutPopupOpen, setLogoutPopupOpen] = useState(false);
     const [authPopup, setAuthPopup] = useState(null);
+    const [profileSaving, setProfileSaving] = useState(false);
+    const [profileFeedback, setProfileFeedback] = useState('');
+    const [profileForm, setProfileForm] = useState({
+        name: '',
+        phone: '',
+    });
+
+    useEffect(() => {
+        if (userProfile) {
+            setProfileForm({
+                name: userProfile.name || '',
+                phone: userProfile.phone || '',
+            });
+        }
+    }, [userProfile]);
+
+    const handleProfileSave = async (e) => {
+        e.preventDefault();
+        if (!currentUser || !db) return;
+
+        setProfileSaving(true);
+        setProfileFeedback('');
+
+        try {
+            await setDoc(doc(db, 'users', currentUser.uid), {
+                name: profileForm.name.trim(),
+                phone: profileForm.phone.trim(),
+                updatedAt: serverTimestamp()
+            }, { merge: true });
+            setProfileFeedback('Profile successfully updated.');
+            setTimeout(() => setProfileFeedback(''), 3000);
+        } catch (error) {
+            console.error('Admin profile update failed', error);
+            setProfileFeedback('Failed to update profile. Please try again.');
+        } finally {
+            setProfileSaving(false);
+        }
+    };
+
+    const profilePhotoUrl = userProfile?.photoURL || currentUser?.photoURL;
 
     useEffect(() => {
         if (typeof window === 'undefined') return undefined;
@@ -194,7 +236,11 @@ const AdminDashboard = () => {
             ),
         ];
 
-        return () => unsubscribes.forEach((unsubscribe) => unsubscribe && unsubscribe());
+        return () => {
+            setTimeout(() => {
+                unsubscribes.forEach((unsubscribe) => unsubscribe && unsubscribe());
+            }, 0);
+        };
     }, []);
 
     const stats = useMemo(() => ({
@@ -424,11 +470,15 @@ const AdminDashboard = () => {
                         <div className="rounded-[1.5rem] sm:rounded-[2.5rem] bg-gradient-to-br from-brand-dark to-slate-800 p-4 sm:p-6 text-white shadow-2xl shadow-brand-dark/20 relative overflow-hidden group/profile">
                             <div className="absolute top-0 right-0 w-24 sm:w-32 h-24 sm:h-32 bg-white/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover/profile:bg-brand-gold/10 transition-colors duration-700" />
                             <div className="flex items-center gap-3 sm:gap-4 relative z-10">
-                                <div className="flex h-10 w-10 sm:h-14 sm:w-14 shrink-0 items-center justify-center rounded-xl sm:rounded-2xl bg-white/10 backdrop-blur ring-1 ring-white/20 text-base sm:text-xl font-black text-brand-gold shadow-lg">
-                                    {currentUser.user?.charAt(0).toUpperCase() || 'YG'}
+                                <div className="flex h-10 w-10 sm:h-14 sm:w-14 shrink-0 items-center justify-center rounded-xl sm:rounded-2xl bg-white/10 backdrop-blur ring-1 ring-white/20 text-base sm:text-xl font-black text-brand-gold shadow-lg overflow-hidden">
+                                    {profilePhotoUrl ? (
+                                        <img src={profilePhotoUrl} alt="Admin" className="w-full h-full object-cover" />
+                                    ) : (
+                                        (userProfile?.name || currentUser?.displayName || currentUser?.email)?.charAt(0).toUpperCase() || 'YG'
+                                    )}
                                 </div>
                                 <div className="min-w-0">
-                                    <div className="truncate text-base sm:text-lg font-black tracking-tight">Yatra Go</div>
+                                    <div className="truncate text-base sm:text-lg font-black tracking-tight">{userProfile?.name || currentUser?.displayName || 'Yatra Go Admin'}</div>
                                     <div className="mt-0.5 sm:mt-1 truncate text-[10px] text-slate-300 font-bold">{currentUser.email}</div>
                                 </div>
                             </div>
@@ -830,33 +880,89 @@ const AdminDashboard = () => {
 
                                 <ScrollReveal direction="up" delay={0.3}>
                                     <div className="rounded-2xl sm:rounded-3xl border border-white bg-white/70 p-5 sm:p-7 lg:p-10 shadow-3xl shadow-slate-200/30 backdrop-blur-2xl relative accent-pattern">
-                                        <div className="flex items-center justify-between gap-3 mb-5 sm:mb-8 lg:mb-10">
-                                            <h2 className="text-lg sm:text-2xl font-serif font-black text-slate-950">Desk Atmosphere</h2>
-                                            <div className="rounded-full bg-brand-gold/10 px-2 sm:px-4 py-1 sm:py-1.5 text-[7px] sm:text-[9px] font-black uppercase tracking-widest text-brand-gold whitespace-nowrap text-center">Local Tuning</div>
+                                        <div className="flex items-center justify-between gap-3 mb-8 sm:mb-10">
+                                            <h2 className="text-lg sm:text-2xl font-serif font-black text-slate-950">Update Identity</h2>
+                                            <div className="rounded-full bg-brand-gold/10 px-4 py-1.5 text-[9px] font-black uppercase tracking-widest text-brand-gold">Passport Edit</div>
                                         </div>
-                                        <div className="space-y-2 sm:space-y-3 lg:space-y-4">
-                                            {preferenceCards.map((item) => (
-                                                <div key={item.key} className="flex items-center justify-between gap-3 sm:gap-5 rounded-lg sm:rounded-xl lg:rounded-[2.5rem] border border-slate-200 bg-white/60 p-3 sm:p-4 lg:p-6 backdrop-blur transition-all duration-300 hover:border-brand-gold/20">
-                                                    <div className="flex gap-3 sm:gap-4 lg:gap-5 items-center">
-                                                        <div className="flex h-9 sm:h-10 lg:h-12 w-9 sm:w-10 lg:w-12 shrink-0 items-center justify-center rounded-lg sm:rounded-lg lg:rounded-2xl bg-slate-950 text-brand-gold shadow-lg">
-                                                            <item.icon size={14} sm:size={16} lg:size={20} />
-                                                        </div>
-                                                        <div className="min-w-0">
-                                                            <div className="text-xs sm:text-sm lg:text-base font-black text-slate-900">{item.title}</div>
-                                                            <p className="mt-0.5 text-[8px] sm:text-[10px] lg:text-[11px] font-medium text-slate-700 line-clamp-1 italic">{item.description}</p>
-                                                        </div>
-                                                    </div>
-                                                    <button
-                                                        type="button"
-                                                        onClick={() => toggleAdminSetting(item.key)}
-                                                        className={`relative h-6 sm:h-7 lg:h-8 w-11 sm:w-12 lg:w-14 shrink-0 rounded-full transition-all duration-500 shadow-inner ${adminSettings[item.key] ? 'bg-brand-gold' : 'bg-slate-200'}`}
-                                                    >
-                                                        <span
-                                                            className={`absolute top-1 sm:top-1.5 h-4 sm:h-5 lg:h-5 w-4 sm:w-5 lg:w-5 rounded-full bg-white shadow-xl transition-all duration-500 ${adminSettings[item.key] ? 'left-5 sm:left-6 lg:left-7' : 'left-1'}`}
+
+                                        <form onSubmit={handleProfileSave} className="space-y-6">
+                                            <div className="space-y-4">
+                                                <div className="space-y-2">
+                                                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 ml-2">Official Name</label>
+                                                    <div className="relative group">
+                                                        <UserCheck className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-300 group-focus-within:text-brand-gold transition-colors" size={18} />
+                                                        <input
+                                                            type="text"
+                                                            value={profileForm.name}
+                                                            onChange={(e) => setProfileForm({...profileForm, name: e.target.value})}
+                                                            className="w-full rounded-2xl border border-slate-100 bg-white pl-12 pr-6 py-4 text-sm font-bold outline-none transition-all focus:border-brand-gold focus:ring-4 focus:ring-brand-gold/5"
+                                                            placeholder="Full Administrative Name"
+                                                            required
                                                         />
-                                                    </button>
+                                                    </div>
                                                 </div>
-                                            ))}
+
+                                                <div className="space-y-2">
+                                                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 ml-2">Secure Phone</label>
+                                                    <div className="relative group">
+                                                        <Phone className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-300 group-focus-within:text-brand-gold transition-colors" size={18} />
+                                                        <input
+                                                            type="tel"
+                                                            value={profileForm.phone}
+                                                            onChange={(e) => setProfileForm({...profileForm, phone: e.target.value})}
+                                                            className="w-full rounded-2xl border border-slate-100 bg-white pl-12 pr-6 py-4 text-sm font-bold outline-none transition-all focus:border-brand-gold focus:ring-4 focus:ring-brand-gold/5"
+                                                            placeholder="+91 XXXXX XXXXX"
+                                                        />
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            {profileFeedback && (
+                                                <div className={`rounded-xl px-5 py-3 text-[10px] font-black uppercase tracking-widest flex items-center gap-3 ${profileFeedback.includes('successfully') ? 'bg-emerald-50 text-emerald-600 border border-emerald-100' : 'bg-rose-50 text-rose-500 border border-rose-100'}`}>
+                                                    {profileFeedback.includes('successfully') ? <BadgeCheck size={16} /> : <AlertTriangle size={16} />}
+                                                    {profileFeedback}
+                                                </div>
+                                            )}
+
+                                            <button
+                                                type="submit"
+                                                disabled={profileSaving}
+                                                className="w-full flex items-center justify-center gap-3 rounded-2xl bg-brand-dark text-white py-4 text-xs font-black uppercase tracking-widest hover:bg-brand-gold hover:text-brand-dark transition-all duration-300 shadow-xl shadow-brand-dark/10 disabled:opacity-50"
+                                            >
+                                                {profileSaving ? <RefreshCw className="animate-spin" size={18} /> : <ShieldCheck size={18} />}
+                                                {profileSaving ? 'Synchronizing...' : 'Save Profile Changes'}
+                                            </button>
+                                        </form>
+
+                                        <div className="mt-10 pt-10 border-t border-slate-100">
+                                            <div className="flex items-center justify-between gap-3 mb-6">
+                                                <h2 className="text-sm font-black uppercase tracking-widest text-slate-900">Desk Atmosphere</h2>
+                                                <div className="rounded-full bg-slate-100 px-3 py-1 text-[8px] font-black uppercase tracking-widest text-slate-500">UI Prefs</div>
+                                            </div>
+                                            <div className="space-y-3">
+                                                {preferenceCards.map((item) => (
+                                                    <div key={item.key} className="flex items-center justify-between gap-3 sm:gap-5 rounded-2xl border border-slate-100 bg-white/60 p-4 backdrop-blur transition-all duration-300 hover:border-brand-gold/20">
+                                                        <div className="flex gap-4 items-center">
+                                                            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-slate-950 text-brand-gold shadow-lg">
+                                                                <item.icon size={16} />
+                                                            </div>
+                                                            <div className="min-w-0">
+                                                                <div className="text-xs font-black text-slate-900">{item.title}</div>
+                                                                <p className="mt-0.5 text-[10px] font-medium text-slate-700 line-clamp-1 italic">{item.description}</p>
+                                                            </div>
+                                                        </div>
+                                                        <button
+                                                            type="button"
+                                                            onClick={() => toggleAdminSetting(item.key)}
+                                                            className={`relative h-6 w-11 shrink-0 rounded-full transition-all duration-500 shadow-inner ${adminSettings[item.key] ? 'bg-brand-gold' : 'bg-slate-200'}`}
+                                                        >
+                                                            <span
+                                                                className={`absolute top-1 h-4 w-4 rounded-full bg-white shadow-xl transition-all duration-500 ${adminSettings[item.key] ? 'left-6' : 'left-1'}`}
+                                                            />
+                                                        </button>
+                                                    </div>
+                                                ))}
+                                            </div>
                                         </div>
                                     </div>
                                 </ScrollReveal>

@@ -127,6 +127,7 @@ const ActivityDetails = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
 
     useEffect(() => {
+        if (!id) return;
         const found = ALL_ACTIVITIES.find(a => a.id === id);
         if (found) {
             setActivity(found);

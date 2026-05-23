@@ -53,12 +53,12 @@ const Navbar = () => {
                     region: 'Uttarakhand',
                     regionPath: '/tour-packages?region=Uttarakhand',
                     items: [
-                        { name: 'Char Dham Yatra', path: '/tour/char-dham-yatra', badge: 'Bestseller' },
+                        { name: 'Char Dham Yatra', path: '/chardham-yatra-from-haridwar', badge: 'Bestseller' },
                         { name: 'Rishikesh Adventure', path: '/tour/rishikesh-adventure-tour', badge: 'Trending' },
                         { name: 'Nainital Lake Tour', path: '/tour/nainital-lake-tour' },
                         { name: 'Mussoorie Hill Escape', path: '/tour/mussoorie-hill-escape' },
                         { name: 'Jim Corbett Safari', path: '/tour/jim-corbett-wildlife-safari' },
-                        { name: 'Auli Snow Adventure', path: '/tour/auli-snow-adventure' },
+                        { name: 'Auli Snow Adventure', path: '/auli-tour-package' },
                         { name: 'Haridwar Spiritual Tour', path: '/tour/haridwar-spiritual-sojourn' },
                     ]
                 },
@@ -82,7 +82,7 @@ const Navbar = () => {
             path: '#',
             dropdown: [
                 { name: 'Travel Blog', path: '/blog' },
-                { name: 'Car Rental', path: '/services/car-rental' },
+                { name: 'Car Rental', path: '/haridwar-taxi-service' },
                 { name: 'Bike Rental', path: '/services/bike-rental' },
                 { name: 'Hotel Booking', path: '/services/hotel' }
             ]
@@ -318,35 +318,37 @@ const Navbar = () => {
                     <AnimatePresence>
                         {isMobileMenuOpen && (
                             <motion.div
-                                initial={{ opacity: 0, y: -20, scale: 0.95 }}
+                                initial={{ opacity: 0, y: -10, scale: 0.98 }}
                                 animate={{ opacity: 1, y: 0, scale: 1 }}
-                                exit={{ opacity: 0, y: -20, scale: 0.95 }}
-                                transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                                className="lg:hidden absolute inset-x-0 top-full overflow-hidden border-b border-slate-200 bg-white/98 shadow-2xl backdrop-blur-3xl z-[130] max-h-[85vh] flex flex-col"
+                                exit={{ opacity: 0, y: -10, scale: 0.98 }}
+                                transition={{ type: "spring", stiffness: 400, damping: 35 }}
+                                className="lg:hidden absolute inset-x-0 top-full border-b border-slate-200 bg-white shadow-2xl z-[130] max-h-[calc(100vh-80px)] overflow-y-auto flex flex-col"
                             >
-                                <div className="px-5 sm:px-6 py-6 sm:py-8 flex flex-col overflow-y-auto w-full">
-                                    <div className="mb-6 sm:mb-8 flex flex-col gap-4 border-b border-slate-200/50 pb-6 sm:pb-8">
-                                        <a href="tel:+918979931256" className="flex items-center justify-center gap-3 py-3.5 sm:py-4 rounded-xl sm:rounded-2xl bg-slate-50 text-sm sm:text-base font-black text-slate-900 border border-slate-200/80 shadow-sm">
-                                            <Phone size={16} className="text-brand-gold sm:w-5 sm:h-5" /> +91 89799 31256
+                                <div className="px-4 py-4 sm:p-6 flex flex-col w-full">
+                                    {/* Compact Quick Contact Row */}
+                                    <div className="mb-4 flex items-center justify-between gap-3 border-b border-slate-100 pb-3">
+                                        <a href="tel:+918979931256" className="flex items-center gap-2 px-3 py-2 rounded-xl bg-slate-50 text-[11px] font-black text-slate-900 border border-slate-200/50 shadow-sm leading-none">
+                                            <Phone size={12} className="text-brand-gold" /> +91 89799 31256
                                         </a>
-                                        <div className="flex justify-center gap-4 sm:gap-6 text-slate-400">
-                                            <a href="https://www.facebook.com/profile.php?id=61570195815554" className="w-11 h-11 sm:w-12 sm:h-12 rounded-[14px] sm:rounded-xl bg-slate-50 flex items-center justify-center hover:text-brand-gold border border-slate-100"><Facebook size={18} className="sm:w-5 sm:h-5" /></a>
-                                            <a href="https://www.instagram.com/yatrago_official/" className="w-11 h-11 sm:w-12 sm:h-12 rounded-[14px] sm:rounded-xl bg-slate-50 flex items-center justify-center hover:text-brand-gold border border-slate-100"><Instagram size={18} className="sm:w-5 sm:h-5" /></a>
-                                            <a href="https://www.youtube.com/@YatraGo-q4o" className="w-11 h-11 sm:w-12 sm:h-12 rounded-[14px] sm:rounded-xl bg-slate-50 flex items-center justify-center hover:text-brand-gold border border-slate-100"><Youtube size={18} className="sm:w-5 sm:h-5" /></a>
+                                        <div className="flex gap-2 text-slate-400">
+                                            <a href="https://www.facebook.com/profile.php?id=61570195815554" className="w-8 h-8 rounded-lg bg-slate-50 flex items-center justify-center hover:text-brand-gold border border-slate-100"><Facebook size={14} /></a>
+                                            <a href="https://www.instagram.com/yatrago_official/" className="w-8 h-8 rounded-lg bg-slate-50 flex items-center justify-center hover:text-brand-gold border border-slate-100"><Instagram size={14} /></a>
+                                            <a href="https://www.youtube.com/@YatraGo-q4o" className="w-8 h-8 rounded-lg bg-slate-50 flex items-center justify-center hover:text-brand-gold border border-slate-100"><Youtube size={14} /></a>
                                         </div>
                                     </div>
 
+                                    {/* Navigation Links */}
                                     <div className="space-y-1">
                                         {navLinks.map((link) => (
                                             <div key={link.name} className="w-full">
                                                 <div
-                                                    className={`flex justify-between items-center w-full rounded-[14px] sm:rounded-2xl px-4 py-3.5 sm:py-4 text-xs sm:text-sm font-black uppercase tracking-[0.15em] sm:tracking-[0.2em] transition-all
-                                                ${isActive(link.path) ? 'bg-brand-gold text-brand-dark shadow-md sm:shadow-lg' : 'text-slate-600 hover:bg-slate-50 active:bg-slate-50'}`}
+                                                    className={`flex justify-between items-center w-full rounded-xl px-4 py-2.5 text-[11px] sm:text-xs font-black uppercase tracking-[0.15em] sm:tracking-[0.2em] transition-all cursor-pointer
+                                                ${isActive(link.path) ? 'bg-brand-gold text-brand-dark shadow-sm' : 'text-slate-600 hover:bg-slate-50 active:bg-slate-50'}`}
                                                     onClick={() => (link.dropdown || link.megaMenu) ? toggleDropdown(link.name) : setIsMobileMenuOpen(false)}
                                                 >
                                                     <Link to={(link.dropdown || link.megaMenu) ? '#' : link.path} className="flex-1">{link.name}</Link>
                                                     {(link.dropdown || link.megaMenu) && (
-                                                        <ChevronDown size={16} className={`sm:w-[18px] sm:h-[18px] transition-transform duration-500 ${openDropdowns[link.name] ? 'rotate-180 text-brand-gold' : ''}`} />
+                                                        <ChevronDown size={14} className={`transition-transform duration-500 ${openDropdowns[link.name] ? 'rotate-180 text-brand-gold' : ''}`} />
                                                     )}
                                                 </div>
 
@@ -356,15 +358,15 @@ const Navbar = () => {
                                                             initial={{ opacity: 0, height: 0 }}
                                                             animate={{ opacity: 1, height: 'auto' }}
                                                             exit={{ opacity: 0, height: 0 }}
-                                                            className="overflow-hidden bg-slate-50/50 rounded-[14px] sm:rounded-2xl mt-1 border border-slate-100/50"
+                                                            className="overflow-hidden bg-slate-50/50 rounded-xl mt-1 border border-slate-100/50"
                                                         >
                                                             {link.megaMenu ? link.megaMenu.map((group) => (
-                                                                <div key={group.region} className="border-b border-slate-200/50 last:border-0 p-4">
-                                                                    <div className="pl-2 text-[9px] font-black uppercase tracking-[0.2em] text-brand-gold mb-2">{group.region}</div>
+                                                                <div key={group.region} className="border-b border-slate-200/50 last:border-0 p-2 sm:p-3">
+                                                                    <div className="pl-2 text-[9px] font-black uppercase tracking-[0.2em] text-brand-gold mb-1.5">{group.region}</div>
                                                                     {group.items.map(item => (
                                                                         <Link key={item.name} to={item.path}
                                                                             onClick={() => setIsMobileMenuOpen(false)}
-                                                                            className="flex items-center justify-between rounded-xl px-4 py-2.5 text-xs font-bold text-slate-600 hover:text-brand-dark hover:bg-white transition-all">
+                                                                            className="flex items-center justify-between rounded-lg px-3 py-2 text-[11px] font-bold text-slate-600 hover:text-brand-dark hover:bg-white transition-all">
                                                                             <span>{item.name}</span>
                                                                             {item.badge && <span className="rounded-full bg-brand-gold/20 px-2 py-0.5 text-[8px] font-black text-brand-gold">{item.badge}</span>}
                                                                         </Link>
@@ -375,7 +377,7 @@ const Navbar = () => {
                                                                     key={subItem.name}
                                                                     to={subItem.path}
                                                                     onClick={() => setIsMobileMenuOpen(false)}
-                                                                    className="block px-6 py-3.5 text-xs font-bold text-slate-600 hover:text-brand-dark hover:bg-white transition-all border-b border-slate-100 last:border-0"
+                                                                    className="block px-6 py-2.5 text-[11px] font-bold text-slate-600 hover:text-brand-dark hover:bg-white transition-all border-b border-slate-100 last:border-0"
                                                                 >
                                                                     {subItem.name}
                                                                 </Link>
@@ -387,33 +389,34 @@ const Navbar = () => {
                                         ))}
                                     </div>
 
-                                    <div className="flex flex-col gap-3 py-6 mt-2 border-t border-slate-100">
+                                    {/* Action Buttons */}
+                                    <div className="flex flex-col gap-2.5 py-4 mt-2 border-t border-slate-100">
                                         {currentUser ? (
                                             <>
                                                 <Link 
                                                     to={isAdmin ? '/admin/dashboard' : '/dashboard'}
                                                     onClick={() => setIsMobileMenuOpen(false)}
-                                                    className="w-full rounded-[14px] sm:rounded-2xl bg-brand-dark px-5 sm:px-6 py-4 sm:py-5 text-xs sm:text-sm font-black uppercase tracking-[0.15em] sm:tracking-[0.2em] text-white shadow-xl shadow-brand-dark/20 flex items-center justify-center gap-2"
+                                                    className="w-full rounded-xl bg-brand-dark px-5 py-3 text-[11px] sm:text-xs font-black uppercase tracking-[0.15em] sm:tracking-[0.2em] text-white shadow-md flex items-center justify-center gap-2"
                                                 >
-                                                    <Sparkles size={16} className="text-brand-gold animate-pulse sm:w-5 sm:h-5" />
+                                                    <Sparkles size={14} className="text-brand-gold animate-pulse" />
                                                     {isAdmin ? 'Admin Panel' : 'My Lounge'}
                                                 </Link>
                                                 <button
                                                     onClick={() => setLogoutPopupOpen(true)}
-                                                    className="w-full rounded-[14px] sm:rounded-2xl bg-rose-50 px-5 sm:px-6 py-4 sm:py-5 text-xs sm:text-sm font-black uppercase tracking-[0.15em] sm:tracking-[0.2em] text-rose-500 border border-rose-100 flex items-center justify-center gap-2"
+                                                    className="w-full rounded-xl bg-rose-50 px-5 py-3 text-[11px] sm:text-xs font-black uppercase tracking-[0.15em] sm:tracking-[0.2em] text-rose-500 border border-rose-100 flex items-center justify-center gap-2"
                                                 >
-                                                    <LogOut size={16} className="sm:w-5 sm:h-5" /> Logout Account
+                                                    <LogOut size={14} /> Logout Account
                                                 </button>
                                             </>
                                         ) : (
-                                            <div className="grid grid-cols-2 gap-3 sm:gap-4">
-                                                <button onClick={() => { setIsMobileMenuOpen(false); setBookingModalOpen(true); }} className="rounded-[14px] sm:rounded-2xl border border-slate-200 py-3.5 sm:py-5 text-center text-xs sm:text-sm font-black uppercase tracking-[0.15em] sm:tracking-[0.2em] text-slate-500 hover:bg-slate-50 active:scale-95 transition-all shadow-sm">
+                                            <div className="grid grid-cols-2 gap-3">
+                                                <button onClick={() => { setIsMobileMenuOpen(false); setBookingModalOpen(true); }} className="rounded-xl border border-slate-200 py-3 text-center text-[11px] sm:text-xs font-black uppercase tracking-[0.15em] sm:tracking-[0.2em] text-slate-500 hover:bg-slate-50 active:scale-95 transition-all shadow-sm">
                                                     Enquire
                                                 </button>
                                                 <Link
                                                     to="/login"
                                                     onClick={() => setIsMobileMenuOpen(false)}
-                                                    className="rounded-[14px] sm:rounded-2xl bg-brand-gold py-3.5 sm:py-5 text-center text-xs sm:text-sm font-black uppercase tracking-[0.15em] sm:tracking-[0.2em] text-brand-dark shadow-xl shadow-brand-gold/20 active:scale-95 transition-all"
+                                                    className="rounded-xl bg-brand-gold py-3 text-center text-[11px] sm:text-xs font-black uppercase tracking-[0.15em] sm:tracking-[0.2em] text-brand-dark shadow-md active:scale-95 transition-all"
                                                 >
                                                     Login
                                                 </Link>

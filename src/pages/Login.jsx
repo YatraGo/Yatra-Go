@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { auth, db, isFirebaseConfigured } from '../firebase/config';
-import { signInWithEmailAndPassword, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, signOut } from 'firebase/auth';
 import { doc, setDoc, serverTimestamp } from 'firebase/firestore';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import { Button } from '../components/ui';
 import { Lock, Mail, User, ShieldCheck, Sparkles, ArrowRight, Compass } from 'lucide-react';
 import { getDefaultRoleForEmail } from '../lib/userProfile';
@@ -19,13 +19,27 @@ const Login = () => {
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
     const [googleLoading, setGoogleLoading] = useState(false);
-    const { currentUser, isAdmin } = useAuth();
+    const { currentUser, isAdmin, loading: authLoading } = useAuth();
     const navigate = useNavigate();
+    const getAuthErrorMessage = (code) => {
+        const messages = {
+            'auth/user-not-found': 'Wrong email/password.',
+            'auth/wrong-password': 'Wrong email/password.',
+            'auth/invalid-credential': 'Wrong email/password.',
+            'auth/invalid-email': 'Please enter a valid email address.',
+            'auth/email-already-in-use': 'This email is already registered. Please login instead.',
+            'auth/weak-password': 'Password must be at least 6 characters.',
+            'auth/too-many-requests': 'Too many attempts. Please try again after some time.',
+            'auth/network-request-failed': 'Network issue. Please check internet and try again.',
+            'permission-denied': 'Unable to complete request right now. Please try again.',
+        };
+        return messages[code] || 'Unable to continue right now. Please try again.';
+    };
 
     // Redirect if already logged in
+    if (authLoading) return null;
     if (currentUser) {
-        navigate(isAdmin ? '/admin/dashboard' : '/dashboard');
-        return null;
+        return <Navigate to={isAdmin ? '/admin/dashboard' : '/dashboard'} replace />;
     }
 
     const handleSubmit = async (e) => {
@@ -39,6 +53,7 @@ const Login = () => {
 
         setLoading(true);
 
+        let createdUser = null;
         try {
             if (isLogin) {
                 await signInWithEmailAndPassword(auth, email, password);
@@ -51,9 +66,10 @@ const Login = () => {
             } else {
                 const role = getDefaultRoleForEmail(email);
                 const { user } = await createUserWithEmailAndPassword(auth, email, password);
+                createdUser = user;
                 // Create user profile in Firestore
                 await setDoc(doc(db, 'users', user.uid), {
-                    name,
+                    name: name.trim(),
                     email,
                     phone: '',
                     role,
@@ -64,7 +80,7 @@ const Login = () => {
                 try {
                     await notifyAdminOfRegistration({
                         userId: user.uid,
-                        name,
+                        name: name.trim(),
                         email,
                         phone: '',
                         role,
@@ -75,13 +91,24 @@ const Login = () => {
 
                 const nextPath = role === 'admin' ? '/admin/dashboard' : '/dashboard';
                 window.sessionStorage.setItem('yatrago-auth-popup', JSON.stringify({
-                    title: 'Registration Complete',
-                    message: 'Your Yatra Go explorer profile is active.',
+                    title: 'Registration Successful',
+                    message: 'Welcome aboard. Your premium travel dashboard is now ready.',
                 }));
                 navigate(nextPath);
             }
         } catch (err) {
-            setError(err.message?.includes('auth/') ? 'Invalid credentials. Please verify your email and password.' : err.message);
+            if (!isLogin && createdUser) {
+                try {
+                    await createdUser.delete();
+                } catch {
+                    try {
+                        await signOut(auth);
+                    } catch {
+                        // Ignore cleanup error
+                    }
+                }
+            }
+            setError(getAuthErrorMessage(err.code));
         } finally {
             setLoading(false);
         }

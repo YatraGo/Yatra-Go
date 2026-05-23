@@ -635,6 +635,7 @@ export const ACTIVITIES = [
         price: '799/person',
         img: 'public/assets/R5.jpg',
         desc: 'Grade II-V rapids on the holy Ganga through scenic gorges',
+        path: '/activity/river-rafting',
     },
     {
         name: 'Camping',
@@ -642,6 +643,7 @@ export const ACTIVITIES = [
         price: '₹1,299/person',
         img: 'public/assets/Camping Y.png',
         desc: 'Riverside tents, bonfire & stargazing in Himalayan foothills',
+        path: '/activity/camping',
     },
     {
         name: 'Bungee Jumping',
@@ -649,6 +651,7 @@ export const ACTIVITIES = [
         price: '₹3,500/person',
         img: 'public/assets/Bungee.png',
         desc: '83m freefall India\'s highest commercial bungee jump',
+        path: '/activity/bungee-jumping',
     },
     {
         name: 'Paragliding',
@@ -656,6 +659,7 @@ export const ACTIVITIES = [
         price: '₹2,000/person',
         img: 'public/assets/Paragliding.png',
         desc: 'Soar over Himalayan valleys in a tandem paragliding flight',
+        path: '/activity/paragliding',
     },
     {
         name: 'Zip-Lining',
@@ -663,6 +667,7 @@ export const ACTIVITIES = [
         price: '₹3,999/person',
         img: 'public/assets/Zip 1.png',
         desc: 'Fly across the churning Ganga river at high speed on our 400-meter zip-line.',
+        path: '/activity/zip-lining',
     },
     {
         name: 'Bike Rentals',
@@ -670,7 +675,7 @@ export const ACTIVITIES = [
         price: '₹600/Day',
         img: 'public/assets/Bike Rental.png',
         desc: 'Rent a classic bicycle for exploring the scenic beauty of Rishikesh.',
-        src: 'https://www.yatrago.com/activities/bike-rental',
+        path: '/services/bike-rental',
     },
 ].map(normalizeAssetFields);
 

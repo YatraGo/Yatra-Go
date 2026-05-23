@@ -1,9 +1,7 @@
-import { GoogleGenAI } from '@google/genai';
 import { ALL_PACKAGES } from '../data/packages';
 
 export const itineraryBuilderConfig = {
-    apiKey: import.meta.env.VITE_ITINERARY_BUILDER_API_KEY,
-    model: import.meta.env.VITE_ITINERARY_BUILDER_MODEL || 'gemini-2.5-flash',
+    model: import.meta.env.VITE_ITINERARY_BUILDER_MODEL || 'gemini-3.1-flash-lite',
 };
 
 const DESTINATION_IMAGES = [
@@ -22,7 +20,6 @@ const fallbackGallery = [
     'public/assets/Mussoorie 4.png',
 ];
 
-// Helicopter-eligible Uttarakhand destinations
 export const HELICOPTER_ELIGIBLE_DESTINATIONS = [
     'kedarnath', 'badrinath', 'chardham', 'char dham', 'gangotri',
     'yamunotri', 'hemkund sahib', 'hemkund', 'uttarakhand', 'do dham',
@@ -54,7 +51,7 @@ const buildKnowledge = (destination) => {
     }).slice(0, 4);
 
     if (!matches.length) {
-        return 'No exact Yatra Go package match found. Build a realistic India itinerary with practical travel pacing and premium formatting.';
+        return 'No exact Yatra Go package match found. Keep plan practical and region-realistic.';
     }
 
     return matches.map((pkg) => (
@@ -75,126 +72,216 @@ export const buildPhotoGallery = (destination, itineraryDays = []) => {
         images.push(destImg);
     }
 
-    const cities = [...new Set(itineraryDays.map(d => d.city).filter(Boolean))];
-    cities.forEach(city => {
+    const cities = [...new Set(itineraryDays.map((d) => d.city).filter(Boolean))];
+    cities.forEach((city) => {
         const img = getDestinationImage(city);
         if (img && !img.includes('unsplash.com/photo-1500530855697-b586d89ba3ee') && !images.includes(img)) {
             images.push(img);
         }
     });
 
-    if (images.length < 3) {
-        while (images.length < 4) {
-            const fallback = fallbackGallery[images.length % fallbackGallery.length];
-            if (!images.includes(fallback)) {
-                images.push(fallback);
-            } else {
-                break;
-            }
-        }
+    while (images.length < 4) {
+        const fallback = fallbackGallery[images.length % fallbackGallery.length];
+        if (!images.includes(fallback)) images.push(fallback);
+        else break;
     }
 
     return images.slice(0, 6);
 };
 
-const buildHelicopterInstructions = (destination, tripDays) => `
-HELICOPTER MODE INSTRUCTIONS (VERY IMPORTANT):
-- This is a HELICOPTER-based pilgrimage itinerary to ${destination}.
-- Day transfers to the shrine (Kedarnath/Badrinath/etc.) must specify HELICOPTER from the nearest helipad (e.g., Phata, Sersi, Sitapur for Kedarnath; Badrinath has road access primarily).
-- Include specific details: helipad names, flight duration (~8-12 mins Kedarnath), morning departure slots (typically 6:30-7:30 AM).
-- The "mode" field in route legs should say "Helicopter" for shrine-approach legs.
-- Do NOT include long trekking distances for the main shrine visit leg.
-- Do include: check-in at helipad base camp, early morning helicopter boarding, VIP darshan upon arrival, return helicopter in afternoon.
-- travelMode field in JSON must be "By Helicopter ✈️".
-`;
+const TEMPLATE_LIBRARY = {
+    kedarnath: {
+        matcher: /(kedarnath|kedar|gaurikund|sonprayag|phata)/i,
+        title: 'Kedarnath Spiritual Expedition',
+        subtitle: 'Sacred Himalayan darshan with premium support',
+        bestTime: 'May to June and September to October',
+        hotelStyle: 'Pilgrimage Comfort Hotels and Riverside Stays',
+        highlights: [
+            'Balanced darshan and rest cadence',
+            'Reliable road-head planning with buffers',
+            'Senior-friendly operational pacing',
+            'Flexible comfort and budget tiers',
+        ],
+        notes: [
+            'Start early to avoid weather disruptions.',
+            'Carry rain and cold layers in all seasons.',
+            'Keep ID and registration documents ready.',
+            'Hydrate and pace activity at altitude.',
+        ],
+        dayThemes: ['Arrival and briefing', 'Transfer and preparation', 'Darshan focus day', 'Return and recovery', 'Departure transfer'],
+    },
+    rishikesh: {
+        matcher: /(rishikesh|shivpuri|ganga rafting|laxman jhula|neelkanth)/i,
+        title: 'Rishikesh Adventure and Wellness Escape',
+        subtitle: 'Thrill, spirituality, and riverside leisure',
+        bestTime: 'September to April',
+        hotelStyle: 'Riverside Resorts and Boutique Retreats',
+        highlights: [
+            'Adventure blocks with safe time slots',
+            'Balanced yoga and sightseeing windows',
+            'Family and couple friendly pacing',
+            'Low-fatigue transfer flow',
+        ],
+        notes: [
+            'Book rafting slots early during peak days.',
+            'Use quick-dry clothing for activities.',
+            'Keep one lighter day between thrill activities.',
+            'Confirm weather before river activities.',
+        ],
+        dayThemes: ['Arrival and Ganga aarti', 'Adventure and rafting day', 'Wellness and cafe circuit', 'Leisure and departure'],
+    },
+    chardham: {
+        matcher: /(char dham|chardham|yamunotri|gangotri|kedarnath|badrinath)/i,
+        title: 'Char Dham Grand Pilgrimage Circuit',
+        subtitle: 'Structured four-shrine journey with disciplined operations',
+        bestTime: 'May to June and September to October',
+        hotelStyle: 'Route-Optimized Pilgrimage Hotels and Camps',
+        highlights: [
+            'Logical shrine sequence to save travel strain',
+            'Buffer-based mountain transfer planning',
+            'Temple windows aligned with route operations',
+            'Flexible support for senior travelers',
+        ],
+        notes: [
+            'Road and weather may affect daily timings.',
+            'Carry altitude-safe essentials and medicines.',
+            'Start transfers early for each sector.',
+            'Keep permit and ID documents accessible.',
+        ],
+        dayThemes: ['Arrival and yatra briefing', 'Yamunotri sector', 'Gangotri sector', 'Kedarnath base sector', 'Kedarnath darshan sector', 'Badrinath sector', 'Return sector'],
+    },
+};
 
-const buildRoadInstructions = (destination, tripDays) => `
-ROAD + TREK MODE INSTRUCTIONS (VERY IMPORTANT):
-- This is a BY ROAD + TREK itinerary to ${destination}.
-- Day transfers to the shrine use private vehicles (AC Sedan/SUV) to the road-head, then proceed on foot/pony/palki.
-- Include specific trekking distances: Kedarnath = 16km trek from Gaurikund; Yamunotri = 6km trek from Janki Chatti; Gangotri is road-accessible.
-- The "mode" field in route legs should say "Road + Trek" or "AC Vehicle" as appropriate.
-- Include practical road-head location names, pony/palki cost notes, and trek preparation tips.
-- travelMode field in JSON must be "By Road & Trek 🚗".
-`;
+const DEFAULT_TEMPLATE = {
+    title: 'Premium Himalayan Discovery',
+    subtitle: 'Curated journey with practical and polished execution',
+    bestTime: 'Year-round (destination dependent)',
+    hotelStyle: 'Premium Boutiques and Verified Comfort Stays',
+    highlights: [
+        'Template-first planning for consistency',
+        'Personalized activity and comfort options',
+        'Balanced sightseeing and rest windows',
+        'Professional route sequencing',
+    ],
+    notes: [
+        'Keep weather-appropriate layers ready.',
+        'Carry valid IDs and booking confirmations.',
+        'Confirm activity windows one day before.',
+        'Maintain hydration in long travel sectors.',
+    ],
+    dayThemes: ['Arrival and orientation', 'Core sightseeing day', 'Activity and culture day', 'Return and departure'],
+};
+
+const pickTemplate = (destination = '') => {
+    if (TEMPLATE_LIBRARY.kedarnath.matcher.test(destination)) return TEMPLATE_LIBRARY.kedarnath;
+    if (TEMPLATE_LIBRARY.chardham.matcher.test(destination)) return TEMPLATE_LIBRARY.chardham;
+    if (TEMPLATE_LIBRARY.rishikesh.matcher.test(destination)) return TEMPLATE_LIBRARY.rishikesh;
+    return DEFAULT_TEMPLATE;
+};
+
+const buildTemplateItinerary = ({ destination, origin, tripDays, isHelicopter }) => {
+    const template = pickTemplate(destination);
+    const travelMode = isHelicopter ? 'By Helicopter' : 'By Road & Trek';
+
+    const days = Array.from({ length: tripDays }, (_, idx) => {
+        const dayNumber = idx + 1;
+        const theme = template.dayThemes[idx % template.dayThemes.length];
+        return {
+            dayNumber,
+            title: `Day ${dayNumber}: ${theme}`,
+            city: destination,
+            summary: `${theme} for ${destination} with practical pacing and premium support approach.`,
+            morning: ['Breakfast and briefing', 'Primary experience segment'],
+            afternoon: ['Sightseeing or activity block', 'Transit and rest alignment'],
+            evening: ['Leisure and local exploration', 'Dinner and next-day prep'],
+            stay: dayNumber === tripDays ? 'Departure day' : template.hotelStyle,
+            mealPlan: 'Breakfast & Dinner',
+            travelNotes: isHelicopter
+                ? 'Maintain reporting buffer for helipad operations and weather checks.'
+                : 'Start early for road sectors and maintain mountain travel buffer.',
+        };
+    });
+
+    const route = Array.from({ length: tripDays }, (_, idx) => ({
+        day: idx + 1,
+        from: idx === 0 ? (origin || destination) : destination,
+        to: destination,
+        mode: isHelicopter ? 'Helicopter + Ground Support' : 'AC Vehicle',
+        distance: isHelicopter && idx === 1 ? 'Flight sector where applicable' : 'Road sector as per route',
+    }));
+
+    return {
+        title: template.title,
+        subtitle: template.subtitle,
+        overview: `${destination} itinerary built on a professional template, then refined for your days, mode, and comfort profile.`,
+        bestTime: template.bestTime,
+        travelMode,
+        hotelStyle: template.hotelStyle,
+        highlights: template.highlights,
+        essentialNotes: template.notes,
+        route,
+        days,
+    };
+};
 
 export const generateItinerary = async ({ destination, origin, days, travelMode = 'road' }) => {
-    if (!itineraryBuilderConfig.apiKey) {
-        throw new Error('Missing itinerary builder API key.');
-    }
-
     const tripDays = sanitizeDays(days);
-    const ai = new GoogleGenAI({ apiKey: itineraryBuilderConfig.apiKey });
     const isHelicopter = travelMode === 'helicopter' && isHelicopterEligible(destination);
-
-    const modeInstructions = isHelicopter
-        ? buildHelicopterInstructions(destination, tripDays)
-        : buildRoadInstructions(destination, tripDays);
+    const baseTemplate = buildTemplateItinerary({ destination, origin, tripDays, isHelicopter });
 
     const prompt = `
-You are Yatra Go's lead travel strategist. Your goal is to create a professional, spacious, and premium travel itinerary.
+You are Yatra Go's itinerary personalizer.
+Do not create from scratch. Refine the given template only.
 
 Trip details:
 - Destination: ${destination}
 - Starting Location: ${origin}
 - Number of days: ${tripDays}
-- Travel Mode Selected: ${isHelicopter ? 'By Helicopter' : 'By Road & Trek'}
+- Travel Mode: ${isHelicopter ? 'By Helicopter' : 'By Road & Trek'}
 
-${modeInstructions}
+Personalization goals:
+- optimize day pacing and date-sensitivity
+- personalize activity mix and comfort level
+- adjust plan to be budget-practical
+- reduce hallucinations and keep route realistic
 
-General Instructions:
-1. PROFESSIONALISM: Use clear, punchy, and high-impact language. Avoid long-winded paragraphs.
-2. SPACING: Ensure summaries and activity lists are concise (max 2-3 items per slot).
-3. ROUTE LOGISTICS: Provide a clear transfer flow from the origin to the destination and back, and between cities.
-4. JSON FORMAT ONLY: No markdown, no extra text.
+Return strict JSON only with same shape.
 
-JSON shape:
-{
-  "title": "A premium and engaging title (mention helicopter if applicable)",
-  "subtitle": "Short 1-line tag line",
-  "overview": "Professional 2-3 sentence overview of the journey",
-  "bestTime": "string",
-  "travelMode": "string — must reflect helicopter or road as instructed above",
-  "hotelStyle": "string (e.g., Premium Boutiques & Luxury Resorts)",
-  "highlights": ["3-4 concise high-impact points — include helicopter advantage if applicable"],
-  "essentialNotes": ["3-4 critical travel tips specific to the mode of travel"],
-  "route": [
-    {"day": 1, "from": "string", "to": "string", "mode": "string (Helicopter / AC Vehicle / Road + Trek)", "distance": "string (e.g., 250km or 16km trek or 12-min flight)"}
-  ],
-  "days": [
-    {
-      "dayNumber": 1,
-      "title": "Engaging day title",
-      "city": "Current city/stop",
-      "summary": "1-2 sentence focus for the day",
-      "morning": ["Point 1", "Point 2"],
-      "afternoon": ["Point 1", "Point 2"],
-      "evening": ["Point 1", "Point 2"],
-      "stay": "Premium Stay Name/Type",
-      "mealPlan": "Breakfast & Dinner typically",
-      "travelNotes": "Concise logistics tip relevant to the travel mode"
-    }
-  ]
-}
+Base template JSON:
+${JSON.stringify(baseTemplate, null, 2)}
 
-Context for the region:
+Context:
 ${buildKnowledge(destination)}
 `.trim();
 
-    const response = await ai.models.generateContent({
-        model: itineraryBuilderConfig.model,
-        config: {
-            temperature: 0.8,
-            topP: 0.95,
+    const response = await fetch('http://localhost:3001/api/itinerary', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
         },
-        contents: prompt,
+        body: JSON.stringify({ prompt }),
     });
 
-    const parsed = JSON.parse(extractJson(response.text || ''));
-    const gallery = buildPhotoGallery(destination, parsed.days || []);
+    let finalItinerary = baseTemplate;
+    if (response.ok) {
+        try {
+            const data = await response.json();
+            const parsed = JSON.parse(extractJson(data.text || ''));
+            finalItinerary = {
+                ...baseTemplate,
+                ...parsed,
+                route: Array.isArray(parsed.route) && parsed.route.length ? parsed.route : baseTemplate.route,
+                days: Array.isArray(parsed.days) && parsed.days.length ? parsed.days : baseTemplate.days,
+            };
+        } catch {
+            finalItinerary = baseTemplate;
+        }
+    }
+
+    const gallery = buildPhotoGallery(destination, finalItinerary.days || []);
 
     return {
-        ...parsed,
+        ...finalItinerary,
         destination,
         origin,
         daysCount: tripDays,

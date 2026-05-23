@@ -1,5 +1,5 @@
 import React, { Suspense, lazy } from 'react';
-import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -28,6 +28,17 @@ const PrivacyPolicy = lazy(() => import('./pages/legal/PrivacyPolicy.jsx'));
 const TermsConditions = lazy(() => import('./pages/legal/TermsConditions.jsx'));
 const ItineraryBuilder = lazy(() => import('./pages/ItineraryBuilder.jsx'));
 const ItineraryResult = lazy(() => import('./pages/ItineraryResult.jsx'));
+
+// SEO Optimized Landing Pages
+const ChardhamYatraSEO = lazy(() => import('./pages/ChardhamYatraSEO.jsx'));
+const KedarnathSEO = lazy(() => import('./pages/KedarnathSEO.jsx'));
+const RishikeshRaftingSEO = lazy(() => import('./pages/RishikeshRaftingSEO.jsx'));
+const HaridwarTaxiSEO = lazy(() => import('./pages/HaridwarTaxiSEO.jsx'));
+const AuliSEO = lazy(() => import('./pages/AuliSEO.jsx'));
+const ChoptaSEO = lazy(() => import('./pages/ChoptaSEO.jsx'));
+const BadrinathSEO = lazy(() => import('./pages/BadrinathSEO.jsx'));
+const DoDhamSEO = lazy(() => import('./pages/DoDhamSEO.jsx'));
+const RishikeshAdventureSEO = lazy(() => import('./pages/RishikeshAdventureSEO.jsx'));
 
 const PageLoader = () => (
   <div className="flex min-h-[60vh] items-center justify-center px-4">
@@ -74,7 +85,7 @@ const AdminLayout = ({ children }) => (
 
 function App() {
   return (
-    <HashRouter>
+    <BrowserRouter>
       <GlobalUiSounds />
       <ScrollToTop />
       <Routes>
@@ -98,6 +109,17 @@ function App() {
         <Route path="/itinerary-builder" element={<MainLayout><ItineraryBuilder /></MainLayout>} />
         <Route path="/itinerary/result" element={<MainLayout><ItineraryResult /></MainLayout>} />
 
+        {/* SEO Landing Page Routes */}
+        <Route path="/chardham-yatra-from-haridwar" element={<MainLayout><ChardhamYatraSEO /></MainLayout>} />
+        <Route path="/kedarnath-tour-package" element={<MainLayout><KedarnathSEO /></MainLayout>} />
+        <Route path="/rishikesh-river-rafting" element={<MainLayout><RishikeshRaftingSEO /></MainLayout>} />
+        <Route path="/haridwar-taxi-service" element={<MainLayout><HaridwarTaxiSEO /></MainLayout>} />
+        <Route path="/auli-tour-package" element={<MainLayout><AuliSEO /></MainLayout>} />
+        <Route path="/chopta-tour-package" element={<MainLayout><ChoptaSEO /></MainLayout>} />
+        <Route path="/badrinath-tour-package" element={<MainLayout><BadrinathSEO /></MainLayout>} />
+        <Route path="/dodham-yatra" element={<MainLayout><DoDhamSEO /></MainLayout>} />
+        <Route path="/rishikesh-adventure-activities" element={<MainLayout><RishikeshAdventureSEO /></MainLayout>} />
+
         <Route
           path="/admin/dashboard"
           element={
@@ -109,7 +131,7 @@ function App() {
           }
         />
       </Routes>
-    </HashRouter>
+    </BrowserRouter>
   );
 }
 

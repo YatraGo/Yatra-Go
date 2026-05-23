@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth, db, isFirebaseConfigured } from '../firebase/config';
-import { doc, getDoc } from 'firebase/firestore';
+import { doc, getDoc, onSnapshot } from 'firebase/firestore';
 import { ensureUserProfile, getAdminEmail, getDefaultRoleForEmail } from '../lib/userProfile';
 
 const AuthContext = createContext();
@@ -21,42 +21,47 @@ export const AuthProvider = ({ children }) => {
         }
 
         let isMounted = true;
-        let unsubscribe;
+        let unsubscribeAuth;
+        let unsubscribeProfile;
 
         try {
-            unsubscribe = onAuthStateChanged(auth, async (user) => {
+            unsubscribeAuth = onAuthStateChanged(auth, async (user) => {
                 if (!isMounted) return;
 
                 if (user) {
                     setCurrentUser(user);
-                    try {
-                        await ensureUserProfile(user);
-                        const userDoc = await getDoc(doc(db, 'users', user.uid));
-                        const fallbackRole = getDefaultRoleForEmail(user.email);
-                        const profile = userDoc.exists()
-                            ? { ...userDoc.data(), role: userDoc.data().role || fallbackRole }
-                            : { role: fallbackRole };
+                    
+                    // Cleanup previous profile listener if any
+                    if (unsubscribeProfile) unsubscribeProfile();
 
+                    // Real-time listener for user profile
+                    unsubscribeProfile = onSnapshot(doc(db, 'users', user.uid), (docSnap) => {
+                        if (!isMounted) return;
+                        
+                        const fallbackRole = getDefaultRoleForEmail(user.email);
+                        const profileData = docSnap.exists() ? docSnap.data() : {};
+                        const role = profileData.role || fallbackRole;
+                        
                         const emailIsAdmin = user.email?.trim().toLowerCase() === getAdminEmail();
-                        const resolvedIsAdmin = emailIsAdmin || profile.role === 'admin';
+                        const resolvedIsAdmin = emailIsAdmin || role === 'admin';
 
                         setUserProfile({
-                            ...profile,
+                            ...profileData,
                             role: resolvedIsAdmin ? 'admin' : 'user',
                         });
                         setIsAdmin(resolvedIsAdmin);
-                    } catch (error) {
-                        console.error('Error fetching user role: ', error);
-                        const emailIsAdmin = user.email?.trim().toLowerCase() === getAdminEmail();
-                        setUserProfile({ role: emailIsAdmin ? 'admin' : 'user' });
-                        setIsAdmin(emailIsAdmin);
-                    }
+                        setLoading(false);
+                    }, (error) => {
+                        console.error('Profile listener error:', error);
+                        setLoading(false);
+                    });
                 } else {
+                    if (unsubscribeProfile) unsubscribeProfile();
                     setCurrentUser(null);
                     setUserProfile(null);
                     setIsAdmin(false);
+                    setLoading(false);
                 }
-                setLoading(false);
             });
         } catch (error) {
             console.error('Firebase Auth Initialization Error:', error);
@@ -65,7 +70,8 @@ export const AuthProvider = ({ children }) => {
 
         return () => {
             isMounted = false;
-            if (unsubscribe) unsubscribe();
+            if (unsubscribeAuth) unsubscribeAuth();
+            if (unsubscribeProfile) unsubscribeProfile();
         };
     }, []);
 

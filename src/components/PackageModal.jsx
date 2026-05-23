@@ -19,17 +19,18 @@ const PackageModal = ({ pkg, onClose }) => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="fixed inset-0 z-[200] bg-black/80 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 overflow-y-auto"
+                className="fixed inset-0 z-[200] bg-black/80 backdrop-blur-md flex items-end sm:items-center justify-center p-0 sm:p-6 overflow-y-auto"
                 onClick={(e) => e.target === e.currentTarget && onClose()}
             >
                 <motion.div
-                    initial={{ scale: 0.95, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    exit={{ scale: 0.95, opacity: 0 }}
-                    className="bg-white rounded-[2rem] shadow-2xl w-full max-w-3xl max-h-[90vh] overflow-hidden relative flex flex-col"
+                    initial={{ y: '100%', opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    exit={{ y: '100%', opacity: 0 }}
+                    transition={{ type: "spring", damping: 30, stiffness: 350 }}
+                    className="bg-white rounded-t-[2rem] sm:rounded-[2rem] rounded-b-none shadow-2xl w-full max-w-3xl h-[88vh] sm:h-auto sm:max-h-[90vh] overflow-hidden relative flex flex-col"
                 >
-                    {/* Header Image - Reduced height for compact look */}
-                    <div className="relative h-48 sm:h-64 shrink-0 overflow-hidden">
+                    {/* Header Image - Compact on Mobile */}
+                    <div className="relative h-40 sm:h-64 shrink-0 overflow-hidden">
                         <img
                             src={mainImg}
                             alt={pkg.title}
@@ -67,23 +68,23 @@ const PackageModal = ({ pkg, onClose }) => {
                         </div>
                     </div>
 
-                    {/* Compact CTA Bar - Stacked on Mobile, Row on PC */}
-                    <div className="flex flex-col sm:flex-row items-center justify-between px-4 py-3 sm:px-6 sm:py-4 bg-brand-dark text-white gap-3 shrink-0">
-                        <div className="text-center sm:text-left">
-                            <div className="flex items-baseline justify-center sm:justify-start gap-2">
-                                <span className="text-2xl sm:text-3xl font-black text-brand-gold font-serif">{formatPrice(pkg.price)}</span>
-                                {pkg.originalPrice && <span className="text-[10px] sm:text-xs text-white/30 line-through">{formatPrice(pkg.originalPrice)}</span>}
+                    {/* Compact CTA Bar - Single Row Flex Layout */}
+                    <div className="flex items-center justify-between px-4 py-2.5 sm:px-6 sm:py-4 bg-brand-dark text-white gap-2 sm:gap-3 shrink-0">
+                        <div className="text-left">
+                            <div className="flex items-baseline gap-1.5 leading-none">
+                                <span className="text-xl sm:text-3xl font-black text-brand-gold font-serif leading-none">{formatPrice(pkg.price)}</span>
+                                {pkg.originalPrice && <span className="text-[9px] sm:text-xs text-white/30 line-through leading-none">{formatPrice(pkg.originalPrice)}</span>}
                             </div>
                         </div>
-                        <div className="flex w-full sm:w-auto gap-2">
-                            <a href="tel:+918979931256"
-                                className="flex-1 sm:flex-none flex items-center justify-center gap-2 border border-white/20 text-white font-black px-3 py-2 sm:px-5 rounded-xl text-[10px] sm:text-xs hover:bg-white hover:text-brand-dark transition-all active:scale-95">
-                                <Phone size={14} /> CALL
-                            </a>
-                            <Link to={pkg.link || `/tour/${pkg.slug}`} onClick={onClose}
-                                className="flex-1 sm:flex-none flex items-center justify-center gap-2 bg-brand-gold text-brand-dark font-black px-4 py-2 sm:px-6 rounded-xl text-[10px] sm:text-xs hover:bg-white transition-all shadow-lg shadow-brand-gold/10 active:scale-95">
-                                BOOK NOW <ArrowRight size={16} />
-                            </Link>
+                        <div className="flex items-center gap-1.5 sm:gap-2">
+                             <a href="tel:+918979931256"
+                                 className="flex items-center justify-center gap-1 border border-white/20 text-white font-black px-2.5 py-2 sm:px-5 rounded-xl text-[9px] sm:text-xs hover:bg-white hover:text-brand-dark transition-all active:scale-95">
+                                 <Phone size={11} className="w-3.5 h-3.5" /> CALL
+                             </a>
+                             <Link to={pkg.link || `/tour/${pkg.slug}`} onClick={onClose}
+                                 className="flex items-center justify-center gap-1 bg-brand-gold text-brand-dark font-black px-3.5 py-2 sm:px-6 rounded-xl text-[9px] sm:text-xs hover:bg-white transition-all shadow-lg shadow-brand-gold/10 active:scale-95">
+                                 BOOK NOW <ArrowRight size={13} className="w-3.5 h-3.5" />
+                             </Link>
                         </div>
                     </div>
 
@@ -177,7 +178,7 @@ const PackageModal = ({ pkg, onClose }) => {
                     </div>
 
                     {/* Slim Footer CTA */}
-                    <div className="px-5 py-4 bg-slate-50 border-t border-slate-100 flex items-center justify-between shrink-0">
+                    <div className="px-4 py-2.5 sm:px-5 sm:py-4 bg-slate-50 border-t border-slate-100 flex items-center justify-between shrink-0">
                         <div className="hidden sm:block">
                             <h5 className="font-black text-[10px] uppercase text-slate-800">Tailor-Made?</h5>
                             <p className="text-[9px] text-slate-500 font-bold italic">Request for your party.</p>
@@ -185,9 +186,9 @@ const PackageModal = ({ pkg, onClose }) => {
                         <Link 
                             to={pkg.link || `/tour/${pkg.slug}`} 
                             onClick={onClose}
-                            className="w-full sm:w-auto flex items-center justify-center gap-2 bg-brand-gold text-brand-dark font-black px-6 py-2 rounded-xl text-[10px] uppercase tracking-widest hover:bg-slate-900 hover:text-white transition-all active:scale-90"
+                            className="w-full sm:w-auto flex items-center justify-center gap-2 bg-brand-gold text-brand-dark font-black px-5 py-2 rounded-xl text-[9px] sm:text-[10px] uppercase tracking-widest hover:bg-slate-900 hover:text-white transition-all active:scale-90"
                         >
-                            <Mail size={14} /> CUSTOM REQUEST
+                            <Mail size={12} className="w-3.5 h-3.5" /> CUSTOM REQUEST
                         </Link>
                     </div>
                 </motion.div>

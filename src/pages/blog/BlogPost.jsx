@@ -1,30 +1,55 @@
 import React, { useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Clock, Calendar, User, Share2, Facebook, Twitter, Linkedin } from 'lucide-react';
 import { BLOG_POSTS } from '../../data/blogs';
 import ScrollReveal from '../../components/ui/ScrollReveal';
+import SEO from '../../components/SEO';
 
 const BlogPost = () => {
     const { id } = useParams();
     const navigate = useNavigate();
-    const post = BLOG_POSTS.find(p => p.id === parseInt(id));
+    const post = BLOG_POSTS.find(p => p.id === parseInt(id) || p.slug === id);
 
     useEffect(() => {
+        if (!id) return;
         if (!post) {
             navigate('/blog', { replace: true });
         }
-    }, [post, navigate]);
+    }, [id, post, navigate]);
 
     if (!post) return null;
 
+    const schema = {
+        '@context': 'https://schema.org',
+        '@type': 'BlogPosting',
+        'headline': post.title,
+        'description': post.excerpt,
+        'image': `https://www.yatrago.com/${post.imageUrl}`,
+        'datePublished': post.date,
+        'author': {
+            '@type': 'Person',
+            'name': post.author.name
+        },
+        'publisher': {
+            '@type': 'Organization',
+            'name': 'Yatra Go',
+            'logo': {
+                '@type': 'ImageObject',
+                'url': 'https://www.yatrago.com/logo.png'
+            }
+        }
+    };
+
     return (
         <div className="min-h-screen bg-brand-light">
-            <Helmet>
-                <title>{post.title} | Yatra Go Travel Blog</title>
-                <meta name="description" content={post.excerpt} />
-            </Helmet>
+            <SEO 
+                title={`${post.title} | Yatra Go Travel Blog`}
+                description={post.excerpt}
+                ogImage={`https://www.yatrago.com/${post.imageUrl}`}
+                ogType="article"
+                schemaData={schema}
+            />
 
             {/* Premium Hero Section */}
             <article>

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { X, Mail, Lock, Eye, EyeOff, User, ArrowRight, Loader2, Sparkles, CheckCircle } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { signInWithEmailAndPassword, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, sendPasswordResetEmail } from 'firebase/auth';
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, sendPasswordResetEmail, signOut, updateProfile } from 'firebase/auth';
 import { auth, db, isFirebaseConfigured } from '../firebase/config';
 import { doc, setDoc, serverTimestamp, getDoc } from 'firebase/firestore';
 import { getDefaultRoleForEmail } from '../lib/userProfile';
@@ -20,6 +20,30 @@ const LoginModal = ({ onClose }) => {
     const [resetMessage, setResetMessage] = useState('');
     const [forgotEmail, setForgotEmail] = useState('');
     const navigate = useNavigate();
+    const getAuthErrorMessage = (error) => {
+        const code = error?.code;
+        const message = error?.message;
+
+        const messages = {
+            'auth/user-not-found': 'Account not found. Please register first.',
+            'auth/wrong-password': 'Incorrect password. Please try again.',
+            'auth/invalid-credential': 'Invalid login credentials. Check your email and password.',
+            'auth/invalid-email': 'The email address format is invalid.',
+            'auth/email-already-in-use': 'This email is already registered. Please login instead.',
+            'auth/weak-password': 'Password is too weak. Must be at least 6 characters.',
+            'auth/too-many-requests': 'Too many attempts. Please wait a moment and try again.',
+            'auth/network-request-failed': 'Network connection failed. Please check your internet.',
+            'auth/operation-not-allowed': 'Email/Password login is not enabled in Firebase Console.',
+            'permission-denied': 'Access denied. You might not have permission to create this profile.',
+            'auth/internal-error': 'Internal authentication error. Please try again later.',
+        };
+
+        if (code && messages[code]) return messages[code];
+        if (message && message.includes('Failed to initialize user profile')) return message;
+        
+        console.error('Unhandled Auth Error:', error);
+        return 'Unable to continue right now. Please try again or check your connection.';
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -31,6 +55,7 @@ const LoginModal = ({ onClose }) => {
         }
 
         setLoading(true);
+        let createdUser = null;
         try {
             if (mode === 'login') {
                 await signInWithEmailAndPassword(auth, email, password);
@@ -44,19 +69,33 @@ const LoginModal = ({ onClose }) => {
             } else {
                 const role = getDefaultRoleForEmail(email);
                 const { user } = await createUserWithEmailAndPassword(auth, email, password);
-                await setDoc(doc(db, 'users', user.uid), {
-                    name,
-                    email,
-                    phone: '',
-                    role,
-                    createdAt: serverTimestamp(),
-                    updatedAt: serverTimestamp(),
-                });
+                createdUser = user;
+
+                // Sync name to Auth profile for immediate consistency
+                try {
+                    await updateProfile(user, { displayName: name.trim() });
+                } catch (updateAuthErr) {
+                    console.error('Auth profile update failed', updateAuthErr);
+                }
+
+                try {
+                    await setDoc(doc(db, 'users', user.uid), {
+                        name: name.trim(),
+                        email,
+                        phone: '',
+                        role,
+                        createdAt: serverTimestamp(),
+                        updatedAt: serverTimestamp(),
+                    });
+                } catch (firestoreErr) {
+                    console.error('Firestore user creation failed:', firestoreErr);
+                    throw new Error('Failed to initialize user profile. Please check your connection.');
+                }
 
                 try {
                     await notifyAdminOfRegistration({
                         userId: user.uid,
-                        name,
+                        name: name.trim(),
                         email,
                         phone: '',
                         role,
@@ -69,20 +108,23 @@ const LoginModal = ({ onClose }) => {
                 onClose();
                 window.sessionStorage.setItem('yatrago-auth-popup', JSON.stringify({
                     title: 'Registration Successful',
-                    message: 'Your Yatra Go profile is ready to explore.',
+                    message: 'Welcome aboard. Your premium travel dashboard is now ready.',
                 }));
                 navigate(nextPath);
             }
         } catch (err) {
-            const messages = {
-                'auth/user-not-found': 'No account found with this email.',
-                'auth/wrong-password': 'Incorrect password. Please try again.',
-                'auth/email-already-in-use': 'This email is already registered. Please login instead.',
-                'auth/weak-password': 'Password must be at least 6 characters.',
-                'auth/invalid-email': 'Please enter a valid email address.',
-                'auth/invalid-credential': 'Invalid email or password.',
-            };
-            setError(messages[err.code] || 'Something went wrong. Please try again.');
+            if (mode === 'register' && createdUser) {
+                try {
+                    await createdUser.delete();
+                } catch {
+                    try {
+                        await signOut(auth);
+                    } catch {
+                        // Ignore cleanup error
+                    }
+                }
+            }
+            setError(getAuthErrorMessage(err));
         } finally {
             setLoading(false);
         }

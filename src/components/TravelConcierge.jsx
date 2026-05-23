@@ -1,5 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
-import { GoogleGenAI } from '@google/genai';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import {
@@ -16,7 +15,6 @@ import {
   buildGeminiSystemPrompt,
   buildRelevantKnowledge,
   CHAT_SUGGESTIONS,
-  geminiConfig,
   getHeuristicAnswer,
   getRelevantLinks,
 } from '../lib/siteAssistant';
@@ -28,6 +26,7 @@ const transition = {
   damping: 34,
   mass: 0.7,
 };
+const LOCAL_GREETING_PATTERN = /^(hi|hello|hey|hii|heyy|hola|namaste|good morning|good afternoon|good evening)\b/i;
 
 const cleanInlineText = (text) =>
   text
@@ -36,7 +35,70 @@ const cleanInlineText = (text) =>
     .replace(/`(.*?)`/g, '$1')
     .trim();
 
-const renderFormattedAssistantMessage = (text) => {
+const BlinkingCursor = () => (
+  <motion.span
+    animate={{ opacity: [1, 0, 1] }}
+    transition={{ duration: 0.6, repeat: Infinity, ease: 'easeInOut' }}
+    className="inline-block w-[2px] h-4 ml-0.5 bg-brand-dark align-middle"
+  />
+);
+
+// Premium thinking dots — shown while waiting for first byte
+const ThinkingDots = () => (
+  <div className="flex items-center gap-1.5 px-1 py-2">
+    {[0, 1, 2].map((i) => (
+      <motion.span
+        key={i}
+        animate={{ y: [0, -5, 0], opacity: [0.3, 1, 0.3] }}
+        transition={{ duration: 0.9, repeat: Infinity, delay: i * 0.18, ease: 'easeInOut' }}
+        className="block h-2 w-2 rounded-full bg-gradient-to-b from-brand-gold to-[#1399de]"
+      />
+    ))}
+  </div>
+);
+
+// Typing message — reveals text char-by-char like ChatGPT
+const TypingMessage = ({ fullText, onDone, isStreaming }) => {
+  const [displayed, setDisplayed] = useState('');
+  const indexRef = useRef(0);
+  const onDoneRef = useRef(onDone);
+
+  useEffect(() => {
+    onDoneRef.current = onDone;
+  }, [onDone]);
+
+  useEffect(() => {
+    if (indexRef.current >= fullText.length) {
+      if (!isStreaming && fullText.length > 0) onDoneRef.current?.();
+      return;
+    }
+
+    const interval = setInterval(() => {
+      if (indexRef.current < fullText.length) {
+        indexRef.current += 2; // 2 chars per tick — adjust for speed
+        setDisplayed(fullText.slice(0, indexRef.current));
+      } else {
+        clearInterval(interval);
+        if (!isStreaming) onDoneRef.current?.();
+      }
+    }, 18); // ~55 chars/sec — ChatGPT-like pace
+
+    return () => clearInterval(interval);
+  }, [fullText, isStreaming]);
+
+  // When stream is done and typing is done, fire onDone
+  useEffect(() => {
+    if (!isStreaming && displayed.length >= fullText.length && fullText.length > 0) {
+      onDoneRef.current?.();
+    }
+  }, [isStreaming, displayed.length, fullText.length]);
+
+  const isTyping = displayed.length < fullText.length;
+
+  return renderFormattedAssistantMessage(displayed || '', isTyping);
+};
+
+const renderFormattedAssistantMessage = (text, isStreaming = false) => {
   const lines = text.split('\n').map((line) => line.trim()).filter(Boolean);
   const blocks = [];
   let currentList = null;
@@ -97,6 +159,8 @@ const renderFormattedAssistantMessage = (text) => {
       className="space-y-3.5"
     >
       {blocks.map((block, index) => {
+        const isLastBlock = index === blocks.length - 1;
+
         if (block.type === 'heading') {
           return (
             <motion.div
@@ -105,6 +169,7 @@ const renderFormattedAssistantMessage = (text) => {
               className="rounded-2xl bg-[linear-gradient(135deg,#fff8ef_0%,#ffffff_100%)] px-3.5 py-3 text-sm font-black tracking-[0.02em] text-brand-dark shadow-[inset_0_0_0_1px_rgba(255,138,23,0.12)]"
             >
               {block.text}
+              {isStreaming && isLastBlock && <BlinkingCursor />}
             </motion.div>
           );
         }
@@ -112,18 +177,24 @@ const renderFormattedAssistantMessage = (text) => {
         if (block.type === 'ordered') {
           return (
             <div key={`${block.type}-${index}`} className="space-y-2.5">
-              {block.items.map((item, itemIndex) => (
-                <motion.div 
-                  key={`${block.type}-${index}-${itemIndex}`} 
-                  variants={{ hidden: { opacity: 0, y: 5 }, visible: { opacity: 1, y: 0 } }}
-                  className="flex gap-3"
-                >
-                  <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-dark text-[11px] font-black text-white">
-                    {itemIndex + 1}
-                  </div>
-                  <div className="pt-0.5 text-sm leading-7 text-slate-700">{item}</div>
-                </motion.div>
-              ))}
+              {block.items.map((item, itemIndex) => {
+                const isLastItem = itemIndex === block.items.length - 1;
+                return (
+                  <motion.div 
+                    key={`${block.type}-${index}-${itemIndex}`} 
+                    variants={{ hidden: { opacity: 0, y: 5 }, visible: { opacity: 1, y: 0 } }}
+                    className="flex gap-3"
+                  >
+                    <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-dark text-[11px] font-black text-white">
+                      {itemIndex + 1}
+                    </div>
+                    <div className="pt-0.5 text-sm leading-7 text-slate-700">
+                      {item}
+                      {isStreaming && isLastBlock && isLastItem && <BlinkingCursor />}
+                    </div>
+                  </motion.div>
+                );
+              })}
             </div>
           );
         }
@@ -131,16 +202,22 @@ const renderFormattedAssistantMessage = (text) => {
         if (block.type === 'unordered') {
           return (
             <div key={`${block.type}-${index}`} className="space-y-2.5">
-              {block.items.map((item, itemIndex) => (
-                <motion.div 
-                  key={`${block.type}-${index}-${itemIndex}`} 
-                  variants={{ hidden: { opacity: 0, y: 5 }, visible: { opacity: 1, y: 0 } }}
-                  className="flex gap-3"
-                >
-                  <div className="mt-2.5 h-2 w-2 shrink-0 rounded-full bg-brand-gold" />
-                  <div className="text-sm leading-7 text-slate-700">{item}</div>
-                </motion.div>
-              ))}
+              {block.items.map((item, itemIndex) => {
+                const isLastItem = itemIndex === block.items.length - 1;
+                return (
+                  <motion.div 
+                    key={`${block.type}-${index}-${itemIndex}`} 
+                    variants={{ hidden: { opacity: 0, y: 5 }, visible: { opacity: 1, y: 0 } }}
+                    className="flex gap-3"
+                  >
+                    <div className="mt-2.5 h-2 w-2 shrink-0 rounded-full bg-brand-gold" />
+                    <div className="text-sm leading-7 text-slate-700">
+                      {item}
+                      {isStreaming && isLastBlock && isLastItem && <BlinkingCursor />}
+                    </div>
+                  </motion.div>
+                );
+              })}
             </div>
           );
         }
@@ -152,6 +229,7 @@ const renderFormattedAssistantMessage = (text) => {
             className="text-sm leading-7 text-slate-700"
           >
             {block.text}
+            {isStreaming && isLastBlock && <BlinkingCursor />}
           </motion.div>
         );
       })}
@@ -159,45 +237,7 @@ const renderFormattedAssistantMessage = (text) => {
   );
 };
 
-const ThinkingBubble = () => (
-  <div className="flex flex-col gap-2">
-    <div className="flex items-center gap-1.5 px-1">
-      <motion.div
-        animate={{ scale: [1, 1.2, 1], opacity: [0.5, 1, 0.5] }}
-        transition={{ duration: 1.5, repeat: Infinity }}
-        className="h-1.5 w-1.5 rounded-full bg-brand-gold"
-      />
-      <span className="text-[10px] font-black uppercase tracking-widest text-slate-400">
-        AI is processing
-      </span>
-    </div>
-    <div className="relative w-24 overflow-hidden rounded-2xl bg-slate-50 p-3 shadow-inner">
-      <div className="flex gap-1.5">
-        {[0, 1, 2].map((i) => (
-          <motion.div
-            key={i}
-            animate={{ 
-              y: [0, -4, 0],
-              opacity: [0.3, 1, 0.3]
-            }}
-            transition={{ 
-              duration: 0.8, 
-              repeat: Infinity, 
-              delay: i * 0.15 
-            }}
-            className="h-2 w-2 rounded-full bg-slate-300"
-          />
-        ))}
-      </div>
-      <motion.div
-        animate={{ x: ['-100%', '200%'] }}
-        transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
-        className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent"
-      />
-    </div>
-  </div>
-);
-
+// ThinkingBubble removed in favor of ChatGPT-style cursor
 const TOPIC_SUGGESTION_GROUPS = [
   {
     match: /(raft|rafting|river rafting|shivpuri|marine drive|brahmpuri|ganga)/i,
@@ -320,17 +360,23 @@ const TOPIC_SUGGESTION_GROUPS = [
 
 const TravelConcierge = () => {
   const { currentUser, userProfile } = useAuth();
+  const abortControllerRef = useRef(null);
+
+  useEffect(() => {
+    return () => {
+      if (abortControllerRef.current) {
+        abortControllerRef.current.abort();
+      }
+    };
+  }, []);
   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [messages, setMessages] = useState([]);
   const scrollRef = useRef(null);
 
-  const canUseGemini = Boolean(geminiConfig.apiKey);
-  const aiClient = useMemo(() => {
-    if (!geminiConfig.apiKey) return null;
-    return new GoogleGenAI({ apiKey: geminiConfig.apiKey });
-  }, []);
+  // We no longer use GoogleGenAI directly on frontend.
+  const canUseGemini = true; // Enabled since we use backend proxy
 
   const visitorName = userProfile?.name?.trim() || currentUser?.displayName?.trim() || '';
   const greetingText = visitorName
@@ -372,43 +418,92 @@ const TravelConcierge = () => {
     });
   };
 
+  const shouldUseAiForMessage = (message) => {
+    const text = message.toLowerCase().trim();
+    if (!text) return false;
+    if (/(hindi|हिंदी|language|bhasha|भाषा|baat kar|speak)/i.test(message)) return true;
+    if (/[\u0900-\u097F]/.test(message) && text.length > 10) return true;
+    if (text.length <= 80) return false;
+    if (LOCAL_GREETING_PATTERN.test(text)) return false;
+    if (/(contact|call|phone|email|whatsapp|address|book|booking|steps|process|price|cost|package|activity|service)/i.test(text)) {
+      return false;
+    }
+    return true;
+  };
+
   const askGemini = async ({ priorMessages, latestMessage, fallbackAnswer, messageId }) => {
-    if (!aiClient) {
-      setMessages((current) => current.map((item) => (item.id === messageId ? { ...item, text: fallbackAnswer } : item)));
-      return;
-    }
+    try {
+      const history = priorMessages.map((item) => ({
+        role: item.role === 'assistant' ? 'model' : 'user',
+        parts: [{ text: item.text }],
+      }));
 
-    const history = priorMessages.map((item) => ({
-      role: item.role === 'assistant' ? 'model' : 'user',
-      parts: [{ text: item.text }],
-    }));
+      const systemInstruction = `${buildGeminiSystemPrompt(visitorName)}\n\nRelevant website context:\n${buildRelevantKnowledge(latestMessage)}`;
 
-    const chat = aiClient.chats.create({
-      model: geminiConfig.model,
-      history,
-      config: {
-        systemInstruction: `${buildGeminiSystemPrompt(visitorName)}\n\nRelevant website context:\n${buildRelevantKnowledge(latestMessage)}`,
-        thinkingConfig: {
-          thinkingLevel: 'low',
-        },
-        temperature: 1,
-        topP: 0.95,
-        topK: 40,
-      },
-    });
+      const abortController = new AbortController();
+      abortControllerRef.current = abortController;
 
-    const stream = await chat.sendMessageStream({
-      message: latestMessage,
-    });
+      const response = await fetch('http://localhost:3001/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        signal: abortController.signal,
+        body: JSON.stringify({
+          message: latestMessage,
+          history,
+          systemInstruction,
+        }),
+      });
 
-    let accumulated = '';
+      if (!response.ok) throw new Error('Backend proxy error');
 
-    for await (const chunk of stream) {
-      accumulated += chunk.text || '';
-      setMessages((current) => current.map((item) => (item.id === messageId ? { ...item, text: accumulated } : item)));
-    }
+      const reader = response.body.getReader();
+      const decoder = new TextDecoder();
+      let accumulated = '';
+      let streamBuffer = '';
+      let streamErrored = false;
 
-    if (!accumulated.trim()) {
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        streamBuffer += decoder.decode(value, { stream: true });
+        const lines = streamBuffer.split('\n');
+        streamBuffer = lines.pop() || '';
+        
+        for (const line of lines) {
+          if (line.startsWith('data: ')) {
+            const dataStr = line.replace('data: ', '').trim();
+            if (dataStr === '[DONE]') continue;
+            if (dataStr) {
+              try {
+                const parsed = JSON.parse(dataStr);
+                if (parsed.error) {
+                  streamErrored = true;
+                  const safeError = decodeURIComponent(parsed.error);
+                  setMessages((current) =>
+                    current.map((item) =>
+                      item.id === messageId ? { ...item, text: safeError || fallbackAnswer } : item
+                    )
+                  );
+                  continue;
+                }
+
+                if (typeof parsed.text === 'string') {
+                  accumulated += decodeURIComponent(parsed.text);
+                  setMessages((current) => current.map((item) => (item.id === messageId ? { ...item, text: accumulated } : item)));
+                }
+              } catch (e) {
+                // Ignore incomplete JSON chunks
+              }
+            }
+          }
+        }
+      }
+
+      if (!streamErrored && !accumulated.trim()) {
+        setMessages((current) => current.map((item) => (item.id === messageId ? { ...item, text: fallbackAnswer } : item)));
+      }
+    } catch (error) {
+      console.error('Chat API Error:', error);
       setMessages((current) => current.map((item) => (item.id === messageId ? { ...item, text: fallbackAnswer } : item)));
     }
   };
@@ -433,12 +528,18 @@ const TravelConcierge = () => {
     scrollToBottom();
 
     try {
-      await askGemini({
-        priorMessages,
-        latestMessage: message,
-        fallbackAnswer,
-        messageId: assistantMessageId,
-      });
+      if (shouldUseAiForMessage(message)) {
+        await askGemini({
+          priorMessages,
+          latestMessage: message,
+          fallbackAnswer,
+          messageId: assistantMessageId,
+        });
+      } else {
+        setMessages((current) =>
+          current.map((item) => (item.id === assistantMessageId ? { ...item, text: fallbackAnswer, links: relevantLinks } : item))
+        );
+      }
     } catch (error) {
       console.error('Travel concierge fallback activated', error);
       setMessages((current) => current.map((item) => (item.id === assistantMessageId ? { ...item, text: fallbackAnswer, links: relevantLinks } : item)));
@@ -452,11 +553,12 @@ const TravelConcierge = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: 34, scale: 0.92 }}
+            initial={{ opacity: 0, y: 34, scale: 0.92, transformOrigin: 'bottom right' }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 22, scale: 0.95 }}
             transition={transition}
-            className="pointer-events-auto fixed bottom-[5.9rem] right-3 z-[140] w-[calc(100vw-1.5rem)] max-w-[408px] overflow-hidden rounded-[2rem] border border-white/60 bg-[linear-gradient(180deg,rgba(255,255,255,0.97)_0%,rgba(247,251,255,0.98)_100%)] shadow-[0_28px_100px_rgba(8,38,61,0.26)] backdrop-blur-2xl sm:bottom-[6.2rem] sm:right-8"
+            className="pointer-events-auto fixed bottom-[4.5rem] right-3 sm:bottom-[5rem] sm:right-6 z-[9999] w-[calc(100vw-1.5rem)] max-w-[408px] overflow-hidden rounded-[2rem] border border-white/60 bg-[linear-gradient(180deg,rgba(255,255,255,0.97)_0%,rgba(247,251,255,0.98)_100%)] shadow-[0_28px_100px_rgba(8,38,61,0.26)] backdrop-blur-2xl"
+            style={{ maxHeight: 'calc(100svh - 6rem)' }}
           >
             <div className="relative overflow-hidden bg-[linear-gradient(135deg,#08263d_0%,#0c3553_40%,#1399de_140%)] px-6 pb-6 pt-5 text-white">
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,138,23,0.28),transparent_30%),radial-gradient(circle_at_bottom_left,rgba(113,207,63,0.2),transparent_35%)]" />
@@ -486,11 +588,13 @@ const TravelConcierge = () => {
 
             <div
               ref={scrollRef}
-              style={{ scrollbarGutter: 'stable' }}
-              className="max-h-[400px] space-y-5 overflow-y-auto px-5 py-5 pr-3"
+              className="space-y-5 overflow-y-auto px-5 py-5 pr-3"
+              style={{ scrollbarGutter: 'stable', maxHeight: 'min(400px, calc(100svh - 16rem))' }}
             >
               {messages.map((message, index) => {
                 const isAssistant = message.role === 'assistant';
+                const isLastMsg = index === messages.length - 1;
+                const stillStreaming = isLoading && isLastMsg && isAssistant;
 
                 return (
                   <motion.div
@@ -505,26 +609,38 @@ const TravelConcierge = () => {
                         <Bot size={16} />
                       </div>
                     )}
-                     <div
-                      className={`max-w-[85%] rounded-[1.8rem] px-4.5 py-4 text-sm leading-7 shadow-sm ${
+                    <div
+                      className={`max-w-[85%] rounded-[1.8rem] px-4 py-3.5 text-sm leading-7 shadow-sm ${
                         isAssistant
                           ? 'border border-slate-100 bg-white text-slate-700'
                           : 'bg-brand-dark text-white'
                       }`}
                     >
-                      {isAssistant
-                        ? (message.text ? renderFormattedAssistantMessage(message.text) : (isLoading ? <ThinkingBubble /> : null))
-                        : <div className="whitespace-pre-line">{message.text}</div>}
-                      {isAssistant && Array.isArray(message.links) && message.links.length > 0 && (
-                        <motion.div 
-                          initial={{ opacity: 0, y: 10 }}
+                      {isAssistant ? (
+                        !message.text && stillStreaming ? (
+                          <ThinkingDots />
+                        ) : message.text ? (
+                          <TypingMessage
+                            fullText={message.text}
+                            isStreaming={stillStreaming}
+                            onDone={() => {
+                              if (isLastMsg) scrollToBottom();
+                            }}
+                          />
+                        ) : null
+                      ) : (
+                        <div className="whitespace-pre-line">{message.text}</div>
+                      )}
+                      {isAssistant && !stillStreaming && Array.isArray(message.links) && message.links.length > 0 && (
+                        <motion.div
+                          initial={{ opacity: 0, y: 8 }}
                           animate={{ opacity: 1, y: 0 }}
-                          transition={{ delay: 0.4 }}
-                          className="mt-5 space-y-3"
+                          transition={{ delay: 0.3 }}
+                          className="mt-4 space-y-3"
                         >
                           <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-slate-400">
-                             <Sparkles size={10} className="text-brand-gold" />
-                             Recommended for you
+                            <Sparkles size={10} className="text-brand-gold" />
+                            Recommended for you
                           </div>
                           <div className="flex flex-wrap gap-2">
                             {message.links.map((link) => (
@@ -550,22 +666,34 @@ const TravelConcierge = () => {
               })}
             </div>
 
-            <div className="border-t border-slate-100 px-5 pb-5 pt-4">
-              <div className="mb-3 text-center text-[11px] font-black uppercase tracking-[0.3em] text-slate-400">
-                Ask Anything
-              </div>
-              <div className="mb-4 flex gap-2.5 overflow-x-auto pb-1">
-                {quickSuggestions.map((suggestion) => (
-                  <button
-                    key={suggestion}
-                    type="button"
-                    onClick={() => submitMessage(suggestion)}
-                    className="shrink-0 rounded-full border border-slate-300 bg-white px-3.5 py-2.5 text-xs font-bold text-slate-700 transition hover:border-brand-gold hover:bg-[#fff8ef] hover:text-brand-dark"
+            <div className="border-t border-slate-100 px-4 pb-4 pt-3">
+              <AnimatePresence>
+                {!isLoading && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: 'auto' }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.25 }}
+                    className="overflow-hidden"
                   >
-                    {suggestion}
-                  </button>
-                ))}
-              </div>
+                    <div className="mb-2 text-center text-[10px] font-black uppercase tracking-[0.3em] text-slate-400">
+                      Ask Anything
+                    </div>
+                    <div className="mb-3 flex gap-2 overflow-x-auto pb-1 scrollbar-none">
+                      {quickSuggestions.map((suggestion) => (
+                        <button
+                          key={suggestion}
+                          type="button"
+                          onClick={() => submitMessage(suggestion)}
+                          className="shrink-0 rounded-full border border-slate-200 bg-white px-3 py-2 text-xs font-bold text-slate-700 transition hover:border-brand-gold hover:bg-[#fff8ef] hover:text-brand-dark"
+                        >
+                          {suggestion}
+                        </button>
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
 
               <form
                 onSubmit={(event) => {
@@ -608,45 +736,42 @@ const TravelConcierge = () => {
       </AnimatePresence>
 
       <motion.button
+        layout
         type="button"
         onClick={() => setIsOpen((current) => !current)}
-        whileTap={{ scale: 0.96 }}
-        animate={isOpen ? { y: 0 } : { y: [0, -3, 0] }}
-        transition={{
-          y: {
-            duration: 3.2,
-            repeat: Infinity,
-            ease: 'easeInOut',
-          },
-          default: transition,
-        }}
-        className="pointer-events-auto fixed bottom-5 right-5 z-[141] group flex h-[72px] w-[136px] items-center gap-3 overflow-hidden rounded-[1.9rem] border border-white/35 bg-[linear-gradient(135deg,rgba(6,24,38,0.98)_0%,rgba(10,44,68,0.98)_38%,rgba(19,153,222,0.94)_128%)] px-[0.95rem] text-left text-white shadow-[0_24px_60px_rgba(8,38,61,0.34),0_10px_24px_rgba(255,138,23,0.16)] backdrop-blur-xl transition-[width,transform,padding,box-shadow] duration-300 hover:-translate-y-1 hover:w-[332px] hover:px-5 hover:shadow-[0_28px_72px_rgba(8,38,61,0.4),0_14px_32px_rgba(255,138,23,0.2)] focus-visible:w-[332px] focus-visible:px-5 focus-visible:shadow-[0_28px_72px_rgba(8,38,61,0.4),0_14px_32px_rgba(255,138,23,0.2)] sm:bottom-6 sm:right-6"
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        transition={{ type: 'spring', stiffness: 400, damping: 25 }}
+        className={`pointer-events-auto fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-[9999] flex h-14 items-center justify-center rounded-full bg-[linear-gradient(135deg,#08263d_0%,#1399de_100%)] text-white shadow-[0_12px_30px_rgba(19,153,222,0.4)] backdrop-blur-xl border border-white/20 transition-all duration-300 hover:shadow-[0_16px_40px_rgba(19,153,222,0.6)] ${isOpen ? 'px-6' : 'w-14'}`}
+        aria-label="Toggle AI Assistant"
       >
-        <div className="absolute inset-0 rounded-[1.9rem] bg-[radial-gradient(circle_at_top_right,rgba(255,138,23,0.3),transparent_34%),radial-gradient(circle_at_bottom_left,rgba(113,207,63,0.16),transparent_32%),linear-gradient(180deg,rgba(255,255,255,0.08),transparent_42%)] opacity-90" />
-        <div className="absolute inset-[1px] rounded-[calc(1.9rem-1px)] border border-white/10 opacity-70" />
-        <div className="relative flex h-12 w-12 shrink-0 items-center justify-center rounded-[1.35rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.2)_0%,rgba(255,255,255,0.08)_100%)] shadow-[inset_0_1px_0_rgba(255,255,255,0.24),0_10px_24px_rgba(4,18,30,0.24)]">
-          <div className="absolute inset-0 rounded-[1.35rem] bg-[radial-gradient(circle_at_30%_25%,rgba(255,255,255,0.3),transparent_38%)]" />
-          <Bot size={22} className="relative text-brand-gold drop-shadow-[0_0_12px_rgba(255,138,23,0.28)]" />
-        </div>
-        <div className="relative shrink-0">
-          <div className="text-[0.95rem] font-black tracking-[0.01em] text-white">
-            Ask
-          </div>
-          <div className="mt-0.5 text-[9px] font-black uppercase tracking-[0.24em] text-white/45">
-            
-          </div>
-        </div>
-        <div className="relative min-w-0 flex-1 max-w-0 overflow-hidden opacity-0 transition-all duration-300 group-hover:max-w-[220px] group-hover:opacity-100 group-focus-visible:max-w-[220px] group-focus-visible:opacity-100">
-          <div className="whitespace-nowrap text-[10px] font-black uppercase tracking-[0.26em] text-brand-gold/85">
-            Yatra Go
-          </div>
-          <div className="mt-1 whitespace-nowrap text-[15px] font-bold leading-none text-white">
-            {isOpen ? 'Hide Agent' : 'Open Agent'}
-          </div>
-        </div>
-        <div className="relative ml-auto rounded-[1.1rem] border border-white/10 bg-white/10 p-2.5 text-white/80 opacity-0 shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] transition-all duration-300 group-hover:opacity-100 group-hover:text-white group-focus-visible:opacity-100 group-focus-visible:text-white">
-          {isOpen ? <ChevronDown size={18} /> : <Sparkles size={18} />}
-        </div>
+        <motion.div layout className="flex items-center justify-center overflow-hidden">
+          {isOpen ? <X size={20} className="text-white drop-shadow-md shrink-0" /> : <Bot size={26} className="text-white drop-shadow-md shrink-0" />}
+          <AnimatePresence>
+            {isOpen && (
+              <motion.span 
+                initial={{ opacity: 0, width: 0, marginLeft: 0 }} 
+                animate={{ opacity: 1, width: 'auto', marginLeft: 8 }} 
+                exit={{ opacity: 0, width: 0, marginLeft: 0 }}
+                className="text-[13px] font-black tracking-[0.15em] uppercase whitespace-nowrap"
+              >
+                Ask
+              </motion.span>
+            )}
+          </AnimatePresence>
+        </motion.div>
+        
+        {/* Pulse indicator only when closed */}
+        {!isOpen && (
+          <>
+            <motion.div 
+              animate={{ scale: [1, 1.5, 1], opacity: [0.8, 0, 0.8] }}
+              transition={{ duration: 2, repeat: Infinity }}
+              className="absolute right-0 top-0 h-3 w-3 rounded-full bg-brand-gold border-2 border-[#1399de]"
+            />
+            <div className="absolute right-0 top-0 h-3 w-3 rounded-full bg-brand-gold border-2 border-[#1399de]" />
+          </>
+        )}
       </motion.button>
     </>
   );

@@ -9,7 +9,8 @@ const ScrollToTop = () => {
         if ('scrollRestoration' in window.history) {
             window.history.scrollRestoration = 'manual';
         }
-        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+        window.scrollTo(0, 0);
+        document.documentElement.scrollTo(0, 0);
     }, [pathname, search]);
 
     return null;

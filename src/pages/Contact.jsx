@@ -185,14 +185,14 @@ const Contact = () => {
                                     </div>
                                 </div>
 
-                                <div className="mt-8 grid gap-3 border-t border-slate-100 pt-8 grid-cols-1 sm:grid-cols-2">
-                                    <div className="rounded-2xl bg-slate-50 px-5 py-4 border border-slate-100/50">
-                                        <p className="text-[9px] sm:text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">Response Time</p>
-                                        <p className="mt-1 sm:mt-2 text-sm sm:text-base font-black text-slate-900 leading-tight">Quick support</p>
+                                <div className="mt-8 grid gap-3 border-t border-slate-100 pt-8 grid-cols-2">
+                                    <div className="rounded-2xl bg-slate-50 px-3 py-3 sm:px-5 sm:py-4 border border-slate-100/50">
+                                        <p className="text-[8px] sm:text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">Response Time</p>
+                                        <p className="mt-1 text-xs sm:text-base font-black text-slate-900 leading-tight">Quick support</p>
                                     </div>
-                                    <div className="rounded-2xl bg-slate-50 px-5 py-4 border border-slate-100/50">
-                                        <p className="text-[9px] sm:text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">Travel Desk</p>
-                                        <p className="mt-1 sm:mt-2 text-sm sm:text-base font-black text-slate-900 leading-tight">Expert support</p>
+                                    <div className="rounded-2xl bg-slate-50 px-3 py-3 sm:px-5 sm:py-4 border border-slate-100/50">
+                                        <p className="text-[8px] sm:text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">Travel Desk</p>
+                                        <p className="mt-1 text-xs sm:text-base font-black text-slate-900 leading-tight">Expert support</p>
                                     </div>
                                 </div>
                             </div>

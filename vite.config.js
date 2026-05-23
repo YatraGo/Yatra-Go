@@ -4,8 +4,8 @@ import tailwindcss from '@tailwindcss/vite'
 import Sitemap from 'vite-plugin-sitemap'
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => ({
-  // Use a relative base path for production to ensure assets load correctly on GitHub Pages
-  base: mode === 'production' ? './' : '/',
+  // Base path must be '/' for BrowserRouter to resolve assets correctly from the root domain
+  base: '/',
   build: {
     rollupOptions: {
       output: {
@@ -23,12 +23,26 @@ export default defineConfig(({ mode }) => ({
     tailwindcss(),
     react(),
     Sitemap({
-      hostname: 'https://yatrago.com',
+      hostname: 'https://www.yatrago.com',
       dynamicRoutes: [
         '/tour-packages',
         '/destinations',
+        '/activity',
         '/contact',
         '/about-us',
+        '/chardham-yatra-from-haridwar',
+        '/kedarnath-tour-package',
+        '/rishikesh-river-rafting',
+        '/haridwar-taxi-service',
+        '/auli-tour-package',
+        '/chopta-tour-package',
+        '/badrinath-tour-package',
+        '/dodham-yatra',
+        '/rishikesh-adventure-activities',
+        '/blog',
+        '/blog/best-time-for-kedarnath-yatra',
+        '/blog/chardham-packing-list',
+        '/blog/haridwar-to-kedarnath-distance'
       ]
     })
   ],

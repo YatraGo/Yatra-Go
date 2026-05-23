@@ -14,39 +14,39 @@ import { asset } from '../../lib/assets';
 // ─── Activity Card ───
 const ActivityCard = ({ activity }) => (
     <div className="h-full">
-        <div className="premium-card flex flex-col h-full bg-white rounded-2xl sm:rounded-3xl overflow-hidden group">
-            <div className="relative h-48 sm:h-56 overflow-hidden">
+        <div className="premium-card flex flex-col h-full bg-white rounded-xl sm:rounded-3xl overflow-hidden group">
+            <div className="relative h-32 sm:h-56 overflow-hidden">
                 <img src={activity.img} alt={activity.name}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
                     loading="lazy"
                     onError={(e) => { e.target.src = asset('assets/Activities.png'); }} />
                 <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/80 via-transparent to-transparent opacity-40 group-hover:opacity-60 transition-opacity" />
-                <span className={`absolute top-3 sm:top-4 left-3 sm:left-4 text-[8px] sm:text-[9px] font-black px-2 sm:px-2.5 py-1 sm:py-1.5 rounded-full shadow-lg ${activity.badgeColor} uppercase tracking-widest`}>{activity.badge}</span>
-                <span className={`absolute top-3 sm:top-4 right-3 sm:right-4 text-[8px] sm:text-[9px] font-black px-2 sm:px-2.5 py-1 sm:py-1.5 rounded-full shadow-lg ${activity.difficultyColor} uppercase tracking-widest bg-white/90 backdrop-blur-sm`}>{activity.difficulty}</span>
-                <div className="absolute bottom-3 sm:bottom-4 left-4 sm:left-5 flex items-center gap-2 text-white font-bold text-[10px] sm:text-xs drop-shadow-md">
-                    <MapPin size={12} className="text-brand-gold sm:w-[13px] sm:h-[13px]" /> {activity.location.split(',')[0]}
+                <span className={`absolute top-2 left-2 text-[7px] sm:text-[9px] font-black px-1.5 sm:px-2.5 py-0.5 sm:py-1.5 rounded-full shadow-lg ${activity.badgeColor} uppercase tracking-widest`}>{activity.badge}</span>
+                <span className={`absolute top-2 right-2 text-[7px] sm:text-[9px] font-black px-1.5 sm:px-2.5 py-0.5 sm:py-1.5 rounded-full shadow-lg ${activity.difficultyColor} uppercase tracking-widest bg-white/90 backdrop-blur-sm`}>{activity.difficulty}</span>
+                <div className="absolute bottom-2 left-2 flex items-center gap-1 text-white font-bold text-[8px] sm:text-xs drop-shadow-md">
+                    <MapPin size={10} className="text-brand-gold shrink-0" /> {activity.location.split(',')[0]}
                 </div>
             </div>
-            <div className="p-5 sm:p-6 flex flex-col flex-1">
-                <div className="flex items-start justify-between mb-3 gap-2">
-                    <h3 className="font-bold text-brand-dark text-lg sm:text-xl font-serif group-hover:text-brand-gold transition-colors duration-300 leading-tight line-clamp-2 min-h-[48px] sm:min-h-[56px] w-full">{activity.name}</h3>
-                    <div className="flex items-center gap-1 text-[10px] sm:text-xs font-black text-gray-500 shrink-0 bg-gray-50 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-lg sm:rounded-xl">
-                        <Star size={10} className="fill-brand-gold text-brand-gold sm:w-3 sm:h-3" /> {activity.rating}
+            <div className="p-3 sm:p-6 flex flex-col flex-1">
+                <div className="flex items-start justify-between mb-2 gap-2">
+                    <h3 className="font-bold text-brand-dark text-xs sm:text-xl font-serif group-hover:text-brand-gold transition-colors duration-300 leading-tight line-clamp-2 min-h-[32px] sm:min-h-[56px] w-full">{activity.name}</h3>
+                    <div className="flex items-center gap-0.5 text-[8px] sm:text-xs font-black text-gray-500 shrink-0 bg-gray-50 px-1.5 py-0.5 rounded-lg">
+                        <Star size={9} className="fill-brand-gold text-brand-gold" /> {activity.rating}
                     </div>
                 </div>
-                <div className="flex gap-3 sm:gap-4 text-[9px] sm:text-[10px] font-black text-gray-400 uppercase tracking-widest mb-3 sm:mb-4">
-                    <span className="flex items-center gap-1.5"><Clock size={12} className="text-brand-blue" /> {activity.duration}</span>
-                    <span className="flex items-center gap-1.5"><Users size={12} className="text-brand-gold" /> {activity.groupSize}</span>
+                <div className="flex gap-2 text-[7px] sm:text-[10px] font-black text-gray-400 uppercase tracking-widest mb-2 sm:mb-4">
+                    <span className="flex items-center gap-1"><Clock size={10} className="text-brand-blue shrink-0" /> {activity.duration}</span>
+                    <span className="flex items-center gap-1"><Users size={10} className="text-brand-gold shrink-0" /> {activity.groupSize}</span>
                 </div>
-                <p className="text-gray-500 text-xs sm:text-sm leading-relaxed line-clamp-2 mb-4 sm:mb-6 flex-1 font-medium">{activity.desc}</p>
-                <div className="mt-auto flex items-center justify-between pt-4 sm:pt-5 border-t border-gray-100">
+                <p className="text-gray-500 text-[10px] sm:text-sm leading-relaxed line-clamp-2 mb-3 sm:mb-6 flex-1 font-medium">"{activity.desc}"</p>
+                <div className="mt-auto flex flex-col min-[480px]:flex-row min-[480px]:items-center justify-between pt-2 sm:pt-5 border-t border-gray-100 gap-2">
                     <div>
-                        <span className="text-[9px] sm:text-[10px] text-gray-400 font-black uppercase tracking-widest block leading-none mb-1">Fee Starts</span>
-                        <div className="text-xl sm:text-2xl font-black text-brand-gold font-serif">₹{activity.price.toLocaleString('en-IN')}</div>
+                        <span className="text-[7px] sm:text-[10px] text-gray-400 font-black uppercase tracking-widest block leading-none mb-0.5">Fee Starts</span>
+                        <div className="text-sm sm:text-2xl font-black text-brand-gold font-serif leading-none">₹{activity.price.toLocaleString('en-IN')}</div>
                     </div>
                     <Link to={`/activity/${activity.id}`}
-                        className="bg-brand-dark text-white px-4 py-2.5 sm:px-5 sm:py-3 rounded-xl sm:rounded-2xl text-[11px] sm:text-[13px] font-black hover:bg-brand-gold hover:text-brand-dark transition-all duration-300 flex items-center gap-2 shadow-xl shadow-brand-dark/10 group-hover:-translate-y-1 shimmer-effect shrink-0">
-                        Explore <ArrowRight size={14} className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
+                        className="bg-brand-dark text-white px-3 py-2 rounded-lg sm:rounded-2xl text-[9px] sm:text-[13px] font-black hover:bg-brand-gold hover:text-brand-dark transition-all duration-300 flex items-center justify-center gap-1 shadow-lg shadow-brand-dark/10 group-hover:-translate-y-1 shimmer-effect shrink-0 w-full min-[480px]:w-auto">
+                        Explore <ArrowRight size={11} className="shrink-0" />
                     </Link>
                 </div>
             </div>
@@ -155,7 +155,7 @@ const Activity = () => {
                         </div>
                     </ScrollReveal>
 
-                    <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8 px-2 sm:px-0">
+                    <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-8 px-2 sm:px-0">
                         {filtered.map((act, i) => (
                             <ScrollReveal key={act.id} direction="up" delay={i % 4 * 0.1}>
                                 <ActivityCard activity={act} />

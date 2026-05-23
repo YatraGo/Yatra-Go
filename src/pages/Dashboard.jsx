@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import {
@@ -11,6 +11,7 @@ import {
     Mail,
     MapPin,
     PencilLine,
+    ImageUp,
     Phone,
     PlusCircle,
     RefreshCw,
@@ -39,6 +40,33 @@ import { signOut } from 'firebase/auth';
 import { ConfirmPopup, SuccessPopup } from '../components/ui';
 import ScrollReveal from '../components/ui/ScrollReveal';
 
+const extractCloudinaryPublicId = (url, cloudName) => {
+    if (!url || !cloudName) return '';
+    try {
+        const marker = `/image/upload/`;
+        const markerIndex = url.indexOf(marker);
+        if (markerIndex === -1) return '';
+
+        const afterUpload = url.slice(markerIndex + marker.length);
+        const parts = afterUpload.split('/').filter(Boolean);
+        const versionIndex = parts.findIndex((part) => /^v\d+$/.test(part));
+        const publicPath = versionIndex >= 0 ? parts.slice(versionIndex + 1) : parts;
+        if (publicPath.length === 0) return '';
+
+        const fileName = publicPath[publicPath.length - 1];
+        publicPath[publicPath.length - 1] = fileName.replace(/\.[^/.]+$/, '');
+        return publicPath.join('/');
+    } catch {
+        return '';
+    }
+};
+
+const buildEmailAvatarUrl = (nameOrEmail) => {
+    if (!nameOrEmail) return '';
+    const label = encodeURIComponent(nameOrEmail);
+    return `https://ui-avatars.com/api/?name=${label}&background=0D3B66&color=fff&size=256&bold=true`;
+};
+
 const Dashboard = () => {
     const { currentUser, userProfile } = useAuth();
     const navigate = useNavigate();
@@ -57,6 +85,15 @@ const Dashboard = () => {
     });
     const [profileSaving, setProfileSaving] = useState(false);
     const [profileFeedback, setProfileFeedback] = useState('');
+    const [photoUploading, setPhotoUploading] = useState(false);
+    const [selectedPhotoFile, setSelectedPhotoFile] = useState(null);
+    const [photoPreviewUrl, setPhotoPreviewUrl] = useState('');
+    const [cropScale, setCropScale] = useState(1);
+    const [cropX, setCropX] = useState(0);
+    const [cropY, setCropY] = useState(0);
+    const [showCropModal, setShowCropModal] = useState(false);
+    const imageRef = useRef(null);
+    const photoInputRef = useRef(null);
 
     // Booking form state
     const [bookingForm, setBookingForm] = useState({
@@ -96,7 +133,11 @@ const Dashboard = () => {
             setLoading(false);
         });
 
-        return unsubscribe;
+        return () => {
+            setTimeout(() => {
+                if (unsubscribe) unsubscribe();
+            }, 0);
+        };
     }, [currentUser]);
 
     useEffect(() => {
@@ -116,8 +157,10 @@ const Dashboard = () => {
         });
 
         return () => {
-            unsubUser();
-            unsubPackages();
+            setTimeout(() => {
+                if (unsubUser) unsubUser();
+                if (unsubPackages) unsubPackages();
+            }, 0);
         };
     }, [currentUser]);
 
@@ -144,7 +187,10 @@ const Dashboard = () => {
         })()
     }), [bookings, wishlist, userProfile]);
 
-    const travelerFullName = userProfile?.name?.trim() || currentUser?.displayName?.trim() || 'Explorer';
+    const travelerFullName = userProfile?.name?.trim() || currentUser?.displayName?.trim() || currentUser?.email?.split('@')[0] || 'Explorer';
+    const resolvedDisplayName = profileForm?.name?.trim() || travelerFullName;
+    const firstName = resolvedDisplayName.split(' ')[0] || 'Traveler';
+    const profilePhotoUrl = userProfile?.photoURL || currentUser?.photoURL || buildEmailAvatarUrl(resolvedDisplayName || currentUser?.email);
 
     const handleLogout = async () => {
         await signOut(auth);
@@ -170,6 +216,124 @@ const Dashboard = () => {
             setProfileFeedback('Failed to update profile. Please try again.');
         } finally {
             setProfileSaving(false);
+        }
+    };
+
+    const handlePhotoUpload = async (event) => {
+        const file = event.target.files?.[0];
+        event.target.value = '';
+        if (!file || !currentUser || !db) return;
+
+        const previewUrl = URL.createObjectURL(file);
+        setSelectedPhotoFile(file);
+        setPhotoPreviewUrl(previewUrl);
+        setCropScale(1);
+        setCropX(0);
+        setCropY(0);
+        setShowCropModal(true);
+    };
+
+    const openPhotoPicker = () => {
+        setActiveTab('settings');
+        photoInputRef.current?.click();
+    };
+
+    const handleCloseCropModal = () => {
+        if (photoPreviewUrl) {
+            URL.revokeObjectURL(photoPreviewUrl);
+        }
+        setSelectedPhotoFile(null);
+        setPhotoPreviewUrl('');
+        setShowCropModal(false);
+    };
+
+    const getCroppedBlob = async () => {
+        const img = imageRef.current;
+        if (!img) throw new Error('Image not ready');
+
+        const canvas = document.createElement('canvas');
+        const size = 512;
+        canvas.width = size;
+        canvas.height = size;
+        const ctx = canvas.getContext('2d');
+        if (!ctx) throw new Error('Canvas not supported');
+
+        const naturalWidth = img.naturalWidth;
+        const naturalHeight = img.naturalHeight;
+        const minSide = Math.min(naturalWidth, naturalHeight);
+        const cropSide = minSide / cropScale;
+        const maxX = Math.max(0, naturalWidth - cropSide);
+        const maxY = Math.max(0, naturalHeight - cropSide);
+
+        const sx = Math.min(maxX, Math.max(0, ((naturalWidth - cropSide) / 2) + cropX));
+        const sy = Math.min(maxY, Math.max(0, ((naturalHeight - cropSide) / 2) + cropY));
+
+        ctx.drawImage(img, sx, sy, cropSide, cropSide, 0, 0, size, size);
+
+        return new Promise((resolve, reject) => {
+            canvas.toBlob((blob) => {
+                if (!blob) {
+                    reject(new Error('Failed to create cropped image'));
+                    return;
+                }
+                resolve(blob);
+            }, 'image/jpeg', 0.9);
+        });
+    };
+
+    const handleCropAndUpload = async () => {
+        if (!selectedPhotoFile || !currentUser || !db) return;
+
+        setPhotoUploading(true);
+        setProfileFeedback('');
+
+        try {
+            const croppedBlob = await getCroppedBlob();
+            // Close crop UI immediately after confirmation so options disappear.
+            handleCloseCropModal();
+            const signRes = await fetch('http://localhost:3001/api/cloudinary/sign-upload');
+            if (!signRes.ok) throw new Error('Failed to get upload signature');
+            const signData = await signRes.json();
+
+            const uploadForm = new FormData();
+            uploadForm.append('file', croppedBlob, `profile-${Date.now()}.jpg`);
+            uploadForm.append('api_key', signData.apiKey);
+            uploadForm.append('timestamp', String(signData.timestamp));
+            uploadForm.append('signature', signData.signature);
+            uploadForm.append('folder', signData.folder);
+            uploadForm.append('upload_preset', signData.uploadPreset);
+
+            const uploadRes = await fetch(
+                `https://api.cloudinary.com/v1_1/${signData.cloudName}/image/upload`,
+                { method: 'POST', body: uploadForm }
+            );
+            if (!uploadRes.ok) throw new Error('Cloudinary upload failed');
+            const uploadData = await uploadRes.json();
+
+            const previousPublicId =
+                userProfile?.photoPublicId ||
+                extractCloudinaryPublicId(userProfile?.photoURL, signData.cloudName);
+
+            await setDoc(doc(db, 'users', currentUser.uid), {
+                photoURL: uploadData.secure_url || '',
+                photoPublicId: uploadData.public_id || '',
+                updatedAt: serverTimestamp(),
+            }, { merge: true });
+
+            if (previousPublicId && previousPublicId !== uploadData.public_id) {
+                await fetch('http://localhost:3001/api/cloudinary/delete-image', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ publicId: previousPublicId }),
+                });
+            }
+
+            setProfileFeedback('Profile photo updated successfully.');
+        } catch (error) {
+            console.error('Profile photo update failed', error);
+            setProfileFeedback('Failed to update profile photo. Please try again.');
+        } finally {
+            setPhotoUploading(false);
         }
     };
 
@@ -202,14 +366,100 @@ const Dashboard = () => {
     const navItems = [
         { id: 'home', label: 'Home Page', icon: Home, type: 'link' },
         { id: 'overview', label: 'Lounge Overview', icon: Compass },
-        { id: 'bookings', label: 'My Bookings', icon: Ticket },
-        { id: 'wishlist', label: 'Favourite', icon: Heart },
+        { id: 'registry', label: 'Trip Registry', icon: Ticket },
+        { id: 'settings', label: 'Settings', icon: UserCircle2 },
+        { id: 'wishlist', label: 'Wishlist', icon: Heart },
         { id: 'request', label: 'Plan New Trip', icon: PlusCircle },
-        { id: 'profile', label: 'Profile', icon: UserCircle2 },
     ];
 
     return (
         <div className="min-h-screen bg-transparent text-slate-900 font-sans selection:bg-brand-gold/30 selection:text-brand-dark relative">
+            <input
+                ref={photoInputRef}
+                type="file"
+                accept="image/*"
+                className="hidden"
+                disabled={photoUploading}
+                onChange={handlePhotoUpload}
+            />
+            {showCropModal && (
+                <div className="fixed inset-0 z-[250] bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+                    <div className="w-full max-w-xl rounded-3xl bg-white shadow-2xl border border-slate-100 p-6 sm:p-8">
+                        <h3 className="text-xl font-black text-brand-dark">Crop Profile Photo</h3>
+                        <p className="mt-1 text-sm text-slate-500 font-medium">Crop is mandatory before upload.</p>
+
+                        <div className="mt-5 rounded-2xl bg-slate-100 p-3">
+                            <div className="relative w-full aspect-square overflow-hidden rounded-2xl bg-slate-200">
+                                <img
+                                    ref={imageRef}
+                                    src={photoPreviewUrl}
+                                    alt="Crop preview"
+                                    className="w-full h-full object-cover"
+                                    style={{ transform: `scale(${cropScale}) translate(${cropX / 6}px, ${cropY / 6}px)` }}
+                                />
+                            </div>
+                        </div>
+
+                        <div className="mt-5 grid gap-4 sm:grid-cols-3">
+                            <div className="sm:col-span-1">
+                                <label className="text-xs font-black uppercase tracking-widest text-slate-400">Zoom</label>
+                                <input
+                                    type="range"
+                                    min="1"
+                                    max="2.5"
+                                    step="0.01"
+                                    value={cropScale}
+                                    onChange={(e) => setCropScale(Number(e.target.value))}
+                                    className="w-full mt-2"
+                                />
+                            </div>
+                            <div className="sm:col-span-1">
+                                <label className="text-xs font-black uppercase tracking-widest text-slate-400">Horizontal</label>
+                                <input
+                                    type="range"
+                                    min="-400"
+                                    max="400"
+                                    step="1"
+                                    value={cropX}
+                                    onChange={(e) => setCropX(Number(e.target.value))}
+                                    className="w-full mt-2"
+                                />
+                            </div>
+                            <div className="sm:col-span-1">
+                                <label className="text-xs font-black uppercase tracking-widest text-slate-400">Vertical</label>
+                                <input
+                                    type="range"
+                                    min="-400"
+                                    max="400"
+                                    step="1"
+                                    value={cropY}
+                                    onChange={(e) => setCropY(Number(e.target.value))}
+                                    className="w-full mt-2"
+                                />
+                            </div>
+                        </div>
+
+                        <div className="mt-6 flex gap-3 justify-end">
+                            <button
+                                type="button"
+                                onClick={handleCloseCropModal}
+                                className="rounded-xl px-5 py-3 text-sm font-black uppercase tracking-wider text-slate-500 bg-slate-100 hover:bg-slate-200"
+                            >
+                                Cancel
+                            </button>
+                            <button
+                                type="button"
+                                onClick={handleCropAndUpload}
+                                disabled={photoUploading}
+                                className="rounded-xl px-5 py-3 text-sm font-black uppercase tracking-wider text-white bg-brand-dark hover:bg-brand-gold hover:text-brand-dark disabled:opacity-60"
+                            >
+                                {photoUploading ? 'Uploading...' : 'Crop & Upload'}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
+
             <div className="flex flex-col lg:flex-row gap-10 items-start">
                 {/* 🌟 PREMIUM NAV DESK (STICKY GLASS) */}
                 <aside className="hidden lg:block lg:sticky lg:top-[128px] lg:z-20 lg:w-80 h-[calc(100vh-150px)] shrink-0 rounded-[3rem] border border-white/50 bg-white/10 backdrop-blur-3xl shadow-[0_40px_80px_-20px_rgba(0,0,0,0.08)] overflow-hidden ring-1 ring-black/[0.03]">
@@ -233,11 +483,24 @@ const Dashboard = () => {
                         <div className="rounded-[2.5rem] bg-gradient-to-br from-brand-dark to-slate-800 p-6 text-white shadow-2xl shadow-brand-dark/20 relative overflow-hidden group/profile">
                             <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover/profile:bg-brand-gold/10 transition-colors duration-700" />
                             <div className="flex items-center gap-4 relative z-10">
-                                <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-white/10 backdrop-blur ring-1 ring-white/20 text-xl font-black text-brand-gold shadow-lg">
-                                    {userProfile?.name?.charAt(0).toUpperCase() || currentUser?.email?.charAt(0).toUpperCase() || 'E'}
-                                </div>
+                                <button
+                                    type="button"
+                                    onClick={openPhotoPicker}
+                                    className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-white/10 backdrop-blur ring-1 ring-white/20 text-xl font-black text-brand-gold shadow-lg overflow-hidden cursor-pointer"
+                                    title="Change profile photo"
+                                >
+                                    {profilePhotoUrl ? (
+                                        <img
+                                            src={profilePhotoUrl}
+                                            alt={resolvedDisplayName}
+                                            className="h-full w-full object-cover"
+                                        />
+                                    ) : (
+                                        userProfile?.name?.charAt(0).toUpperCase() || currentUser?.email?.charAt(0).toUpperCase() || 'E'
+                                    )}
+                                </button>
                                 <div className="min-w-0">
-                                    <div className="truncate text-lg font-black tracking-tight">{travelerFullName}</div>
+                                    <div className="truncate text-lg font-black tracking-tight">{resolvedDisplayName}</div>
                                     <div className="mt-1 truncate text-xs text-slate-400 font-bold">{currentUser.email}</div>
                                 </div>
                             </div>
@@ -295,7 +558,7 @@ const Dashboard = () => {
                                         <Compass size={14} className="text-brand-gold" /> Personalized Concierge
                                     </div>
                                     <h1 className="mt-6 text-4xl lg:text-5xl font-serif font-black text-slate-900 leading-[1.15]">
-                                        Welcome, <span className="text-brand-gold italic underline decoration-slate-200 underline-offset-8">{userProfile?.name?.split(' ')[0] || 'Traveler'}</span>
+                                        Welcome, <span className="text-brand-gold italic underline decoration-slate-200 underline-offset-8">{firstName}</span>
                                     </h1>
                                     <p className="mt-5 max-w-2xl text-base font-medium leading-relaxed text-slate-500 italic">
                                         Your private dashboard for tracking expeditions, managing your passport profile, and curating your next great story.
@@ -752,8 +1015,8 @@ const Dashboard = () => {
                                 </motion.div>
                             )}
 
-                            {/* PROFILE TAB */}
-                            {activeTab === 'profile' && (
+                            {/* SETTINGS TAB */}
+                            {activeTab === 'settings' && (
                                 <motion.div
                                     key="profile"
                                     initial={{ opacity: 0, x: 20 }}
@@ -764,16 +1027,34 @@ const Dashboard = () => {
                                     <div className="rounded-3xl lg:rounded-[3rem] border border-white/60 bg-white/20 p-6 shadow-4xl shadow-slate-200/10 backdrop-blur-3xl lg:p-14 accent-pattern-blue ring-1 ring-black/[0.02]">
                                         <div className="mb-14 flex flex-col md:flex-row items-center gap-10">
                                             <div className="relative group">
-                                                <div className="flex h-32 w-32 items-center justify-center rounded-[2.5rem] bg-brand-dark text-white shadow-2xl ring-4 ring-white transition-transform group-hover:scale-105 group-hover:-rotate-3">
-                                                    <span className="text-4xl font-black">{profileForm.name?.charAt(0) || currentUser?.email?.charAt(0).toUpperCase() || 'E'}</span>
-                                                </div>
-                                                <div className="absolute -bottom-2 -right-2 h-10 w-10 rounded-2xl bg-brand-gold flex items-center justify-center text-brand-dark shadow-xl border-2 border-white">
+                                                <button
+                                                    type="button"
+                                                    onClick={openPhotoPicker}
+                                                    className="flex h-32 w-32 items-center justify-center rounded-[2.5rem] bg-brand-dark text-white shadow-2xl ring-4 ring-white transition-transform group-hover:scale-105 group-hover:-rotate-3 overflow-hidden cursor-pointer"
+                                                    title="Change profile photo"
+                                                >
+                                                    {profilePhotoUrl ? (
+                                                        <img
+                                                            src={profilePhotoUrl}
+                                                            alt={resolvedDisplayName}
+                                                            className="h-full w-full object-cover"
+                                                        />
+                                                    ) : (
+                                                        <span className="text-4xl font-black">{profileForm.name?.charAt(0) || currentUser?.email?.charAt(0).toUpperCase() || 'E'}</span>
+                                                    )}
+                                                </button>
+                                                <button
+                                                    type="button"
+                                                    onClick={openPhotoPicker}
+                                                    className="absolute -bottom-2 -right-2 h-10 w-10 rounded-2xl bg-brand-gold flex items-center justify-center text-brand-dark shadow-xl border-2 border-white cursor-pointer"
+                                                    title="Change profile photo"
+                                                >
                                                     <PencilLine size={18} />
-                                                </div>
+                                                </button>
                                             </div>
                                             <div className="text-center md:text-left">
                                                 <div className="text-[11px] font-black uppercase tracking-[0.4em] text-brand-gold mb-2">Passport Profile</div>
-                                                <h2 className="text-4xl font-serif font-black text-slate-900 tracking-tight">{profileForm.name || 'Yatra Go Explorer'}</h2>
+                                                <h2 className="text-4xl font-serif font-black text-slate-900 tracking-tight">{resolvedDisplayName || 'Yatra Go Explorer'}</h2>
                                                 <div className="mt-3 flex flex-wrap justify-center md:justify-start gap-3">
                                                     <span className="px-4 py-1.5 rounded-full bg-slate-900 text-white text-[9px] font-black uppercase tracking-widest shadow-lg">Verified Identity</span>
                                                     <span className="px-4 py-1.5 rounded-full bg-indigo-50 text-indigo-600 border border-indigo-100 text-[9px] font-black uppercase tracking-widest">Priority Member</span>
@@ -782,6 +1063,22 @@ const Dashboard = () => {
                                         </div>
 
                                         <form onSubmit={handleProfileSave} className="space-y-10">
+                                            <div className="rounded-[2rem] border border-slate-100 bg-white/60 px-6 py-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                                                <div>
+                                                    <div className="text-[11px] font-black uppercase tracking-widest text-slate-400">Profile Photo</div>
+                                                    <div className="text-sm font-semibold text-slate-600 mt-1">
+                                                        {profilePhotoUrl ? 'Current photo is active.' : 'Google photo will be used automatically if available.'}
+                                                    </div>
+                                                </div>
+                                                <button
+                                                    type="button"
+                                                    onClick={openPhotoPicker}
+                                                    className="inline-flex cursor-pointer items-center justify-center gap-3 rounded-2xl bg-brand-dark text-white px-6 py-3 text-xs font-black uppercase tracking-widest hover:bg-brand-gold hover:text-brand-dark transition-all"
+                                                >
+                                                    {photoUploading ? <RefreshCw className="animate-spin" size={16} /> : <ImageUp size={16} />}
+                                                    {photoUploading ? 'Uploading...' : 'Change Photo'}
+                                                </button>
+                                            </div>
                                             <div className="grid gap-10 md:grid-cols-2">
                                                 <div className="space-y-4">
                                                     <label className="text-[11px] font-black uppercase tracking-widest text-slate-400 ml-2">Official Name</label>

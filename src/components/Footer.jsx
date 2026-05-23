@@ -85,12 +85,12 @@ const Footer = () => {
                             <h4 className="text-white font-black font-serif mb-6 sm:mb-8 text-xl sm:text-lg border-b border-white/5 pb-4 tracking-tight">Curated Packages</h4>
                             <ul className="space-y-4">
                                 {[
-                                    { name: 'Char Dham Yatra', path: '/tour/char-dham-yatra' },
+                                    { name: 'Char Dham Yatra', path: '/chardham-yatra-from-haridwar' },
                                     { name: 'Rishikesh Adventure', path: '/tour/rishikesh-adventure-tour' },
                                     { name: 'Shimla-Manali Elite', path: '/tour/shimla-manali-tour' },
                                     { name: 'Mussoorie Escape', path: '/tour/mussoorie-hill-escape' },
                                     { name: 'Spiti Expedition', path: '/tour/spiti-valley-adventure' },
-                                    { name: 'Auli Snow Tour', path: '/tour/auli-snow-adventure' },
+                                    { name: 'Auli Snow Tour', path: '/auli-tour-package' },
                                 ].map((l, i) => (
                                     <li key={i}>
                                         <Link to={l.path} className="group flex items-center gap-2 text-sm text-slate-400 font-bold transition-all hover:text-brand-gold hover:translate-x-1">
@@ -108,8 +108,8 @@ const Footer = () => {
                             <ul className="space-y-4">
                                 {[
                                     { name: 'Luxury Hotel Curation', path: '/services/hotel' },
-                                    { name: 'Elite Car Rental', path: '/services/car-rental' },
-                                    { name: 'Adventure Activities', path: '/activity' },
+                                    { name: 'Elite Car Rental', path: '/haridwar-taxi-service' },
+                                    { name: 'Adventure Activities', path: '/rishikesh-adventure-activities' },
                                     { name: 'Bike Expeditions', path: '/services/bike-rental' },
                                     { name: 'Honeymoon Touches', path: '/tour/romantic-himachal-honeymoon' },
                                 ].map((l, i) => (

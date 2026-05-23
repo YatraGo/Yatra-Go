@@ -1,5 +1,6 @@
 User-agent: *
 Disallow: /admin/
+Disallow: /dashboard
 Allow: /
 
-Sitemap: https://yatrago.com/sitemap.xml
+Sitemap: https://www.yatrago.com/sitemap.xml

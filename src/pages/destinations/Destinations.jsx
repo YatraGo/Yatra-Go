@@ -283,10 +283,10 @@ const DestinationCard = ({ dest }) => (
         animate={{ opacity: 1, scale: 1 }}
         exit={{ opacity: 0, scale: 0.93 }}
         whileHover={{ y: -8 }}
-        className="group relative flex flex-col rounded-[2rem] bg-white border border-slate-100 shadow-[0_15px_40px_-15px_rgba(0,0,0,0.05)] transition-all duration-500 hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.12)] overflow-hidden"
+        className="group relative flex flex-col rounded-2xl sm:rounded-[2rem] bg-white border border-slate-100 shadow-[0_15px_40px_-15px_rgba(0,0,0,0.05)] transition-all duration-500 hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.12)] overflow-hidden"
     >
         {/* Image Section */}
-        <div className="relative h-56 overflow-hidden">
+        <div className="relative h-32 sm:h-56 overflow-hidden">
             <img src={dest.img} alt={dest.name}
                 className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
                 loading="lazy"
@@ -294,36 +294,36 @@ const DestinationCard = ({ dest }) => (
             <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent" />
             
             {/* Top Badges */}
-            <div className="absolute top-4 left-4 right-4 flex justify-between items-start pointer-events-none">
-                <span className={`px-3 py-1.5 rounded-xl text-[9px] font-black uppercase tracking-[0.2em] shadow-xl backdrop-blur-md border border-white/10 ${BADGE_COLORS[dest.badge] || 'bg-slate-900/80 text-white'}`}>
+            <div className="absolute top-2 left-2 right-2 flex justify-between items-start pointer-events-none gap-1">
+                <span className={`px-1.5 py-0.5 sm:px-3 sm:py-1.5 rounded-lg sm:rounded-xl text-[7px] sm:text-[9px] font-black uppercase tracking-[0.15em] sm:tracking-[0.2em] shadow-xl backdrop-blur-md border border-white/10 ${BADGE_COLORS[dest.badge] || 'bg-slate-900/80 text-white'} truncate`}>
                     {dest.badge}
                 </span>
-                <span className="px-3 py-1.5 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 text-white text-[9px] font-black uppercase tracking-widest shadow-xl flex items-center gap-1.5">
-                    <MapPin size={10} className="text-brand-gold" /> {dest.region}
+                <span className="px-1.5 py-0.5 sm:px-3 sm:py-1.5 rounded-lg sm:rounded-xl bg-white/10 backdrop-blur-md border border-white/20 text-white text-[7px] sm:text-[9px] font-black uppercase tracking-widest shadow-xl flex items-center gap-1 shrink-0">
+                    <MapPin size={9} className="text-brand-gold shrink-0" /> {dest.region.split(' ')[0]}
                 </span>
             </div>
 
             {/* Bottom Meta */}
-            <div className="absolute bottom-4 left-4 flex items-center gap-2">
-                <div className="px-2.5 py-1 rounded-lg bg-brand-gold/20 backdrop-blur-sm border border-brand-gold/30 text-[9px] font-black uppercase tracking-widest text-brand-gold">
+            <div className="absolute bottom-2 left-2 flex items-center gap-2">
+                <div className="px-1.5 py-0.5 rounded-md bg-brand-gold/20 backdrop-blur-sm border border-brand-gold/30 text-[7px] sm:text-[9px] font-black uppercase tracking-widest text-brand-gold">
                     Best: {dest.bestTime}
                 </div>
             </div>
         </div>
 
         {/* Content Section */}
-        <div className="p-6 flex flex-col flex-1 relative bg-white">
-            <div className="mb-4">
-                <h3 className="text-2xl font-serif font-black text-slate-900 group-hover:text-brand-gold transition-colors duration-300">{dest.name}</h3>
-                <p className="text-brand-gold text-[10px] font-black uppercase tracking-[0.2em] mt-1">{dest.tagline}</p>
+        <div className="p-3 sm:p-6 flex flex-col flex-1 relative bg-white">
+            <div className="mb-2 sm:mb-4">
+                <h3 className="text-sm sm:text-2xl font-serif font-black text-slate-900 group-hover:text-brand-gold transition-colors duration-300 leading-tight">{dest.name}</h3>
+                <p className="text-brand-gold text-[8px] sm:text-[10px] font-black uppercase tracking-[0.15em] sm:tracking-[0.2em] mt-0.5">{dest.tagline}</p>
             </div>
             
-            <p className="text-slate-500 text-sm leading-relaxed line-clamp-2 flex-1 mb-6 font-medium italic">"{dest.desc}"</p>
+            <p className="text-slate-500 text-[10px] sm:text-sm leading-relaxed line-clamp-2 flex-1 mb-3 sm:mb-6 font-medium italic">"{dest.desc}"</p>
 
             {/* Highlights */}
-            <div className="mb-6 flex flex-wrap gap-2">
-                {dest.highlights.slice(0, 3).map((h, i) => (
-                    <span key={i} className="text-[9px] bg-slate-50 text-slate-500 font-black uppercase tracking-wider px-2.5 py-1 rounded-lg border border-slate-100">
+            <div className="mb-4 sm:mb-6 flex flex-wrap gap-1">
+                {dest.highlights.slice(0, 2).map((h, i) => (
+                    <span key={i} className="text-[7px] sm:text-[9px] bg-slate-50 text-slate-500 font-black uppercase tracking-wider px-1.5 py-0.5 rounded border border-slate-100 truncate max-w-full">
                         {h}
                     </span>
                 ))}
@@ -331,8 +331,8 @@ const DestinationCard = ({ dest }) => (
 
             {/* CTA */}
             <Link to={dest.pkgLink}
-                className="flex items-center justify-center gap-2 bg-brand-dark text-white font-black py-3.5 rounded-2xl text-xs uppercase tracking-[0.2em] hover:bg-brand-gold hover:text-brand-dark transition-all duration-300 shadow-xl shadow-brand-dark/10 group/btn active:scale-95">
-                Explore Packages <ArrowRight size={14} className="group-hover/btn:translate-x-1 transition-transform" />
+                className="flex items-center justify-center gap-1.5 bg-brand-dark text-white font-black py-2.5 sm:py-3.5 rounded-xl sm:rounded-2xl text-[9px] sm:text-xs uppercase tracking-[0.15em] sm:tracking-[0.2em] hover:bg-brand-gold hover:text-brand-dark transition-all duration-300 shadow-lg shadow-brand-dark/10 group/btn active:scale-95 w-full">
+                Explore <ArrowRight size={12} className="group-hover/btn:translate-x-1 transition-transform" />
             </Link>
         </div>
     </motion.div>
@@ -421,7 +421,7 @@ const Destinations = () => {
                                     className="mt-4 text-brand-gold font-bold hover:underline">Clear filters</button>
                             </motion.div>
                         ) : (
-                            <motion.div layout className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+                            <motion.div layout className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-5">
                                 {filtered.map(dest => <DestinationCard key={dest.id} dest={dest} />)}
                             </motion.div>
                         )}

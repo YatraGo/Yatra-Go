@@ -110,6 +110,7 @@ const TourDetails = () => {
     }, [currentUser, userProfile]);
 
     if (!pkg) {
+        if (!slug) return null;
         return <Navigate to="/tour-packages" replace />;
     }
 
