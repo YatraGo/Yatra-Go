@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://yatrago.com/sitemap.xml
+Sitemap: https://www.yatrago.com/sitemap.xml
