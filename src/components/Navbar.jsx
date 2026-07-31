@@ -136,29 +136,28 @@ const Navbar = () => {
                 </div>
 
                 <nav
-                    className={`transition-all duration-700 relative w-full border-b ${
-                        isScrolled 
-                            ? 'border-slate-200 bg-white/95 py-2 shadow-sm' 
-                            : 'border-white/20 bg-white/80 py-3 lg:py-5'
-                    } backdrop-blur-[40px] shadow-sm`}
+                    className={`transition-all duration-700 relative w-full border-b ${isScrolled
+                        ? 'border-slate-200 bg-white/95 py-2 shadow-sm'
+                        : 'border-white/20 bg-white/80 py-3 lg:py-5'
+                        } backdrop-blur-[40px] shadow-sm`}
                     onMouseMove={handleNavPointerMove}
                     onMouseLeave={handleNavPointerLeave}
-                    style={{ 
-                        '--mx': '50%', 
-                        '--my': '0%', 
+                    style={{
+                        '--mx': '50%',
+                        '--my': '0%',
                         '--nav-glow-opacity': '0',
                         transition: 'all 0.5s cubic-bezier(0.23, 1, 0.32, 1)'
                     }}
                 >
                     {/* 🌟 PREMIUM GLASS HIGHLIGHT 🌟 */}
                     <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-white to-transparent opacity-40" />
-                    
+
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="flex justify-between items-center w-full lg:gap-4 xl:gap-8">
 
                             {/* Logo - Left Side with Magnetic Effect */}
                             <div className="flex shrink-0 items-center">
-                                <Link to="/" 
+                                <Link to="/"
                                     className="flex items-center gap-3 group whitespace-nowrap transition-transform duration-500 hover:scale-105"
                                     onMouseMove={(e) => {
                                         const rect = e.currentTarget.getBoundingClientRect();
@@ -286,7 +285,7 @@ const Navbar = () => {
                                 ) : (
                                     <div className="flex items-center gap-2">
                                         <button onClick={() => setBookingModalOpen(true)} className="group relative isolate overflow-hidden whitespace-nowrap rounded-2xl border border-slate-200/80 bg-white/80 px-4 py-2.5 text-[12px] font-black uppercase tracking-[0.2em] text-slate-600 transition-all duration-500 hover:-translate-y-1 hover:border-brand-gold/50 hover:text-brand-dark hover:shadow-[0_20px_40px_-24px_rgba(8,38,61,0.45)] cursor-pointer">
-                                            <span className="absolute inset-0 -z-10 bg-[linear-gradient(135deg,rgba(255,255,255,0.95),rgba(248,250,252,0.85))]" />
+                                            <span className="absolute inset-0 -z-10 bg-[linear-gradient(135deg,rgba(255,255,255,0.95),rgba(45, 129, 212, 0.85))]" />
                                             <span className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_left,rgba(240,184,60,0.22),transparent_48%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                                             <span className="absolute -left-10 top-1/2 -z-10 h-16 w-10 -translate-y-1/2 rotate-12 bg-white/90 blur-sm transition-all duration-700 group-hover:left-[120%]" />
                                             <span className="absolute inset-x-4 bottom-0 h-px bg-gradient-to-r from-transparent via-brand-gold/80 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
@@ -393,7 +392,7 @@ const Navbar = () => {
                                     <div className="flex flex-col gap-2.5 py-4 mt-2 border-t border-slate-100">
                                         {currentUser ? (
                                             <>
-                                                <Link 
+                                                <Link
                                                     to={isAdmin ? '/admin/dashboard' : '/dashboard'}
                                                     onClick={() => setIsMobileMenuOpen(false)}
                                                     className="w-full rounded-xl bg-brand-dark px-5 py-3 text-[11px] sm:text-xs font-black uppercase tracking-[0.15em] sm:tracking-[0.2em] text-white shadow-md flex items-center justify-center gap-2"

@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from 'react';
+import React, { Suspense, lazy, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import Navbar from './components/Navbar';
@@ -8,6 +8,10 @@ import ScrollToTop from './components/ScrollToTop';
 import TravelConcierge from './components/TravelConcierge';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import AdminDashboard from './admin/AdminDashboard';
+import { registerServiceWorker } from './utils/registerServiceWorker';
+import { useNotifications } from './hooks/useNotifications';
+import NotificationPermission from './components/NotificationPermission';
+import NotificationToast from './components/NotificationToast';
 
 const Home = lazy(() => import('./pages/Home.jsx'));
 const About = lazy(() => import('./pages/About.jsx'));
@@ -84,10 +88,27 @@ const AdminLayout = ({ children }) => (
 );
 
 function App() {
+  const { permissionStatus, currentMessage, requestPermissionAndGenerateToken, clearCurrentMessage } = useNotifications();
+
+  useEffect(() => {
+    registerServiceWorker();
+  }, []);
+
   return (
     <BrowserRouter>
       <GlobalUiSounds />
       <ScrollToTop />
+      
+      {/* Notification Components */}
+      <NotificationPermission 
+        permissionStatus={permissionStatus} 
+        onRequestPermission={requestPermissionAndGenerateToken} 
+      />
+      <NotificationToast 
+        message={currentMessage} 
+        onClose={clearCurrentMessage} 
+      />
+
       <Routes>
         <Route path="/" element={<MainLayout><Home /></MainLayout>} />
         <Route path="/about-us" element={<MainLayout><About /></MainLayout>} />

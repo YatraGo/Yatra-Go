@@ -1,5 +1,9 @@
+const DEFAULT_FORMS_ENDPOINT = '/api/forms/submit';
+
 export const submitWeb3Form = async ({ subject, fields, replyTo }) => {
-    const response = await fetch('http://localhost:3001/api/forms/submit', {
+    const endpoint = import.meta.env.VITE_FORMS_ENDPOINT || DEFAULT_FORMS_ENDPOINT;
+
+    const response = await fetch(endpoint, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -12,10 +16,10 @@ export const submitWeb3Form = async ({ subject, fields, replyTo }) => {
         }),
     });
 
-    const result = await response.json();
+    const result = await response.json().catch(() => ({}));
 
     if (!response.ok || !result.success) {
-        throw new Error(result.message || 'Unable to submit form right now.');
+        throw new Error(result.message || result.error || 'Unable to submit form right now.');
     }
 
     return result;

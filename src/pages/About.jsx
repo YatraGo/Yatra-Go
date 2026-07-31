@@ -26,9 +26,9 @@ const FadeIn = ({ children, delay = 0, dir = 'up', className = '' }) => (
 
 // ─── Stats counter ───
 const stats = [
-    { value: '10+', label: 'Years of Experience', icon: <Clock size={28} /> },
-    { value: '5000+', label: 'Happy Travelers', icon: <Users size={28} /> },
-    { value: '50+', label: 'Destinations Covered', icon: <MapPin size={28} /> },
+    { value: '5+', label: 'Years of Experience', icon: <Clock size={28} /> },
+    { value: '3000+', label: 'Happy Travelers', icon: <Users size={28} /> },
+    { value: '20+', label: 'Destinations Covered', icon: <MapPin size={28} /> },
     { value: '99%', label: 'Satisfaction Rate', icon: <Star size={28} /> },
 ];
 
@@ -44,22 +44,21 @@ const team = [
 const whyUs = [
     { icon: <Shield size={28} />, title: '100% Safe & Verified', desc: 'All vehicles, guides, and stays are verified. We prioritize your safety above everything else.' },
     { icon: <CreditCard size={28} />, title: 'Transparent Pricing', desc: 'No hidden charges. Full cost breakdown shared upfront before you confirm.' },
-    { icon: <Compass size={28} />, title: 'Expert Local Guides', desc: '10+ years of on-ground experience in Uttarakhand, Himachal Pradesh and beyond.' },
+    { icon: <Compass size={28} />, title: 'Expert Local Guides', desc: '5+ years of on-ground experience in Uttarakhand, Himachal Pradesh and beyond.' },
     { icon: <Headphones size={28} />, title: '24/7 Support', desc: 'A dedicated coordinator is assigned to every booking — reachable anytime, anywhere.' },
-    { icon: <Globe size={28} />, title: '50+ Destinations', desc: 'From Char Dham to Spiti — we cover India\'s most spectacular sacred and scenic trails.' },
+    { icon: <Globe size={28} />, title: '20+ Destinations', desc: 'From Char Dham to Spiti — we cover India\'s most spectacular sacred and scenic trails.' },
     { icon: <Heart size={28} />, title: 'Curated Experiences', desc: 'Every package is hand-crafted with love and on-ground insight — not a template.' },
     { icon: <TrendingUp size={28} />, title: 'Best Price Guarantee', desc: 'Found a cheaper deal? Show us and we\'ll match or beat it. No questions asked.' },
-    { icon: <ThumbsUp size={28} />, title: '5000+ Happy Travelers', desc: 'Families, honeymooners, solo adventurers, and pilgrims trust us year after year.' },
+    { icon: <ThumbsUp size={28} />, title: '3000+ Happy Travelers', desc: 'Families, honeymooners, solo adventurers, and pilgrims trust us year after year.' },
 ];
 
 // ─── Milestones ───
 const milestones = [
-    { year: '2014', title: 'YatraGo Founded', desc: 'Started in Haridwar with a small office and a big dream to redefine Uttarakhand travel.' },
-    { year: '2016', title: 'First 500 Travelers', desc: 'Reached our first milestone of 500 happy travelers in just 2 years of operation.' },
-    { year: '2018', title: 'Expanded to Himachal', desc: 'Launched Manali, Shimla, and Spiti Valley packages extending beyond Uttarakhand.' },
-    { year: '2020', title: 'Digital Booking Platform', desc: 'Launched online booking, WhatsApp support and 24/7 customer assistance.' },
-    { year: '2022', title: 'Rajasthan & International', desc: 'Added Rajasthan, Madhya Pradesh and international destinations including Nepal and Bhutan.' },
-    { year: '2024', title: '5000+ Happy Travelers', desc: 'Celebrated a major milestone — 5000+ satisfied travelers and counting!' },
+    { year: '2019', title: 'YatraGo Founded', desc: 'Started in Haridwar with a small office and a big dream to redefine Uttarakhand travel.' },
+    { year: '2022', title: 'First 500 Travelers', desc: 'Reached our first milestone of 500 happy travelers in just 2 years of operation.' },
+    { year: '2023', title: 'Expanded to Himachal', desc: 'Launched Manali, Shimla, and Spiti Valley packages extending beyond Uttarakhand.' },
+    { year: '2024', title: 'Digital Booking Platform', desc: 'Launched online booking, WhatsApp support and 24/7 customer assistance.' },
+    { year: '2025', title: '3000+ Happy Travelers', desc: 'Celebrated a major milestone — 3000+ satisfied travelers and counting!' },
 ];
 
 // ─── Page ───
@@ -312,10 +311,10 @@ const About = () => (
                 </FadeIn>
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5">
                     {[
-                        { icon: <Award size={24} />, title: 'Best Operator 2023', body: 'Uttarakhand Tourism Excellence' },
-                        { icon: <Star size={24} />, title: '4.9/5 Rating', body: '1000+ Verified Google Reviews' },
-                        { icon: <Users size={24} />, title: '5000+ Travelers', body: 'Families, pilgrims & adventurers served' },
-                        { icon: <Heart size={24} />, title: '10+ Years Trust', body: 'Decade of pure Himalayan trust' },
+                        { icon: <Award size={24} />, title: 'Best Operator 2025', body: 'Uttarakhand Tourism Excellence' },
+                        { icon: <Star size={24} />, title: '4.9/5 Rating', body: '2000+ Verified Google Reviews' },
+                        { icon: <Users size={24} />, title: '3000+ Travelers', body: 'Families, pilgrims & adventurers served' },
+                        { icon: <Heart size={24} />, title: '5+ Years Trust', body: 'Decade of pure Himalayan trust' },
                     ].map((a, i) => (
                         <FadeIn key={i} delay={i * 0.08}>
                             <div className="bg-white border border-amber-100 rounded-xl sm:rounded-2xl p-3 sm:p-6 text-center shadow-sm hover:shadow-md transition-shadow h-full flex flex-col items-center justify-center">

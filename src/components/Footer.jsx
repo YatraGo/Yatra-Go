@@ -22,7 +22,7 @@ const Footer = () => {
                             <span className="inline-flex items-center gap-2 text-brand-gold font-black uppercase tracking-[0.3em] text-[10px] mb-4">
                                 <Sparkles size={12} /> Elite Travel Strategy
                             </span>
-                            <h3 className="text-3xl md:text-4xl font-serif font-black mb-4 leading-tight">Ready to Sculpt Your <span className="text-brand-gold italic">Elite Expedition?</span></h3>
+                            <h3 className="text-3xl md:text-4xl text-white italic font-serif font-black mb-4 leading-tight">Ready to Start Your <span className="text-brand-gold italic">Elite Expedition?</span></h3>
                             <p className="text-slate-400 font-medium leading-relaxed italic">Consult with our master travel strategists and receive a bespoke blueprint for your next journey, curated with precision and trust.</p>
                         </div>
                         <div className="flex flex-col sm:flex-row gap-4 shrink-0 w-full lg:w-auto">
@@ -58,7 +58,7 @@ const Footer = () => {
                                     Yatra Go is a premiere Haridwar-based travel atelier, engineering high-impact journeys across the Himalayas. We redefine luxury through granular planning, elite logistics, and unwavering on-ground guardianship.
                                 </p>
                             </div>
-                            
+
                             <div className="space-y-4">
                                 <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-brand-gold">Operations Center</h4>
                                 <div className="space-y-4">
@@ -82,7 +82,7 @@ const Footer = () => {
 
                         {/* Col 2: Curated Collections */}
                         <div>
-                            <h4 className="text-white font-black font-serif mb-6 sm:mb-8 text-xl sm:text-lg border-b border-white/5 pb-4 tracking-tight">Curated Packages</h4>
+                            <h4 className="text-white font-black font-serif mb-6 sm:mb-8 text-xl sm:text-lg border-b border-white/5 pb-4 tracking-tight">Popular Packages</h4>
                             <ul className="space-y-4">
                                 {[
                                     { name: 'Char Dham Yatra', path: '/chardham-yatra-from-haridwar' },
@@ -104,13 +104,13 @@ const Footer = () => {
 
                         {/* Col 3: Fleet & Concierge */}
                         <div>
-                            <h4 className="text-white font-black font-serif mb-6 sm:mb-8 text-xl sm:text-lg border-b border-white/5 pb-4 tracking-tight">Fleet & Concierge</h4>
+                            <h4 className="text-white font-black font-serif mb-6 sm:mb-8 text-xl sm:text-lg border-b border-white/5 pb-4 tracking-tight">Our Services</h4>
                             <ul className="space-y-4">
                                 {[
                                     { name: 'Luxury Hotel Curation', path: '/services/hotel' },
-                                    { name: 'Elite Car Rental', path: '/haridwar-taxi-service' },
+                                    { name: 'Car Rental', path: '/haridwar-taxi-service' },
                                     { name: 'Adventure Activities', path: '/rishikesh-adventure-activities' },
-                                    { name: 'Bike Expeditions', path: '/services/bike-rental' },
+                                    { name: 'Bike Rental', path: '/services/bike-rental' },
                                     { name: 'Honeymoon Touches', path: '/tour/romantic-himachal-honeymoon' },
                                 ].map((l, i) => (
                                     <li key={i}>
@@ -163,17 +163,16 @@ const Footer = () => {
                             <p className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-500">
                                 &copy; {currentYear} <span className="text-white">Yatra Go</span>. All rights reserved.
                             </p>
-                            <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-6">
-                                <Link to="/privacy-policy" className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-500 hover:text-white transition-colors">Privacy</Link>
-                                <Link to="/terms-and-conditions" className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-500 hover:text-white transition-colors">Terms</Link>
-                                <a href={sitemapHref} className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-500 hover:text-white transition-colors">Sitemap</a>
+                            <div className="flex flex-wrap justify-center items-center gap-6 sm:gap-7">
+                                <Link to="/privacy-policy" className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-500 hover:text-white transition-colors">Privacy Policy</Link>
+                                <Link to="/terms-and-conditions" className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-500 hover:text-white transition-colors">Terms & Conditions</Link>
                             </div>
                         </div>
-                        
+
                         <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-6 text-[10px] font-black uppercase tracking-[0.3em] text-slate-500 w-full lg:w-auto">
                             <div className="flex items-center gap-2">
                                 <ShieldCheck size={14} className="text-brand-gold shrink-0" />
-                                <span>SSL Encrypted</span>
+                                <span>Verified</span>
                             </div>
                             <div className="hidden sm:block w-px h-4 bg-white/10" />
                             <p className="flex items-center justify-center gap-2 w-full sm:w-auto mt-2 sm:mt-0">

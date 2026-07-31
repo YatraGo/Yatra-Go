@@ -6,6 +6,11 @@ import Sitemap from 'vite-plugin-sitemap'
 export default defineConfig(({ mode }) => ({
   // Base path must be '/' for BrowserRouter to resolve assets correctly from the root domain
   base: '/',
+  server: {
+    proxy: {
+      '/api': 'http://localhost:3001',
+    },
+  },
   build: {
     rollupOptions: {
       output: {

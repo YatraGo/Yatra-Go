@@ -1,20 +1,20 @@
-@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Sora:wght@400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@300;400;500;600;700&display=swap");
 @import "tailwindcss";
 
 @theme {
-  --color-brand-blue: #1399de;
-  --color-brand-gold: #ff8a17;
+  --color-brand-blue: #1D9BF0; /* Accent */
+  --color-brand-gold: #FF8A00; /* Primary */
   --color-brand-azure: #44baf1;
   --color-brand-sunset: #ff6f0f;
   --color-brand-emerald: #71cf3f;
-  --color-brand-light: #f7fbff;
-  --color-brand-dark: #0c3553;
-  --color-brand-navy: #08263d;
+  --color-brand-light: #F8FAFD; /* Background */
+  --color-brand-dark: #0B1633; /* Secondary */
+  --color-brand-navy: #0B1633; /* Secondary */
   --color-brand-mist: #e9f6ff;
   --color-brand-cream: #fff7eb;
 
-  --font-sans: "Sora", "Segoe UI", sans-serif;
-  --font-serif: "Cinzel", "Times New Roman", serif;
+  --font-sans: "Inter", "Segoe UI", sans-serif;
+  --font-serif: "Playfair Display", "Times New Roman", serif;
 }
 
 @layer base {
@@ -28,11 +28,7 @@
 
   body {
     @apply text-brand-dark font-sans antialiased;
-    background:
-      radial-gradient(circle at 14% 12%, rgba(19, 153, 222, 0.16), transparent 34%),
-      radial-gradient(circle at 86% 14%, rgba(255, 138, 23, 0.13), transparent 30%),
-      radial-gradient(circle at 22% 86%, rgba(113, 207, 63, 0.14), transparent 28%),
-      linear-gradient(180deg, #ffffff 0%, #f7fbff 44%, #eef8ff 100%);
+    background-color: var(--color-brand-light);
     min-width: 320px;
   }
 
@@ -42,19 +38,33 @@
   h4,
   h5,
   h6 {
-    @apply font-serif font-bold text-brand-dark;
+    @apply font-serif font-bold text-brand-dark tracking-tight;
   }
 
   p {
     @apply leading-relaxed;
   }
 
-  a {
-    @apply transition-colors duration-200;
+  a, button {
+    @apply transition-all duration-300;
+  }
+
+  /* Global Cursor Pointer Rules as requested */
+  button, 
+  a, 
+  [role="button"], 
+  input, 
+  select, 
+  textarea, 
+  label,
+  summary,
+  .clickable,
+  .hover-pointer:hover {
+    cursor: pointer !important;
   }
 
   ::selection {
-    background: rgba(19, 153, 222, 0.18);
+    background: rgba(29, 155, 240, 0.18);
     color: var(--color-brand-navy);
   }
 
@@ -67,9 +77,17 @@
   .glass {
     @apply border border-white/40 bg-white/10 shadow-[0_8px_32px_0_rgba(31,38,135,0.07)] backdrop-blur-xl;
   }
+  
+  .glass-premium {
+    @apply bg-white/80 backdrop-blur-xl border border-white/60 shadow-[0_12px_40px_-15px_rgba(11,22,51,0.1)];
+  }
 
   .glass-dark {
-    @apply border border-white/10 bg-brand-navy/60 shadow-[0_8px_32px_0_rgba(0,0,0,0.3)] backdrop-blur-xl text-white;
+    @apply border border-white/10 bg-brand-navy/80 shadow-[0_8px_32px_0_rgba(0,0,0,0.3)] backdrop-blur-xl text-white;
+  }
+
+  .premium-shadow {
+    @apply shadow-[0_16px_40px_-12px_rgba(11,22,51,0.1)] hover:shadow-[0_24px_50px_-16px_rgba(11,22,51,0.15)] transition-shadow duration-300;
   }
 
   .shimmer-effect {
@@ -105,7 +123,7 @@
   }
 
   .text-gradient {
-    @apply bg-gradient-to-r from-brand-blue via-brand-gold to-brand-emerald bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-brand-gold via-orange-400 to-brand-gold bg-clip-text text-transparent;
     animation: gradient-x 15s ease infinite;
     background-size: 200% 200%;
   }
@@ -116,20 +134,20 @@
   }
 
   .premium-card {
-    @apply bg-white rounded-[2.5rem] border border-slate-100 shadow-[0_10px_40px_-15px_rgba(0,0,0,0.08)] transition-all duration-500 hover:shadow-[0_20px_60px_-15px_rgba(0,0,0,0.12)] hover:-translate-y-2;
+    @apply bg-white rounded-[18px] border border-slate-100 shadow-[0_12px_30px_-15px_rgba(11,22,51,0.08)] transition-all duration-300 hover:shadow-[0_20px_40px_-15px_rgba(11,22,51,0.12)] hover:-translate-y-1 hover:cursor-pointer;
   }
 
   .admin-glass {
-    @apply bg-white/70 border border-white/40 shadow-[0_20px_50px_rgba(8,38,61,0.08)] backdrop-blur-2xl rounded-[2.5rem];
+    @apply bg-white/70 border border-white/40 shadow-[0_20px_50px_rgba(11,22,51,0.08)] backdrop-blur-2xl rounded-[18px];
   }
 
   .accent-pattern {
-    background-image: radial-gradient(circle at 2px 2px, rgba(255, 138, 23, 0.05) 1px, transparent 0);
+    background-image: radial-gradient(circle at 2px 2px, rgba(255, 138, 0, 0.05) 1px, transparent 0);
     background-size: 24px 24px;
   }
 
   .accent-pattern-blue {
-    background-image: radial-gradient(circle at 2px 2px, rgba(19, 153, 222, 0.05) 1px, transparent 0);
+    background-image: radial-gradient(circle at 2px 2px, rgba(29, 155, 240, 0.05) 1px, transparent 0);
     background-size: 24px 24px;
   }
 }
